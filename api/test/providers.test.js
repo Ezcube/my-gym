@@ -137,6 +137,63 @@ test('OpenAI photo analysis uses Luna, high image detail, structured output, and
   assert.match(requests[0].body.input[0].content[0].text, /untrusted data/i);
 });
 
+test('OpenAI nutrition operations share a normalized custom base URL', async () => {
+  const { createOpenAiNutritionClient } = await import('../src/providers/openai-nutrition.js');
+  const urls = [];
+  const photo = {
+    overallConfidence: 0.9,
+    items: [{
+      name: 'Овсяная каша', searchQuery: 'oatmeal cooked', estimatedGrams: 250,
+      confidence: 0.9, preparation: 'варёная', alternatives: [], warnings: []
+    }],
+    warnings: []
+  };
+  const review = {
+    summary: 'День сбалансирован.',
+    suggestions: ['Добавьте овощи.', 'Сохраните режим питания.'],
+    warnings: [],
+    disclaimer: 'Это справочная информация, не медицинская рекомендация.'
+  };
+  const fetchImpl = async (url, options) => {
+    urls.push(String(url));
+    const body = JSON.parse(options.body);
+    return openAiJsonResponse(
+      body.text.format.name === 'meal_photo_analysis' ? photo : review,
+      body.model
+    );
+  };
+  const client = createOpenAiNutritionClient({
+    apiKey: 'test-key',
+    baseUrl: 'https://ai.example.test/v1/',
+    fetchImpl
+  });
+
+  await client.analyzePhoto({
+    base64: Buffer.from('image').toString('base64'),
+    mimeType: 'image/jpeg',
+    locale: 'ru'
+  });
+  await client.reviewDay({ localDate: '2026-08-26', meals: [] });
+
+  assert.deepEqual(urls, [
+    'https://ai.example.test/v1/responses',
+    'https://ai.example.test/v1/responses'
+  ]);
+});
+
+test('OpenAI nutrition rejects plaintext non-loopback base URLs', async () => {
+  const { createOpenAiNutritionClient } = await import('../src/providers/openai-nutrition.js');
+
+  assert.throws(
+    () => createOpenAiNutritionClient({ apiKey: 'test-key', baseUrl: 'http://ai.example.test/v1' }),
+    error => error?.code === 'OPENAI_INVALID_BASE_URL'
+  );
+  assert.doesNotThrow(() => createOpenAiNutritionClient({
+    apiKey: 'test-key',
+    baseUrl: 'http://127.0.0.1:9000/v1'
+  }));
+});
+
 test('OpenAI photo analysis retries once with Terra when Luna confidence is below 0.65', async () => {
   const { createOpenAiNutritionClient } = await import('../src/providers/openai-nutrition.js');
   const models = [];

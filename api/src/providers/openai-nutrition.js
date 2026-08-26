@@ -119,17 +119,40 @@ function photoPrompt({ hint, knownWeightG, locale }) {
   ].filter(Boolean).join('\n');
 }
 
+const DEFAULT_OPENAI_BASE_URL = 'https://api.openai.com/v1';
+
+function normalizeOpenAiBaseUrl(value = DEFAULT_OPENAI_BASE_URL) {
+  let url;
+  try { url = new URL(String(value || DEFAULT_OPENAI_BASE_URL).trim()); }
+  catch {
+    throw Object.assign(new Error('OpenAI base URL must be an absolute HTTP(S) URL'), {
+      code: 'OPENAI_INVALID_BASE_URL'
+    });
+  }
+  const loopback = ['localhost', '127.0.0.1', '::1'].includes(url.hostname);
+  const validProtocol = url.protocol === 'https:' || (url.protocol === 'http:' && loopback);
+  if (!validProtocol || url.username || url.password || url.search || url.hash) {
+    throw Object.assign(new Error('OpenAI base URL is not allowed'), {
+      code: 'OPENAI_INVALID_BASE_URL'
+    });
+  }
+  return url.toString().replace(/\/+$/, '');
+}
+
 export function createOpenAiNutritionClient({
   apiKey,
   fetchImpl = fetch,
+  baseUrl = DEFAULT_OPENAI_BASE_URL,
   primaryModel = 'gpt-5.6-luna',
   fallbackModel = 'gpt-5.6-terra',
   confidenceThreshold = 0.65,
   timeoutMs = 30000
 }) {
+  const responsesUrl = `${normalizeOpenAiBaseUrl(baseUrl)}/responses`;
+
   async function requestPhoto(model, input) {
     if (!apiKey) throw Object.assign(new Error('OpenAI is not configured'), { code: 'OPENAI_NOT_CONFIGURED' });
-    const response = await fetchImpl('https://api.openai.com/v1/responses', {
+    const response = await fetchImpl(responsesUrl, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -173,7 +196,7 @@ export function createOpenAiNutritionClient({
 
   async function requestReview(model, context) {
     if (!apiKey) throw Object.assign(new Error('OpenAI is not configured'), { code: 'OPENAI_NOT_CONFIGURED' });
-    const response = await fetchImpl('https://api.openai.com/v1/responses', {
+    const response = await fetchImpl(responsesUrl, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
