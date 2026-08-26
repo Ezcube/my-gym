@@ -98,7 +98,9 @@ frontend-переменные, аргументы команд, логи, issue,
 SSE-событие `response.completed`, `status=completed` и
 `model=gpt-5.6-luna`. Не считать Terra доступной без отдельного успешного
 probe. Provider поддерживает как обычный JSON, так и полный объект ответа из
-SSE `response.completed`; текстовые delta-события отдельно не исполняются.
+SSE `response.completed`. Если proxy оставил в нём пустой `output`, provider
+восстанавливает только завершённые элементы `response.output_item.done`;
+текстовые delta-события отдельно не исполняются.
 
 Заполнить `OPENAI_API_KEY` и `FDC_API_KEY` непосредственно на VPS. API
 ограничивает фото до `1..100`, review до `1..10` на пользователя за UTC-сутки;

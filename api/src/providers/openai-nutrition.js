@@ -102,6 +102,7 @@ async function responsePayload(response) {
   try { return JSON.parse(body); } catch {}
 
   let completed = null;
+  const completedItems = new Map();
   for (const block of body.split(/\r?\n\r?\n/)) {
     const data = block.split(/\r?\n/)
       .filter(line => line.startsWith('data:'))
@@ -110,11 +111,25 @@ async function responsePayload(response) {
     if (!data || data === '[DONE]') continue;
     let event;
     try { event = JSON.parse(data); } catch { continue; }
+    if (event?.type === 'response.output_item.done' && event.item
+        && typeof event.item === 'object' && !Array.isArray(event.item)) {
+      const index = Number.isInteger(event.output_index) ? event.output_index : completedItems.size;
+      completedItems.set(index, event.item);
+    }
     if (event?.type === 'response.completed' && event.response?.object === 'response') {
       completed = event.response;
     }
   }
-  if (completed) return completed;
+  if (completed) {
+    if ((!Array.isArray(completed.output) || completed.output.length === 0) && completedItems.size) {
+      return {
+        ...completed,
+        output: [...completedItems.entries()].sort(([left], [right]) => left - right)
+          .map(([, item]) => item)
+      };
+    }
+    return completed;
+  }
   throw Object.assign(new Error('OpenAI returned an invalid response envelope'), {
     code: 'OPENAI_INVALID_OUTPUT'
   });
