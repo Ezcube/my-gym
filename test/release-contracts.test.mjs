@@ -120,7 +120,8 @@ test('restore verifies and stages a full data snapshot before guarded replacemen
   assert.match(restore, /validate-restore-data\.mjs:\/restore-validator\.mjs:ro/)
 
   const validation = restore.indexOf('expected_users=$(validate_snapshot')
-  const stop = restore.lastIndexOf('\ncompose stop api\n')
+  const stopMatches = [...restore.matchAll(/\r?\ncompose stop api\r?\n/g)]
+  const stop = stopMatches.at(-1)?.index ?? -1
   const dataAwareSmoke = restore.indexOf('wait_for_api "$expected_users"')
   const commit = restore.indexOf('restore_committed=1')
   assert.ok(validation >= 0 && validation < stop, 'snapshot validation must finish before downtime')
