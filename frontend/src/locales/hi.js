@@ -1,5 +1,7 @@
 // Hindi UI strings. Keys are the English source strings (see lib/i18n.js).
+import { nutritionLocale } from '../lib/nutrition-locales.js'
 export default {
+  ...nutritionLocale('hi'),
   'Confirm': 'पुष्टि करें',
   'Cancel': 'रद्द करें',
   'Press back again to exit': 'बाहर निकलने के लिए फिर से बैक दबाएँ',

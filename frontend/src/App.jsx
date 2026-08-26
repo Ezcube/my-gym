@@ -8,6 +8,9 @@ import { setLang, useLang } from './lib/i18n.js'
 import { setNav } from './lib/nav.js'
 import { initBackButton } from './lib/back.js'
 import { useWakeLock } from './lib/wakelock.js'
+import { canUseNutrition } from './lib/nutrition.js'
+import { MOBILE } from './lib/mobile.js'
+import { DEMO } from './lib/demo.js'
 import { startFlow } from './sheets.jsx'
 import Icon from './components/Icon.jsx'
 import TabBar from './components/TabBar.jsx'
@@ -25,6 +28,8 @@ import History from './views/History.jsx'
 import Library from './views/Library.jsx'
 import Settings from './views/Settings.jsx'
 import Admin from './views/Admin.jsx'
+import Nutrition from './views/Nutrition.jsx'
+import HealthSummary from './views/HealthSummary.jsx'
 
 bindUI(useUI)   // lets the shared controls open sheets without importing the store at module scope
 
@@ -52,6 +57,7 @@ function Shell() {
   useWakeLock(!!S.active && S.keepAwake !== false)
 
   const authed = user || isGuest
+  const nutritionEnabled = canUseNutrition({ user, guest: isGuest, mobile: MOBILE, demo: DEMO })
   if (!ready && !authed) return (
     <div id="app">
       <div style={{ paddingTop: '44vh', display: 'flex', justifyContent: 'center', fontSize: 34, color: 'var(--label-3)' }}>
@@ -76,6 +82,8 @@ function Shell() {
               <Route path="/history" element={<History />} />
               <Route path="/library" element={<Library />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/nutrition" element={nutritionEnabled ? <Nutrition /> : <Navigate to="/home" replace />} />
+              <Route path="/health" element={nutritionEnabled ? <HealthSummary /> : <Navigate to="/home" replace />} />
               <Route path="/admin" element={user?.admin ? <Admin /> : <Navigate to="/home" replace />} />
               <Route path="*" element={<Navigate to="/home" replace />} />
             </Routes>

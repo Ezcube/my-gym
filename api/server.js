@@ -9,12 +9,21 @@ import {
   generateAuthenticationOptions, verifyAuthenticationResponse
 } from '@simplewebauthn/server';
 import webpush from 'web-push';
+import { openAppDatabase } from './src/database.js';
+import { createNutritionRepository } from './src/nutrition/repository.js';
+import { createNutritionRouter } from './src/nutrition/router.js';
+import { createNutritionService, readLegacyStateFile } from './src/nutrition/service.js';
+import { createFoodDataCentralClient } from './src/providers/food-data-central.js';
+import { createOpenFoodFactsClient } from './src/providers/open-food-facts.js';
+import { createOpenAiNutritionClient } from './src/providers/openai-nutrition.js';
+import { createHealthRepository, migrateHealthSchema } from './src/health/repository.js';
+import { createHealthRouter } from './src/health/router.js';
 
 const PORT = +(process.env.PORT || 3000);
 const DATA = process.env.DATA_DIR || '/data';
 const RP_ID = process.env.RP_ID || 'localhost';
 const ORIGIN = process.env.ORIGIN || 'http://localhost:8080';
-const RP_NAME = process.env.RP_NAME || 'openGym';
+const RP_NAME = process.env.RP_NAME || 'Мой зал';
 // Admin dashboard (issue): admins are matched by uid; INVITE_ONLY gates new signups behind a
 // code the admin generates. Both default off so a fresh self-hosted instance stays open.
 const ADMIN_UIDS = (process.env.ADMIN_UIDS || '').split(',').map(s => s.trim()).filter(Boolean);
@@ -29,9 +38,16 @@ const ALLOW_GUEST = !/^(0|false|no|off)$/i.test(process.env.ALLOW_GUEST || '');
 // internet don't want the same number. Only affects cookies minted from now on — the expiry is
 // baked into each cookie when it's issued, so lowering this never cuts an existing session short.
 const SESSION_DAYS = Math.max(1, +(process.env.SESSION_DAYS || 90) || 90);
+const NUTRITION_PHOTO_DAILY_LIMIT = Math.max(
+  1, Math.min(100, Math.floor(+(process.env.NUTRITION_PHOTO_DAILY_LIMIT || 20) || 20))
+);
+const NUTRITION_REVIEW_DAILY_LIMIT = Math.max(
+  1, Math.min(10, Math.floor(+(process.env.NUTRITION_REVIEW_DAILY_LIMIT || 1) || 1))
+);
 const MAX_BODY = 5 * 1024 * 1024;
 // Secure cookies require HTTPS; over plain http://localhost the flag would drop the cookie
 const SECURE = /^https:/i.test(ORIGIN) ? ' Secure;' : '';
+const EXPECTED_ORIGIN = new URL(ORIGIN).origin;
 
 fs.mkdirSync(DATA, { recursive: true });
 
@@ -53,9 +69,47 @@ function atomicWrite(file, content) {
   fs.renameSync(tmp, file);
 }
 const stateFile = uid => path.join(DATA, 'state-' + uid.replace(/[^a-zA-Z0-9_-]/g, '') + '.json');
-function readState(uid) {
+function readState(uid, { maxBytes } = {}) {
+  if (maxBytes !== undefined) return readLegacyStateFile(stateFile(uid), maxBytes);
   try { return JSON.parse(fs.readFileSync(stateFile(uid), 'utf8')); } catch { return null; }
 }
+
+const appDatabase = openAppDatabase(path.join(DATA, 'mygym.sqlite'));
+// Health data shares the app database but remains isolated from the legacy workout JSON.
+migrateHealthSchema(appDatabase);
+const healthRepository = createHealthRepository(appDatabase);
+healthRepository.pruneExpired();
+setInterval(() => {
+  try { healthRepository.pruneExpired(); }
+  catch (error) { console.error('health retention prune failed', error.message); }
+}, 24 * 60 * 60 * 1000).unref();
+const nutritionRepository = createNutritionRepository(appDatabase);
+const nutritionAi = createOpenAiNutritionClient({
+  apiKey: process.env.OPENAI_API_KEY || '',
+  primaryModel: process.env.OPENAI_NUTRITION_MODEL_PRIMARY || 'gpt-5.6-luna',
+  fallbackModel: process.env.OPENAI_NUTRITION_MODEL_FALLBACK || 'gpt-5.6-terra'
+});
+const foodData = createFoodDataCentralClient({
+  apiKey: process.env.FDC_API_KEY || process.env.USDA_FDC_API_KEY || ''
+});
+const barcodeClient = createOpenFoodFactsClient({
+  userAgent: process.env.OPEN_FOOD_FACTS_USER_AGENT || 'MyGym/1.0 (https://gym.innu.ru)'
+});
+const nutritionService = createNutritionService({
+  ai: nutritionAi,
+  foodData,
+  repository: nutritionRepository,
+  readState,
+  getHealthSummary: (userId, localDate) => healthRepository.getSummary(userId, localDate),
+  reviewDailyLimit: NUTRITION_REVIEW_DAILY_LIMIT
+});
+const nutritionRouter = createNutritionRouter({
+  repository: nutritionRepository,
+  barcodeClient,
+  service: nutritionService,
+  photoDailyLimit: NUTRITION_PHOTO_DAILY_LIMIT
+});
+const healthRouter = createHealthRouter({ repository: healthRepository });
 
 /* ---------- push notifications (Web Push / VAPID) ---------- */
 const vapidFile = path.join(DATA, 'vapid.json');
@@ -192,6 +246,15 @@ function readSession(req) {
   const claimed = ver === undefined ? 0 : Number(ver);
   if (!Number.isInteger(claimed) || claimed !== sessionVersion(user)) return null;
   return user;
+}
+// Cookie-authenticated writes are same-origin only. A missing Origin is rejected too;
+// bearer-authenticated Android routes do not resolve a session user and remain exempt.
+function isCsrfSafe(req, user) {
+  if (!user || /^(GET|HEAD|OPTIONS)$/i.test(req.method || '')) return true;
+  const origin = String(req.headers.origin || '');
+  if (!origin) return false;
+  try { return new URL(origin).origin === EXPECTED_ORIGIN; }
+  catch { return false; }
 }
 // Guard for /api/admin/* — resolves the caller and 401/403s if they aren't an admin.
 function requireAdmin(req, res) {
@@ -730,9 +793,17 @@ const routes = {
 http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');
   const key = req.method + ' ' + url.pathname;
-  const handler = routes[key];
-  if (!handler) return json(res, 404, { error: 'not found' });
-  try { await handler(req, res); }
+  try {
+    const sessionUser = readSession(req);
+    if (!isCsrfSafe(req, sessionUser)) {
+      return json(res, 403, { error: 'cross-site request blocked', code: 'CSRF_ORIGIN_MISMATCH' });
+    }
+    if (await healthRouter.handle(req, res, sessionUser)) return;
+    if (await nutritionRouter.handle(req, res, sessionUser)) return;
+    const handler = routes[key];
+    if (!handler) return json(res, 404, { error: 'not found' });
+    await handler(req, res);
+  }
   catch (e) {
     console.error(key, e);
     if (!res.headersSent) json(res, 500, { error: 'server error' });

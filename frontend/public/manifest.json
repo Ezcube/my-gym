@@ -1,7 +1,7 @@
 {
-  "name": "openGym",
-  "short_name": "openGym",
-  "description": "Personal gym & body weight tracker",
+  "name": "Мой зал",
+  "short_name": "Мой зал",
+  "description": "Тренировки, питание и восстановление",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

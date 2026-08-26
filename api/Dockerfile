@@ -17,14 +17,15 @@ LABEL maintainer="Duarte Santos https://gitlab.com/DuarteSantos8" \
 
 WORKDIR /app
 COPY package.json package-lock.json* ./
-RUN npm install --omit=dev && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 COPY server.js ./
+COPY src ./src
 
 ENV NODE_ENV=production
 ENV PORT=3000
 
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["node", "--disable-warning=ExperimentalWarning", "server.js"]
 
 HEALTHCHECK --interval=5m \
             --timeout=5s \

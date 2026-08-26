@@ -1,5 +1,7 @@
 // Turkish UI strings. Keys are the English source strings (see lib/i18n.js).
+import { nutritionLocale } from '../lib/nutrition-locales.js'
 export default {
+  ...nutritionLocale('tr'),
   'Confirm': 'Onayla',
   'Cancel': 'İptal',
   'Press back again to exit': 'Çıkmak için geri tuşuna tekrar basın',

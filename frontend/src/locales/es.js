@@ -1,5 +1,7 @@
 // Spanish UI strings. Keys are the English source strings (see lib/i18n.js).
+import { nutritionLocale } from '../lib/nutrition-locales.js'
 export default {
+  ...nutritionLocale('es'),
   'Confirm': 'Confirmar',
   'Cancel': 'Cancelar',
   'Press back again to exit': 'Pulsa atrás otra vez para salir',

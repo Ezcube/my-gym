@@ -5,8 +5,14 @@
   "type": "module",
   "main": "server.js",
   "license": "AGPL-3.0-or-later",
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "scripts": {
-    "start": "node server.js"
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "test:nutrition": "node --disable-warning=ExperimentalWarning --test test/database.test.js test/nutrition-repository.test.js test/providers.test.js test/nutrition-service.test.js test/nutrition-router.test.js test/server-nutrition-integration.test.js",
+    "test:health": "node --disable-warning=ExperimentalWarning --test test/database.test.js test/health-repository.test.js test/health-router.test.js test/server-nutrition-integration.test.js"
   },
   "dependencies": {
     "@simplewebauthn/server": "^13.1.1",

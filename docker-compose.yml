@@ -1,4 +1,4 @@
-name: opengym
+name: my-gym
 
 services:
   # One-time: download the exercise images + GIFs into ./media (skipped if already there).
@@ -33,9 +33,8 @@ services:
     restart: "no"
 
   # Passkey auth + per-user data (Node, no framework).
-  # image: prebuilt (docker compose pull). build: from source (docker compose up --build).
+  # This fork is always built from the checked-out source.
   api:
-    image: registry.gitlab.com/duartesantos8/opengym/api:latest
     build: ./api
     restart: unless-stopped
     env_file: .env
@@ -50,7 +49,6 @@ services:
   # Builds the React frontend (multi-stage) and serves it, proxying /api → api
   # and the exercise media from the shared volume. Single origin for passkeys.
   web:
-    image: registry.gitlab.com/duartesantos8/opengym/web:latest
     build:
       context: .
       dockerfile: web/Dockerfile
@@ -61,7 +59,8 @@ services:
       api:
         condition: service_started
     ports:
-      - "${WEB_PORT:-8080}:${NGINX_PORT:-80}"
+      # TLS is terminated by the host nginx; do not expose the container publicly.
+      - "127.0.0.1:${WEB_PORT:-8080}:${NGINX_PORT:-80}"
     # nginx renders its config at start-up from these (web/nginx.conf.template),
     # so the API service does not have to be called `api`. Defaults are the old
     # hardcoded values, so an existing .env and an existing stack are unaffected.

@@ -1,3 +1,23 @@
+# Мой зал
+
+Этот репозиторий — форк **openGym v1.2.9** для приватного сервиса
+[`gym.innu.ru`](https://gym.innu.ru). В форке добавлены русская конфигурация «Мой зал»,
+дневник питания с подтверждаемой AI-оценкой фотографии и отдельное Android-приложение
+`ru.innu.mygym.sync`, которое передаёт выбранные сводные показатели Samsung Health через
+Health Connect. Развёртывание, резервное копирование, откат и привязка Android описаны в
+[production runbook](docs/PRODUCTION.md).
+
+Основа проекта и история разработки принадлежат upstream-проекту
+[DuarteSantos8/openGym](https://gitlab.com/DuarteSantos8/opengym). Форк сохраняет лицензию
+[GNU AGPL-3.0-or-later](LICENSE), исходные copyright notices и ограничения на сторонние
+медиа из [NOTICE.md](NOTICE.md). Ни upstream-автор, ни upstream-проект не отвечают за этот
+экземпляр, его AI-интеграции или эксплуатацию `gym.innu.ru`.
+
+> Ниже сохранён upstream README как справочник по исходным возможностям. Для этого форка
+> приоритетны настройки и процедуры из `docs/PRODUCTION.md`.
+
+---
+
 <div align="center">
 
 <img src="assets/banner.png" alt="openGym" width="720">

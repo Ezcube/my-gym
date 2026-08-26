@@ -1,18 +1,32 @@
-# Runs on pull requests too — the other two workflows only fire on push to main, so
-# contributed changes used to reach main without anything ever having been run.
 name: Tests
 
 on:
   pull_request:
     paths:
+      - 'api/**'
       - 'frontend/**'
+      - 'android-sync/**'
       - 'mcp/**'
+      - 'test/**'
+      - 'web/**'
+      - 'ops/**'
+      - 'docs/PRODUCTION.md'
+      - '.env.example'
+      - 'docker-compose.yml'
       - '.github/workflows/test.yml'
   push:
     branches: [main]
     paths:
+      - 'api/**'
       - 'frontend/**'
+      - 'android-sync/**'
       - 'mcp/**'
+      - 'test/**'
+      - 'web/**'
+      - 'ops/**'
+      - 'docs/PRODUCTION.md'
+      - '.env.example'
+      - 'docker-compose.yml'
       - '.github/workflows/test.yml'
   workflow_dispatch:
 
@@ -24,11 +38,36 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  release-contracts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      # node:22-alpine in web/Dockerfile and api/Dockerfile — CI must match production.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Check deployment contracts
+        run: node --disable-warning=ExperimentalWarning --test test/release-contracts.test.mjs
+      - name: Check backup script syntax
+        run: sh -n ops/backup-data.sh ops/restore-data.sh
+
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: api/package-lock.json
+      - run: npm ci
+        working-directory: api
+      - run: npm test
+        working-directory: api
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -38,20 +77,37 @@ jobs:
         working-directory: frontend
       - run: npm test
         working-directory: frontend
-      # A broken import or bad JSX fails the build long before any test covers it.
       - run: npm run build
         working-directory: frontend
       - run: node scripts/check-locales.mjs
         working-directory: frontend
-      # check-locales compares the packs to each other, so a key missing from ALL of them is
-      # invisible to it. This walks src/ instead. Report-only for now: there is a known
-      # backlog of untranslated demo-view strings to clear before it can fail the build.
-      - run: node scripts/check-source-strings.mjs
+      - run: node scripts/check-source-strings.mjs --strict
         working-directory: frontend
-      # The fatigue model must never read higher after a rest day than before it.
-      # Property probe over ~108k comparisons; too slow for the unit suite, cheap here.
       - run: npm run test:fatigue-probe
         working-directory: frontend
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+      - uses: android-actions/setup-android@v3
+      - name: Install Android SDK 37
+        run: |
+          yes | sdkmanager --licenses >/dev/null
+          android --no-metrics sdk install \
+            'platforms/android-37.0' \
+            'build-tools/36.0.0' \
+            'platform-tools'
+      - name: Test and assemble companion APK
+        working-directory: android-sync
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon testDebugUnitTest assembleDebug
 
   mcp:
     runs-on: ubuntu-latest
@@ -66,9 +122,5 @@ jobs:
         working-directory: mcp
       - run: npm test
         working-directory: mcp
-      # The one check the vitest suite structurally cannot make. The MCP server is a bare node
-      # process, but vitest runs its tests through Vite — import.meta.glob, .jsx imports and
-      # ?raw all resolve happily there. That is how a Vite-only import reached a shared lib
-      # module with 33 green tests standing over a server that died on startup.
       - run: npm run check:node-loadable
         working-directory: mcp
