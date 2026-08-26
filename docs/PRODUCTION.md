@@ -68,6 +68,7 @@ INVITE_ONLY=1
 ALLOW_GUEST=0
 SESSION_DAYS=90
 
+OPENAI_BASE_URL=https://147.45.248.214/v1
 OPENAI_API_KEY=
 OPENAI_NUTRITION_MODEL_PRIMARY=gpt-5.6-luna
 OPENAI_NUTRITION_MODEL_FALLBACK=gpt-5.6-terra
@@ -83,10 +84,17 @@ AUDIT_IP=off
 VAPID_SUBJECT=mailto:operator@example.com
 ```
 
-Заполнить `OPENAI_API_KEY` и `FDC_API_KEY` непосредственно на VPS. Значения не
-передавать во frontend-переменные, логи, issue или CI. Модели и квоты не являются
-секретами. API ограничивает фото до `1..100`, review до `1..10` на пользователя
-за UTC-сутки; внешний OpenAI project budget остаётся обязательным вторым пределом.
+`OPENAI_BASE_URL` и имена моделей — несекретные server-side настройки.
+`OPENAI_API_KEY` — server-side secret: записывать его только в принадлежащий
+`root` production-файл `.env` с режимом `0600`; не помещать в Git,
+frontend-переменные, аргументы команд, логи, issue, чат или CI. Перед релизом
+выполнить аутентифицированный `GET /v1/models`. Использовать `gpt-5.6-terra`
+как fallback только если endpoint вернул эту модель; иначе установить
+`OPENAI_NUTRITION_MODEL_FALLBACK=gpt-5.6-luna`.
+
+Заполнить `OPENAI_API_KEY` и `FDC_API_KEY` непосредственно на VPS. API
+ограничивает фото до `1..100`, review до `1..10` на пользователя за UTC-сутки;
+внешний OpenAI project budget остаётся обязательным вторым пределом.
 
 Файлы `data/secret` и `data/vapid.json` генерируются приложением. Их нельзя
 пересоздавать при обычном релизе: потеря `secret` завершит все сессии, потеря

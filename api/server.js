@@ -86,6 +86,7 @@ setInterval(() => {
 const nutritionRepository = createNutritionRepository(appDatabase);
 const nutritionAi = createOpenAiNutritionClient({
   apiKey: process.env.OPENAI_API_KEY || '',
+  baseUrl: process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1',
   primaryModel: process.env.OPENAI_NUTRITION_MODEL_PRIMARY || 'gpt-5.6-luna',
   fallbackModel: process.env.OPENAI_NUTRITION_MODEL_FALLBACK || 'gpt-5.6-terra'
 });

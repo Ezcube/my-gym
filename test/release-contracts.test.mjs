@@ -223,3 +223,14 @@ test('production documents the guarded restore command and both scripts have CI 
   assert.match(production, /sh \.\/gradlew --no-daemon testDebugUnitTest assembleDebug/)
   assert.match(workflow, /sh -n ops\/backup-data\.sh ops\/restore-data\.sh/)
 })
+
+test('nutrition AI base URL is server-only, portable, and production documented', () => {
+  const server = read('api/server.js')
+  const example = read('.env.example')
+  const production = read('docs/PRODUCTION.md')
+
+  assert.match(server, /baseUrl: process\.env\.OPENAI_BASE_URL/)
+  assert.match(example, /OPENAI_BASE_URL=https:\/\/api\.openai\.com\/v1/)
+  assert.match(production, /OPENAI_BASE_URL=https:\/\/147\.45\.248\.214\/v1/)
+  assert.match(production, /OPENAI_API_KEY.*server-side|server-side.*OPENAI_API_KEY/i)
+})
