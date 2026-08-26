@@ -181,6 +181,41 @@ test('OpenAI nutrition operations share a normalized custom base URL', async () 
   ]);
 });
 
+test('OpenAI nutrition accepts a completed SSE response from a compatible endpoint', async () => {
+  const { createOpenAiNutritionClient } = await import('../src/providers/openai-nutrition.js');
+  const analysis = {
+    overallConfidence: 0.9,
+    items: [{
+      name: 'Овсяная каша', searchQuery: 'oatmeal cooked', estimatedGrams: 250,
+      confidence: 0.9, preparation: 'варёная', alternatives: [], warnings: []
+    }],
+    warnings: []
+  };
+  const fetchImpl = async () => {
+    const payload = await openAiJsonResponse(analysis).json();
+    return new Response([
+      'event: response.created',
+      `data: ${JSON.stringify({ type: 'response.created', response: { status: 'in_progress' } })}`,
+      '',
+      'event: response.completed',
+      `data: ${JSON.stringify({ type: 'response.completed', response: payload })}`,
+      '',
+      ''
+    ].join('\n'), { status: 200 });
+  };
+  const client = createOpenAiNutritionClient({
+    apiKey: 'test-key',
+    baseUrl: 'https://ai.example.test/v1',
+    fetchImpl
+  });
+
+  assert.deepEqual(await client.analyzePhoto({
+    base64: Buffer.from('image').toString('base64'),
+    mimeType: 'image/jpeg',
+    locale: 'ru'
+  }), { ...analysis, model: 'gpt-5.6-luna' });
+});
+
 test('OpenAI nutrition rejects plaintext non-loopback base URLs', async () => {
   const { createOpenAiNutritionClient } = await import('../src/providers/openai-nutrition.js');
 

@@ -92,6 +92,14 @@ frontend-переменные, аргументы команд, логи, issue,
 как fallback только если endpoint вернул эту модель; иначе установить
 `OPENAI_NUTRITION_MODEL_FALLBACK=gpt-5.6-luna`.
 
+Совместимый proxy может публиковать в `/v1/models` только transcription-модели,
+хотя `gpt-5.6-luna` доступна в `/v1/responses`. В этом случае перед релизом
+выполнить минимальный запрос с `input` в форме массива и подтвердить `HTTP 200`,
+SSE-событие `response.completed`, `status=completed` и
+`model=gpt-5.6-luna`. Не считать Terra доступной без отдельного успешного
+probe. Provider поддерживает как обычный JSON, так и полный объект ответа из
+SSE `response.completed`; текстовые delta-события отдельно не исполняются.
+
 Заполнить `OPENAI_API_KEY` и `FDC_API_KEY` непосредственно на VPS. API
 ограничивает фото до `1..100`, review до `1..10` на пользователя за UTC-сутки;
 внешний OpenAI project budget остаётся обязательным вторым пределом.

@@ -97,6 +97,29 @@ function responseText(payload) {
   return null;
 }
 
+async function responsePayload(response) {
+  const body = await response.text();
+  try { return JSON.parse(body); } catch {}
+
+  let completed = null;
+  for (const block of body.split(/\r?\n\r?\n/)) {
+    const data = block.split(/\r?\n/)
+      .filter(line => line.startsWith('data:'))
+      .map(line => line.slice(5).trimStart())
+      .join('\n');
+    if (!data || data === '[DONE]') continue;
+    let event;
+    try { event = JSON.parse(data); } catch { continue; }
+    if (event?.type === 'response.completed' && event.response?.object === 'response') {
+      completed = event.response;
+    }
+  }
+  if (completed) return completed;
+  throw Object.assign(new Error('OpenAI returned an invalid response envelope'), {
+    code: 'OPENAI_INVALID_OUTPUT'
+  });
+}
+
 function retryablePrimaryError(error) {
   if (error?.code === 'OPENAI_INVALID_OUTPUT') return true;
   if (error?.code === 'OPENAI_UPSTREAM_ERROR') {
@@ -183,7 +206,7 @@ export function createOpenAiNutritionClient({
     if (!response.ok) throw Object.assign(new Error('OpenAI request failed'), {
       code: 'OPENAI_UPSTREAM_ERROR', status: response.status
     });
-    const payload = await response.json();
+    const payload = await responsePayload(response);
     let parsed;
     try { parsed = JSON.parse(responseText(payload)); } catch {}
     if (!validPhotoAnalysis(parsed)) {
@@ -232,7 +255,7 @@ export function createOpenAiNutritionClient({
     if (!response.ok) throw Object.assign(new Error('OpenAI request failed'), {
       code: 'OPENAI_UPSTREAM_ERROR', status: response.status
     });
-    const payload = await response.json();
+    const payload = await responsePayload(response);
     let parsed;
     try { parsed = JSON.parse(responseText(payload)); } catch {}
     if (!validDailyReview(parsed)) {
