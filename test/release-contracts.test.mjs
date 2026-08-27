@@ -86,6 +86,7 @@ test('the Android companion and CI use the available stable SDK 36 platform', ()
 
   assert.match(app, /compileSdk\s*=\s*36/)
   assert.match(app, /targetSdk\s*=\s*36/)
+  assert.match(app, /compose-bom:2026\.06\.01/)
   assert.match(workflow, /platforms;android-36/)
   assert.doesNotMatch(workflow, /sdkmanager\s+--channel=/)
 })
