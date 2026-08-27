@@ -80,6 +80,16 @@ test('only the root runtime data directory is ignored, not Android source packag
   assert.doesNotMatch(ignore, /^data\/$/m)
 })
 
+test('the Android companion and CI use the available stable SDK 36 platform', () => {
+  const app = read('android-sync/app/build.gradle.kts')
+  const workflow = read('.github/workflows/test.yml')
+
+  assert.match(app, /compileSdk\s*=\s*36/)
+  assert.match(app, /targetSdk\s*=\s*36/)
+  assert.match(workflow, /platforms;android-36/)
+  assert.doesNotMatch(workflow, /sdkmanager\s+--channel=/)
+})
+
 test('the Android companion rejects HTTP redirects before sending its bearer token', () => {
   const client = read('android-sync/app/src/main/java/ru/innu/mygym/sync/network/HealthSyncApi.kt')
 

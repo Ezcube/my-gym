@@ -6,7 +6,7 @@
 
 ## Сборка
 
-Требования: Android Studio Quail 2/3 или новее, JDK 17, Android SDK 37 и Gradle 9.5+.
+Требования: Android Studio Quail 2/3 или новее, JDK 17, Android SDK 36 и Gradle 9.5+.
 В текущем checkout wrapper не дублируется: его можно создать один раз командой
 `gradle wrapper --gradle-version 9.5.0`, затем запускать:
 
