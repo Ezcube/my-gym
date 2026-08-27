@@ -447,6 +447,26 @@ test('OpenAI photo analysis retries once with Terra when Luna is temporarily una
   assert.equal(result.model, 'gpt-5.6-terra');
 });
 
+test('OpenAI photo analysis classifies a terminal timeout as provider unavailable', async () => {
+  const { createOpenAiNutritionClient } = await import('../src/providers/openai-nutrition.js');
+  const models = [];
+  const fetchImpl = async (_url, options) => {
+    models.push(JSON.parse(options.body).model);
+    throw Object.assign(new Error('transport details must not reach the client'), {
+      name: 'TimeoutError'
+    });
+  };
+  const client = createOpenAiNutritionClient({ apiKey: 'test-key', fetchImpl });
+
+  await assert.rejects(
+    client.analyzePhoto({
+      base64: Buffer.from('image').toString('base64'), mimeType: 'image/jpeg', locale: 'ru'
+    }),
+    error => error?.code === 'OPENAI_TIMEOUT'
+  );
+  assert.deepEqual(models, ['gpt-5.6-luna', 'gpt-5.6-terra']);
+});
+
 test('OpenAI daily review sends normalized context only and returns two or three suggestions', async () => {
   const { createOpenAiNutritionClient } = await import('../src/providers/openai-nutrition.js');
   const requests = [];

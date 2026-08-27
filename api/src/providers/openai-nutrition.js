@@ -164,6 +164,21 @@ function retryablePrimaryError(error) {
   return error?.name === 'AbortError' || error?.name === 'TimeoutError';
 }
 
+async function fetchOpenAi(fetchImpl, url, options) {
+  try {
+    return await fetchImpl(url, options);
+  } catch (error) {
+    if (error?.name === 'AbortError' || error?.name === 'TimeoutError') {
+      throw Object.assign(new Error('OpenAI request timed out'), {
+        name: error.name,
+        code: 'OPENAI_TIMEOUT',
+        cause: error
+      });
+    }
+    throw error;
+  }
+}
+
 function photoPrompt({ hint, knownWeightG, locale }) {
   return [
     'Identify every visible food or drink and estimate the edible portion in grams.',
@@ -212,7 +227,7 @@ export function createOpenAiNutritionClient({
 
   async function requestPhoto(model, input) {
     if (!apiKey) throw Object.assign(new Error('OpenAI is not configured'), { code: 'OPENAI_NOT_CONFIGURED' });
-    const response = await fetchImpl(responsesUrl, {
+    const response = await fetchOpenAi(fetchImpl, responsesUrl, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -256,7 +271,7 @@ export function createOpenAiNutritionClient({
 
   async function requestReview(model, context) {
     if (!apiKey) throw Object.assign(new Error('OpenAI is not configured'), { code: 'OPENAI_NOT_CONFIGURED' });
-    const response = await fetchImpl(responsesUrl, {
+    const response = await fetchOpenAi(fetchImpl, responsesUrl, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
