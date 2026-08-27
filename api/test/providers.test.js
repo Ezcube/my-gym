@@ -22,46 +22,6 @@ function openAiJsonResponse(analysis, model = 'gpt-5.6-luna') {
   }), { status: 200, headers: { 'content-type': 'application/json' } });
 }
 
-test('FoodData Central search normalizes kcal and macros per 100 grams', async () => {
-  let providerModule = null;
-  try { providerModule = await import('../src/providers/food-data-central.js'); } catch {}
-  assert.equal(typeof providerModule?.createFoodDataCentralClient, 'function');
-
-  const requests = [];
-  const fetchImpl = async (url, options) => {
-    requests.push({ url: String(url), options });
-    return new Response(JSON.stringify({
-      totalHits: 1,
-      currentPage: 1,
-      totalPages: 1,
-      foods: [{
-        fdcId: 171705,
-        description: 'Oatmeal, cooked',
-        dataType: 'Foundation',
-        foodCode: '',
-        foodNutrients: [
-          { nutrientId: 1008, nutrientName: 'Energy', unitName: 'KCAL', value: 71 },
-          { nutrientId: 1003, nutrientName: 'Protein', unitName: 'G', value: 2.54 },
-          { nutrientId: 1004, nutrientName: 'Total lipid (fat)', unitName: 'G', value: 1.52 },
-          { nutrientId: 1005, nutrientName: 'Carbohydrate, by difference', unitName: 'G', value: 12 }
-        ]
-      }],
-      aggregations: {}
-    }), { status: 200, headers: { 'content-type': 'application/json' } });
-  };
-
-  const client = providerModule.createFoodDataCentralClient({ apiKey: 'test-key', fetchImpl });
-  const result = await client.search('cooked oatmeal');
-
-  assert.deepEqual(result, [{
-    fdcId: 171705,
-    name: 'Oatmeal, cooked',
-    nutrientsPer100g: { kcal: 71, proteinG: 2.54, fatG: 1.52, carbsG: 12 }
-  }]);
-  assert.equal(requests.length, 1);
-  assert.equal(requests[0].options?.signal instanceof AbortSignal, true);
-});
-
 test('Open Food Facts lookup returns a normalized barcode product', async () => {
   let providerModule = null;
   try { providerModule = await import('../src/providers/open-food-facts.js'); } catch {}
@@ -102,6 +62,55 @@ test('Open Food Facts lookup returns a normalized barcode product', async () => 
   });
 });
 
+test('Open Food Facts text search keeps a relevant product and normalizes its nutrients', async () => {
+  const { createOpenFoodFactsClient } = await import('../src/providers/open-food-facts.js');
+  const requests = [];
+  const fetchImpl = async (url, options) => {
+    requests.push({ url: String(url), options });
+    return new Response(JSON.stringify({
+      hits: [{
+        code: '1111111111111',
+        product_name: 'Cookies',
+        brands: ['Oatmeal'],
+        nutriments: {
+          'energy-kcal_100g': 480,
+          proteins_100g: 6,
+          fat_100g: 22,
+          carbohydrates_100g: 65
+        }
+      }, {
+        code: '2222222222222',
+        product_name: 'Cooked oatmeal',
+        brands: ['Example'],
+        nutriments: {
+          proteins_100g: 2.5,
+          fat_100g: 1.8,
+          carbohydrates_100g: 11.5
+        }
+      }],
+      page: 1,
+      page_size: 6,
+      page_count: 2
+    }), { status: 200, headers: { 'content-type': 'application/json' } });
+  };
+  const client = createOpenFoodFactsClient({
+    fetchImpl,
+    userAgent: 'MyGym/1.0 (admin@example.test)'
+  });
+
+  assert.deepEqual(await client.search('oatmeal cooked', { limit: 1 }), [{
+    barcode: '2222222222222',
+    name: 'Cooked oatmeal',
+    brand: 'Example',
+    nutrientsPer100g: { kcal: 72.2, proteinG: 2.5, fatG: 1.8, carbsG: 11.5 }
+  }]);
+  assert.equal(requests.length, 1);
+  const url = new URL(requests[0].url);
+  assert.equal(url.origin + url.pathname, 'https://search.openfoodfacts.org/search');
+  assert.equal(url.searchParams.get('q'), 'oatmeal cooked');
+  assert.equal(requests[0].options.headers['User-Agent'], 'MyGym/1.0 (admin@example.test)');
+});
+
 test('OpenAI photo analysis uses Luna, high image detail, structured output, and store false', async () => {
   let providerModule = null;
   try { providerModule = await import('../src/providers/openai-nutrition.js'); } catch {}
@@ -112,6 +121,7 @@ test('OpenAI photo analysis uses Luna, high image detail, structured output, and
     overallConfidence: 0.9,
     items: [{
       name: 'Овсяная каша', searchQuery: 'oatmeal cooked', estimatedGrams: 250,
+      estimatedNutrientsPer100g: { kcal: 71, proteinG: 2.54, fatG: 1.52, carbsG: 12 },
       confidence: 0.9, preparation: 'варёная', alternatives: [], warnings: []
     }],
     warnings: []
@@ -137,6 +147,34 @@ test('OpenAI photo analysis uses Luna, high image detail, structured output, and
   assert.match(requests[0].body.input[0].content[0].text, /untrusted data/i);
 });
 
+test('OpenAI photo analysis requires a bounded per-100g nutrition estimate for fallback', async () => {
+  const { createOpenAiNutritionClient } = await import('../src/providers/openai-nutrition.js');
+  const requests = [];
+  const analysis = {
+    overallConfidence: 0.88,
+    items: [{
+      name: 'Эчпочмак', searchQuery: 'echpochmak meat pastry', estimatedGrams: 180,
+      estimatedNutrientsPer100g: { kcal: 265, proteinG: 10, fatG: 15, carbsG: 22 },
+      confidence: 0.88, preparation: 'печёный', alternatives: [], warnings: []
+    }],
+    warnings: []
+  };
+  const fetchImpl = async (_url, options) => {
+    requests.push(JSON.parse(options.body));
+    return openAiJsonResponse(analysis);
+  };
+  const client = createOpenAiNutritionClient({ apiKey: 'test-key', fetchImpl });
+
+  assert.deepEqual(await client.analyzePhoto({
+    base64: Buffer.from('image').toString('base64'), mimeType: 'image/jpeg', locale: 'ru'
+  }), { ...analysis, model: 'gpt-5.6-luna' });
+  const itemSchema = requests[0].text.format.schema.properties.items.items;
+  assert.equal(itemSchema.required.includes('estimatedNutrientsPer100g'), true);
+  assert.deepEqual(itemSchema.properties.estimatedNutrientsPer100g.required, [
+    'kcal', 'proteinG', 'fatG', 'carbsG'
+  ]);
+});
+
 test('OpenAI nutrition operations share a normalized custom base URL', async () => {
   const { createOpenAiNutritionClient } = await import('../src/providers/openai-nutrition.js');
   const urls = [];
@@ -144,6 +182,7 @@ test('OpenAI nutrition operations share a normalized custom base URL', async () 
     overallConfidence: 0.9,
     items: [{
       name: 'Овсяная каша', searchQuery: 'oatmeal cooked', estimatedGrams: 250,
+      estimatedNutrientsPer100g: { kcal: 71, proteinG: 2.54, fatG: 1.52, carbsG: 12 },
       confidence: 0.9, preparation: 'варёная', alternatives: [], warnings: []
     }],
     warnings: []
@@ -187,6 +226,7 @@ test('OpenAI nutrition accepts a completed SSE response from a compatible endpoi
     overallConfidence: 0.9,
     items: [{
       name: 'Овсяная каша', searchQuery: 'oatmeal cooked', estimatedGrams: 250,
+      estimatedNutrientsPer100g: { kcal: 71, proteinG: 2.54, fatG: 1.52, carbsG: 12 },
       confidence: 0.9, preparation: 'варёная', alternatives: [], warnings: []
     }],
     warnings: []
@@ -222,6 +262,7 @@ test('OpenAI nutrition rebuilds an empty completed SSE output from output_item.d
     overallConfidence: 0.9,
     items: [{
       name: 'Овсяная каша', searchQuery: 'oatmeal cooked', estimatedGrams: 250,
+      estimatedNutrientsPer100g: { kcal: 71, proteinG: 2.54, fatG: 1.52, carbsG: 12 },
       confidence: 0.9, preparation: 'варёная', alternatives: [], warnings: []
     }],
     warnings: []
@@ -274,6 +315,7 @@ test('OpenAI photo analysis retries once with Terra when Luna confidence is belo
   const base = {
     items: [{
       name: 'Сложное блюдо', searchQuery: 'mixed dish', estimatedGrams: 300,
+      estimatedNutrientsPer100g: { kcal: 180, proteinG: 8, fatG: 9, carbsG: 16 },
       confidence: 0.5, preparation: '', alternatives: [], warnings: ['Состав неясен']
     }],
     warnings: ['Нужно подтверждение']
@@ -305,6 +347,7 @@ test('OpenAI photo analysis retries with Terra when any identified item is below
       overallConfidence: 0.9,
       items: [{
         name: 'Соус', searchQuery: 'mixed sauce', estimatedGrams: 50,
+        estimatedNutrientsPer100g: { kcal: 120, proteinG: 2, fatG: 8, carbsG: 10 },
         confidence, preparation: '', alternatives: [], warnings: []
       }], warnings: []
     }, model);
@@ -326,6 +369,7 @@ test('OpenAI photo analysis retries once with Terra when Luna output violates th
     overallConfidence: 0.8,
     items: [{
       name: 'Суп', searchQuery: 'vegetable soup', estimatedGrams: 350,
+      estimatedNutrientsPer100g: { kcal: 45, proteinG: 2, fatG: 1.5, carbsG: 6 },
       confidence: 0.8, preparation: 'варёный', alternatives: [], warnings: []
     }],
     warnings: []
@@ -352,6 +396,7 @@ test('OpenAI runtime validation mirrors schema string and additional-property li
     overallConfidence: 0.8,
     items: [{
       name: 'Суп', searchQuery: 'vegetable soup', estimatedGrams: 350,
+      estimatedNutrientsPer100g: { kcal: 45, proteinG: 2, fatG: 1.5, carbsG: 6 },
       confidence: 0.8, preparation: 'варёный', alternatives: [], warnings: []
     }],
     warnings: []
@@ -380,6 +425,7 @@ test('OpenAI photo analysis retries once with Terra when Luna is temporarily una
     overallConfidence: 0.82,
     items: [{
       name: 'Салат', searchQuery: 'vegetable salad', estimatedGrams: 220,
+      estimatedNutrientsPer100g: { kcal: 55, proteinG: 2, fatG: 3, carbsG: 5 },
       confidence: 0.82, preparation: '', alternatives: [], warnings: []
     }],
     warnings: []

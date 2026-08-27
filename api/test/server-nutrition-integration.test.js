@@ -34,7 +34,7 @@ test('the production server dispatches authenticated nutrition and health routes
     env: {
       ...process.env,
       PORT: String(port), DATA_DIR: dataDir, RP_ID: 'localhost', ORIGIN: `http://localhost:${port}`,
-      AUDIT_LOG: '0', OPENAI_API_KEY: '', FDC_API_KEY: ''
+      AUDIT_LOG: '0', OPENAI_API_KEY: ''
     },
     stdio: ['ignore', 'pipe', 'pipe']
   });

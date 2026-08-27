@@ -13,7 +13,6 @@ import { openAppDatabase } from './src/database.js';
 import { createNutritionRepository } from './src/nutrition/repository.js';
 import { createNutritionRouter } from './src/nutrition/router.js';
 import { createNutritionService, readLegacyStateFile } from './src/nutrition/service.js';
-import { createFoodDataCentralClient } from './src/providers/food-data-central.js';
 import { createOpenFoodFactsClient } from './src/providers/open-food-facts.js';
 import { createOpenAiNutritionClient } from './src/providers/openai-nutrition.js';
 import { createHealthRepository, migrateHealthSchema } from './src/health/repository.js';
@@ -90,15 +89,12 @@ const nutritionAi = createOpenAiNutritionClient({
   primaryModel: process.env.OPENAI_NUTRITION_MODEL_PRIMARY || 'gpt-5.6-luna',
   fallbackModel: process.env.OPENAI_NUTRITION_MODEL_FALLBACK || 'gpt-5.6-terra'
 });
-const foodData = createFoodDataCentralClient({
-  apiKey: process.env.FDC_API_KEY || process.env.USDA_FDC_API_KEY || ''
-});
 const barcodeClient = createOpenFoodFactsClient({
   userAgent: process.env.OPEN_FOOD_FACTS_USER_AGENT || 'MyGym/1.0 (https://gym.innu.ru)'
 });
 const nutritionService = createNutritionService({
   ai: nutritionAi,
-  foodData,
+  foodData: barcodeClient,
   repository: nutritionRepository,
   readState,
   getHealthSummary: (userId, localDate) => healthRepository.getSummary(userId, localDate),

@@ -21,6 +21,8 @@ function draftItem(item = {}) {
     ...(item.confidence == null ? {} : { confidence: item.confidence }),
     ...(item.foodId ? { foodId: item.foodId } : {}),
     ...(item.barcode ? { barcode: item.barcode } : {}),
+    ...(item.nutritionSource ? { nutritionSource: item.nutritionSource } : {}),
+    ...(item.nutritionEstimated ? { nutritionEstimated: true } : {}),
   }
 }
 

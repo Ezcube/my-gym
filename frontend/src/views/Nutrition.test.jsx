@@ -69,7 +69,10 @@ describe('NutritionContent', () => {
     const handlers = actions()
     const state = {
       ...baseState,
-      draft: { source: 'photo', items: [{ name: 'Борщ', grams: 300, per100: { kcal: 49, proteinG: 2, fatG: 2, carbsG: 6 } }] },
+      draft: { source: 'photo', items: [{
+        name: 'Борщ', grams: 300, per100: { kcal: 49, proteinG: 2, fatG: 2, carbsG: 6 },
+        nutritionSource: 'ai-estimate', nutritionEstimated: true,
+      }] },
     }
     await act(async () => { root.render(<NutritionContent state={state} actions={handlers} localDate="2026-08-25" />) })
 
@@ -78,6 +81,7 @@ describe('NutritionContent', () => {
     expect(name.value).toBe('Борщ')
     expect(grams.value).toBe('300')
     expect(container.textContent).toContain('147 kcal')
+    expect(container.textContent).toContain('AI estimate — check values')
 
     const confirm = [...container.querySelectorAll('button')].find(button => button.textContent.includes('Confirm meal'))
     await act(async () => { confirm.click() })

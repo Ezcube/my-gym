@@ -2,17 +2,16 @@
 
 ## Goal
 
-Keep photo-based calorie and macro calculation useful when FoodData Central is unavailable, without presenting an approximate value as authoritative database data.
+Keep photo-based calorie and macro calculation useful from Russian networks without depending on USDA, and without presenting an approximate value as authoritative database data.
 
 ## Chosen approach
 
 Photo analysis uses one ordered source chain per recognized food item:
 
-1. FoodData Central remains the preferred source.
-2. Open Food Facts Search-a-licious is queried when FoodData Central fails or has no match. Only a candidate with a usable name and at least calories or one macro is accepted.
-3. The structured photo-analysis response includes a bounded per-100-gram AI estimate. It is used only when neither database produces a usable candidate.
+1. Open Food Facts Search-a-licious is queried first. Only a candidate with a usable name and at least calories or one macro is accepted.
+2. The structured photo-analysis response includes a bounded per-100-gram AI estimate. It is used only when Open Food Facts does not produce a usable candidate.
 
-Every resolved item carries `nutritionSource` with one of `food-data-central`, `open-food-facts`, or `ai-estimate`. AI-derived values also carry `nutritionEstimated: true`. All photo results remain editable, unconfirmed drafts and require explicit user confirmation before persistence.
+Every resolved item carries `nutritionSource` with either `open-food-facts` or `ai-estimate`. AI-derived values also carry `nutritionEstimated: true`. All photo results remain editable, unconfirmed drafts and require explicit user confirmation before persistence.
 
 ## Provider boundaries
 
@@ -20,7 +19,7 @@ Every resolved item carries `nutritionSource` with one of `food-data-central`, `
 
 `openai-nutrition.js` owns the AI estimate schema and validation. Each recognized item contains `estimatedNutrientsPer100g` with finite, non-negative, bounded `kcal`, `proteinG`, `fatG`, and `carbsG` values. This adds no second AI request.
 
-`nutrition/service.js` owns source ordering and portion totals. Provider errors are contained per item. An Open Food Facts failure must not prevent use of the AI estimate, and no source match must never make the whole photo request fail.
+`nutrition/service.js` owns source ordering and portion totals. Provider errors are contained per item. An Open Food Facts failure must not prevent use of the AI estimate, and no source match must never make the whole photo request fail. FoodData Central, its environment variable, and its runtime client are removed.
 
 ## Matching and safety
 
@@ -30,11 +29,10 @@ All returned nutrient numbers are normalized to non-negative finite values. Data
 
 ## Error handling
 
-- FoodData Central error or empty result: continue to Open Food Facts.
 - Open Food Facts error, empty result, or weak name match: continue to AI estimate.
 - Missing/invalid AI estimate: keep the current manual-nutrition draft behavior.
 - The response records lookup degradation without exposing upstream response bodies or secrets.
 
 ## Verification
 
-Targeted tests cover Open Food Facts search normalization, provider ordering, rejection of weak matches, AI fallback, and preservation of manual drafts when all sources fail. Frontend tests cover retention and visible labelling of `nutritionSource`. A local provider smoke checks the live Search-a-licious endpoint before deployment. Production verification checks API health and an authenticated photo-analysis response without logging image data or secrets.
+Targeted tests cover Open Food Facts search normalization, rejection of weak matches, AI fallback, and preservation of manual drafts when all sources fail. Frontend tests cover retention and visible labelling of `nutritionSource`. A local provider smoke checks the live Search-a-licious endpoint before deployment. Production verification removes `FDC_API_KEY` from a backup-protected `.env`, checks API health, and checks an authenticated photo-analysis response without logging image data or secrets.

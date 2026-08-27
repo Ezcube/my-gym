@@ -28,6 +28,26 @@ function addTotals(items) {
   ]));
 }
 
+function usableNutrients(value) {
+  return value && typeof value === 'object'
+    && NUTRIENT_KEYS.every(key => Number.isFinite(Number(value[key])) && Number(value[key]) >= 0)
+    && NUTRIENT_KEYS.some(key => Number(value[key]) > 0);
+}
+
+function resolvedItem(item, match, nutritionSource, nutritionLookupError) {
+  const result = {
+    ...item,
+    ...(match.barcode ? { barcode: match.barcode } : {}),
+    matchedName: match.name,
+    nutrientsPer100g: match.nutrientsPer100g,
+    totals: portionTotals(match.nutrientsPer100g, item.estimatedGrams),
+    requiresManualNutrition: false,
+    nutritionSource
+  };
+  if (nutritionLookupError) result.nutritionLookupError = true;
+  return result;
+}
+
 function projectedWorkout(workout, localDate) {
   const result = { date: localDate };
   if (typeof workout?.name === 'string' && workout.name.trim()) {
@@ -152,18 +172,29 @@ export function createNutritionService({
     async analyzePhoto(input) {
       const analysis = await ai.analyzePhoto(input);
       const items = await Promise.all(analysis.items.map(async item => {
-        let matches;
-        try { matches = await foodData.search(item.searchQuery, { limit: 1 }); }
-        catch { return { ...item, requiresManualNutrition: true, nutritionLookupError: true }; }
-        const [match] = matches;
-        if (!match) return { ...item, requiresManualNutrition: true };
+        let nutritionLookupError = false;
+        try {
+          const [match] = await foodData.search(item.searchQuery, { limit: 1 });
+          if (match && usableNutrients(match.nutrientsPer100g)) {
+            return resolvedItem(item, match, 'open-food-facts', nutritionLookupError);
+          }
+        } catch { nutritionLookupError = true; }
+        if (usableNutrients(item.estimatedNutrientsPer100g)) {
+          const result = {
+            ...item,
+            nutrientsPer100g: item.estimatedNutrientsPer100g,
+            totals: portionTotals(item.estimatedNutrientsPer100g, item.estimatedGrams),
+            requiresManualNutrition: false,
+            nutritionSource: 'ai-estimate',
+            nutritionEstimated: true
+          };
+          if (nutritionLookupError) result.nutritionLookupError = true;
+          return result;
+        }
         return {
           ...item,
-          fdcId: match.fdcId,
-          matchedName: match.name,
-          nutrientsPer100g: match.nutrientsPer100g,
-          totals: portionTotals(match.nutrientsPer100g, item.estimatedGrams),
-          requiresManualNutrition: false
+          requiresManualNutrition: true,
+          ...(nutritionLookupError ? { nutritionLookupError: true } : {})
         };
       }));
       return {

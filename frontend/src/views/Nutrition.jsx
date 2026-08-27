@@ -32,6 +32,16 @@ function NutrientLine({ totals }) {
   </div>
 }
 
+function NutritionSource({ item }) {
+  if (item.nutritionSource === 'ai-estimate') {
+    return <div className="small muted" style={{ marginTop: 6 }}>{t('AI estimate — check values')}</div>
+  }
+  if (item.nutritionSource === 'open-food-facts') {
+    return <div className="small muted" style={{ marginTop: 6 }}>{t('Nutrition data: Open Food Facts')}</div>
+  }
+  return null
+}
+
 function TargetCard({ profile, targets, saveProfile, loading }) {
   const [editing, setEditing] = useState(!targets?.confirmed)
   const [profileDraft, setProfileDraft] = useState({ ...EMPTY_PROFILE, ...(profile || {}) })
@@ -138,6 +148,7 @@ function DraftEditor({ draft, actions, localDate, loading }) {
         <input className="field" aria-label={`Food name ${index + 1}`} value={item.name} placeholder={t('Food name')} onChange={event => actions.updateDraftItem(index, { name: event.target.value })} />
         {draft.items.length > 1 && <button className="iconbtn" aria-label={t('Remove food')} onClick={() => actions.removeDraftItem(index)}><Icon name="trash" /></button>}
       </div>
+      <NutritionSource item={item} />
       <div className="grid2" style={{ marginTop: 8 }}>
         <label className="small muted">{t('Grams')}<input className="field" aria-label={`Grams ${index + 1}`} inputMode="decimal" value={item.grams} onChange={event => actions.updateDraftItem(index, { grams: number(event) })} /></label>
         <label className="small muted">{t('kcal / 100 g')}<input className="field" inputMode="decimal" value={item.per100.kcal} onChange={event => actions.updateDraftItem(index, { per100: { kcal: number(event) } })} /></label>

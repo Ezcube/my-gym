@@ -7,7 +7,11 @@ function fakeApi() {
     saveProfile: vi.fn(async payload => payload),
     listMeals: vi.fn(async () => ({ meals: [{ id: 'meal-1', localDate: '2026-08-25', totals: { kcal: 400 } }] })),
     createMeal: vi.fn(async meal => ({ meal: { id: 'created', ...meal } })),
-    analyzePhoto: vi.fn(async () => ({ draft: { items: [{ name: 'Борщ', estimatedGrams: 300, nutrientsPer100g: { kcal: 49, proteinG: 2, fatG: 2, carbsG: 6 } }] } })),
+    analyzePhoto: vi.fn(async () => ({ draft: { items: [{
+      name: 'Борщ', estimatedGrams: 300,
+      nutrientsPer100g: { kcal: 49, proteinG: 2, fatG: 2, carbsG: 6 },
+      nutritionSource: 'ai-estimate', nutritionEstimated: true,
+    }] } })),
     lookupBarcode: vi.fn(async () => ({ product: { name: 'Кефир', servingSize: '250 g', nutrientsPer100g: { kcal: 53, proteinG: 3, fatG: 2.5, carbsG: 4 } } })),
     requestReview: vi.fn(async ({ localDate, sourceHash }) => ({ review: { localDate, sourceHash, summary: 'Баланс хороший', suggestions: ['Добавьте овощи'] } })),
     getHealthSummary: vi.fn(async () => ({ summary: { localDate: '2026-08-25', steps: 7342 } })),
@@ -60,7 +64,10 @@ describe('nutrition store', () => {
   it('keeps an AI photo result editable until the user explicitly confirms it', async () => {
     await store.getState().analyzePhoto({ image: 'abc', mime: 'image/jpeg' })
     expect(client.createMeal).not.toHaveBeenCalled()
-    expect(store.getState().draft.items[0]).toMatchObject({ name: 'Борщ', grams: 300, per100: { kcal: 49 } })
+    expect(store.getState().draft.items[0]).toMatchObject({
+      name: 'Борщ', grams: 300, per100: { kcal: 49 },
+      nutritionSource: 'ai-estimate', nutritionEstimated: true,
+    })
 
     store.getState().updateDraftItem(0, { grams: 350 })
     await store.getState().confirmDraft('2026-08-25')

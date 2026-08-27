@@ -16,7 +16,7 @@ function createTestRepository(t) {
   return createNutritionRepository(db, { now: () => new Date('2026-08-25T12:00:00.000Z') });
 }
 
-test('photo analysis calculates portion totals from FoodData Central per-100g values', async () => {
+test('photo analysis calculates portion totals from Open Food Facts per-100g values', async () => {
   let serviceModule = null;
   try { serviceModule = await import('../src/nutrition/service.js'); } catch {}
   assert.equal(typeof serviceModule?.createNutritionService, 'function');
@@ -35,7 +35,7 @@ test('photo analysis calculates portion totals from FoodData Central per-100g va
   const foodData = {
     async search() {
       return [{
-        fdcId: 171705, name: 'Oatmeal, cooked',
+        barcode: '2222222222222', name: 'Oatmeal, cooked',
         nutrientsPer100g: { kcal: 71, proteinG: 2.54, fatG: 1.52, carbsG: 12 }
       }];
     }
@@ -49,10 +49,11 @@ test('photo analysis calculates portion totals from FoodData Central per-100g va
   assert.deepEqual(result.items[0], {
     name: 'Овсяная каша', searchQuery: 'oatmeal cooked', estimatedGrams: 250,
     confidence: 0.9, preparation: 'варёная', alternatives: [], warnings: [],
-    fdcId: 171705, matchedName: 'Oatmeal, cooked',
+    barcode: '2222222222222', matchedName: 'Oatmeal, cooked',
     nutrientsPer100g: { kcal: 71, proteinG: 2.54, fatG: 1.52, carbsG: 12 },
     totals: { kcal: 177.5, proteinG: 6.35, fatG: 3.8, carbsG: 30 },
-    requiresManualNutrition: false
+    requiresManualNutrition: false,
+    nutritionSource: 'open-food-facts'
   });
   assert.deepEqual(result.totals, { kcal: 177.5, proteinG: 6.35, fatG: 3.8, carbsG: 30 });
 });
@@ -80,7 +81,7 @@ test('photo analysis keeps unmatched foods as an editable manual-nutrition draft
   assert.equal(result.requiresConfirmation, true);
 });
 
-test('photo analysis does not discard the AI draft when FoodData Central is unavailable', async () => {
+test('photo analysis does not discard the AI draft when Open Food Facts is unavailable', async () => {
   const { createNutritionService } = await import('../src/nutrition/service.js');
   const item = {
     name: 'Салат', searchQuery: 'mixed vegetable salad', estimatedGrams: 200,
@@ -89,7 +90,7 @@ test('photo analysis does not discard the AI draft when FoodData Central is unav
   const ai = { async analyzePhoto() {
     return { overallConfidence: 0.8, model: 'gpt-5.6-luna', warnings: [], items: [item] };
   } };
-  const foodData = { async search() { throw Object.assign(new Error('timeout'), { code: 'FDC_UPSTREAM_ERROR' }); } };
+  const foodData = { async search() { throw Object.assign(new Error('timeout'), { code: 'OFF_UPSTREAM_ERROR' }); } };
   const service = createNutritionService({ ai, foodData });
 
   const result = await service.analyzePhoto({ base64: 'aW1hZ2U=', mimeType: 'image/jpeg' });
@@ -97,6 +98,33 @@ test('photo analysis does not discard the AI draft when FoodData Central is unav
   assert.deepEqual(result.items[0], {
     ...item, requiresManualNutrition: true, nutritionLookupError: true
   });
+});
+
+test('photo analysis uses an explicit AI estimate when Open Food Facts fails', async () => {
+  const { createNutritionService } = await import('../src/nutrition/service.js');
+  const item = {
+    name: 'Домашний эчпочмак', searchQuery: 'echpochmak meat pastry', estimatedGrams: 180,
+    estimatedNutrientsPer100g: { kcal: 265, proteinG: 10, fatG: 15, carbsG: 22 },
+    confidence: 0.72, preparation: 'печёный', alternatives: [], warnings: []
+  };
+  const ai = { async analyzePhoto() {
+    return { overallConfidence: 0.72, model: 'gpt-5.6-luna', warnings: [], items: [item] };
+  } };
+  const unavailable = { async search() { throw new Error('upstream unavailable'); } };
+  const service = createNutritionService({ ai, foodData: unavailable });
+
+  const result = await service.analyzePhoto({ base64: 'aW1hZ2U=', mimeType: 'image/jpeg' });
+
+  assert.deepEqual(result.items[0], {
+    ...item,
+    nutrientsPer100g: { kcal: 265, proteinG: 10, fatG: 15, carbsG: 22 },
+    totals: { kcal: 477, proteinG: 18, fatG: 27, carbsG: 39.6 },
+    requiresManualNutrition: false,
+    nutritionSource: 'ai-estimate',
+    nutritionEstimated: true,
+    nutritionLookupError: true
+  });
+  assert.deepEqual(result.totals, { kcal: 477, proteinG: 18, fatG: 27, carbsG: 39.6 });
 });
 
 test('daily review is generated once per user and date and reports when its source snapshot is stale', async t => {

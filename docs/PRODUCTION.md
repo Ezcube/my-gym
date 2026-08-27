@@ -72,7 +72,6 @@ OPENAI_BASE_URL=https://147.45.248.214/v1
 OPENAI_API_KEY=
 OPENAI_NUTRITION_MODEL_PRIMARY=gpt-5.6-luna
 OPENAI_NUTRITION_MODEL_FALLBACK=gpt-5.6-terra
-FDC_API_KEY=
 OPEN_FOOD_FACTS_USER_AGENT=MyGym/1.0 (mailto:operator@example.com)
 NUTRITION_PHOTO_DAILY_LIMIT=20
 NUTRITION_REVIEW_DAILY_LIMIT=1
@@ -102,7 +101,7 @@ SSE `response.completed`. Если proxy оставил в нём пустой `
 восстанавливает только завершённые элементы `response.output_item.done`;
 текстовые delta-события отдельно не исполняются.
 
-Заполнить `OPENAI_API_KEY` и `FDC_API_KEY` непосредственно на VPS. API
+Заполнить `OPENAI_API_KEY` непосредственно на VPS. API
 ограничивает фото до `1..100`, review до `1..10` на пользователя за UTC-сутки;
 внешний OpenAI project budget остаётся обязательным вторым пределом.
 
