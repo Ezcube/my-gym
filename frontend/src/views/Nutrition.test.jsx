@@ -4,6 +4,15 @@ import { Window } from 'happy-dom'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { NutritionContent } from './Nutrition.jsx'
 
+vi.mock('../lib/nutrition-photo.js', () => ({
+  prepareFoodPhoto: vi.fn(async () => ({
+    image: 'cHJlcGFyZWQ=',
+    mime: 'image/jpeg',
+    width: 1200,
+    height: 900,
+  })),
+}))
+
 let dom
 let root
 let container
@@ -63,6 +72,52 @@ describe('NutritionContent', () => {
     await act(async () => { manual.click() })
     expect(handlers.chooseEntry).toHaveBeenCalledWith('manual')
     expect(handlers.confirmDraft).not.toHaveBeenCalled()
+  })
+
+  it('offers separate camera and gallery pickers and clears them after analysis', async () => {
+    const handlers = actions()
+    const state = { ...baseState, entryMode: 'photo' }
+    await act(async () => {
+      root.render(<NutritionContent state={state} actions={handlers} localDate="2026-08-25" />)
+    })
+
+    const accept = 'image/jpeg,image/png,image/webp'
+    const cameraInput = container.querySelector('input[data-photo-source="camera"]')
+    const galleryInput = container.querySelector('input[data-photo-source="gallery"]')
+    expect(cameraInput).toBeTruthy()
+    expect(galleryInput).toBeTruthy()
+    expect(cameraInput.getAttribute('capture')).toBe('environment')
+    expect(galleryInput.hasAttribute('capture')).toBe(false)
+    expect(cameraInput.getAttribute('accept')).toBe(accept)
+    expect(galleryInput.getAttribute('accept')).toBe(accept)
+
+    const galleryButton = [...container.querySelectorAll('button')]
+      .find(button => button.textContent.trim() === 'Choose from gallery')
+    const openGallery = vi.spyOn(galleryInput, 'click')
+    await act(async () => { galleryButton.click() })
+    expect(openGallery).toHaveBeenCalledOnce()
+
+    const file = new dom.File(['meal'], 'meal.jpg', { type: 'image/jpeg' })
+    Object.defineProperty(galleryInput, 'files', { configurable: true, value: [file] })
+    Object.defineProperty(cameraInput, 'value', {
+      configurable: true, writable: true, value: 'camera.jpg',
+    })
+    Object.defineProperty(galleryInput, 'value', {
+      configurable: true, writable: true, value: 'meal.jpg',
+    })
+    await act(async () => {
+      galleryInput.dispatchEvent(new dom.Event('change', { bubbles: true }))
+    })
+
+    expect(container.textContent).toContain('Selected photo: meal.jpg')
+    const analyze = [...container.querySelectorAll('button')]
+      .find(button => button.textContent.trim() === 'Analyze photo')
+    expect(analyze.disabled).toBe(false)
+    await act(async () => { analyze.click() })
+
+    expect(handlers.analyzePhoto).toHaveBeenCalledOnce()
+    expect(cameraInput.value).toBe('')
+    expect(galleryInput.value).toBe('')
   })
 
   it('renders an editable draft and saves it only from the confirmation button', async () => {

@@ -19,6 +19,7 @@ const MODES = [
   { value: 'manual', label: 'Manual', icon: 'pencil' },
   { value: 'repeat', label: 'Repeat', icon: 'history' },
 ]
+const PHOTO_ACCEPT = 'image/jpeg,image/png,image/webp'
 
 const number = event => {
   const value = Number(event.target.value)
@@ -168,12 +169,28 @@ function DraftEditor({ draft, actions, localDate, loading }) {
 
 function EntryPanel({ state, actions }) {
   const [photo, setPhoto] = useState(null)
-  const photoInput = useRef(null)
+  const cameraInput = useRef(null)
+  const galleryInput = useRef(null)
   const [hint, setHint] = useState('')
   const [knownWeightG, setKnownWeightG] = useState('')
   const [barcode, setBarcode] = useState('')
   const [localError, setLocalError] = useState(null)
   const mode = state.entryMode
+
+  const selectPhoto = event => {
+    setPhoto(event.target.files?.[0] || null)
+    setLocalError(null)
+  }
+  const openPhotoInput = ref => {
+    if (!ref.current) return
+    ref.current.value = ''
+    ref.current.click()
+  }
+  const clearPhotoInputs = () => {
+    for (const ref of [cameraInput, galleryInput]) {
+      if (ref.current) ref.current.value = ''
+    }
+  }
 
   const analyse = async () => {
     if (!photo) return
@@ -184,7 +201,7 @@ function EntryPanel({ state, actions }) {
       setPhoto(null)
       setHint('')
       setKnownWeightG('')
-      if (photoInput.current) photoInput.current.value = ''
+      clearPhotoInputs()
     } catch { setLocalError(t('Could not prepare or analyze the photo')) }
   }
 
@@ -197,7 +214,13 @@ function EntryPanel({ state, actions }) {
     </div>
     {mode === 'photo' && !state.draft && <div className="card">
       <h2>{t('Photo analysis')}</h2>
-      <input ref={photoInput} className="field" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" onChange={event => setPhoto(event.target.files?.[0] || null)} />
+      <input ref={cameraInput} hidden data-photo-source="camera" type="file" accept={PHOTO_ACCEPT} capture="environment" onChange={selectPhoto} />
+      <input ref={galleryInput} hidden data-photo-source="gallery" type="file" accept={PHOTO_ACCEPT} onChange={selectPhoto} />
+      <div className="grid2">
+        <Button variant="tinted" onClick={() => openPhotoInput(cameraInput)}>{t('Take photo')}</Button>
+        <Button variant="tinted" onClick={() => openPhotoInput(galleryInput)}>{t('Choose from gallery')}</Button>
+      </div>
+      {photo && <div className="small muted" style={{ marginTop: 8 }}>{t('Selected photo: {0}', photo.name)}</div>}
       <div style={{ height: 8 }} /><input className="field" value={hint} onChange={event => setHint(event.target.value)} placeholder={t('Optional hint, for example “borscht with sour cream”')} />
       <div style={{ height: 8 }} /><input className="field" inputMode="decimal" value={knownWeightG} onChange={event => setKnownWeightG(event.target.value)} placeholder={t('Known total weight, g (optional)')} />
       <div style={{ height: 10 }} /><Button variant="primary" disabled={!photo || state.loading} onClick={analyse}>{t('Analyze photo')}</Button>
