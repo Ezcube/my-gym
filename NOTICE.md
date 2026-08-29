@@ -81,19 +81,10 @@ SOFTWARE.
 
 ### Images & animations — © Gym visual, not MIT and not AGPL
 
-> **© Gym visual — https://gymvisual.com/**
+The upstream exercise dataset contains legacy filename references to thumbnails and animations
+owned by **Gym visual**. Those media files are not covered by the dataset's MIT license or by
+openGym's AGPL, and the permission granted to the upstream dataset is not transferable.
 
-The exercise thumbnails (180×180) and animations are **© [Gym visual](https://gymvisual.com/)**.
-They are in the upstream dataset with the rights holder's written permission, granted to that
-dataset; that permission is **not transferable**. Their use is governed by Gym visual's
-[Terms & Conditions](https://gymvisual.com/content/3-terms-and-conditions-of-use) — not by the MIT
-license above, and not by openGym's AGPL.
-
-**openGym does not redistribute this media.** It is not in this repository, not in its history,
-and not in the published Docker images or the Android APK. A self-hosted instance downloads it
-from the upstream source on first `docker compose up`; the mobile and demo builds load it from a
-CDN at runtime.
-
-If you want to reuse the media — in openGym or anywhere else, commercially or not — **obtain your
-own license from Gym visual first**, and keep the `© Gym visual — https://gymvisual.com/`
-attribution intact wherever it appears.
+This fork does not contain, download, serve, or display those files. Its exercise visuals are
+rendered from the MIT-derived body diagram described above. The legacy `img` and `gif` filename
+fields remain only for source-data compatibility and are not read by the runtime.

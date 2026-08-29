@@ -15,7 +15,6 @@ docker compose pull   # prebuilt images from GitLab (amd64 + arm64) — or skip 
 docker compose up -d
 ```
 
-- First start downloads the exercise images/GIFs (~140 MB) once into `media/img` and `media/gif`.
 - Open **http://localhost:8080** and create a profile with a passkey.
 - Rather build from source than pull prebuilt images? Skip `docker compose pull` and run
   `docker compose up -d --build` instead — no Node needed locally either way.
@@ -159,10 +158,6 @@ The web image renders its nginx config from these when the container starts, so 
 on a **prebuilt image** — no rebuild. `BACKEND` and `PORT` together are what `/api` is proxied to,
 so they have to name a service the web container can actually reach on your compose network.
 
-Note the difference from `VITE_IMG_BASE` / `VITE_GIF_BASE` (see Troubleshooting): those are
-build-time values baked into the frontend bundle, and setting them next to `docker compose` does
-nothing to an image you pulled.
-
 ## 6. Backups
 
 Everything is in `./data`:
@@ -214,8 +209,8 @@ git pull
 docker compose up -d --build
 ```
 
-The app shell is versioned (`?v=N`) so clients pick up changes on next load. Your `./data` and the
-downloaded media are untouched.
+The app shell is versioned (`?v=N`) so clients pick up changes on next load. Your `./data` is
+untouched.
 
 ## Troubleshooting
 
@@ -223,20 +218,8 @@ downloaded media are untouched.
 |---|---|
 | No passkey prompt on my phone | You're on `http://` or an IP, not HTTPS. Set up a domain (section 3). |
 | "verification failed" on login | `RP_ID`/`ORIGIN` don't match the URL in the address bar. Make them exact, restart. |
-| Media didn't download | `docker compose logs media`. Re-run `docker compose up -d`, or run `./scripts/fetch-media.sh`. |
 | Port 8080 already used | Set `WEB_PORT=9090` in `.env` (and update `ORIGIN` for local testing). |
 | No "Notifications" option in Settings | Requires a signed-in profile and HTTPS (or `localhost`) — guest mode and plain HTTP over LAN can't subscribe. |
 | Day reminder fires at the wrong time | Toggle it off and on in Settings so it re-detects your browser's timezone (also happens automatically on every app load — see section 7). |
 | Want to reset a stuck login | Delete the cookie in your browser; sessions are just signed cookies. |
 | `docker compose pull` fails with "denied" / "unauthorized" | The prebuilt images aren't published yet, or need to be, or the GHCR package is still private — build from source instead (`docker compose up -d --build`). |
-| Exercise images/GIFs blank when a routine is open | Fixed in current images (issue #79). On an older build, see the note below. |
-
-### `VITE_IMG_BASE` / `VITE_GIF_BASE` are build-time, not run-time
-
-These two are read by Vite when the frontend is **compiled**, so their values are baked into
-the shipped JavaScript bundle. Setting them in the `.env` next to `docker compose` has no
-effect on an already-built image — the bundle has already made up its mind.
-
-They are only useful if you build the frontend yourself (`docker compose up -d --build`, or a
-`npm run build` with the variables exported). If you need to redirect media on a prebuilt
-image, do it in your reverse proxy instead.

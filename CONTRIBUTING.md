@@ -10,7 +10,7 @@ frontend/  React + Vite app (src/views, src/components, src/store, src/lib). Bui
            android/ + ios/ are the Capacitor shells for the standalone mobile app (docs/MOBILE.md).
 api/       backend — server.js (Node, no framework), one dependency (@simplewebauthn/server).
 web/       multi-stage Dockerfile (builds frontend → nginx) + nginx.conf (serves app, proxies /api).
-media/     exercise img/gif (gitignored, fetched at runtime).
+media/     legacy third-party exercise assets (gitignored; unused by this fork).
 docs/      self-hosting guide.
 mcp/       optional Model Context Protocol server — read-only stdio bridge for LLM apps
            (Claude Desktop, Cursor, …) to query a user's workouts/1RM/muscle balance. Not in
@@ -21,7 +21,7 @@ mcp/       optional Model Context Protocol server — read-only stdio bridge for
 
 ```bash
 cp .env.example .env
-docker compose up -d --build      # api + web + media on :8080
+docker compose up -d --build      # api + web on :8080
 # frontend hot reload:
 cd frontend && npm install && npm run dev
 # training logic (progression rules, 1RM, how a session is read back):
@@ -35,7 +35,7 @@ cd frontend && npm test
   `web-push` for notifications) — keep it near that.
 - **Match the style.** Small components, clear names, comments only where the "why" isn't obvious.
   State lives in the Zustand store (`src/store`); pure helpers in `src/lib`.
-- **Don't commit** the exercise media (`media/`) or `data/` — they're gitignored.
+- **Never commit** third-party exercise media (`media/`) or runtime user data (`data/`).
 - **Test the flow** you touched — click through the affected screens (and the workout flow) in a
   browser before opening a merge request.
 - **Training logic gets a unit test.** Anything deciding what you lift next, or reading a logged

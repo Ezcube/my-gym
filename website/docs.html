@@ -79,8 +79,8 @@
   <div class="note">openGym is deliberately <b>not</b> on the Play Store — no store account
     between you and an open-source app. The APK is signed; updates install over the old
     version and keep your data.</div>
-  <p>Everything is stored on the phone itself. The only things fetched from the internet are
-     the exercise images and animations (from a CDN, on demand).</p>
+  <p>Everything is stored on the phone itself. Exercise metadata, instructions and the built-in
+     target-muscle diagrams ship with the app.</p>
 
   <h2 id="iphone">Use on iPhone</h2>
   <p>Apple does not allow installing apps outside the App Store, so there is no iOS download —
@@ -106,8 +106,8 @@ cd openGym
 cp .env.example .env
 docker compose pull    # prebuilt images (amd64 + arm64) — skip to build from source
 docker compose up -d</code></pre>
-  <p>Open <code>http://localhost:8080</code>, tap <b>Create profile</b>, and you're in. The
-     first launch downloads the exercise media (~140&nbsp;MB) once.</p>
+  <p>Open <code>http://localhost:8080</code>, tap <b>Create profile</b>, and you're in.
+     Exercise visuals are drawn locally by the built-in front/back muscle map.</p>
   <div class="note">Want it reachable from your phone with passkeys? You'll need an HTTPS
     domain — a two-line change in <code>.env</code>. The full guide, including reverse-proxy
     examples and the invite-only/admin options, is in
@@ -171,9 +171,8 @@ docker compose up -d</code></pre>
   <p>Yes — free as in cost <i>and</i> as in freedom (AGPL-3.0). No pro tier, no locked
      features, no ads, and the license keeps every fork open source too.</p>
   <h3>What data does openGym collect?</h3>
-  <p>None. There is no telemetry, no analytics, no crash reporting. The mobile app's only
-     network traffic is fetching exercise media from a CDN; a self-hosted instance talks only
-     to your own server.</p>
+  <p>None. There is no telemetry, no analytics, no crash reporting. After the app shell loads,
+     normal use talks only to your own API.</p>
   <h3>Why isn't it on the Play Store / App Store?</h3>
   <p>By choice (and on iOS, by Apple's rules for sideloading). Store accounts cost money,
      impose terms that sit badly with the AGPL, and put a gatekeeper between you and an app
@@ -184,14 +183,9 @@ docker compose up -d</code></pre>
      You can start with the app and move to a server later — the backup file migrates everything.</p>
   <h3>Where does the exercise database come from?</h3>
   <p>From <a href="https://github.com/hasaneyldrm/exercises-dataset" rel="noopener">hasaneyldrm/exercises-dataset</a>:
-     1,324 exercises with animations and instructions in 10 languages. That dataset licenses the two
-     halves differently, and so does openGym: the exercise metadata and instruction text are
-     <b>MIT</b>, while the images and animations are
-     <b>© <a href="https://gymvisual.com/" rel="noopener">Gym visual</a></b>, used under the
-     dataset's terms rather than openGym's AGPL.</p>
-  <p>openGym does not redistribute that media — your instance downloads it from the upstream source on
-     first run. If you want to reuse it yourself, commercially or otherwise, get your own licence from
-     Gym visual first (<a href="https://gymvisual.com/content/3-terms-and-conditions-of-use" rel="noopener">terms&nbsp;&amp;&nbsp;conditions</a>).</p>
+     1,324 exercise records with metadata and instructions in 10 languages under the MIT license.
+     The interface draws target muscles with its built-in front/back map; it does not download or
+     display the separate Gym visual image/GIF files referenced by the upstream data.</p>
 </main>
 
 <footer><div class="wrap foot">

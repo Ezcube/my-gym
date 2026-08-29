@@ -122,17 +122,13 @@ docker compose pull   # grab prebuilt images (amd64 + arm64) — skip to build f
 docker compose up -d
 ```
 
-Open **http://localhost:8080**, tap **Create profile**, and you're in. First launch downloads
-the exercise media (~140 MB) once.
+Open **http://localhost:8080**, tap **Create profile**, and you're in.
 
-> **About that media:** it comes from
-> [hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-dataset), whose
-> metadata and instruction text are MIT — but whose images and animations are
-> **© [Gym visual](https://gymvisual.com/)**, used under that dataset's terms and *not* under
-> openGym's AGPL. openGym ships none of it: your instance downloads it from upstream. Reusing it
-> yourself, commercially or not, needs your own licence from Gym visual — see
-> [NOTICE.md](NOTICE.md).
- Prefer building the images yourself instead of pulling from
+Exercise visuals are generated locally from the built-in front/back muscle map. The map geometry
+is derived from the MIT-licensed MuscleMap project; no exercise image or animation library is
+downloaded at runtime.
+
+Prefer building the images yourself instead of pulling from
 GitLab's registry? Drop the `pull` step and run `docker compose up -d --build` — you don't need Node or
 a build step locally either way.
 
@@ -227,7 +223,7 @@ Rough, community-driven — ideas and PRs welcome:
 
 React 19 + Vite (React Router, Zustand) · Node (no framework) · nginx · Docker Compose ·
 WebAuthn · exercise data from [hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-dataset)
-(MIT metadata and instructions; media © Gym visual — see [License](#license)).
+(MIT metadata and instructions; built-in muscle-map visuals).
 No database server, no cloud dependencies — the frontend builds inside Docker, so self-hosting
 stays a one-command `docker compose up`.
 
@@ -288,10 +284,8 @@ product.
 **Third-party content is not, and openGym cannot sublicense it.** The exercise metadata and
 instruction text come from
 [hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-dataset) under the
-**MIT** license. The exercise images and animations are **© [Gym visual](https://gymvisual.com/)**
-and are used under that dataset's terms — openGym does not redistribute them (your instance
-fetches them at first run) and does not relicense them under the AGPL. To reuse that media
-yourself, get your own licence from Gym visual
-([terms](https://gymvisual.com/content/3-terms-and-conditions-of-use)).
+**MIT** license. This fork does not download, redistribute, or display the separate Gym visual
+image/GIF files referenced by the upstream dataset. Exercise visuals use the MIT-derived body
+diagram documented in [NOTICE.md](NOTICE.md).
 
 Full third-party notices, including the body-diagram geometry: **[NOTICE.md](NOTICE.md)**.
