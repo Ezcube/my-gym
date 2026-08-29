@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 35)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 40)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -40,6 +40,34 @@ test('cardio muscle prompts name visible skeletal targets instead of none', () =
     assert.doesNotMatch(prompt, /Primary muscles: none/i)
     assert.match(prompt, pattern)
     if (id === '3666' || id === '2138') assert.doesNotMatch(prompt, /Glutes/i)
+  }
+})
+
+test('dumbbell batch prompts lock the critical movement details', () => {
+  const expected = {
+    '0289': [/flat horizontal bench/i, /two separate dumbbells/i, /descends beside the chest/i],
+    '0293': [/bilateral row/i, /stable hip hinge/i, /no one-arm stance or torso swing/i],
+    '1760': [/one dumbbell held vertically at the chest/i, /heels stay planted/i, /not a barbell squat/i],
+    '0432': [/two dumbbells travel close to the legs/i, /slight knee bend/i, /hip hinge rather than a squat/i],
+    '0410': [/rear foot elevated on a bench/i, /front foot stays fully planted/i, /dumbbells hang at the sides/i, /not a standard forward lunge/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('dumbbell batch muscle prompts match the catalogue targets', () => {
+  const expected = {
+    '0289': [/Primary muscles: Chest/i, /Secondary muscles: Triceps, Shoulders/i],
+    '0293': [/Primary muscles: Upper back/i, /Secondary muscles: Biceps, Forearms, Shoulders/i],
+    '1760': [/Primary muscles: Quads/i, /Secondary muscles: Glutes, Hamstrings, Calves/i],
+    '0432': [/Primary muscles: Glutes/i, /Secondary muscles: Hamstrings, Lower back/i],
+    '0410': [/Primary muscles: Quads/i, /Secondary muscles: Glutes, Hamstrings, Calves/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
   }
 })
 

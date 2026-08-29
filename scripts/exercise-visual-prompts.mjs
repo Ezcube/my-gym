@@ -14,6 +14,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '2141': 'Use an elliptical cross trainer with both feet planted on its pedals and hands on the moving handles. Show alternating elliptical stride phases without impact or free-standing walking.',
   '2311': 'Use a rotating stepmill with visible moving stairs. Keep the torso upright and show each foot landing fully on a step without hanging from the rails.',
   '0979': 'Use a resistance band anchored at chest height. Stand perpendicular to the anchor, press both hands straight away from the sternum, and resist torso rotation throughout.',
+  '0289': 'Use a flat horizontal bench and two separate dumbbells. Keep both feet planted and the shoulder blades stable; each dumbbell descends beside the chest before a controlled press, with no barbell or joined weight.',
+  '0293': 'Show a bilateral row with one dumbbell in each hand from a stable hip hinge and neutral spine. Pull both weights toward the lower ribs together; no one-arm stance or torso swing.',
+  '1760': 'Use one dumbbell held vertically at the chest. The heels stay planted and the torso remains braced while the hips travel down between the legs; this is not a barbell squat.',
+  '0432': 'Use a hip hinge rather than a squat. Two dumbbells travel close to the legs while the spine stays neutral with only a slight knee bend; stop at a controlled hamstring stretch.',
+  '0410': 'Show a rear-foot-elevated split squat with the rear foot elevated on a bench. The front foot stays fully planted, the dumbbells hang at the sides, and the torso remains controlled; this is not a standard forward lunge.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
