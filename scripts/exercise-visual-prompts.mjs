@@ -51,11 +51,11 @@ Asset type: landscape target-muscle image for a dark fitness workout app
 Primary request: Show the muscles trained by ${ex.n} on a realistic adult male athlete.
 Primary muscles: ${list(groups.primary)}.
 Secondary muscles: ${list(groups.secondary)}.
-Subject: the same real adult male athlete twice in a relaxed neutral anatomical pose, front view on the left and back view on the right, framed from head to feet so lower-leg targets remain visible, charcoal compression shorts, torso, arms, and legs unobstructed.
+Subject: the same real adult male athlete twice in a relaxed neutral anatomical pose, front view on the left and back view on the right, framed from head to feet so lower-leg targets remain visible. He is fully clothed in an opaque fitted charcoal short-sleeve athletic top and full-length training tights; no bare torso or underwear-like clothing.
 Scene/backdrop: clean matte near-black background (#0b0e0c), no floor or equipment.
 Style/medium: photorealistic sports photography with a clean scientific fitness overlay; clearly a real human, not a mannequin.
 Composition/framing: two equal figures with generous separation and consistent scale.
-Color palette: subdued natural body tones. Highlight primary muscles in vivid emerald green with a precise semi-transparent anatomical overlay. Highlight secondary muscles in a clearly softer, darker green. Leave every other muscle neutral.
+Color palette: subdued natural body tones and charcoal clothing. Apply the muscle overlay visibly over the clothing: highlight primary muscles in vivid emerald green with a precise semi-transparent anatomical shape, and secondary muscles in a clearly softer, darker green. Leave every other region neutral.
 Constraints: anatomically plausible, symmetric highlights, muscle placement consistent with the named groups, clean edges, no exposed tissue or internal anatomy.
 Avoid: highlighted unrelated muscles, extra limbs, different people between views, bodybuilding exaggeration, text, labels, arrows, numbers, logos, borders, checkerboard, or watermark.`
 }

@@ -26,6 +26,14 @@ test('bench press prompts contain catalogue movement and muscle facts', () => {
   assert.match(muscles, /Secondary muscles:.*Triceps/i)
 })
 
+test('muscle prompts keep the athlete fully clothed for reliable generation', () => {
+  const muscles = promptFor('0047', 'muscles')
+  assert.match(muscles, /opaque fitted charcoal short-sleeve athletic top/i)
+  assert.match(muscles, /full-length training tights/i)
+  assert.match(muscles, /no bare torso/i)
+  assert.doesNotMatch(muscles, /compression shorts/i)
+})
+
 test('unknown ids and kinds fail closed', () => {
   assert.throws(() => promptFor('nope', 'technique'), /Unknown exercise id/)
   assert.throws(() => promptFor('__proto__', 'technique'), /Unknown exercise id/)
