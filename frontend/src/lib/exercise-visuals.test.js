@@ -1,0 +1,38 @@
+import { describe, expect, it } from 'vitest'
+import { EXERCISE_VISUAL_IDS, EXERCISE_VISUALS, exerciseVisualFor } from './exercise-visuals.js'
+
+const APPROVED_IDS = [
+  '0025', '0047', '0426', '0334', '0241', '0251',
+  '2330', '0027', '1323', '0031', '0313',
+  '0043', '0085', '0739', '0585', '0586', '0605',
+  '0032', '0091', '0292', '0294', '0054', '0348',
+  '0060', '1269', '1429', '0662', '0472', '0175', '1409',
+]
+
+describe('generated exercise visual manifest', () => {
+  it('contains exactly the approved thirty unique catalogue ids', () => {
+    expect(EXERCISE_VISUAL_IDS).toEqual(APPROVED_IDS)
+    expect(new Set(EXERCISE_VISUAL_IDS).size).toBe(30)
+    expect(Object.keys(EXERCISE_VISUALS).sort()).toEqual([...APPROVED_IDS].sort())
+  })
+
+  it('uses fixed local paths and intrinsic dimensions for both images', () => {
+    for (const id of APPROVED_IDS) {
+      const visual = exerciseVisualFor(id)
+      expect(visual).toEqual({
+        technique: {
+          src: expect.stringMatching(new RegExp(`^(?:\\./|/)exercise-visuals/${id}/technique\\.webp$`)),
+          width: 1200,
+          height: 800,
+        },
+        muscles: {
+          src: expect.stringMatching(new RegExp(`^(?:\\./|/)exercise-visuals/${id}/muscles\\.webp$`)),
+          width: 1200,
+          height: 675,
+        },
+      })
+    }
+    expect(exerciseVisualFor('custom-1')).toBeNull()
+    expect(exerciseVisualFor('__proto__')).toBeNull()
+  })
+})
