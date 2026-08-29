@@ -124,9 +124,9 @@ docker compose up -d
 
 Open **http://localhost:8080**, tap **Create profile**, and you're in.
 
-Exercise visuals are generated locally from the built-in front/back muscle map. The map geometry
-is derived from the MIT-licensed MuscleMap project; no exercise image or animation library is
-downloaded at runtime.
+Thirty common exercises include original generated human technique and target-muscle visuals.
+Every other exercise uses the built-in MuscleMap-derived body diagram. This fork does not
+download or display the separate upstream Gym image/GIF library.
 
 Prefer building the images yourself instead of pulling from
 GitLab's registry? Drop the `pull` step and run `docker compose up -d --build` — you don't need Node or
@@ -223,7 +223,7 @@ Rough, community-driven — ideas and PRs welcome:
 
 React 19 + Vite (React Router, Zustand) · Node (no framework) · nginx · Docker Compose ·
 WebAuthn · exercise data from [hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-dataset)
-(MIT metadata and instructions; built-in muscle-map visuals).
+(MIT metadata and instructions; original guidance for 30 exercises plus a built-in muscle-map fallback).
 No database server, no cloud dependencies — the frontend builds inside Docker, so self-hosting
 stays a one-command `docker compose up`.
 
@@ -284,8 +284,10 @@ product.
 **Third-party content is not, and openGym cannot sublicense it.** The exercise metadata and
 instruction text come from
 [hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-dataset) under the
-**MIT** license. This fork does not download, redistribute, or display the separate Gym visual
-image/GIF files referenced by the upstream dataset. Exercise visuals use the MIT-derived body
-diagram documented in [NOTICE.md](NOTICE.md).
+**MIT** license. Thirty common exercises include original generated human technique and
+target-muscle visuals. Every other exercise uses the built-in MuscleMap-derived body diagram.
+This fork does not download, redistribute, or display the separate Gym visual image/GIF files
+referenced by the upstream dataset. See [NOTICE.md](NOTICE.md) and
+[docs/EXERCISE_VISUALS.md](docs/EXERCISE_VISUALS.md).
 
 Full third-party notices, including the body-diagram geometry: **[NOTICE.md](NOTICE.md)**.
