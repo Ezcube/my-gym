@@ -563,6 +563,42 @@ h4.sec{
 .thumb-viz{display:flex;align-items:center;justify-content:center;background:var(--surface-2);color:var(--acc)}
 .thumb-viz .icn{font-size:25px}
 
+.exercise-guidance{position:relative;margin-bottom:12px}
+.exercise-guidance-card{
+  background:var(--surface);border:var(--hair) solid var(--sep-op);border-radius:var(--r-lg);
+  padding:14px;margin-bottom:10px;overflow:hidden;
+}
+.exercise-guidance-label{
+  display:block;margin-bottom:8px;color:var(--label-3);font-size:12px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.045em;
+}
+.exercise-guidance-image{
+  display:block;width:100%;height:auto;object-fit:contain;background:#0b0e0c;border-radius:calc(var(--r-lg) - 5px);
+}
+.exercise-guidance-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:7px 0 10px}
+.exercise-guidance-phases span{text-align:center;color:var(--label-2);font-size:11px}
+.exercise-guidance-steps{margin:0;padding-left:22px;color:var(--label);font-size:14px;line-height:1.48}
+.exercise-guidance-steps li{margin:7px 0;padding-left:2px}
+.exercise-guidance-more{margin-top:5px;color:var(--acc);font-size:13px;font-weight:600}
+.exercise-guidance-targets{display:block;margin:-3px 0 8px;color:var(--label-2);font-size:14px;text-transform:capitalize}
+.exercise-guidance-safety{margin:4px 12px 10px;color:var(--label-3);font-size:12px;line-height:1.4}
+.exercise-guidance-toggle{
+  display:inline-flex;align-items:center;gap:4px;margin-left:9px;padding:5px 11px;border-radius:99px;
+  background:color-mix(in srgb,var(--surface-3) 86%,transparent);color:var(--label);font-size:12px;font-weight:500;
+}
+.exercise-guidance-toggle .icn{font-size:13px}
+.exercise-guidance.compact .exercise-guidance-card{padding:10px}
+.exercise-guidance.compact .technique-image{max-height:160px}
+.exercise-guidance.compact .muscles-image{max-height:140px}
+.exercise-guidance.compact .exercise-guidance-steps{font-size:12px}
+.exercise-guidance.mini>.exmedia{margin-bottom:0}
+.exercise-title-row{align-items:flex-start}
+@media(max-width:600px){
+  .exercise-guidance-card{padding:11px}
+  .exercise-guidance-steps{font-size:13px}
+  .exercise-guidance-phases span{font-size:10px}
+}
+
 .sethead{
   display:flex;align-items:center;gap:8px;padding:0 0 6px;
   font-size:11px;color:var(--label-3);font-weight:500;text-transform:uppercase;letter-spacing:.045em;

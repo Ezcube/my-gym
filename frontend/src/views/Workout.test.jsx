@@ -48,6 +48,12 @@ vi.mock('../sheets.jsx', () => ({
   confirmSheet: vi.fn(),
 }))
 vi.mock('../components/Media.jsx', () => ({ default: () => null }))
+vi.mock('../components/ExerciseGuidance.jsx', () => ({
+  default: ({ ex }) => React.createElement('div', {
+    className: 'exercise-guidance',
+    'data-exercise-id': ex?.id || '',
+  }),
+}))
 // api.js reads navigator.userAgent at module scope. This file installs its own DOM inside the
 // tests rather than declaring a vitest environment, so it must not depend on an ambient one.
 vi.mock('../lib/api.js', () => ({
@@ -181,5 +187,19 @@ describe('superset flow survives an exercise being removed mid-session', () => {
     // Partner closes the round (each still has a second set), which is what starts the rest.
     await toggleSet(2)
     expect(mocks.startRest).toHaveBeenCalledWith(90)
+  })
+})
+
+describe('exercise guidance hierarchy', () => {
+  it('places the exercise title and guidance before the set controls', async () => {
+    await mount([exercise('0025', [false, false])])
+    const title = container.querySelector('.exercise-title')
+    const guidance = container.querySelector('.exercise-guidance')
+    const sets = container.querySelector('.sethead')
+    expect(title).toBeTruthy()
+    expect(guidance).toBeTruthy()
+    expect(sets).toBeTruthy()
+    expect([...container.querySelectorAll('.exercise-title,.exercise-guidance,.sethead')])
+      .toEqual([title, guidance, sets])
   })
 })
