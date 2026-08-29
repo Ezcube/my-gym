@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { EXIDX } from './lib/exercises.js'
 import { _setLangState } from './lib/i18n-core.js'
+import ru from './locales/ru.js'
+import ruInstr from './instr/ru.js'
 import {
   addToRoutineSheet,
   exConfigSheet,
@@ -107,6 +109,15 @@ async function expectRussianName(open) {
 }
 
 describe('localized exercise names in sheets', () => {
+  it('uses corrected exercise instructions in the detail sheet', async () => {
+    _setLangState('ru', ru, ruInstr)
+    exerciseDetailSheet(EXIDX['0979'])
+    await renderCapturedSheet()
+
+    expect(container.textContent).toContain('на уровне груди')
+    expect(container.textContent).not.toContain('на высоте талии')
+  })
+
   it('uses the Russian name in detail, add, picker, and configuration sheets', async () => {
     const ex = EXIDX['0025']
     await expectRussianName(() => exerciseDetailSheet(ex))

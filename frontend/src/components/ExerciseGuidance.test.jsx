@@ -71,6 +71,23 @@ describe('ExerciseGuidance', () => {
     expect(container.textContent).toContain('Свернуть шаги')
   })
 
+  it('shows localized generated guidance for the next cardio batch', async () => {
+    await render(<ExerciseGuidance ex={EXIDX['3666']} />)
+
+    const images = [...container.querySelectorAll('img')]
+    expect(images).toHaveLength(2)
+    expect(container.textContent).toContain(ruInstr['3666'][0])
+    expect(images.every(image => image.alt.includes('Ходьба на наклонной беговой дорожке'))).toBe(true)
+  })
+
+  it('shows the corrected chest-height Pallof setup next to its technique image', async () => {
+    await render(<ExerciseGuidance ex={EXIDX['0979']} />)
+
+    expect(container.textContent).toContain('на уровне груди')
+    expect(container.textContent).not.toContain('на высоте талии')
+    expect([...container.querySelectorAll('img')].every(image => image.alt.includes('Горизонтальный жим Паллофа'))).toBe(true)
+  })
+
   it('keeps steps when technique fails and replaces only a failed muscle image', async () => {
     await render(<ExerciseGuidance ex={EXIDX['0025']} />)
     const [technique] = container.querySelectorAll('img')

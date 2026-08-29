@@ -2,9 +2,26 @@ import { pathToFileURL } from 'node:url'
 import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { EXIDX } from '../frontend/src/lib/exercises.js'
 import { MUSCLE_NAME, musclesOf } from '../frontend/src/lib/muscles.js'
+import { correctExerciseInstructions } from '../frontend/src/lib/exercise-instructions.js'
 
 const approved = new Set(EXERCISE_VISUAL_IDS)
 const list = values => values.length ? values.join(', ') : 'none'
+
+const TECHNIQUE_ACCURACY = Object.freeze({
+  '0025': 'The bar path reaches the middle of the chest before a controlled press.',
+  '3666': 'Use an inclined motorized treadmill. Show walking, not running: natural heel contact, mid-stance, then controlled toe-off while the torso stays upright.',
+  '2138': 'Use a stationary exercise bike with a correctly adjusted saddle. Keep the athlete seated and show one controlled pedal cycle with the knee never locked out.',
+  '2141': 'Use an elliptical cross trainer with both feet planted on its pedals and hands on the moving handles. Show alternating elliptical stride phases without impact or free-standing walking.',
+  '2311': 'Use a rotating stepmill with visible moving stairs. Keep the torso upright and show each foot landing fully on a step without hanging from the rails.',
+  '0979': 'Use a resistance band anchored at chest height. Stand perpendicular to the anchor, press both hands straight away from the sternum, and resist torso rotation throughout.',
+})
+
+const MUSCLE_GROUP_OVERRIDES = Object.freeze({
+  '3666': { primary: ['Quads', 'Calves'], secondary: ['Hamstrings'] },
+  '2138': { primary: ['Quads'], secondary: ['Hamstrings', 'Calves'] },
+  '2141': { primary: ['Quads', 'Glutes'], secondary: ['Hamstrings', 'Calves'] },
+  '2311': { primary: ['Quads', 'Glutes', 'Calves'], secondary: ['Hamstrings'] },
+})
 
 function exerciseFor(id) {
   if (!approved.has(id) || !EXIDX[id]) throw new Error(`Unknown exercise id: ${id}`)
@@ -12,10 +29,12 @@ function exerciseFor(id) {
 }
 
 function movementInstructions(ex) {
-  return (ex.st || []).map((step, index) => `${index + 1}. ${step}`).join('\n')
+  return correctExerciseInstructions(ex.id, ex.st || [])
+    .map((step, index) => `${index + 1}. ${step}`).join('\n')
 }
 
 function muscleGroups(ex) {
+  if (MUSCLE_GROUP_OVERRIDES[ex.id]) return MUSCLE_GROUP_OVERRIDES[ex.id]
   const entries = Object.entries(musclesOf(ex))
   const names = rows => rows.map(([slug]) => MUSCLE_NAME[slug] || slug)
   return {
@@ -25,9 +44,7 @@ function muscleGroups(ex) {
 }
 
 function techniquePrompt(ex) {
-  const accuracy = ex.id === '0025'
-    ? 'The bar path reaches the middle of the chest before a controlled press.'
-    : 'Follow the supplied exercise instructions exactly.'
+  const accuracy = TECHNIQUE_ACCURACY[ex.id] || 'Follow the supplied exercise instructions exactly.'
   return `Use case: scientific-educational
 Asset type: landscape technique image for a dark fitness workout app
 Primary request: Create a clear three-panel photorealistic demonstration of ${ex.n}.

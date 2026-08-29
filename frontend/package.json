@@ -11,6 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:exercise-visual-policy": "node ../scripts/check-exercise-visual-policy.mjs",
+    "test:exercise-visuals": "node --test ../scripts/exercise-visual-prompts.test.mjs ../scripts/check-exercise-visual-policy.test.mjs && npm run test:exercise-visual-policy",
     "test:fatigue-probe": "node scripts/fatigue-monotonic-probe.mjs"
   },
   "license": "AGPL-3.0-or-later",

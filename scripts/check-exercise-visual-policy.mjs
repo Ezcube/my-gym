@@ -1,9 +1,25 @@
-import { existsSync, readFileSync, statSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
+import { join } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { EXERCISE_VISUAL_IDS, EXERCISE_VISUALS } from '../frontend/src/lib/exercise-visuals.js'
 
 const root = new URL('../', import.meta.url)
 const read = path => readFileSync(new URL(path, root), 'utf8')
 const failures = []
+
+export function listGeneratedVisualFiles(directory) {
+  if (!existsSync(directory)) return []
+  const files = []
+  const visit = (current, prefix = '') => {
+    for (const entry of readdirSync(current, { withFileTypes: true })) {
+      const relative = prefix ? `${prefix}/${entry.name}` : entry.name
+      if (entry.isDirectory()) visit(join(current, entry.name), relative)
+      else if (entry.isFile() && entry.name.toLowerCase().endsWith('.webp')) files.push(relative)
+    }
+  }
+  visit(directory)
+  return files.sort()
+}
 
 const read24LE = (buffer, offset) => buffer[offset] | (buffer[offset + 1] << 8) | (buffer[offset + 2] << 16)
 
@@ -31,8 +47,8 @@ function webpDimensions(buffer) {
 }
 
 function validateGeneratedAssets() {
-  if (EXERCISE_VISUAL_IDS.length !== 30 || new Set(EXERCISE_VISUAL_IDS).size !== 30) {
-    failures.push('exercise visual manifest must contain exactly 30 unique ids')
+  if (!EXERCISE_VISUAL_IDS.length || new Set(EXERCISE_VISUAL_IDS).size !== EXERCISE_VISUAL_IDS.length) {
+    failures.push('exercise visual manifest must contain unique ids')
   }
   let files = 0
   for (const id of EXERCISE_VISUAL_IDS) {
@@ -64,7 +80,17 @@ function validateGeneratedAssets() {
       }
     }
   }
-  if (files !== 60) failures.push(`expected 60 generated WebP files, found ${files}`)
+  const expectedFiles = EXERCISE_VISUAL_IDS.length * 2
+  if (files !== expectedFiles) failures.push(`expected ${expectedFiles} generated WebP files, found ${files}`)
+
+  const expectedPaths = new Set(EXERCISE_VISUAL_IDS.flatMap(id => [
+    `${id}/technique.webp`,
+    `${id}/muscles.webp`,
+  ]))
+  const generatedRoot = fileURLToPath(new URL('frontend/public/exercise-visuals/', root))
+  for (const relative of listGeneratedVisualFiles(generatedRoot)) {
+    if (!expectedPaths.has(relative)) failures.push(`${relative}: generated WebP is not listed in the manifest`)
+  }
 }
 
 function reject(path, pattern, message) {
@@ -86,9 +112,11 @@ if (existsSync(new URL('scripts/fetch-media.sh', root))) {
 
 validateGeneratedAssets()
 
-if (failures.length) {
-  console.error(failures.join('\n'))
-  process.exit(1)
+const invoked = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href
+if (invoked) {
+  if (failures.length) {
+    console.error(failures.join('\n'))
+    process.exit(1)
+  }
+  console.log(`exercise visual policy: ok (${EXERCISE_VISUAL_IDS.length} ids, ${EXERCISE_VISUAL_IDS.length * 2} local WebP files)`)
 }
-
-console.log('exercise visual policy: ok (30 ids, 60 local WebP files)')

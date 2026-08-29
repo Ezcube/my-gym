@@ -313,7 +313,7 @@ pages:
   script:
     - cd frontend
     - npm ci
-    - npm run test:exercise-visual-policy
+    - npm run test:exercise-visuals
     - npm run build
     - cd ..
     - rm -rf public && mv frontend/dist public
