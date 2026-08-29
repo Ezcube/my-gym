@@ -30,10 +30,6 @@ stages:
 variables:
   # node:22-alpine in web/Dockerfile and api/Dockerfile — CI must match production.
   NODE_IMAGE: "node:22-alpine"
-  # The demo build has no backend and no local media: the exercise images/GIFs (~140 MB)
-  # are never committed, so it points at the upstream dataset on jsDelivr, pinned to a
-  # commit so the CDN can cache it forever.
-  DATASET: "https://cdn.jsdelivr.net/gh/hasaneyldrm/exercises-dataset@7455efae41b330c265e7cd4b78dfa848e7ce5ebd"
   GIT_DEPTH: "50"
 
 # Branch pipeline *or* MR pipeline, never both for the same commit.
@@ -317,7 +313,8 @@ pages:
   script:
     - cd frontend
     - npm ci
-    - VITE_IMG_BASE="$DATASET/images/" VITE_GIF_BASE="$DATASET/videos/" npm run build
+    - npm run test:exercise-visual-policy
+    - npm run build
     - cd ..
     - rm -rf public && mv frontend/dist public
   artifacts:
