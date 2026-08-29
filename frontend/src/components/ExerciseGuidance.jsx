@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useStore } from '../store/useStore.js'
 import { instrFor, t } from '../lib/i18n.js'
 import { exerciseVisualFor } from '../lib/exercise-visuals.js'
+import { exerciseName } from '../lib/exercise-names.js'
 import Media, { targetText } from './Media.jsx'
 import Icon from './Icon.jsx'
 
@@ -16,7 +17,7 @@ export default function ExerciseGuidance({ ex, compact = false, minimizable = fa
   const steps = instrFor(ex || {})
   const visibleSteps = expanded ? steps : steps.slice(0, 3)
   const mini = minimizable && gifSize === 'mini'
-  const name = t(ex?.n || '')
+  const name = exerciseName(ex)
 
   useEffect(() => {
     setExpanded(false)

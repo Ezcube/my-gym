@@ -276,11 +276,11 @@ h4.sec{
   position:fixed;left:0;right:0;bottom:0;z-index:50;
   display:flex;justify-content:space-around;align-items:flex-end;
   padding:7px 6px calc(6px + var(--sab));
-  background:color-mix(in srgb,var(--bg-el) 72%,transparent);
+  background:color-mix(in srgb,var(--bg-el) 94%,transparent);
   backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);
   border-top:var(--hair) solid var(--sep-op);
 }
-:root[data-theme="light"] #tabbar{background:rgba(249,249,251,.78)}
+:root[data-theme="light"] #tabbar{background:rgba(249,249,251,.96)}
 #tabbar button{
   flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
   color:var(--label-3);font-size:10px;font-weight:500;letter-spacing:.005em;padding-top:3px;
@@ -569,19 +569,19 @@ h4.sec{
   padding:14px;margin-bottom:10px;overflow:hidden;
 }
 .exercise-guidance-label{
-  display:block;margin-bottom:8px;color:var(--label-3);font-size:12px;font-weight:600;
+  display:block;margin-bottom:8px;color:var(--label-2);font-size:12px;font-weight:600;
   text-transform:uppercase;letter-spacing:.045em;
 }
 .exercise-guidance-image{
   display:block;width:100%;height:auto;object-fit:contain;background:#0b0e0c;border-radius:calc(var(--r-lg) - 5px);
 }
 .exercise-guidance-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:7px 0 10px}
-.exercise-guidance-phases span{text-align:center;color:var(--label-2);font-size:11px}
+.exercise-guidance-phases span{text-align:center;color:var(--label-2);font-size:12px;font-weight:500}
 .exercise-guidance-steps{margin:0;padding-left:22px;color:var(--label);font-size:14px;line-height:1.48}
 .exercise-guidance-steps li{margin:7px 0;padding-left:2px}
 .exercise-guidance-more{margin-top:5px;color:var(--acc);font-size:13px;font-weight:600}
 .exercise-guidance-targets{display:block;margin:-3px 0 8px;color:var(--label-2);font-size:14px;text-transform:capitalize}
-.exercise-guidance-safety{margin:4px 12px 10px;color:var(--label-3);font-size:12px;line-height:1.4}
+.exercise-guidance-safety{margin:4px 12px 10px;color:var(--label-2);font-size:13px;line-height:1.4}
 .exercise-guidance-toggle{
   display:inline-flex;align-items:center;gap:4px;margin-left:9px;padding:5px 11px;border-radius:99px;
   background:color-mix(in srgb,var(--surface-3) 86%,transparent);color:var(--label);font-size:12px;font-weight:500;
@@ -596,7 +596,7 @@ h4.sec{
 @media(max-width:600px){
   .exercise-guidance-card{padding:11px}
   .exercise-guidance-steps{font-size:13px}
-  .exercise-guidance-phases span{font-size:10px}
+  .exercise-guidance-phases span{font-size:11px}
 }
 
 .sethead{

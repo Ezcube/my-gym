@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { parseHTML } from 'linkedom'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import Workout from './Workout.jsx'
+import { _setLangState } from '../lib/i18n-core.js'
 
 const mocks = vi.hoisted(() => {
   const state = {
@@ -120,6 +121,7 @@ beforeEach(() => {
 
 afterEach(async () => {
   await unmount()
+  _setLangState('en', {}, null)
 })
 
 describe('Workout set completion flow', () => {
@@ -192,6 +194,7 @@ describe('superset flow survives an exercise being removed mid-session', () => {
 
 describe('exercise guidance hierarchy', () => {
   it('places the exercise title and guidance before the set controls', async () => {
+    _setLangState('ru', {}, null)
     await mount([exercise('0025', [false, false])])
     const title = container.querySelector('.exercise-title')
     const guidance = container.querySelector('.exercise-guidance')
@@ -201,5 +204,6 @@ describe('exercise guidance hierarchy', () => {
     expect(sets).toBeTruthy()
     expect([...container.querySelectorAll('.exercise-title,.exercise-guidance,.sethead')])
       .toEqual([title, guidance, sets])
+    expect(title.textContent).toBe('Жим штанги лёжа')
   })
 })
