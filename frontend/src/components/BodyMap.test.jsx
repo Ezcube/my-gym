@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import BodyMap from './BodyMap.jsx'
 
+globalThis.IS_REACT_ACT_ENVIRONMENT = true
+
 vi.mock('../lib/body-paths.js', async () => {
   throw new Error('geometry unavailable')
 })

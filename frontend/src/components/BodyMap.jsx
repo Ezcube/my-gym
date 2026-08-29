@@ -51,7 +51,7 @@ function View({ view, levels, onMuscle, selected }) {
  * `{ at, level, exclusive? }` `thresholds` for a fixed absolute scale (recovery views use this
  * to keep their semantic bands stable); omitting it preserves the balance behavior.
  */
-export default function BodyMap({ load = {}, thresholds, body = 'male', onMuscle, selected, className = '' }) {
+export default function BodyMap({ load = {}, thresholds, body = 'male', onMuscle, selected, className = '', fallback }) {
   const paths = useBodyPaths()
   const levels = levelsOf(load, thresholds)
   const g = paths && (paths[body] || paths.male)
@@ -60,7 +60,7 @@ export default function BodyMap({ load = {}, thresholds, body = 'male', onMuscle
       {g ? <>
         <View view={g.front} levels={levels} onMuscle={onMuscle} selected={selected} />
         <View view={g.back} levels={levels} onMuscle={onMuscle} selected={selected} />
-      </> : <div className="bm-ph" aria-hidden="true" />}
+      </> : (fallback || <div className="bm-ph" aria-hidden="true" />)}
     </div>
   )
 }

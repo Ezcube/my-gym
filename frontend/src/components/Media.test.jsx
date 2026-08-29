@@ -6,6 +6,8 @@ import Media, { Thumb } from './Media.jsx'
 import { EXIDX } from '../lib/exercises.js'
 import ru from '../locales/ru.js'
 
+globalThis.IS_REACT_ACT_ENVIRONMENT = true
+
 const mocks = vi.hoisted(() => {
   const state = {
     S: { gifSize: 'full', body: 'male' },
