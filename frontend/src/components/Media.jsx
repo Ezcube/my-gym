@@ -4,7 +4,7 @@ import { musclesOf } from '../lib/muscles.js'
 import BodyMap from './BodyMap.jsx'
 import Icon from './Icon.jsx'
 
-const targetText = ex => [...new Set([
+export const targetText = ex => [...new Set([
   ex?.tg || ex?.bp,
   ex?.mg,
   ...(Array.isArray(ex?.sm) ? ex.sm : []),
