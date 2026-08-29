@@ -4,13 +4,17 @@ import { parseHTML } from 'linkedom'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import Workout from './Workout.jsx'
 import { _setLangState } from '../lib/i18n-core.js'
+import ru from '../locales/ru.js'
 
 const mocks = vi.hoisted(() => {
   const state = {
     S: null,
     startRest: vi.fn(),
     stopRest: vi.fn(),
+    startWork: vi.fn(),
     topWeightSheet: vi.fn(),
+    confirmSheet: vi.fn(),
+    openSheet: vi.fn(),
   }
   state.storeSnapshot = () => ({
     S: state.S,
@@ -21,8 +25,9 @@ const mocks = vi.hoisted(() => {
     work: null,
     startRest: state.startRest,
     stopRest: state.stopRest,
-    startWork: vi.fn(),
+    startWork: state.startWork,
     toast: vi.fn(),
+    openSheet: state.openSheet,
   })
   return state
 })
@@ -46,7 +51,7 @@ vi.mock('../sheets.jsx', () => ({
   topWeightSheet: mocks.topWeightSheet,
   finishWorkout: vi.fn(),
   workoutCompleteSheet: vi.fn(),
-  confirmSheet: vi.fn(),
+  confirmSheet: mocks.confirmSheet,
 }))
 vi.mock('../components/Media.jsx', () => ({ default: () => null }))
 vi.mock('../components/ExerciseGuidance.jsx', () => ({
@@ -194,7 +199,7 @@ describe('superset flow survives an exercise being removed mid-session', () => {
 
 describe('exercise guidance hierarchy', () => {
   it('places the exercise title and guidance before the set controls', async () => {
-    _setLangState('ru', {}, null)
+    _setLangState('ru', ru, null)
     await mount([exercise('0025', [false, false])])
     const title = container.querySelector('.exercise-title')
     const guidance = container.querySelector('.exercise-guidance')
@@ -205,5 +210,45 @@ describe('exercise guidance hierarchy', () => {
     expect([...container.querySelectorAll('.exercise-title,.exercise-guidance,.sethead')])
       .toEqual([title, guidance, sets])
     expect(title.textContent).toBe('Жим штанги лёжа')
+  })
+
+  it('keeps the Russian exercise name in removal prompts and timed-set labels', async () => {
+    _setLangState('ru', ru, null)
+    await mount([exercise('0025', [false])])
+
+    const remove = [...container.querySelectorAll('button')]
+      .find(button => button.textContent.includes(ru['Remove exercise']))
+    expect(remove).toBeTruthy()
+    await act(async () => { remove.dispatchEvent(new dom.Event('click', { bubbles: true })) })
+    expect(mocks.confirmSheet.mock.calls[0][0].title).toContain('Жим штанги лёжа')
+    expect(mocks.confirmSheet.mock.calls[0][0].title).not.toContain('barbell bench press')
+
+    await unmount()
+    vi.clearAllMocks()
+    await mount([exercise('0025', [false], {
+      target: { mode: 'time', sec: 45, weight: 0, bodyweight: true },
+      sets: [{ sec: 45, w: 0, done: false }],
+    })])
+    const start = container.querySelector('.setgo')
+    expect(start).toBeTruthy()
+    await act(async () => { start.dispatchEvent(new dom.Event('click', { bubbles: true })) })
+    expect(mocks.startWork.mock.calls[0][1]).toBe('Жим штанги лёжа')
+  })
+
+  it('uses Russian exercise names in the superset removal picker', async () => {
+    _setLangState('ru', ru, null)
+    await mount([
+      exercise('0025', [false], { sg: 'pair' }),
+      exercise('0047', [false], { sg: 'pair' }),
+    ])
+    const remove = [...container.querySelectorAll('button')]
+      .find(button => button.textContent.includes(ru['Remove exercise']))
+    await act(async () => { remove.dispatchEvent(new dom.Event('click', { bubbles: true })) })
+
+    const renderSheet = mocks.openSheet.mock.calls[0][0]
+    await act(async () => { root.render(renderSheet(() => {})) })
+    expect(container.textContent).toContain('Жим штанги лёжа')
+    expect(container.textContent).toContain('Жим штанги на наклонной скамье')
+    expect(container.textContent).not.toContain('barbell bench press')
   })
 })

@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { strengthExerciseRows, strengthExerciseRowsForMuscle, primaryMuscleOf } from './strength-exercises.js'
 import { registerCustom } from './exercises.js'
+import { _setLangState } from './i18n-core.js'
 
 const DAY = 86400000
 const NOW = Date.UTC(2026, 7, 8, 12) // 2026-08-08 12:00 UTC
@@ -15,7 +16,10 @@ const CUSTOMS = [
 ]
 
 beforeEach(() => registerCustom(CUSTOMS))
-afterEach(() => registerCustom([]))
+afterEach(() => {
+  registerCustom([])
+  _setLangState('en', {}, null)
+})
 
 function workout(dayAgo, entries) {
   const d = new Date(NOW - dayAgo * DAY)
@@ -91,6 +95,17 @@ describe('strengthExerciseRows', () => {
     expect(rows[0].id).toBe('bench')
     const muscleRows = strengthExerciseRowsForMuscle(S, NOW, 'chest')
     expect(muscleRows[0].name).toBe('Bench Press')
+  })
+
+  it('localizes a built-in exercise name for the Russian strength view', () => {
+    _setLangState('ru', {}, null)
+    const entry = {
+      id: '0025',
+      sets: [{ phase: 'work', w: 80, r: 8, done: true, unit: 'kg' }],
+    }
+    const rows = strengthExerciseRows(unitState([workout(3, [entry])]), NOW)
+
+    expect(rows[0].name).toBe('Жим штанги лёжа')
   })
 
   it('uses nested exercise snapshots for a deleted custom exercise', () => {

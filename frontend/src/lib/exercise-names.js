@@ -1,4 +1,7 @@
 import { getLang, t } from './i18n-core.js'
+import { EXDB } from './exercises-data.js'
+
+const BUILTIN_EXERCISE_IDS = new Set(EXDB.map(ex => ex.id))
 
 const RU_VISUAL_NAMES = Object.freeze({
   '0025': 'Жим штанги лёжа',
@@ -38,6 +41,8 @@ const sentenceCase = value => value
   : ''
 
 export function exerciseName(ex) {
-  const localized = getLang() === 'ru' ? RU_VISUAL_NAMES[ex?.id] : null
-  return sentenceCase(localized || t(ex?.n || ''))
+  const raw = ex?.n || ''
+  if (!raw || !BUILTIN_EXERCISE_IDS.has(ex?.id)) return raw
+  const localized = getLang() === 'ru' ? RU_VISUAL_NAMES[ex.id] : null
+  return sentenceCase(localized || t(raw))
 }

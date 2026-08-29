@@ -259,7 +259,7 @@ function ActiveWorkout() {
     if (!e) return
     const hasDone = (e.sets || []).some(s => s.done)
     confirmSheet({
-      title: t('Remove {0}?', exOr(e.id).n),
+      title: t('Remove {0}?', exerciseName(exOr(e.id))),
       message: hasDone
         ? t('The sets you logged for this exercise in this session will be lost.')
         : t('This removes the exercise from your current session.'),
@@ -274,7 +274,7 @@ function ActiveWorkout() {
           <div className="muted small" style={{ marginBottom: 12 }}>{t('Which exercise in this superset do you want to remove?')}</div>
           <div className="list">
             {unit.map(idx => <div key={idx} className="item" onClick={() => { close(); confirmRemoveExercise(idx) }}>
-              <div className="grow"><div className="tt">{exOr(A.entries[idx]?.id).n}</div></div>
+              <div className="grow"><div className="tt">{exerciseName(exOr(A.entries[idx]?.id))}</div></div>
               <Icon name="chevronRight" />
             </div>)}
           </div>
@@ -289,7 +289,7 @@ function ActiveWorkout() {
   // behave exactly as they do for a reps set.
   const startTimed = (idx, i) => {
     const e = A.entries[idx]
-    useUI.getState().startWork(e.sets[i].sec || 45, exOr(e.id).n, elapsed => {
+    useUI.getState().startWork(e.sets[i].sec || 45, exerciseName(exOr(e.id)), elapsed => {
       mutEntry(idx, en => { en.sets[i].sec = elapsed })
       if (!useStore.getState().S.active.entries[idx].sets[i].done) toggle(idx, i)
     })

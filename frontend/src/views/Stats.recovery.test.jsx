@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { MUSCLES, levelsOf } from '../lib/muscles.js'
 import { FATIGUE_STATES, STRENGTH_FLOOR } from '../lib/recovery.js'
 import { fatigueStateOf } from '../lib/recovery-view.js'
+import { setLang } from '../lib/i18n.js'
 import Stats from './Stats.jsx'
 
 const DAY = 86400000
@@ -171,7 +172,8 @@ async function tick(milliseconds) {
 const lastMap = () => mocks.maps.at(-1)
 const expectPressed = button => expect(button?.getAttribute('aria-pressed')).toBe('true')
 
-beforeEach(() => {
+beforeEach(async () => {
+  await setLang('en')
   vi.useFakeTimers()
   vi.setSystemTime(BASE_NOW)
   resetFixture()
@@ -179,6 +181,7 @@ beforeEach(() => {
 
 afterEach(async () => {
   await unmountStats()
+  await setLang('en')
   vi.useRealTimers()
   vi.restoreAllMocks()
 })
@@ -270,5 +273,30 @@ describe('Stats muscle recovery view runtime', () => {
     expect(Object.values(strengthMap.load).every(value => value < 1)).toBe(true)
     expect(Math.min(...Object.values(strengthMap.load))).toBe(STRENGTH_FLOOR)
     expect(strengthMap.thresholds.at(-1)).toEqual({ at: 1, level: 4 })
+  })
+
+  it('recomputes selected strength exercise names when the language changes', async () => {
+    resetFixture([workout('bench', BASE_NOW, [entry('0025', [set(true)])])])
+    await mountStats()
+    await click(viewButton('Strength'))
+    await click(muscleCard().querySelector('[data-muscle="chest"]'))
+    expect(container.textContent).toContain('Barbell bench press')
+
+    await act(async () => { await setLang('ru') })
+
+    expect(container.textContent).toContain('Жим штанги лёжа')
+    expect(container.textContent).not.toContain('Barbell bench press')
+  })
+
+  it('uses a retained snapshot name when a custom exercise is no longer in the catalogue', async () => {
+    resetFixture([workout('deleted', BASE_NOW, [{
+      id: 'deleted-custom',
+      muscleSnapshot: { n: 'eBay curl', muscleWeights: { chest: 1 } },
+      sets: [set(true)],
+    }])])
+    await mountStats()
+
+    expect(container.textContent).toContain('eBay curl')
+    expect(container.textContent).not.toContain('deleted-custom')
   })
 })

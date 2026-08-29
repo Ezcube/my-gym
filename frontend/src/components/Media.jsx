@@ -1,6 +1,7 @@
 import { useStore } from '../store/useStore.js'
 import { t } from '../lib/i18n.js'
 import { musclesOf } from '../lib/muscles.js'
+import { exerciseName } from '../lib/exercise-names.js'
 import BodyMap from './BodyMap.jsx'
 import Icon from './Icon.jsx'
 
@@ -25,7 +26,7 @@ export default function Media({ ex, id, compact, minimizable }) {
 
   return (
     <div className={'exmedia' + (compact ? ' compact' : '') + (mini ? ' mini' : '')} id={id}>
-      <div className="exvisual" role="group" aria-label={t('Muscle target visual for {0}', ex?.n || '')}>
+      <div className="exvisual" role="group" aria-label={t('Muscle target visual for {0}', exerciseName(ex))}>
         {!mini && <div className="exvisual-copy">
           <strong>{t('Target muscles')}</strong>
           <span>{target || t('Target information unavailable')}</span>

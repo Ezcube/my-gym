@@ -2,9 +2,10 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../store/useStore.js'
 import { EXIDX } from '../lib/exercises.js'
+import { exerciseName } from '../lib/exercise-names.js'
 import { lastBW, streakWeeks, setLabel, modeOf, effortOf, metricModeForEntry, metricRowsForEntry, bestWeightForEntry } from '../lib/history.js'
 import { fmtNum, fmtDate, fmtVol, todayISO, weekKey } from '../lib/format.js'
-import { t } from '../lib/i18n.js'
+import { t, useLang } from '../lib/i18n.js'
 import { bwSheet, goalSheet, calendarSheet, workoutDetailSheet, WorkoutRow, bwDeltaColor } from '../sheets.jsx'
 import LineChart from '../components/LineChart.jsx'
 import Heatmap from '../components/Heatmap.jsx'
@@ -101,6 +102,7 @@ function MuscleBalance({ S }) {
   const [win, setWin] = useState(7)
   const [hard, setHard] = useState(false)
   const [sel, setSel] = useState(null)
+  const langVersion = useLang()
   const now = useNow()
   const workouts = S.workouts
   // The user's own last registered bodyweight drives bodyweight-exercise tonnage.
@@ -113,7 +115,7 @@ function MuscleBalance({ S }) {
   }, [S.bodyweight, S.unit])
   const fatigue = useMemo(() => fatigueOf(workouts, now, { bodyweightKg, unit: S.unit }), [workouts, now, bodyweightKg, S.unit])
   const strength = useMemo(() => strengthOf(workouts, now, { bodyweightKg, unit: S.unit }), [workouts, now, bodyweightKg, S.unit])
-  const muscleExercises = useMemo(() => (sel ? strengthExerciseRowsForMuscle(S, now, sel) : []), [S, now, sel])
+  const muscleExercises = useMemo(() => (sel ? strengthExerciseRowsForMuscle(S, now, sel) : []), [S, now, sel, langVersion])
   const lastTrained = useMemo(() => latestMuscleTraining(workouts), [workouts])
   const strengthHint = slug => {
     if (lastTrained[slug] == null) return t('not trained')
@@ -276,6 +278,7 @@ function EffortCard({ S }) {
 export default function Stats() {
   const nav = useNavigate()
   const S = useStore(s => s.S)
+  useLang()
   const [range, setRange] = useState(90)
   const [exId, setExId] = useState(null)
   const [exMetric, setExMetric] = useState('top')
@@ -290,7 +293,13 @@ export default function Stats() {
   const workouts = S.workouts
   const monthW = workouts.filter(w => String(w.d || '').slice(0, 7) === todayISO().slice(0, 7)).length
 
-  const nameOf = id => EXIDX[id]?.n || workouts.flatMap(w => w.entries).find(e => e.id === id)?.n || id
+  const nameOf = id => {
+    const ex = EXIDX[id]
+    if (ex) return exerciseName(ex)
+    const entry = workouts.flatMap(w => w.entries).find(e => e.id === id)
+    const retainedName = entry?.muscleSnapshot?.n || entry?.n
+    return retainedName ? exerciseName({ id, n: retainedName }) : id
+  }
   const currentOf = id => {
     for (let i = workouts.length - 1; i >= 0; i--) {
       const en = workouts[i].entries.find(e => e.id === id)

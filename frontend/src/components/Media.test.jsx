@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import Media, { Thumb } from './Media.jsx'
 import { EXIDX } from '../lib/exercises.js'
+import { _setLangState } from '../lib/i18n-core.js'
 import ru from '../locales/ru.js'
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true
@@ -54,6 +55,7 @@ afterEach(async () => {
   root = null
   container?.remove()
   container = null
+  _setLangState('en', {}, null)
 })
 
 describe('built-in exercise visuals', () => {
@@ -89,6 +91,15 @@ describe('built-in exercise visuals', () => {
     expect(container.querySelector('.exvisual-empty')).toBeTruthy()
     expect(container.querySelector('.thumb-viz')).toBeTruthy()
     expect(container.textContent).toContain('Target information unavailable')
+  })
+
+  it('uses the localized exercise name in the target visual label', async () => {
+    _setLangState('ru', {}, null)
+    await render(<Media ex={EXIDX['0025']} />)
+
+    const visual = container.querySelector('.exvisual')
+    expect(visual.getAttribute('aria-label')).toContain('Жим штанги лёжа')
+    expect(visual.getAttribute('aria-label')).not.toContain('barbell bench press')
   })
 
   it('defines the new Russian labels', () => {
