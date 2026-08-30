@@ -69,6 +69,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0774': 'Show a standing Smith machine press with the feet shoulder-width apart and the knees slightly bent. The bar begins at shoulder level with an overhand grip and travels overhead only inside the fixed vertical guide rails. Lower it back to the shoulders under control. This is not a free barbell press and not a press behind the neck.',
   '1359': 'Set the Smith bar so the bar starts at hip height. Use a stable hip hinge with slightly bent knees and a straight back. Pull the bar toward the lower chest while squeezing the shoulder blades, then lower it under control. The bar remains inside the Smith guide rails. This is not an upright row or shrug.',
   '0770': 'Use a Smith machine. The bar rests on the upper traps. Keep the feet shoulder-width apart with the toes slightly turned out. Rotate the bar to release the Smith hooks while keeping the feet planted; do not step backward. The bar must move only inside the fixed guide rails. Squat with the chest up until the thighs reach parallel or slightly below, then drive through the heels.',
+  '0198': 'Use a seated commercial lat-pulldown station with the thighs secured under the knee pad and both feet flat. Take a pronated grip slightly wider than the shoulders. With a neutral spine and only a 10-15 degree torso recline, drive the elbows down and slightly back while pulling the bar to the upper chest, then return under control. This is not a behind-the-neck pull; do not stand, swing backward, or pull the bar below chest level.',
+  '0180': 'Use a low cable seated row with both feet braced on footplates and the knees softly bent. Hold a straight horizontal handle with a pronated, palms-down grip. Begin with long arms, unlocked elbows, and a neutral spine; pull the handle to the lower ribs or upper abdomen while the elbows travel behind the torso and the shoulder blades retract. This is not a V-bar row; do not round the lower back or rock the torso.',
+  '0238': 'Show a standing straight-arm high-cable pulldown with a straight bar and a pronated shoulder-width grip. Keep soft elbows at a constant angle with a slight bend, the spine neutral, and only a small hip hinge. Move the bar in an arc from upper-chest or head height down to the thighs using shoulder extension. This is not a triceps pushdown: do not flex the elbows, squat, round the back, or move the bar behind the body.',
+  '0213': 'Use a seated high cable row with the pulley clearly above chest or face level. Hold a close V-bar with a neutral grip, palms facing each other at the attachment fixed narrow width. Keep a neutral spine and pull diagonally toward the lower sternum or upper abdomen while the elbows travel back and slightly down. This is not a low-pulley horizontal row, vertical lat pulldown, overhand grip, or behind-the-neck movement.',
+  '0245': 'Use a seated lat pulldown with the thighs secured under the pad. Hold the bar with a supinated grip, palms facing the athlete and hands slightly wider than shoulder-width apart. Keep the chest lifted, wrists neutral, and torso only slightly reclined while the elbows stay close and drive downward; finish with the bar at the upper chest. This is not a behind-the-neck pull; do not use a pronated grip, stand, overextend the wrists, or swing the torso.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -90,6 +95,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0774': { primary: ['Shoulders'], secondary: ['Triceps', 'Upper back'] },
   '1359': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
   '0770': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
+  '0198': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
+  '0180': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '0238': { primary: ['Lats'], secondary: ['Shoulders', 'Biceps'] },
+  '0213': { primary: ['Lats'], secondary: ['Biceps', 'Rhomboids', 'Rear deltoids'] },
+  '0245': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
 })
 
 function exerciseFor(id) {
