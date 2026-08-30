@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 60)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 65)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -176,6 +176,34 @@ test('core batch muscle prompts match the intended targets', () => {
     '0630': [/Primary muscles: Abs, Hip flexors/i, /Secondary muscles: Shoulders, Triceps, Quads/i],
     '0276': [/Primary muscles: Abs/i, /Secondary muscles: Hip flexors, Lower back/i],
     '0464': [/Primary muscles: Abs/i, /Secondary muscles: Obliques, Shoulders/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('dumbbell arms and shoulders batch prompts lock the critical movement details', () => {
+  const expected = {
+    '2137': [/seated against an upright back support/i, /palms face the athlete/i, /rotate.*palms face forward/i, /not a standard shoulder press/i],
+    '0296': [/flat bench/i, /dumbbells stay close together above the chest/i, /elbows remain tucked/i, /not a wide chest press or fly/i],
+    '0351': [/upper arms remain vertical and stationary/i, /lower both dumbbells toward the forehead/i, /only the elbows move/i, /not a pullover or press/i],
+    '0315': [/incline bench set to 45 degrees/i, /arms hang slightly behind the torso/i, /upper arms remain stationary/i, /not a shoulder press/i],
+    '0437': [/dumbbells begin in front of the thighs/i, /lead upward with the elbows/i, /elbows stay above the hands/i, /not a shrug or biceps curl/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('dumbbell arms and shoulders batch muscle prompts match the catalogue targets', () => {
+  const expected = {
+    '2137': [/Primary muscles: Shoulders/i, /Secondary muscles: Triceps, Chest/i],
+    '0296': [/Primary muscles: Triceps/i, /Secondary muscles: Chest, Shoulders/i],
+    '0351': [/Primary muscles: Triceps/i, /Secondary muscles: Shoulders/i],
+    '0315': [/Primary muscles: Biceps/i, /Secondary muscles: Forearms/i],
+    '0437': [/Primary muscles: Shoulders/i, /Secondary muscles: Traps, Biceps/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')

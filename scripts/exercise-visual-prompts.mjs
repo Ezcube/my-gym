@@ -39,6 +39,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0630': 'Start in a rigid high plank with hands under the shoulders. Alternate one knee toward the chest while the other leg stays extended; the hips stay low and the shoulders remain stacked. This is not a standing run or squat thrust.',
   '0276': 'Use a supine tabletop position with hips and knees at 90 degrees and the lower back pressed into the floor. Lower one opposite arm and leg toward the floor, return to center, then switch sides without arching the lumbar spine.',
   '0464': 'Begin in a stable high plank. Rotate the whole torso into a controlled side-plank position with the top arm toward the ceiling, then return to both hands and alternate sides. Keep the legs and hips controlled; this is not a forearm plank.',
+  '2137': 'Stay seated against an upright back support. Begin with elbows forward; the palms face the athlete. Press upward while the forearms rotate until the palms face forward overhead. Reverse the same path under control; this is not a standard shoulder press.',
+  '0296': 'Lie on a flat bench with one dumbbell in each hand. The dumbbells stay close together above the chest while the elbows remain tucked beside the torso; lower under control and press with the triceps. This is not a wide chest press or fly.',
+  '0351': 'Lie on a flat bench with one dumbbell in each hand. The upper arms remain vertical and stationary while only the elbows move to lower both dumbbells toward the forehead and extend them again; this is not a pullover or press.',
+  '0315': 'Sit against an incline bench set to 45 degrees. Both arms hang slightly behind the torso with palms facing forward. The upper arms remain stationary while both forearms curl the dumbbells toward the shoulders; this is not a shoulder press.',
+  '0437': 'Stand upright; the two dumbbells begin in front of the thighs. Lead upward with the elbows; the elbows stay above the hands as the weights rise close to the body toward the upper chest, then lower slowly. This is not a shrug or biceps curl.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
