@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 40)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 45)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -64,6 +64,34 @@ test('dumbbell batch muscle prompts match the catalogue targets', () => {
     '1760': [/Primary muscles: Quads/i, /Secondary muscles: Glutes, Hamstrings, Calves/i],
     '0432': [/Primary muscles: Glutes/i, /Secondary muscles: Hamstrings, Lower back/i],
     '0410': [/Primary muscles: Quads/i, /Secondary muscles: Glutes, Hamstrings, Calves/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('dumbbell upper-body batch prompts lock the critical movement details', () => {
+  const expected = {
+    '0314': [/incline bench set to 45 degrees/i, /two separate dumbbells/i, /not a flat bench or barbell press/i],
+    '0308': [/flat bench fly/i, /fixed slight elbow bend/i, /wide arc/i, /not a dumbbell press/i],
+    '0405': [/seated against an upright back support/i, /press both dumbbells vertically/i, /not a standing or Arnold press/i],
+    '0310': [/raise both dumbbells forward together/i, /stop at shoulder height/i, /not overhead or out to the sides/i],
+    '0406': [/elevate both shoulders straight upward/i, /arms remain straight/i, /no elbow curl or shoulder rolling/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('dumbbell upper-body batch muscle prompts match the catalogue targets', () => {
+  const expected = {
+    '0314': [/Primary muscles: Chest/i, /Secondary muscles: Shoulders, Triceps/i],
+    '0308': [/Primary muscles: Chest/i, /Secondary muscles: Shoulders/i],
+    '0405': [/Primary muscles: Shoulders/i, /Secondary muscles: Triceps, Upper back/i],
+    '0310': [/Primary muscles: Shoulders/i, /Secondary muscles: Biceps, Traps/i],
+    '0406': [/Primary muscles: Traps/i, /Secondary muscles: Shoulders/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')

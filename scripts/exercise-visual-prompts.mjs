@@ -19,6 +19,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1760': 'Use one dumbbell held vertically at the chest. The heels stay planted and the torso remains braced while the hips travel down between the legs; this is not a barbell squat.',
   '0432': 'Use a hip hinge rather than a squat. Two dumbbells travel close to the legs while the spine stays neutral with only a slight knee bend; stop at a controlled hamstring stretch.',
   '0410': 'Show a rear-foot-elevated split squat with the rear foot elevated on a bench. The front foot stays fully planted, the dumbbells hang at the sides, and the torso remains controlled; this is not a standard forward lunge.',
+  '0314': 'Use an incline bench set to 45 degrees and two separate dumbbells. Lower both weights beside the upper chest before a controlled press; this is not a flat bench or barbell press.',
+  '0308': 'Show a flat bench fly with two separate dumbbells and a fixed slight elbow bend. Lower both arms in a wide arc and return along the same path; this is not a dumbbell press.',
+  '0405': 'Keep the athlete seated against an upright back support. Press both dumbbells vertically from shoulder height without leg drive; this is not a standing or Arnold press.',
+  '0310': 'Raise both dumbbells forward together with a stable torso and nearly straight elbows. Stop at shoulder height, not overhead or out to the sides, then lower under control.',
+  '0406': 'Keep both dumbbells hanging at the sides while the arms remain straight. Elevate both shoulders straight upward, pause, and lower under control; no elbow curl or shoulder rolling.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
