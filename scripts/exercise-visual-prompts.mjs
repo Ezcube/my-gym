@@ -34,6 +34,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0336': 'Keep two dumbbells hanging at the sides and step forward into an alternating lunge. The front foot stays fully planted while the rear knee lowers under control, then push through the front heel to return; this is not a reverse or static split squat.',
   '0431': 'Use a stable knee-height platform and two dumbbells hanging at the sides. The entire lead foot stays on the platform; drive through the lead leg to stand tall, then descend under control with no jump or push-off from the trailing foot.',
   '0417': 'Two dumbbells hang at the sides while the torso stays upright. Raise both heels together to the highest controlled position while the knees remain straight but not locked, pause, and lower slowly; no bouncing or knee bend.',
+  '0003': 'Show a supine bicycle crunch on the floor. Bring the opposite elbow toward the bent knee while the other leg extends and hovers; alternate smoothly without pulling the neck. This is not a stationary exercise bike.',
+  '0687': 'Sit with the torso leaned back, knees bent, and feet lifted off the floor. Rotate the ribcage and shoulders together from side to side while the hands stay centered in front of the chest; the movement comes from the torso, not just the hands.',
+  '0630': 'Start in a rigid high plank with hands under the shoulders. Alternate one knee toward the chest while the other leg stays extended; the hips stay low and the shoulders remain stacked. This is not a standing run or squat thrust.',
+  '0276': 'Use a supine tabletop position with hips and knees at 90 degrees and the lower back pressed into the floor. Lower one opposite arm and leg toward the floor, return to center, then switch sides without arching the lumbar spine.',
+  '0464': 'Begin in a stable high plank. Rotate the whole torso into a controlled side-plank position with the top arm toward the ceiling, then return to both hands and alternate sides. Keep the legs and hips controlled; this is not a forearm plank.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -41,6 +46,7 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '2138': { primary: ['Quads'], secondary: ['Hamstrings', 'Calves'] },
   '2141': { primary: ['Quads', 'Glutes'], secondary: ['Hamstrings', 'Calves'] },
   '2311': { primary: ['Quads', 'Glutes', 'Calves'], secondary: ['Hamstrings'] },
+  '0630': { primary: ['Abs', 'Hip flexors'], secondary: ['Shoulders', 'Triceps', 'Quads'] },
 })
 
 function exerciseFor(id) {
