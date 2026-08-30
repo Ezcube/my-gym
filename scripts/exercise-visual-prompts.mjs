@@ -64,6 +64,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0596': 'Use a seated lever fly machine. The back stays against the pad while both hands hold horizontal handles with a pronated grip, palms down and knuckles up, and a slight fixed elbow bend. Use horizontal handles, not vertical handles or a neutral grip. Bring the handles together in front of the chest, pause while squeezing the chest, then return slowly. This is not a chest press.',
   '0602': 'Use a seated reverse-fly machine. The chest stays against the pad while both hands hold horizontal handles with an overhand grip, palms down and knuckles up, and the arms remain slightly bent. Use horizontal handles, not vertical handles or a neutral grip. Pull the handles outward and backward while squeezing the shoulder blades together, then return slowly. This is not a row or shrug.',
   '1350': 'Use a chest-supported lever row with an overhand shoulder-width grip. Pull the handles toward the body while the elbows travel backward and the shoulder blades draw together. The chest remains on the pad throughout with no torso swing. This is not a cable row.',
+  '0748': 'Use a flat horizontal bench positioned inside a Smith machine. Keep both feet firmly planted and the back supported. Lower the bar along the fixed path to the middle of the chest with the elbows slightly tucked, pause without bouncing, then press up. The bar remains inside the Smith guide rails throughout. This is not a free-weight bench press.',
+  '0757': 'Use a bench set to a 30-45 degree incline inside a Smith machine. Keep the back against the pad and both feet planted. Lower the bar along the fixed guide rails to the upper chest, pause, then press up. The bar remains inside the Smith guide rails. This is not a vertical backrest, and do not lower the bar toward the neck.',
+  '0774': 'Show a standing Smith machine press with the feet shoulder-width apart and the knees slightly bent. The bar begins at shoulder level with an overhand grip and travels overhead only inside the fixed vertical guide rails. Lower it back to the shoulders under control. This is not a free barbell press and not a press behind the neck.',
+  '1359': 'Set the Smith bar so the bar starts at hip height. Use a stable hip hinge with slightly bent knees and a straight back. Pull the bar toward the lower chest while squeezing the shoulder blades, then lower it under control. The bar remains inside the Smith guide rails. This is not an upright row or shrug.',
+  '0770': 'Use a Smith machine. The bar rests on the upper traps. Keep the feet shoulder-width apart with the toes slightly turned out. Rotate the bar to release the Smith hooks while keeping the feet planted; do not step backward. The bar must move only inside the fixed guide rails. Squat with the chest up until the thighs reach parallel or slightly below, then drive through the heels.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -80,6 +85,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0596': { primary: ['Chest'], secondary: ['Shoulders', 'Traps'] },
   '0602': { primary: ['Shoulders'], secondary: ['Traps', 'Upper back'] },
   '1350': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '0748': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '0757': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '0774': { primary: ['Shoulders'], secondary: ['Triceps', 'Upper back'] },
+  '1359': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '0770': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
 })
 
 function exerciseFor(id) {

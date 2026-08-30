@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 85)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 90)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -318,6 +318,34 @@ test('upper-body machine and cable batch muscle prompts match the catalogue targ
     '0596': [/Primary muscles: Chest/i, /Secondary muscles: Shoulders, Traps/i],
     '0602': [/Primary muscles: Shoulders/i, /Secondary muscles: Traps, Upper back/i],
     '1350': [/Primary muscles: Upper back/i, /Secondary muscles: Biceps, Forearms/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('smith machine batch prompts lock the guide rails and critical movement details', () => {
+  const expected = {
+    '0748': [/flat horizontal bench/i, /feet (?:firmly )?planted/i, /lower.*bar.*(?:middle of the )?chest/i, /bar remains inside the Smith guide rails/i, /not a free-weight bench press/i],
+    '0757': [/30-45 degree incline/i, /upper chest/i, /bar remains inside the Smith guide rails/i, /not a vertical backrest/i, /not.*toward the neck/i],
+    '0774': [/standing Smith machine press/i, /feet shoulder-width apart/i, /bar begins at shoulder level/i, /fixed vertical guide rails/i, /not.*behind the neck/i],
+    '1359': [/bar starts at hip height/i, /hip hinge/i, /pull the bar toward the lower chest/i, /bar remains inside the Smith guide rails/i, /not an upright row or shrug/i],
+    '0770': [/bar rests on the upper traps/i, /feet shoulder-width apart/i, /rotate the bar to release the Smith hooks/i, /feet planted/i, /inside the fixed guide rails/i, /not step backward/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('smith machine batch muscle prompts match the catalogue targets', () => {
+  const expected = {
+    '0748': [/Primary muscles: Chest/i, /Secondary muscles: Triceps, Shoulders/i],
+    '0757': [/Primary muscles: Chest/i, /Secondary muscles: Shoulders, Triceps/i],
+    '0774': [/Primary muscles: Shoulders/i, /Secondary muscles: Triceps, Upper back/i],
+    '1359': [/Primary muscles: Upper back/i, /Secondary muscles: Biceps, Forearms/i],
+    '0770': [/Primary muscles: Glutes/i, /Secondary muscles: Quads, Hamstrings, Calves/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')
