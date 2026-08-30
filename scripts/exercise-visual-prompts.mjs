@@ -24,6 +24,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0405': 'Keep the athlete seated against an upright back support. Press both dumbbells vertically from shoulder height without leg drive; this is not a standing or Arnold press.',
   '0310': 'Raise both dumbbells forward together with a stable torso and nearly straight elbows. Stop at shoulder height, not overhead or out to the sides, then lower under control.',
   '0406': 'Keep both dumbbells hanging at the sides while the arms remain straight. Elevate both shoulders straight upward, pause, and lower under control; no elbow curl or shoulder rolling.',
+  '0333': 'Use a stable hip hinge and neutral spine while both upper arms stay beside the torso. Keep the elbows fixed and extend only the forearms backward until the arms are straight; this is not a row or shoulder swing.',
+  '0383': 'From a stable hip hinge and neutral spine, raise both dumbbells out to the sides with a fixed slight elbow bend. Stop with the upper arms near shoulder height; this is not a row or shrug.',
+  '0297': 'Sit with one dumbbell and brace the working elbow against the inner thigh. The upper arm remains stationary while the forearm curls through a controlled full range without torso movement.',
+  '2188': 'Sit upright and use one dumbbell held with both hands overhead. Keep the upper arms close to the ears while only the elbows move to lower the weight behind the head and extend it again.',
+  '0375': 'Lie lengthwise on a flat bench and use one dumbbell held with both hands above the chest. With a slight fixed elbow bend, lower the weight in an arc behind the head and return along the same path; this is not a press.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
