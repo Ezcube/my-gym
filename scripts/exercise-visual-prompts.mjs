@@ -29,6 +29,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0297': 'Sit with one dumbbell and brace the working elbow against the inner thigh. The upper arm remains stationary while the forearm curls through a controlled full range without torso movement.',
   '2188': 'Sit upright and use one dumbbell held with both hands overhead. Keep the upper arms close to the ears while only the elbows move to lower the weight behind the head and extend it again.',
   '0375': 'Lie lengthwise on a flat bench and use one dumbbell held with both hands above the chest. With a slight fixed elbow bend, lower the weight in an arc behind the head and return along the same path; this is not a press.',
+  '0413': 'Two dumbbells hang at the sides. The heels stay planted and the torso remains braced while the hips move down and back until the thighs approach parallel, then stand under control; this is not a goblet or barbell squat.',
+  '1459': 'Use a hip hinge. Two dumbbells travel close to the legs while a soft fixed knee bend and neutral spine are maintained. The hips move backward until a controlled hamstring stretch, then extend; this is not a squat.',
+  '0336': 'Keep two dumbbells hanging at the sides and step forward into an alternating lunge. The front foot stays fully planted while the rear knee lowers under control, then push through the front heel to return; this is not a reverse or static split squat.',
+  '0431': 'Use a stable knee-height platform and two dumbbells hanging at the sides. The entire lead foot stays on the platform; drive through the lead leg to stand tall, then descend under control with no jump or push-off from the trailing foot.',
+  '0417': 'Two dumbbells hang at the sides while the torso stays upright. Raise both heels together to the highest controlled position while the knees remain straight but not locked, pause, and lower slowly; no bouncing or knee bend.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
