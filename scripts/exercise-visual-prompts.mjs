@@ -59,6 +59,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0594': 'Use a seated calf-raise machine with the balls of both feet on the platform and the knees secured under the thigh pads. Let the heels descend below the platform, then raise them as high as possible and lower slowly. The movement comes only from the ankles, with no knee extension or bouncing.',
   '0597': 'Use a seated hip-abduction machine with the pads against the outside of the knees and the back fully supported. Keep both feet on the footrests, press both knees outward through a controlled range, pause, and return slowly. Keep the pelvis level with no torso rocking.',
   '0598': 'Use a seated hip-adduction machine with the pads against the inside of the knees and the back fully supported. Begin with the legs comfortably apart, squeeze both knees inward until the pads nearly meet, then return slowly. Keep the pelvis level and do not lift the feet from the footrests.',
+  '0868': 'Stand facing the cable machine and grasp the cable attachment with an underhand grip, palms up. Keep the elbows close to the sides and the upper arms stationary while only the forearms curl the attachment toward the shoulders, then lower under control. Keep the torso still throughout.',
+  '0194': 'Use a rope attached to a high pulley and stand facing away from the cable stack with the feet shoulder-width apart, not a split stance. Keep the upper arms beside the ears with the elbows pointing forward while the rope lowers behind the head, then extend the elbows fully under control. This is not a cable pushdown.',
+  '0596': 'Use a seated lever fly machine. The back stays against the pad while both hands hold horizontal handles with a pronated grip, palms down and knuckles up, and a slight fixed elbow bend. Use horizontal handles, not vertical handles or a neutral grip. Bring the handles together in front of the chest, pause while squeezing the chest, then return slowly. This is not a chest press.',
+  '0602': 'Use a seated reverse-fly machine. The chest stays against the pad while both hands hold horizontal handles with an overhand grip, palms down and knuckles up, and the arms remain slightly bent. Use horizontal handles, not vertical handles or a neutral grip. Pull the handles outward and backward while squeezing the shoulder blades together, then return slowly. This is not a row or shrug.',
+  '1350': 'Use a chest-supported lever row with an overhand shoulder-width grip. Pull the handles toward the body while the elbows travel backward and the shoulder blades draw together. The chest remains on the pad throughout with no torso swing. This is not a cable row.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -70,6 +75,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0017': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
   '0594': { primary: ['Calves (soleus emphasis)'], secondary: [] },
   '0597': { primary: ['Hip abductors (gluteus medius, gluteus minimus, TFL)'], secondary: ['Hamstrings'] },
+  '0868': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0194': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0596': { primary: ['Chest'], secondary: ['Shoulders', 'Traps'] },
+  '0602': { primary: ['Shoulders'], secondary: ['Traps', 'Upper back'] },
+  '1350': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
 })
 
 function exerciseFor(id) {

@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 80)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 85)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -290,6 +290,34 @@ test('assisted and seated machine batch muscle prompts match the catalogue targe
     '0594': [/Primary muscles: Calves \(soleus emphasis\)/i, /Secondary muscles: none/i],
     '0597': [/Primary muscles: Hip abductors \(gluteus medius, gluteus minimus, TFL\)/i, /Secondary muscles: Hamstrings/i],
     '0598': [/Primary muscles: Adductors/i, /Secondary muscles: Hamstrings, Glutes/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('upper-body machine and cable batch prompts lock the critical movement details', () => {
+  const expected = {
+    '0868': [/cable attachment/i, /underhand.*palms up/i, /elbows close to (?:the|your) sides/i, /upper arms stationary/i],
+    '0194': [/rope attached to a high pulley/i, /stand facing away/i, /feet shoulder-width apart/i, /not a split stance/i, /upper arms beside the ears/i, /not a cable pushdown/i],
+    '0596': [/seated lever fly machine/i, /back stays against the pad/i, /handles with a pronated grip/i, /not vertical handles or a neutral grip/i, /not a chest press/i],
+    '0602': [/reverse-fly machine/i, /chest stays against the pad/i, /handles with an overhand grip/i, /not vertical handles or a neutral grip/i, /not a row or shrug/i],
+    '1350': [/chest-supported lever row/i, /pull the handles toward the body/i, /chest remains on the pad/i, /not a cable row/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('upper-body machine and cable batch muscle prompts match the catalogue targets', () => {
+  const expected = {
+    '0868': [/Primary muscles: Biceps/i, /Secondary muscles: Forearms/i],
+    '0194': [/Primary muscles: Triceps/i, /Secondary muscles: Shoulders/i],
+    '0596': [/Primary muscles: Chest/i, /Secondary muscles: Shoulders, Traps/i],
+    '0602': [/Primary muscles: Shoulders/i, /Secondary muscles: Traps, Upper back/i],
+    '1350': [/Primary muscles: Upper back/i, /Secondary muscles: Biceps, Forearms/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')
