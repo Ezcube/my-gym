@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 75)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 80)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -260,6 +260,36 @@ test('machine and cable batch muscle prompts match the catalogue targets', () =>
     '0599': [/Primary muscles: Hamstrings/i, /Secondary muscles: Calves/i],
     '0178': [/Primary muscles: Shoulders/i, /Secondary muscles: Traps, Triceps/i],
     '0203': [/Primary muscles: Shoulders/i, /Secondary muscles: Traps, Upper back, Biceps/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('assisted and seated machine batch prompts lock the critical movement details', () => {
+  const expected = {
+    '0009': [/kneeling assisted dip machine/i, /neutral grip, palms facing each other/i, /knees stay on the moving assistance pad/i, /slight forward torso lean/i, /not a bench dip or unsupported dip/i],
+    '0017': [/kneeling assisted pull-up machine/i, /slightly wider than shoulder-width overhand grip/i, /chin rises above the handles/i, /knees stay on the moving assistance pad/i, /drive the elbows down/i, /no kipping or unsupported free hang/i],
+    '0594': [/seated calf-raise machine/i, /knees secured under the thigh pads/i, /heels descend below the platform/i, /movement comes only from the ankles/i],
+    '0597': [/seated hip-abduction machine/i, /outside of the knees/i, /press both knees outward/i, /no torso rocking/i],
+    '0598': [/seated hip-adduction machine/i, /inside of the knees/i, /squeeze both knees inward/i, /do not lift the feet/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+  assert.doesNotMatch(promptFor('0009', 'technique'), /palms facing down/i)
+  assert.doesNotMatch(promptFor('0594', 'technique'), /feet are flat on the footplate/i)
+})
+
+test('assisted and seated machine batch muscle prompts match the catalogue targets', () => {
+  const expected = {
+    '0009': [/Primary muscles: Chest/i, /Secondary muscles: Triceps, Shoulders/i],
+    '0017': [/Primary muscles: Lats/i, /Secondary muscles: Biceps, Forearms/i],
+    '0594': [/Primary muscles: Calves \(soleus emphasis\)/i, /Secondary muscles: none/i],
+    '0597': [/Primary muscles: Hip abductors \(gluteus medius, gluteus minimus, TFL\)/i, /Secondary muscles: Hamstrings/i],
+    '0598': [/Primary muscles: Adductors/i, /Secondary muscles: Hamstrings, Glutes/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')

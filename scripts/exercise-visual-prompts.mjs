@@ -54,6 +54,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0599': 'Use a seated leg-curl machine adjusted so the knee joints align with the machine pivot. The thigh pad pins the thighs down and the roller sits behind the lower legs just above the heels. Curl the heel roller down and back by bending only the knees; this is not a lying leg curl.',
   '0178': 'Stand centered between two low cable pulleys with one handle in each hand and the cables under continuous tension. With a slight fixed elbow bend, raise both arms out to the sides only to shoulder height, then lower slowly. Keep the torso still and do not shrug or press overhead.',
   '0203': 'Use a rope attached to a low pulley and a stable hip hinge with a neutral spine. Pull the rope toward the upper chest as the elbows travel wide and the shoulder blades draw together, then return slowly. This is a rear-delt row, not a face pull or biceps curl.',
+  '0009': 'Use a kneeling assisted dip machine. The knees stay on the moving assistance pad while the hands hold the parallel handles with a neutral grip, palms facing each other. Keep a slight forward torso lean, lower until the upper arms approach parallel, then press smoothly without locking the elbows. This is not a bench dip or unsupported dip.',
+  '0017': 'Use a kneeling assisted pull-up machine. The knees stay on the moving assistance pad while the hands take a slightly wider than shoulder-width overhand grip. Begin with controlled shoulder elevation, then drive the elbows down until the chin rises above the handles and lower slowly. Use no kipping or unsupported free hang.',
+  '0594': 'Use a seated calf-raise machine with the balls of both feet on the platform and the knees secured under the thigh pads. Let the heels descend below the platform, then raise them as high as possible and lower slowly. The movement comes only from the ankles, with no knee extension or bouncing.',
+  '0597': 'Use a seated hip-abduction machine with the pads against the outside of the knees and the back fully supported. Keep both feet on the footrests, press both knees outward through a controlled range, pause, and return slowly. Keep the pelvis level with no torso rocking.',
+  '0598': 'Use a seated hip-adduction machine with the pads against the inside of the knees and the back fully supported. Begin with the legs comfortably apart, squeeze both knees inward until the pads nearly meet, then return slowly. Keep the pelvis level and do not lift the feet from the footrests.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -62,6 +67,9 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '2141': { primary: ['Quads', 'Glutes'], secondary: ['Hamstrings', 'Calves'] },
   '2311': { primary: ['Quads', 'Glutes', 'Calves'], secondary: ['Hamstrings'] },
   '0630': { primary: ['Abs', 'Hip flexors'], secondary: ['Shoulders', 'Triceps', 'Quads'] },
+  '0017': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
+  '0594': { primary: ['Calves (soleus emphasis)'], secondary: [] },
+  '0597': { primary: ['Hip abductors (gluteus medius, gluteus minimus, TFL)'], secondary: ['Hamstrings'] },
 })
 
 function exerciseFor(id) {

@@ -16,6 +16,8 @@ describe('exercise instruction corrections', () => {
     ['0979', 'напрягите мышцы кора ​​и сохраняйте устойчивую позицию.', 'Напрягите мышцы кора и сохраняйте устойчивое положение.'],
     ['3666', 'Постепенно уменьшайте наклон и скорость беговой дорожки, чтобы она остыла перед остановкой.', 'Постепенно уменьшайте наклон и скорость дорожки, чтобы спокойно завершить тренировку и выполнить заминку.'],
     ['2138', 'Задействуйте основные мышцы, чтобы поддерживать устойчивость и правильную осанку.', 'Задействуйте мышцы кора, чтобы поддерживать устойчивость и правильную осанку.'],
+    ['0009', 'Grasp the handles with your palms facing down and your arms fully extended.', 'Grasp the parallel handles with a neutral grip, palms facing each other, and begin with your elbows nearly extended.'],
+    ['0594', 'Adjust the seat height so that your knees are slightly bent and your feet are flat on the footplate.', 'Adjust the machine so your knees are bent about 90 degrees, the balls of your feet rest on the platform, and your heels remain free to move.'],
   ])('corrects %s instruction copy', (id, source, expected) => {
     expect(correctExerciseInstructions(id, [source])).toEqual([expected])
   })

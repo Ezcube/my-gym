@@ -18,6 +18,12 @@ const EXACT_CORRECTIONS = Object.freeze({
   '2138': Object.freeze({
     'Задействуйте основные мышцы, чтобы поддерживать устойчивость и правильную осанку.': 'Задействуйте мышцы кора, чтобы поддерживать устойчивость и правильную осанку.',
   }),
+  '0009': Object.freeze({
+    'Grasp the handles with your palms facing down and your arms fully extended.': 'Grasp the parallel handles with a neutral grip, palms facing each other, and begin with your elbows nearly extended.',
+  }),
+  '0594': Object.freeze({
+    'Adjust the seat height so that your knees are slightly bent and your feet are flat on the footplate.': 'Adjust the machine so your knees are bent about 90 degrees, the balls of your feet rest on the platform, and your heels remain free to move.',
+  }),
 })
 
 export function correctExerciseInstructions(exerciseId, steps) {
