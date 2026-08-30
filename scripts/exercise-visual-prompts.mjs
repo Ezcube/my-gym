@@ -49,6 +49,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0381': 'Hold one dumbbell at each side and step backward into an alternating reverse lunge. The front foot stays fully planted while the rear knee lowers under control; push through the front heel to return. This is not a forward lunge.',
   '0407': 'Stand upright holding one dumbbell at one side. Bend only toward the weighted side so the dumbbell slides down the outside of the thigh, then use the trunk to return to neutral. Keep the shoulders square with no torso rotation or hip shift.',
   '0409': 'Place the forefoot of one working leg on the edge of a stable step while the other leg remains off the platform. Hold one dumbbell while the other hand holds a fixed support. Lower the working heel below the step, rise fully onto the toes with a straight knee, and lower slowly; this is not a bilateral calf raise.',
+  '0577': 'Use a seated lever chest-press machine. The handles travel forward from chest height and return under control while the back and shoulder blades stay against the pad. Keep the feet planted and wrists neutral; this is not a free-weight press.',
+  '0603': 'Use a seated lever shoulder-press machine with the back fully supported. The handles begin at shoulder level; press overhead without locking the elbows, then lower evenly. Keep the feet planted with no leg drive or lower-back arch.',
+  '0599': 'Use a seated leg-curl machine adjusted so the knee joints align with the machine pivot. The thigh pad pins the thighs down and the roller sits behind the lower legs just above the heels. Curl the heel roller down and back by bending only the knees; this is not a lying leg curl.',
+  '0178': 'Stand centered between two low cable pulleys with one handle in each hand and the cables under continuous tension. With a slight fixed elbow bend, raise both arms out to the sides only to shoulder height, then lower slowly. Keep the torso still and do not shrug or press overhead.',
+  '0203': 'Use a rope attached to a low pulley and a stable hip hinge with a neutral spine. Pull the rope toward the upper chest as the elbows travel wide and the shoulder blades draw together, then return slowly. This is a rear-delt row, not a face pull or biceps curl.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({

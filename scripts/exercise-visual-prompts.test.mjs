@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 70)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 75)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -232,6 +232,34 @@ test('dumbbell accessory batch muscle prompts match the catalogue targets', () =
     '0381': [/Primary muscles: Glutes/i, /Secondary muscles: Quads, Hamstrings, Calves/i],
     '0407': [/Primary muscles: Abs/i, /Secondary muscles: Obliques/i],
     '0409': [/Primary muscles: Calves/i, /Secondary muscles: none/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('machine and cable batch prompts lock the critical movement details', () => {
+  const expected = {
+    '0577': [/seated lever chest-press machine/i, /back and shoulder blades stay against the pad/i, /handles travel forward from chest height/i, /not a free-weight press/i],
+    '0603': [/seated lever shoulder-press machine/i, /handles begin at shoulder level/i, /press overhead without locking the elbows/i, /no leg drive/i],
+    '0599': [/knee joints align with the machine pivot/i, /thigh pad pins the thighs/i, /curl the heel roller down and back/i, /not a lying leg curl/i],
+    '0178': [/between two low cable pulleys/i, /one handle in each hand/i, /raise.*out to the sides.*shoulder height/i, /do not shrug/i],
+    '0203': [/rope attached to a low pulley/i, /stable hip hinge/i, /elbows travel wide/i, /not a face pull or biceps curl/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('machine and cable batch muscle prompts match the catalogue targets', () => {
+  const expected = {
+    '0577': [/Primary muscles: Chest/i, /Secondary muscles: Triceps, Shoulders/i],
+    '0603': [/Primary muscles: Shoulders/i, /Secondary muscles: Triceps, Chest/i],
+    '0599': [/Primary muscles: Hamstrings/i, /Secondary muscles: Calves/i],
+    '0178': [/Primary muscles: Shoulders/i, /Secondary muscles: Traps, Triceps/i],
+    '0203': [/Primary muscles: Shoulders/i, /Secondary muscles: Traps, Upper back, Biceps/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')
