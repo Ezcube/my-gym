@@ -44,6 +44,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0351': 'Lie on a flat bench with one dumbbell in each hand. The upper arms remain vertical and stationary while only the elbows move to lower both dumbbells toward the forehead and extend them again; this is not a pullover or press.',
   '0315': 'Sit against an incline bench set to 45 degrees. Both arms hang slightly behind the torso with palms facing forward. The upper arms remain stationary while both forearms curl the dumbbells toward the shoulders; this is not a shoulder press.',
   '0437': 'Stand upright; the two dumbbells begin in front of the thighs. Lead upward with the elbows; the elbows stay above the hands as the weights rise close to the body toward the upper chest, then lower slowly. This is not a shrug or biceps curl.',
+  '0372': 'Sit at a preacher bench with the backs of both upper arms fully supported on the pad. Begin with the palms face up and elbows nearly extended; curl only at the elbows while the upper arms stay planted. This is not a standing curl.',
+  '0439': 'Stand tall and curl both dumbbells with the palms rotating to face forward. At the top, rotate the forearms until the palms face away from the athlete, then lower under control with a pronated grip before returning to neutral. This is not an ordinary curl.',
+  '0381': 'Hold one dumbbell at each side and step backward into an alternating reverse lunge. The front foot stays fully planted while the rear knee lowers under control; push through the front heel to return. This is not a forward lunge.',
+  '0407': 'Stand upright holding one dumbbell at one side. Bend only toward the weighted side so the dumbbell slides down the outside of the thigh, then use the trunk to return to neutral. Keep the shoulders square with no torso rotation or hip shift.',
+  '0409': 'Place the forefoot of one working leg on the edge of a stable step while the other leg remains off the platform. Hold one dumbbell while the other hand holds a fixed support. Lower the working heel below the step, rise fully onto the toes with a straight knee, and lower slowly; this is not a bilateral calf raise.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
