@@ -89,6 +89,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1368': 'Show seated ankle circles on the floor with both legs extended. Lift one foot clear of the floor and make slow full circles from the ankle in one direction, reverse direction, then switch legs. Keep the knee still and do not move the hip or whole leg.',
   '1369': 'Show a bilateral standing calf raise with one resistance band running under both feet. Hold both band ends for light stability, keep the feet shoulder-width and the knees straight but not locked, raise both heels together, pause, and lower slowly without band slipping or bouncing.',
   '1370': 'Show a barbell floor calf raise. Place the balls of both feet on the edge of a barbell lying securely on the floor with the heels hanging off, use a stable support if needed, raise both heels together, pause, and lower below the bar under control without rolling the ankles.',
+  '1371': 'Show a seated barbell calf raise on a flat bench. Sit upright with the barbell resting securely across the thighs, place the balls of both feet on a low raised block, lower the heels below the block for a stretch, then raise them together and pause. Keep the knees and torso still; do not bounce or roll the ankles.',
+  '1372': 'Show a standing barbell calf raise in a squat rack. Rest the barbell across the upper back, keep the feet shoulder-width and toes forward, raise both heels together onto the balls of the feet, pause at the top, and lower slowly with the knees straight but not locked. Keep the torso vertical and do not bounce.',
+  '1374': 'Show a low-box jump followed by single-leg stabilization. Start facing a low plyometric box, jump up, land softly with one foot on the box while the other foot stays clear of the edge, hold the landing steady for a moment, then step down under control and switch legs. Keep the knee aligned over the foot; no uncontrolled drop or twist.',
+  '1375': 'Show a standing cable calf raise at a cable machine. Stand on a small stable platform with the balls of both feet supported and the heels free, hold the machine for balance while the cable provides resistance, raise both heels together, pause, and lower below the platform slowly. Keep the knees straight but not locked and avoid bouncing.',
+  '1376': 'Show a single-leg cable calf raise facing a cable machine. Hold the machine for support, attach a low cable ankle cuff to the working leg, lift the other foot clear of the floor, then raise and lower the working heel slowly through a full range. Switch legs after the set; keep the pelvis level and do not hop or twist.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -130,6 +135,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1368': { primary: ['Calves'], secondary: [] },
   '1369': { primary: ['Calves'], secondary: [] },
   '1370': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '1371': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '1372': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1374': { primary: ['Calves'], secondary: ['Quads', 'Hamstrings', 'Glutes'] },
+  '1375': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1376': { primary: ['Calves'], secondary: [] },
 })
 
 function exerciseFor(id) {

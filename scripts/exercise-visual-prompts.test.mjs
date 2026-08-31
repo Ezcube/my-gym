@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 110)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 115)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -458,6 +458,34 @@ test('band, machine, mobility, and barbell muscle prompts match the calf hierarc
     '1368': [/Primary muscles: Calves/i, /Secondary muscles: none/i],
     '1369': [/Primary muscles: Calves/i, /Secondary muscles: none/i],
     '1370': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('seated, standing, cable, and plyometric calf prompts preserve equipment and control details', () => {
+  const expected = {
+    '1371': [/seated barbell calf raise/i, /barbell resting securely across the thighs/i, /raised block/i, /lower the heels below/i],
+    '1372': [/standing barbell calf raise/i, /squat rack/i, /barbell across the upper back/i, /knees straight/i],
+    '1374': [/low-box jump/i, /single-leg stabilization/i, /land softly/i, /switch legs/i],
+    '1375': [/standing cable calf raise/i, /cable machine/i, /stable platform/i, /heels free/i],
+    '1376': [/single-leg cable calf raise/i, /low cable ankle cuff/i, /lift the other foot/i, /switch legs/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('seated, standing, cable, and plyometric calf prompts match the catalogue hierarchy', () => {
+  const expected = {
+    '1371': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings/i],
+    '1372': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings, Glutes/i],
+    '1374': [/Primary muscles: Calves/i, /Secondary muscles: Quads, Hamstrings, Glutes/i],
+    '1375': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings, Glutes/i],
+    '1376': [/Primary muscles: Calves/i, /Secondary muscles: none/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')
