@@ -204,6 +204,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '3117': 'Use a high fixed anchor and sit facing it on a bench. Take a close underhand grip with palms facing the athlete, keep the back straight, pull the band to the upper chest with elbows down, pause, and release slowly. This is the seated close-grip variant.',
   '3116': 'Use a high fixed anchor and stand facing it. Take an underhand grip slightly wider than shoulder width, keep the arms extended and torso braced, pull the band to the chest leading with the elbows, then release slowly. This is the standing wider-grip variant.',
   '0977': 'Stand on the middle of the band and hold both ends with palms down in front of the thighs. Raise both nearly straight arms forward together only to shoulder height, pause, and lower under control without shrugging.',
+  '0978': 'Stand with feet shoulder-width apart and hold the band in front of the thighs with palms facing down. Raise both straight arms forward together until they are parallel to the ground, pause, then lower slowly. This is a front raise, not a lateral raise.',
+  '0981': 'Lie fully supine with legs straight together and arms extended overhead holding the band. Lift the straight legs and upper body simultaneously into a controlled V while reaching toward the feet, then lower both together without momentum.',
+  '0983': 'Perform a one-arm pulldown from a kneeling stance facing the high anchor. Keep the working arm extended overhead with a slight elbow bend, then pull the elbow toward the same-side ribcage while the hips and spine stay stable; release slowly and switch sides.',
+  '0985': 'Anchor the band at waist height behind the kneeling athlete. Hold it with both hands near the chest, keep the elbows bent and close, rotate the torso toward one side bringing the hands toward the opposite hip, return to center, and alternate sides.',
+  '0984': 'Lie on your back with the band looped around both feet. Bend the knees toward the chest while keeping the feet together, slowly rotate the knees outward, pause, and return with the pelvis stable.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -360,6 +365,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '3117': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
   '3116': { primary: ['Upper back'], secondary: ['Biceps', 'Shoulders'] },
   '0977': { primary: ['Shoulders'], secondary: ['Traps', 'Upper back'] },
+  '0978': { primary: ['Shoulders'], secondary: ['Traps', 'Upper back'] },
+  '0981': { primary: ['Abs'], secondary: ['Hip flexors'] },
+  '0983': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '0985': { primary: ['Abs'], secondary: ['Obliques'] },
+  '0984': { primary: ['Hip abductors (gluteus medius, gluteus minimus, TFL)'], secondary: ['Glutes'] },
 })
 
 function exerciseFor(id) {
