@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 190)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 195)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -854,6 +854,31 @@ test('sit-up, assisted hanging, and glute stretch prompts match the catalogue hi
     '1710': [/Primary muscles: Glutes/i, /Secondary muscles: Hamstrings/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('assisted floor, twist, pull-up, and hamstring prompts lock movement details', () => {
+  const technique = {
+    '0012': [/lateral throw-down/i, /hands under the glutes/i, /alternate sides/i],
+    '0013': [/throw-down/i, /near perpendicular/i, /without touching/i],
+    '0014': [/medicine-ball Russian twist/i, /knees bent/i, /feet flat/i, /rotate the torso/i],
+    '0015': [/parallel close-grip pull-up/i, /narrow neutral-grip parallel handles/i, /assistance pad/i, /chin over the bars/i],
+    '0016': [/assisted prone hamstring lift/i, /ankles secured/i, /knees straight/i, /lower them under control/i],
+  }
+  for (const [id, patterns] of Object.entries(technique)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+  const muscles = {
+    '0012': [/Primary muscles: Abs, Hip flexors/i, /Secondary muscles: Obliques/i],
+    '0013': [/Primary muscles: Abs, Hip flexors/i, /Secondary muscles: Obliques/i],
+    '0014': [/Primary muscles: Obliques/i, /Secondary muscles: Abs/i],
+    '0015': [/Primary muscles: Lats/i, /Secondary muscles: Biceps, Forearms/i],
+    '0016': [/Primary muscles: Hamstrings/i, /Secondary muscles: Glutes/i],
+  }
+  for (const [id, patterns] of Object.entries(muscles)) {
     const prompt = promptFor(id, 'muscles')
     for (const pattern of patterns) assert.match(prompt, pattern)
   }

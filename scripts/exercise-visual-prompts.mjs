@@ -169,6 +169,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0010': 'Show an assisted hanging knee raise with throw-down on a pull-up station and light band. Raise the knees to the chest, then actively throw the legs down straight before regaining control.',
   '1709': 'Show a lying glute stretch. Lie on the back, cross one ankle over the opposite thigh, gently draw the supporting thigh toward the chest, then switch sides.',
   '1710': 'Show a lying gluteus and piriformis stretch. Lie on the back, cross one ankle over the opposite thigh, gently draw the supporting thigh toward the chest, then switch sides.',
+  '0012': 'Show an assisted lying leg raise with lateral throw-down. Lie flat with legs together and straight, hands under the glutes, lift both legs, lower them a few inches above the floor toward one side, return to center, and alternate sides without arching the back.',
+  '0013': 'Show an assisted lying leg raise with throw-down. Lie flat with legs together and straight, hands under the glutes, raise the legs to near perpendicular, actively throw them down toward the floor without touching, then regain the raised position with control.',
+  '0014': 'Show an assisted medicine-ball Russian twist. Sit with knees bent and feet flat, hold the medicine ball in front, lean back with a straight spine, rotate the torso to the right and left, and alternate while keeping the feet grounded.',
+  '0015': 'Show an assisted parallel close-grip pull-up on a leverage machine. Use the narrow neutral-grip parallel handles with palms facing each other, stay supported by the assistance pad, pull the chin over the bars with elbows close, then lower to straight arms under control.',
+  '0016': 'Show an assisted prone hamstring lift. Lie face down with legs extended and ankles secured by a resistance band or partner, keep the knees straight, lift the legs using the hamstrings, pause briefly, then lower them under control.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -290,6 +295,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0010': { primary: ['Abs'], secondary: ['Hip flexors', 'Shoulders'] },
   '1709': { primary: ['Glutes'], secondary: ['Hamstrings'] },
   '1710': { primary: ['Glutes'], secondary: ['Hamstrings'] },
+  '0012': { primary: ['Abs', 'Hip flexors'], secondary: ['Obliques'] },
+  '0013': { primary: ['Abs', 'Hip flexors'], secondary: ['Obliques'] },
+  '0014': { primary: ['Obliques'], secondary: ['Abs'] },
+  '0015': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
+  '0016': { primary: ['Hamstrings'], secondary: ['Glutes'] },
 })
 
 function exerciseFor(id) {
