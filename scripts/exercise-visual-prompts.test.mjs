@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 247)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 252)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1028,6 +1028,19 @@ test('band twisting press, underhand pulldown, V-up, Pallof press, wrist curl, Y
   assert.match(promptFor('1016', 'muscles'), /Primary muscles: Forearms/i)
   assert.match(promptFor('1017', 'muscles'), /Primary muscles: Shoulders/i)
   assert.match(promptFor('1018', 'muscles'), /Primary muscles: Traps/i)
+})
+
+test('rear-delt row, stiff deadlift, burpee, chest stretch, and dumbbell burpee prompts stay distinct', () => {
+  assert.match(promptFor('1022', 'technique'), /rear-delt row/i)
+  assert.match(promptFor('1023', 'technique'), /band around your upper legs/i)
+  assert.match(promptFor('1160', 'technique'), /straight push-up plank/i)
+  assert.match(promptFor('1167', 'technique'), /crossing them in front/i)
+  assert.match(promptFor('1201', 'technique'), /dumbbells overhead/i)
+  assert.match(promptFor('1022', 'muscles'), /Primary muscles: Shoulders/i)
+  assert.match(promptFor('1023', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('1160', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('1167', 'muscles'), /Primary muscles: Chest/i)
+  assert.match(promptFor('1201', 'muscles'), /Primary muscles: Quads/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

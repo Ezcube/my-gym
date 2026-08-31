@@ -226,6 +226,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1016': 'Sit on a bench with both forearms on the thighs and palms up holding the band. Keep the forearms still and curl only the wrists upward, pause, then lower slowly.',
   '1017': 'Stand on the band and hold both ends in front of the thighs with palms facing inward. Raise the nearly straight arms up and out, forming a Y shape, squeeze the shoulder blades, then lower under control.',
   '1018': 'Stand with the band under both feet and hold the ends at the thighs. Keep the arms straight and relaxed, shrug both shoulders upward without bending the elbows, pause, then lower slowly.',
+  '1022': 'Perform a standing band rear-delt row. Stand on the band with a palms-in grip, hinge forward with a flat back, pull both handles toward the chest while squeezing the shoulder blades, then release slowly.',
+  '1023': 'Stand with the band around the upper legs and hold it in front of the thighs. Keep the back straight and knees softly bent, hinge at the hips until the hamstrings stretch, then drive the hips forward to stand.',
+  '1160': 'Perform a strict burpee: squat and place the hands down, jump the feet back to a straight push-up plank, complete the push-up, jump the feet forward, then jump tall with the arms overhead and land softly.',
+  '1167': 'Perform a dynamic chest stretch standing tall with arms extended out to the sides. Sweep both arms forward until they cross in front of the body, feel the chest stretch, then open the arms back out under control.',
+  '1201': 'Perform a dumbbell burpee with one dumbbell in each hand. Place the dumbbells down for the squat and push-up, jump the feet forward, stand explosively while bringing the dumbbells to the shoulders, press them overhead, and lower safely.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -404,6 +409,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1016': { primary: ['Forearms'], secondary: [] },
   '1017': { primary: ['Shoulders'], secondary: ['Traps', 'Upper back'] },
   '1018': { primary: ['Traps'], secondary: ['Shoulders', 'Forearms'] },
+  '1022': { primary: ['Shoulders'], secondary: ['Traps', 'Upper back', 'Biceps'] },
+  '1023': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
+  '1160': { primary: ['Quads', 'Chest', 'Shoulders'], secondary: ['Hamstrings', 'Calves'] },
+  '1167': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1201': { primary: ['Quads', 'Chest', 'Shoulders'], secondary: ['Hamstrings', 'Calves', 'Abs'] },
 })
 
 function exerciseFor(id) {
