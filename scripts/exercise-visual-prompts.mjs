@@ -159,6 +159,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1512': 'Show an all-fours quad stretch. Start on hands and knees, extend one leg back, bend that knee and reach the heel toward the glutes while keeping the hips controlled, then switch sides.',
   '0006': 'Show alternating heel touchers. Lie supine with knees bent and shoulders slightly lifted; reach one hand toward the same-side heel, return to center, then reach to the opposite heel without pulling the neck.',
   '0007': 'Show an alternate lateral pulldown on a cable machine. Sit upright and pull one single handle toward the same-side upper chest while the other arm stays extended, then switch sides without torso swing.',
+  '3293': 'Show an archer pull-up on a straight bar. Use a wide overhand grip, pull the chest toward one hand while the opposite arm stays straight, then lower and alternate sides without swinging.',
+  '3294': 'Show an archer push-up. Start with hands wider than the shoulders, bend one elbow to lower the chest while the opposite arm stays straight to the side, then press up and alternate.',
+  '2355': 'Show a hanging bent-knee leg raise. Hang with straight arms and knees bent at 90 degrees, raise the knees toward the chest without swinging, then lower under control.',
+  '2333': 'Show a hanging straight-leg raise. Hang with straight arms and legs together, lift the straight legs until parallel with the floor, pause, then lower without swinging.',
+  '3214': 'Show an arms-apart circular toe touch. From a wide arm position, hinge forward and reach one hand toward the toes while the opposite straight leg lifts behind, then return and switch sides.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -270,6 +275,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1512': { primary: ['Hamstrings'], secondary: ['Glutes', 'Calves'] },
   '0006': { primary: ['Obliques'], secondary: [] },
   '0007': { primary: ['Lats'], secondary: ['Biceps'] },
+  '3293': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
+  '3294': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '2355': { primary: ['Abs'], secondary: ['Hip flexors', 'Shoulders'] },
+  '2333': { primary: ['Abs'], secondary: ['Hip flexors', 'Shoulders'] },
+  '3214': { primary: ['Glutes'], secondary: ['Hamstrings', 'Quadriceps', 'Calves'] },
 })
 
 function exerciseFor(id) {
