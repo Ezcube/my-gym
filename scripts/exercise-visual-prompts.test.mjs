@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 230)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 235)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -987,6 +987,18 @@ test('band front raise, jack-knife, kneeling pulldown, twisting crunch, and hip 
   assert.match(promptFor('0981', 'muscles'), /Primary muscles: Abs/i)
   assert.match(promptFor('0983', 'muscles'), /Primary muscles: Upper back/i)
   assert.match(promptFor('0985', 'muscles'), /Primary muscles: Abs/i)
+})
+
+test('band split squat, leg raise, squat row, squat, and standing crunch prompts stay distinct', () => {
+  assert.match(promptFor('1001', 'technique'), /single-leg split squat/i)
+  assert.match(promptFor('1002', 'technique'), /band around the arches of both feet/i)
+  assert.match(promptFor('1003', 'technique'), /squat row/i)
+  assert.match(promptFor('1004', 'technique'), /band just above the knees/i)
+  assert.match(promptFor('1005', 'technique'), /standing crunch/i)
+  assert.match(promptFor('1001', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('1002', 'muscles'), /Primary muscles: Abs/i)
+  assert.match(promptFor('1003', 'muscles'), /Primary muscles: Quads, Upper back/i)
+  assert.match(promptFor('1005', 'muscles'), /Primary muscles: Abs/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

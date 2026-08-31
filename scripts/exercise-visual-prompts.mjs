@@ -209,6 +209,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0983': 'Perform a one-arm pulldown from a kneeling stance facing the high anchor. Keep the working arm extended overhead with a slight elbow bend, then pull the elbow toward the same-side ribcage while the hips and spine stay stable; release slowly and switch sides.',
   '0985': 'Anchor the band at waist height behind the kneeling athlete. Hold it with both hands near the chest, keep the elbows bent and close, rotate the torso toward one side bringing the hands toward the opposite hip, return to center, and alternate sides.',
   '0984': 'Lie on your back with the band looped around both feet. Bend the knees toward the chest while keeping the feet together, slowly rotate the knees outward, pause, and return with the pelvis stable.',
+  '1001': 'Perform a single-leg split squat with the resistance band looped around both ankles. Use a long staggered stance, lower until the front thigh is near parallel while the rear knee hovers just above the floor, keep the front heel planted, then drive back up and switch sides.',
+  '1002': 'Lie supine with legs straight together, loop the band around the arches of both feet, and hold its ends. Raise both straight legs together toward perpendicular while keeping the lower back controlled, pause, then lower slowly.',
+  '1003': 'Perform a squat row with the band anchored at waist height in front. Face the anchor with a neutral grip and arms extended, lower into a stable squat, pull the handles toward the lower ribs while squeezing the shoulder blades, then return to standing with control.',
+  '1004': 'Place a loop band just above the knees. Stand with feet shoulder-width apart, sit the hips back into a squat while keeping the chest up and knees tracking over the toes, pause at the bottom, then press through the heels to stand.',
+  '1005': 'Perform a standing crunch with the band anchored at waist height behind you. Face away from the anchor, hold the band at the chest with elbows bent, curl the chest toward the knees without moving the hips, pause, then return upright slowly.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -370,6 +375,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0983': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
   '0985': { primary: ['Abs'], secondary: ['Obliques'] },
   '0984': { primary: ['Hip abductors (gluteus medius, gluteus minimus, TFL)'], secondary: ['Glutes'] },
+  '1001': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '1002': { primary: ['Abs'], secondary: ['Hip flexors'] },
+  '1003': { primary: ['Quads', 'Upper back'], secondary: ['Glutes', 'Biceps', 'Shoulders'] },
+  '1004': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings'] },
+  '1005': { primary: ['Abs'], secondary: ['Obliques'] },
 })
 
 function exerciseFor(id) {
