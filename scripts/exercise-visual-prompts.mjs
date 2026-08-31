@@ -144,6 +144,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1420': 'Show a kneeling barbell jump squat. Begin kneeling with the bar across the upper back, brace the core and glutes, explosively rise into a jump by extending hips, knees, and ankles, land softly with bent knees, and repeat. Keep the bar stable and the landing controlled.',
   '1425': 'Show a 45-degree sled one-leg press. Sit with the back supported, place one foot on the sled footplate, press the sled away by extending that leg, lower by bending the knee under control, then switch legs. Keep the pelvis and back against the pad and do not lock the knee.',
   '1433': 'Show a Smith-machine front squat with a clean grip. Set the bar at shoulder height, face it, use a slightly wider overhand grip, position the bar across the front shoulders and collarbone, keep the chest up and core braced, squat to at least parallel, then drive through the heels to stand.',
+  '1434': 'Show a Smith-machine low-bar squat. Place the bar low across the upper back, keep the feet shoulder-width and the chest braced, sit the hips back while bending the knees until the thighs approach parallel, then drive through the heels to stand. Keep the bar moving only along the fixed rails.',
+  '1435': 'Show a barbell low-bar squat. Set the bar low across the upper back, brace the core, hinge the hips back with knees tracking over the toes, descend to at least parallel, then drive through the heels to stand. Keep the bar balanced over the mid-foot and the spine neutral.',
+  '1436': 'Show a barbell high-bar squat. Rest the bar high on the upper trapezius, keep the torso upright and feet shoulder-width, descend with knees tracking over toes until the thighs approach parallel, then stand by driving through the whole foot. Keep the spine neutral.',
+  '1438': 'Show a seated two-arm kettlebell military press. Sit upright with back supported and one kettlebell at each shoulder, press both kettlebells vertically overhead without leaning or using the legs, then lower them under control to shoulder height. Keep wrists neutral and elbows under the bells.',
+  '1439': 'Show a gripless shrug on a leverage machine. Stand upright with the shoulder pads resting on the upper shoulders and arms relaxed, elevate both shoulders straight toward the ears without bending the elbows, pause briefly, then lower under control. Do not roll the shoulders or bend the knees.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -240,6 +245,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1420': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves'] },
   '1425': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves'] },
   '1433': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves', 'Core'] },
+  '1434': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves'] },
+  '1435': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves'] },
+  '1436': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves', 'Core'] },
+  '1438': { primary: ['Shoulders'], secondary: ['Triceps', 'Upper back'] },
+  '1439': { primary: ['Traps'], secondary: ['Shoulders', 'Forearms'] },
 })
 
 function exerciseFor(id) {

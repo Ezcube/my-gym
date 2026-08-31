@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 165)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 170)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -712,6 +712,34 @@ test('standing, assisted, rotary, and sled calf prompts match the catalogue hier
     '1420': [/Primary muscles: Glutes/i, /Secondary muscles: Quadriceps, Hamstrings, Calves/i],
     '1425': [/Primary muscles: Glutes/i, /Secondary muscles: Quadriceps, Hamstrings, Calves/i],
     '1433': [/Primary muscles: Glutes/i, /Secondary muscles: Quadriceps, Hamstrings, Calves, Core/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('squat and shoulder-machine batch prompts lock the movement details', () => {
+  const expected = {
+    '1434': [/Smith-machine low-bar squat/i, /bar low across the upper back/i, /fixed rails/i],
+    '1435': [/barbell low-bar squat/i, /bar low across the upper back/i, /bar balanced over the mid-foot/i],
+    '1436': [/barbell high-bar squat/i, /bar high on the upper trapezius/i, /knees tracking over toes/i],
+    '1438': [/seated two-arm kettlebell military press/i, /one kettlebell at each shoulder/i, /without leaning or using the legs/i],
+    '1439': [/gripless shrug/i, /shoulder pads/i, /without bending the elbows/i, /do not roll the shoulders/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('squat and shoulder-machine batch muscle prompts match the catalogue hierarchy', () => {
+  const expected = {
+    '1434': [/Primary muscles: Glutes/i, /Secondary muscles: Quadriceps, Hamstrings, Calves/i],
+    '1435': [/Primary muscles: Glutes/i, /Secondary muscles: Quadriceps, Hamstrings, Calves/i],
+    '1436': [/Primary muscles: Glutes/i, /Secondary muscles: Quadriceps, Hamstrings, Calves, Core/i],
+    '1438': [/Primary muscles: Shoulders/i, /Secondary muscles: Triceps, Upper back/i],
+    '1439': [/Primary muscles: Traps/i, /Secondary muscles: Shoulders, Forearms/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')
