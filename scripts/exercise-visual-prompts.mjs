@@ -124,6 +124,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1393': 'Show a Smith-machine one-leg floor calf raise. Face away from the machine with the bar resting across the lower leg just above the ankle, place the ball of the working foot on a raised block, hold the bar for stability, raise the heel through ankle extension, pause, and lower slowly. Keep the other foot clear and switch legs.',
   '1395': 'Show a seated single-leg calf raise in a Smith machine. Sit with the back against the pad, place one ball of the foot on the footrest and keep the other leg off, raise the working heel high, pause, and lower slowly. Keep the torso still and switch legs between sets.',
   '2289': 'Show a seated lever calf press. Align the shoulders under the lever pad, place both toes and balls of the feet on the pad with heels hanging off, hold the side supports, press the pad down by extending the ankles, pause, then let the heels rise back under control. Keep knees steady and do not bounce.',
+  '1398': 'Show a standing calf stretch facing a wall. Place both hands at shoulder height, step one foot back with the rear heel flat and knee straight, bend the front knee slightly, and lean forward until the rear calf stretches. Hold, then switch sides without bouncing or lifting the heel.',
+  '1407': 'Show a calf push stretch with hands against a wall. Stand hip-width from the wall, place both hands at shoulder height, step one foot back with the rear heel grounded and leg straight, bend the front knee and lean forward, hold, then switch legs. Keep the back heel down and do not bounce.',
+  '1708': 'Show an assisted lying calf stretch. Lie on your back with both legs extended, bend one knee with that foot flat, use your hands or a towel to gently pull the toes of the straight leg toward the body, hold, release, and switch legs. Keep the knee relaxed and do not yank or bounce.',
+  '2315': 'Show a seated rotary lever calf raise. Adjust the leverage machine so the knees are slightly bent, place both toes on the footplate with heels hanging off, hold the handles, raise both heels high through the balls of the feet, pause, and lower slowly. Keep knees and torso stable.',
+  '2334': 'Show a seated sled-machine calf press. Sit with the back against the pad, place the toes and balls of both feet on the platform edge with heels hanging off, keep knees slightly bent, press the platform away by extending the ankles, pause, and lower under control.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -200,6 +205,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1393': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
   '1395': { primary: ['Calves'], secondary: ['Hamstrings'] },
   '2289': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '1398': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1407': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '1708': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '2315': { primary: ['Calves'], secondary: ['Soleus', 'Ankle stabilizers'] },
+  '2334': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
 })
 
 function exerciseFor(id) {
