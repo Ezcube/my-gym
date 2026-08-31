@@ -219,6 +219,13 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1009': 'Perform a band stiff-leg deadlift with the band looped around both ankles and held in both hands. Keep a neutral back and only a slight knee bend, hinge the hips back until the band lowers toward the floor, then stand by squeezing the glutes and hamstrings.',
   '1010': 'Perform a band straight-leg deadlift with the band under both feet and held in both hands. Keep the legs straight with a slight knee unlock, hinge forward with a lifted chest and neutral back, lower the band, then return by squeezing the glutes and hamstrings.',
   '1011': 'Perform a seated band twist with legs extended and the back straight. The band is wrapped around the waist and both ends are held in the hands; rotate the torso to one side while the feet stay grounded, return to center, and alternate sides.',
+  '1012': 'Stand on the band with handles at shoulder height and palms forward. Press both handles overhead, twist the torso to one side over stable hips, then return to the start and alternate sides.',
+  '1013': 'Use a high anchor and stand facing it with an underhand grip slightly wider than shoulder width. Start with arms overhead and softly unlocked elbows, pull the band to the upper chest while driving the elbows down, then release slowly.',
+  '1014': 'Lie supine with legs straight together and arms extended overhead holding the band. Lift the legs and upper body simultaneously toward the toes into a controlled V, pause, then lower without momentum.',
+  '1015': 'Stand perpendicular to the anchor with the band taut at chest height. Press both hands straight forward at chest height while resisting rotation, keep the hips and shoulders square, pause, then return and switch sides.',
+  '1016': 'Sit on a bench with both forearms on the thighs and palms up holding the band. Keep the forearms still and curl only the wrists upward, pause, then lower slowly.',
+  '1017': 'Stand on the band and hold both ends in front of the thighs with palms facing inward. Raise the nearly straight arms up and out, forming a Y shape, squeeze the shoulder blades, then lower under control.',
+  '1018': 'Stand with the band under both feet and hold the ends at the thighs. Keep the arms straight and relaxed, shrug both shoulders upward without bending the elbows, pause, then lower slowly.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -390,6 +397,13 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1009': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
   '1010': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
   '1011': { primary: ['Abs'], secondary: ['Obliques'] },
+  '1012': { primary: ['Shoulders'], secondary: ['Triceps', 'Obliques'] },
+  '1013': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '1014': { primary: ['Abs'], secondary: ['Hip flexors'] },
+  '1015': { primary: ['Abs'], secondary: ['Obliques', 'Shoulders'] },
+  '1016': { primary: ['Forearms'], secondary: [] },
+  '1017': { primary: ['Shoulders'], secondary: ['Traps', 'Upper back'] },
+  '1018': { primary: ['Traps'], secondary: ['Shoulders', 'Forearms'] },
 })
 
 function exerciseFor(id) {

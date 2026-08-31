@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 240)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 247)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1011,6 +1011,23 @@ test('band twisting crunch, step-up, stiff deadlift, straight deadlift, and seat
   assert.match(promptFor('1008', 'muscles'), /Primary muscles: Quads/i)
   assert.match(promptFor('1009', 'muscles'), /Primary muscles: Glutes/i)
   assert.match(promptFor('1011', 'muscles'), /Primary muscles: Abs/i)
+})
+
+test('band twisting press, underhand pulldown, V-up, Pallof press, wrist curl, Y-raise, and shrug prompts stay distinct', () => {
+  assert.match(promptFor('1012', 'technique'), /twist the torso/i)
+  assert.match(promptFor('1013', 'technique'), /underhand grip slightly wider than shoulder width/i)
+  assert.match(promptFor('1014', 'technique'), /lift the legs and upper body simultaneously/i)
+  assert.match(promptFor('1015', 'technique'), /perpendicular to the anchor/i)
+  assert.match(promptFor('1016', 'technique'), /forearms on the thighs/i)
+  assert.match(promptFor('1017', 'technique'), /forming a Y/i)
+  assert.match(promptFor('1018', 'technique'), /band under both feet/i)
+  assert.match(promptFor('1012', 'muscles'), /Primary muscles: Shoulders/i)
+  assert.match(promptFor('1013', 'muscles'), /Primary muscles: Upper back/i)
+  assert.match(promptFor('1014', 'muscles'), /Primary muscles: Abs/i)
+  assert.match(promptFor('1015', 'muscles'), /Primary muscles: Abs/i)
+  assert.match(promptFor('1016', 'muscles'), /Primary muscles: Forearms/i)
+  assert.match(promptFor('1017', 'muscles'), /Primary muscles: Shoulders/i)
+  assert.match(promptFor('1018', 'muscles'), /Primary muscles: Traps/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
