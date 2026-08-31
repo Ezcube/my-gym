@@ -179,6 +179,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1716': 'Show an assisted seated pectoralis major stretch with a stability ball. Sit tall on a large stability ball with feet flat, hold a second stability ball with both arms extended, slowly lower it toward the chest for a gentle stretch, pause, then return it forward with control.',
   '1712': 'Show an assisted side-lying adductor stretch. Lie on one side with the bottom leg slightly bent and the top leg straight with its foot supported on a low bench, slowly lower the top leg toward the floor for an inner-thigh stretch, then switch sides.',
   '1758': 'Show an assisted sit-up. Lie on your back with knees bent and feet flat while a partner secures the feet, place hands behind the head, curl the torso to about 45 degrees without pulling the neck, pause, then lower slowly.',
+  '1431': 'Show an assisted standing chin-up on a leverage machine. Stand on the foot platform, use the catalogue overhand grip slightly wider than shoulder width, keep the chest lifted and knees softly bent, drive the elbows down until the chin clears the bar, then lower under control.',
+  '1432': 'Show an assisted standing pull-up on a leverage machine. Face the machine with feet shoulder width on the platform, use an overhand grip slightly wider than shoulder width, engage the lats and biceps to pull toward the handles, pause, then lower slowly.',
+  '0018': 'Show an assisted standing triceps extension with a towel. Stand with feet shoulder width, hold a towel with both hands behind the head, keep the elbows close to the ears and upper arms still, extend the forearms overhead, pause, then lower the towel behind the head.',
+  '0019': 'Show an assisted kneeling triceps dip on a leverage machine. Kneel on the assistance pad facing the machine, grip the parallel handles, keep the back straight and close, bend the elbows to lower, pause at the bottom, then press back up.',
+  '2364': 'Show an assisted wide-grip chest dip on a leverage machine. Secure both knees on the assistance pad, grasp the handles with a clearly wide grip, lower until the upper arms are parallel to the floor with a slight forward chest lean, then press back up.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -310,6 +315,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1716': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1712': { primary: ['Adductors'], secondary: ['Hamstrings', 'Glutes'] },
   '1758': { primary: ['Abs'], secondary: ['Hip flexors'] },
+  '1431': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
+  '1432': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
+  '0018': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0019': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '2364': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
 })
 
 function exerciseFor(id) {

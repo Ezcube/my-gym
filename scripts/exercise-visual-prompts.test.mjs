@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 200)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 205)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -902,6 +902,31 @@ test('assisted stretch and sit-up prompts lock movement details', () => {
     '1716': [/Primary muscles: Chest/i, /Secondary muscles: Shoulders, Triceps/i],
     '1712': [/Primary muscles: Adductors/i, /Secondary muscles: Hamstrings, Glutes/i],
     '1758': [/Primary muscles: Abs/i, /Secondary muscles: Hip flexors/i],
+  }
+  for (const [id, patterns] of Object.entries(muscles)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('assisted pull-up, towel extension, and dip prompts lock movement details', () => {
+  const technique = {
+    '1431': [/assisted standing chin-up/i, /overhand grip/i, /foot platform/i, /chin clears the bar/i],
+    '1432': [/assisted standing pull-up/i, /overhand grip/i, /engage the lats and biceps/i, /lower slowly/i],
+    '0018': [/standing triceps extension with a towel/i, /behind the head/i, /elbows close to the ears/i, /forearms overhead/i],
+    '0019': [/kneeling triceps dip/i, /assistance pad/i, /parallel handles/i, /bend the elbows to lower/i],
+    '2364': [/wide-grip chest dip/i, /knees on the assistance pad/i, /clearly wide grip/i, /upper arms are parallel/i],
+  }
+  for (const [id, patterns] of Object.entries(technique)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+  const muscles = {
+    '1431': [/Primary muscles: Lats/i, /Secondary muscles: Biceps, Forearms/i],
+    '1432': [/Primary muscles: Lats/i, /Secondary muscles: Biceps, Forearms/i],
+    '0018': [/Primary muscles: Triceps/i, /Secondary muscles: Shoulders/i],
+    '0019': [/Primary muscles: Triceps/i, /Secondary muscles: Chest, Shoulders/i],
+    '2364': [/Primary muscles: Chest/i, /Secondary muscles: Triceps, Shoulders/i],
   }
   for (const [id, patterns] of Object.entries(muscles)) {
     const prompt = promptFor(id, 'muscles')
