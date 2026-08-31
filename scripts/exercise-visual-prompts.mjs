@@ -174,6 +174,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0014': 'Show an assisted medicine-ball Russian twist. Sit with knees bent and feet flat, hold the medicine ball in front, lean back with a straight spine, rotate the torso to the right and left, and alternate while keeping the feet grounded.',
   '0015': 'Show an assisted parallel close-grip pull-up on a leverage machine. Use the narrow neutral-grip parallel handles with palms facing each other, stay supported by the assistance pad, pull the chin over the bars with elbows close, then lower to straight arms under control.',
   '0016': 'Show an assisted prone hamstring lift. Lie face down with legs extended and ankles secured by a resistance band or partner, keep the knees straight, lift the legs using the hamstrings, pause briefly, then lower them under control.',
+  '1713': 'Show an assisted prone lying quadriceps stretch. Lie face down with both legs extended, bend one knee, reach the same-side hand to the ankle, gently draw the heel toward the glutes while keeping the hips down, hold, release, and repeat on the other side.',
+  '1714': 'Show an assisted prone rectus femoris stretch. Lie face down with both legs straight, bend one knee, reach the same-side hand to the ankle, gently draw the foot toward the glutes while keeping the pelvis grounded, hold, release, and repeat on the other side.',
+  '1716': 'Show an assisted seated pectoralis major stretch with a stability ball. Sit tall on a large stability ball with feet flat, hold a second stability ball with both arms extended, slowly lower it toward the chest for a gentle stretch, pause, then return it forward with control.',
+  '1712': 'Show an assisted side-lying adductor stretch. Lie on one side with the bottom leg slightly bent and the top leg straight with its foot supported on a low bench, slowly lower the top leg toward the floor for an inner-thigh stretch, then switch sides.',
+  '1758': 'Show an assisted sit-up. Lie on your back with knees bent and feet flat while a partner secures the feet, place hands behind the head, curl the torso to about 45 degrees without pulling the neck, pause, then lower slowly.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -300,6 +305,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0014': { primary: ['Obliques'], secondary: ['Abs'] },
   '0015': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
   '0016': { primary: ['Hamstrings'], secondary: ['Glutes'] },
+  '1713': { primary: ['Quads'], secondary: ['Hamstrings', 'Glutes'] },
+  '1714': { primary: ['Quads'], secondary: ['Hip flexors'] },
+  '1716': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1712': { primary: ['Adductors'], secondary: ['Hamstrings', 'Glutes'] },
+  '1758': { primary: ['Abs'], secondary: ['Hip flexors'] },
 })
 
 function exerciseFor(id) {
