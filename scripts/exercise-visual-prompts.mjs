@@ -236,6 +236,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1257': 'Set an incline bench to 45 degrees. Take a reverse grip slightly wider than shoulder width, lower the barbell to the chest with tucked elbows, pause on contact, then press to full elbow extension.',
   '1258': 'Lie on a flat bench and take a wide reverse grip on the barbell. Start above the chest, lower toward the chest with straight wrists and tucked elbows, pause, then press back to the start.',
   '1259': 'Stand tall and interlace the fingers behind the head with elbows pointing out. Squeeze the shoulder blades together and gently push the chest forward, hold the stretch, then release without arching the lower back.',
+  '1260': 'Use a cable machine set for a decline press. Stand facing away with your back supported on a decline bench, hold one handle at chest height, lower the elbow beside the torso, then press the handle straight forward and switch arms.',
+  '1261': 'Use a cable machine with a decline bench facing the cable stack. Sit with your back supported, hold both handles at chest level, press them forward to full extension, squeeze the chest, then return slowly.',
+  '1262': 'Attach a single D-handle to a low pulley and use a decline bench. Lie with the head toward the machine, start with the arm above the chest and a soft elbow, lower it out to shoulder level, then bring it back and switch arms.',
+  '1263': 'Sit upright on an exercise ball with feet flat and hold one cable handle out to the side with a soft elbow. Sweep the arm across the body to contract the chest, then return slowly and switch sides.',
+  '1264': 'Sit on an exercise ball with the back supported by an incline bench. Hold one cable handle with the palm inward, lower the nearly straight arm out to shoulder level, then squeeze the chest to return and switch arms.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -424,6 +429,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1257': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
   '1258': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
   '1259': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1260': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1261': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1262': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1263': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1264': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
 })
 
 function exerciseFor(id) {
