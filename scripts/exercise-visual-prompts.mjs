@@ -199,6 +199,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0980': 'Show alternating band bent-over hip extensions. Anchor the band at ankle height behind the athlete, keep a neutral-spine hip hinge and soft knees, extend one leg straight back by squeezing the glute, return, then switch legs. Do not turn it into a squat or back swing.',
   '0972': 'Show a band bicycle crunch on a mat. Keep hands lightly behind the head, bring one knee toward the chest while the opposite elbow rotates toward it and the other leg extends, then alternate sides smoothly. Keep the band around the feet and do not pull the neck.',
   '0974': 'Show a standing band close-grip pulldown. Anchor the band high, face the anchor, use a shoulder-width underhand grip, pull toward the upper chest with elbows close and a neutral spine, pause, then release slowly overhead. This is not a wide-grip pulldown.',
+  '0975': 'Use a resistance band around the upper arms just above the elbows. Keep hands directly under shoulders and the body in one line; lower with elbows close to the ribs, then press up. This is not a wide-grip push-up.',
+  '0976': 'Sit on a bench with one end of the band in the working hand and the other end pinned under the same-side foot. Brace the elbow against the inner thigh, keep the upper arm still, and curl palm-up through a controlled range before lowering; switch sides after the set.',
+  '3117': 'Use a high fixed anchor and sit facing it on a bench. Take a close underhand grip with palms facing the athlete, keep the back straight, pull the band to the upper chest with elbows down, pause, and release slowly. This is the seated close-grip variant.',
+  '3116': 'Use a high fixed anchor and stand facing it. Take an underhand grip slightly wider than shoulder width, keep the arms extended and torso braced, pull the band to the chest leading with the elbows, then release slowly. This is the standing wider-grip variant.',
+  '0977': 'Stand on the middle of the band and hold both ends with palms down in front of the thighs. Raise both nearly straight arms forward together only to shoulder height, pause, and lower under control without shrugging.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -350,6 +355,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0980': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
   '0972': { primary: ['Abs'], secondary: ['Hip flexors', 'Obliques'] },
   '0974': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '0975': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0976': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '3117': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '3116': { primary: ['Upper back'], secondary: ['Biceps', 'Shoulders'] },
+  '0977': { primary: ['Shoulders'], secondary: ['Traps', 'Upper back'] },
 })
 
 function exerciseFor(id) {
