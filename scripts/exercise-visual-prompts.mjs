@@ -214,6 +214,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1003': 'Perform a squat row with the band anchored at waist height in front. Face the anchor with a neutral grip and arms extended, lower into a stable squat, pull the handles toward the lower ribs while squeezing the shoulder blades, then return to standing with control.',
   '1004': 'Place a loop band just above the knees. Stand with feet shoulder-width apart, sit the hips back into a squat while keeping the chest up and knees tracking over the toes, pause at the bottom, then press through the heels to stand.',
   '1005': 'Perform a standing crunch with the band anchored at waist height behind you. Face away from the anchor, hold the band at the chest with elbows bent, curl the chest toward the knees without moving the hips, pause, then return upright slowly.',
+  '1007': 'Perform a standing twisting crunch with the band looped around the upper back and crossed in front of the chest. Keep the elbows bent and close, rotate the torso so one elbow approaches the opposite knee, return to center, and alternate sides.',
+  '1008': 'Perform a band step-up with a loop band just above the knees. Face a stable platform, step onto it with the right foot and drive through the heel, extend the left leg behind for balance, lower under control, and alternate legs.',
+  '1009': 'Perform a band stiff-leg deadlift with the band looped around both ankles and held in both hands. Keep a neutral back and only a slight knee bend, hinge the hips back until the band lowers toward the floor, then stand by squeezing the glutes and hamstrings.',
+  '1010': 'Perform a band straight-leg deadlift with the band under both feet and held in both hands. Keep the legs straight with a slight knee unlock, hinge forward with a lifted chest and neutral back, lower the band, then return by squeezing the glutes and hamstrings.',
+  '1011': 'Perform a seated band twist with legs extended and the back straight. The band is wrapped around the waist and both ends are held in the hands; rotate the torso to one side while the feet stay grounded, return to center, and alternate sides.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -380,6 +385,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1003': { primary: ['Quads', 'Upper back'], secondary: ['Glutes', 'Biceps', 'Shoulders'] },
   '1004': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings'] },
   '1005': { primary: ['Abs'], secondary: ['Obliques'] },
+  '1007': { primary: ['Abs'], secondary: ['Obliques'] },
+  '1008': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '1009': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
+  '1010': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
+  '1011': { primary: ['Abs'], secondary: ['Obliques'] },
 })
 
 function exerciseFor(id) {
