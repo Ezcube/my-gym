@@ -79,6 +79,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0620': 'Use a flat horizontal bench that fully supports the head, back, and pelvis. Place both hands under the glutes and keep the legs straight and together. Raise the legs toward vertical, then lower only while the lower back stays pressed into the bench; stop before the feet pass below bench height. This is not a reverse crunch or hanging leg raise, and do not bend the knees.',
   '0705': 'Show a forearm side plank with the supporting elbow directly below the shoulder, the legs straight and stacked, and the body forming a straight line from head to heels. Keep the shoulders and hips vertically stacked during a static hold, then lower under control. Do not use a straight-arm support, lift the top leg, rotate the torso, bend the knees, or let the hips sag.',
   '0507': 'Show a controlled jackknife sit-up beginning fully supine with the arms extended on the floor overhead and both legs straight and together. Lift the upper body and both legs simultaneously into a balanced V position while reaching toward the toes, then lower together without momentum. This is not a tucked crunch, alternating leg raise, or seated starting pose.',
+  '1373': 'Show a standing bodyweight calf raise on a flat floor. Keep both feet shoulder-width apart, toes forward, and use a wall or stable support only for balance. Raise both heels together onto the balls of the feet, pause, and lower slowly with knees straight but not locked. No bouncing, jumping, or knee bending.',
+  '1387': 'Show a controlled one-leg floor calf raise. Hold a wall or stable support, lift one foot completely off the floor, and keep the pelvis level while the working heel rises onto the ball of the foot and lowers slowly. Show one working leg at a time; switch legs only between repetitions and do not hop or bounce.',
+  '1490': 'Show a bilateral calf raise on a stable low step: the balls of both feet stay on the step while both heels hang just below the edge. Keep one hand on a railing or wall for balance, rise onto the toes, pause, then lower the heels below the step under control. Do not jump, drop, or use a deep knee bend.',
+  '1397': 'Show a standing bodyweight calf raise on a flat floor with both feet shoulder-width apart and toes forward. Raise both heels together as high as controlled, pause, and lower slowly while the knees remain straight but not locked. Keep the torso still and avoid bouncing or rolling the ankles.',
+  '1377': 'Show a standing calf stretch facing a wall. Place both hands on the wall, step one leg back with the rear heel staying grounded and the rear knee straight but not locked, bend the front knee, and lean forward until the rear calf stretches. Hold, switch sides, and do not bounce or lift the rear heel.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -110,6 +115,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0620': { primary: ['Abs', 'Hip flexors'], secondary: [] },
   '0705': { primary: ['Obliques', 'Abs'], secondary: ['Glutes'] },
   '0507': { primary: ['Abs', 'Hip flexors'], secondary: [] },
+  '1373': { primary: ['Calves'], secondary: [] },
+  '1387': { primary: ['Calves'], secondary: [] },
+  '1490': { primary: ['Calves'], secondary: [] },
+  '1397': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1377': { primary: ['Calves'], secondary: ['Hamstrings'] },
 })
 
 function exerciseFor(id) {
