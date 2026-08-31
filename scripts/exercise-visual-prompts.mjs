@@ -99,6 +99,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1384': 'Show a single-leg hack-machine calf raise on a sled machine. Stand on the platform with one foot and the other foot completely off the machine, keep the torso supported under the shoulder pads and hold the handles, raise and lower the working heel slowly, then switch legs. Keep the knee aligned and do not hop or twist.',
   '1385': 'Show a seated calf raise on a leg press machine. Sit with the back against the backrest, place only the balls of both feet on the lower edge of the footplate with heels hanging off, release the safety handles, and move the footplate only through ankle motion after the knees are extended. Raise, pause, and lower the heels slowly without knee bending or bouncing.',
   '1386': 'Show a single-leg donkey calf raise using a wall or bar for support. Lean slightly forward with one foot planted and the other leg lifted, keep the working knee softly bent, raise the working heel high onto the ball of the foot, pause, and lower slowly. Switch legs after the set; keep the pelvis level and do not hop or bounce.',
+  '1379': 'Show a seated dumbbell calf raise. Sit upright on a bench with both balls of the feet on a low raised step and both heels hanging off, place one dumbbell securely across the thighs, raise both heels together, pause, and lower below the step slowly. Keep the knees and torso still; do not bounce or roll the ankles.',
+  '1380': 'Show a seated single-leg dumbbell calf raise with a hammer grip. Sit upright on a bench, place one ball of the foot on a raised step with the heel hanging off, hold the dumbbell with palms facing each other, raise and lower the working heel slowly, then switch legs. Keep the back straight and do not bounce.',
+  '1381': 'Show a seated single-leg dumbbell calf raise with a palm-up grip. Sit upright, hold one dumbbell palm up on top of the thigh, keep the other leg lifted clear, raise the working heel through the ball of the foot, pause, and lower slowly. Switch legs after the set; keep the torso still.',
+  '1382': 'Show a wall-supported exercise-ball calf raise with dumbbells. Stand with an exercise ball between the lower back and a wall, feet shoulder-width and toes forward, hold one dumbbell in each hand, raise both heels together onto the balls of the feet, pause, and lower slowly. Keep the knees and torso stable; do not squat or bounce.',
+  '1388': 'Show a seated peroneals stretch with a rope. Sit on the floor with both legs extended, loop the rope around the ball of one foot and hold both ends, gently pull the foot toward you to flex the ankle and stretch the calf, hold, release, and switch legs. Keep the knee straight and do not yank or bounce.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -150,6 +155,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1384': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
   '1385': { primary: ['Calves'], secondary: ['Quads', 'Hamstrings', 'Glutes'] },
   '1386': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1379': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '1380': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1381': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1382': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
+  '1388': { primary: ['Calves'], secondary: ['Ankles', 'Feet'] },
 })
 
 function exerciseFor(id) {
