@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 185)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 190)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -824,6 +824,34 @@ test('bodyweight pull, push, hanging, and balance prompts match the catalogue hi
     '2355': [/Primary muscles: Abs/i, /Secondary muscles: Hip flexors, Shoulders/i],
     '2333': [/Primary muscles: Abs/i, /Secondary muscles: Hip flexors, Shoulders/i],
     '3214': [/Primary muscles: Glutes/i, /Secondary muscles: Hamstrings, Quadriceps, Calves/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('sit-up, assisted hanging, and glute stretch prompts lock movement details', () => {
+  const expected = {
+    '3204': [/arms-overhead full sit-up/i, /knees bent/i, /feet flat/i, /all the way upright/i],
+    '0011': [/assisted hanging knee raise/i, /light band/i, /palms facing away/i, /without swinging/i],
+    '0010': [/hanging knee raise with throw-down/i, /knees to the chest/i, /legs down straight/i],
+    '1709': [/lying glute stretch/i, /cross one ankle over the opposite thigh/i, /supporting thigh toward the chest/i, /switch sides/i],
+    '1710': [/lying gluteus and piriformis stretch/i, /cross one ankle over the opposite thigh/i, /supporting thigh toward the chest/i, /switch sides/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('sit-up, assisted hanging, and glute stretch prompts match the catalogue hierarchy', () => {
+  const expected = {
+    '3204': [/Primary muscles: Abs/i, /Secondary muscles: Hip flexors, Obliques/i],
+    '0011': [/Primary muscles: Abs/i, /Secondary muscles: Hip flexors, Shoulders/i],
+    '0010': [/Primary muscles: Abs/i, /Secondary muscles: Hip flexors, Shoulders/i],
+    '1709': [/Primary muscles: Glutes/i, /Secondary muscles: Hamstrings/i],
+    '1710': [/Primary muscles: Glutes/i, /Secondary muscles: Hamstrings/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')

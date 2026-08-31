@@ -164,6 +164,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '2355': 'Show a hanging bent-knee leg raise. Hang with straight arms and knees bent at 90 degrees, raise the knees toward the chest without swinging, then lower under control.',
   '2333': 'Show a hanging straight-leg raise. Hang with straight arms and legs together, lift the straight legs until parallel with the floor, pause, then lower without swinging.',
   '3214': 'Show an arms-apart circular toe touch. From a wide arm position, hinge forward and reach one hand toward the toes while the opposite straight leg lifts behind, then return and switch sides.',
+  '3204': 'Show an arms-overhead full sit-up on a mat. Keep the knees bent and feet flat, arms straight overhead, curl the torso all the way upright, then lower with control.',
+  '0011': 'Show an assisted hanging knee raise on a pull-up station with a light band. Keep the palms facing away and arms straight, lift bent knees toward the chest, pause, then lower without swinging.',
+  '0010': 'Show an assisted hanging knee raise with throw-down on a pull-up station and light band. Raise the knees to the chest, then actively throw the legs down straight before regaining control.',
+  '1709': 'Show a lying glute stretch. Lie on the back, cross one ankle over the opposite thigh, gently draw the supporting thigh toward the chest, then switch sides.',
+  '1710': 'Show a lying gluteus and piriformis stretch. Lie on the back, cross one ankle over the opposite thigh, gently draw the supporting thigh toward the chest, then switch sides.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -280,6 +285,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '2355': { primary: ['Abs'], secondary: ['Hip flexors', 'Shoulders'] },
   '2333': { primary: ['Abs'], secondary: ['Hip flexors', 'Shoulders'] },
   '3214': { primary: ['Glutes'], secondary: ['Hamstrings', 'Quadriceps', 'Calves'] },
+  '3204': { primary: ['Abs'], secondary: ['Hip flexors', 'Obliques'] },
+  '0011': { primary: ['Abs'], secondary: ['Hip flexors', 'Shoulders'] },
+  '0010': { primary: ['Abs'], secondary: ['Hip flexors', 'Shoulders'] },
+  '1709': { primary: ['Glutes'], secondary: ['Hamstrings'] },
+  '1710': { primary: ['Glutes'], secondary: ['Hamstrings'] },
 })
 
 function exerciseFor(id) {
