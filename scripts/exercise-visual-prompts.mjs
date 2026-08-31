@@ -104,6 +104,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1381': 'Show a seated single-leg dumbbell calf raise with a palm-up grip. Sit upright, hold one dumbbell palm up on top of the thigh, keep the other leg lifted clear, raise the working heel through the ball of the foot, pause, and lower slowly. Switch legs after the set; keep the torso still.',
   '1382': 'Show a wall-supported exercise-ball calf raise with dumbbells. Stand with an exercise ball between the lower back and a wall, feet shoulder-width and toes forward, hold one dumbbell in each hand, raise both heels together onto the balls of the feet, pause, and lower slowly. Keep the knees and torso stable; do not squat or bounce.',
   '1388': 'Show a seated peroneals stretch with a rope. Sit on the floor with both legs extended, loop the rope around the ball of one foot and hold both ends, gently pull the foot toward you to flex the ankle and stretch the calf, hold, release, and switch legs. Keep the knee straight and do not yank or bounce.',
+  '0088': 'Show a seated barbell calf raise. Sit upright on a flat bench with the barbell secured across the thighs, place the balls of both feet on a low raised block with the heels free, raise both heels together, pause, and lower slowly. Keep the knees and torso still; do not bounce or roll the ankles.',
+  '0108': 'Show a standing barbell calf raise. Rest a barbell across the upper back in a stable stance with feet shoulder-width and toes forward, raise both heels together onto the balls of the feet, pause, and lower slowly. Keep knees straight but not locked and do not bounce.',
+  '0111': 'Show a standing barbell rocking leg calf raise. Rest the barbell across the upper back, keep both feet shoulder-width and toes forward, gently rock through the forefoot as both heels rise and lower under control. Keep the torso stable and the knees softly unlocked; no jumping or rolling the ankles.',
+  '0257': 'Show a standing circles-knee calf stretch. Stand with feet shoulder-width and hands on the hips, bend both knees slightly, lift both heels onto the balls of the feet, then make slow controlled circles with the knees clockwise and counterclockwise. Keep the torso upright and avoid twisting or bouncing.',
+  '0284': 'Show a bodyweight donkey calf raise. Place the balls of both feet on the edge of a raised step with heels hanging off, hinge slightly forward, and hold a wall or rail for support. Raise both heels high, pause, then lower below the step slowly without deep knee bending or bouncing.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -160,6 +165,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1381': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
   '1382': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
   '1388': { primary: ['Calves'], secondary: ['Ankles', 'Feet'] },
+  '0088': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
+  '0108': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '0111': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
+  '0257': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
+  '0284': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
 })
 
 function exerciseFor(id) {
