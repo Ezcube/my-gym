@@ -184,6 +184,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0018': 'Show an assisted standing triceps extension with a towel. Stand with feet shoulder width, hold a towel with both hands behind the head, keep the elbows close to the ears and upper arms still, extend the forearms overhead, pause, then lower the towel behind the head.',
   '0019': 'Show an assisted kneeling triceps dip on a leverage machine. Kneel on the assistance pad facing the machine, grip the parallel handles, keep the back straight and close, bend the elbows to lower, pause at the bottom, then press back up.',
   '2364': 'Show an assisted wide-grip chest dip on a leverage machine. Secure both knees on the assistance pad, grasp the handles with a clearly wide grip, lower until the upper arms are parallel to the floor with a slight forward chest lean, then press back up.',
+  '3220': 'Show astride jumps: begin in a compact quarter squat with feet together, jump explosively while spreading the legs wide and opening the arms, then land softly with knees bent and return to control. This is a jumping-jack style cardio movement, not a lunge or split jump.',
+  '3672': 'Show a back-and-forth step as alternating forward lunges. Step forward with one foot, lower the rear knee under control while the front foot stays planted, push back to the starting stance, then alternate sides. Do not turn it into a jump or a stationary squat.',
+  '1314': 'Use a large stability ball with the hips supported on top and both feet firmly braced against a wall. Lower the torso over the ball, extend the spine until the body forms a straight line, then lower slowly; keep the movement at the hips and spine, not a floor back extension.',
+  '3297': 'Show a strict back lever on a fixed pull-up bar. Start from a tucked hang with straight arms and knees toward the chest, extend the hips and legs until the whole body is horizontal and parallel to the floor, then return toward the tuck without swinging or kipping.',
+  '1405': 'Show a standing back-pec stretch. Start with both arms extended forward, cross the arms and interlock the fingers with palms rotating away, then raise the joined hands slightly up and away to stretch the upper back and chest. Keep the torso upright and avoid a shoulder press.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -320,6 +325,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0018': { primary: ['Triceps'], secondary: ['Shoulders'] },
   '0019': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
   '2364': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '3220': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '3672': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '1314': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
+  '3297': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms', 'Abs'] },
+  '1405': { primary: ['Lats'], secondary: ['Chest', 'Shoulders'] },
 })
 
 function exerciseFor(id) {

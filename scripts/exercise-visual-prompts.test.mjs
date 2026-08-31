@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 205)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 210)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -932,6 +932,17 @@ test('assisted pull-up, towel extension, and dip prompts lock movement details',
     const prompt = promptFor(id, 'muscles')
     for (const pattern of patterns) assert.match(prompt, pattern)
   }
+})
+
+test('cardio, stability, bodyweight, and stretch batch prompts stay distinct', () => {
+  assert.match(promptFor('3220', 'technique'), /jumping-jack style cardio/i)
+  assert.match(promptFor('3672', 'technique'), /alternating forward lunges/i)
+  assert.match(promptFor('1314', 'technique'), /stability ball/i)
+  assert.match(promptFor('3297', 'technique'), /back lever on a fixed pull-up bar/i)
+  assert.match(promptFor('1405', 'technique'), /back-pec stretch/i)
+  assert.match(promptFor('3220', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('1314', 'muscles'), /Secondary muscles: Hamstrings, Lower back/i)
+  assert.match(promptFor('3297', 'muscles'), /Primary muscles: Upper back/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
