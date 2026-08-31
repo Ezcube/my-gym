@@ -189,6 +189,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1314': 'Use a large stability ball with the hips supported on top and both feet firmly braced against a wall. Lower the torso over the ball, extend the spine until the body forms a straight line, then lower slowly; keep the movement at the hips and spine, not a floor back extension.',
   '3297': 'Show a strict back lever on a fixed pull-up bar. Start from a tucked hang with straight arms and knees toward the chest, extend the hips and legs until the whole body is horizontal and parallel to the floor, then return toward the tuck without swinging or kipping.',
   '1405': 'Show a standing back-pec stretch. Start with both arms extended forward, cross the arms and interlock the fingers with palms rotating away, then raise the joined hands slightly up and away to stretch the upper back and chest. Keep the torso upright and avoid a shoulder press.',
+  '1473': 'Show a controlled backward jump in side profile. Begin with feet shoulder-width and knees slightly bent, jump backward off both feet, then land softly behind the starting spot on the balls of the feet with knees bent. Do not turn this into a forward jump or a lunge.',
+  '0020': 'Show a wobble balance board exercise. Place one foot centered on the board while lightly using support, shift weight until the board is level with the core engaged, then step off and switch feet. Keep the board visible and do not show a flat floor balance.',
+  '0968': 'Use one resistance band under both feet for alternating biceps curls. Keep palms up and elbows fixed beside the torso; curl one forearm while the other arm stays extended, lower, then alternate. This is not a simultaneous curl or a cable exercise.',
+  '0969': 'Show a band alternating V-up on a mat. Hold the band overhead, lift the straight legs and torso together toward a V position, then lower under control while crossing the legs and alternate the crossing side. Keep the band visible and avoid a simple crunch.',
+  '0970': 'Use a thick resistance band looped over a pull-up bar and under one foot for an assisted pull-up. Take a slightly wider overhand grip, hang with straight arms, pull until the chin clears the bar, then lower slowly without kipping.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -330,6 +335,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1314': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
   '3297': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms', 'Abs'] },
   '1405': { primary: ['Lats'], secondary: ['Chest', 'Shoulders'] },
+  '1473': { primary: ['Quads'], secondary: ['Hamstrings', 'Glutes', 'Calves'] },
+  '0020': { primary: ['Calves'], secondary: ['Quads', 'Hamstrings', 'Glutes'] },
+  '0968': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0969': { primary: ['Abs'], secondary: ['Hip flexors'] },
+  '0970': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
 })
 
 function exerciseFor(id) {
