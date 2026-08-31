@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 170)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 175)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -740,6 +740,34 @@ test('squat and shoulder-machine batch muscle prompts match the catalogue hierar
     '1436': [/Primary muscles: Glutes/i, /Secondary muscles: Quadriceps, Hamstrings, Calves, Core/i],
     '1438': [/Primary muscles: Shoulders/i, /Secondary muscles: Triceps, Upper back/i],
     '1439': [/Primary muscles: Traps/i, /Secondary muscles: Shoulders, Forearms/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('wrist, dip, crunch, and military-press prompts lock the movement details', () => {
+  const expected = {
+    '1441': [/one-arm reverse wrist curl/i, /support the pronated forearm on the bench/i, /wrist just beyond the edge/i, /keep the forearm still/i],
+    '1451': [/seated dip.*leverage machine/i, /back against the pad/i, /parallel handles/i, /extending the elbows/i],
+    '1452': [/seated crunch.*leverage machine/i, /hips secured/i, /curl the ribcage toward the pelvis/i, /without pulling with the arms/i],
+    '1456': [/standing close-grip barbell military press/i, /inside shoulder width/i, /without leg drive/i, /upper chest/i],
+    '1457': [/standing wide-grip barbell military press/i, /wider than shoulder width/i, /without leg drive/i, /upper chest/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('wrist, dip, crunch, and military-press prompts match the catalogue hierarchy', () => {
+  const expected = {
+    '1441': [/Primary muscles: Forearms/i, /Secondary muscles: Biceps/i],
+    '1451': [/Primary muscles: Triceps/i, /Secondary muscles: Chest, Shoulders/i],
+    '1452': [/Primary muscles: Abs/i, /Secondary muscles: Obliques/i],
+    '1456': [/Primary muscles: Shoulders/i, /Secondary muscles: Triceps, Upper back/i],
+    '1457': [/Primary muscles: Shoulders/i, /Secondary muscles: Triceps, Upper back/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')

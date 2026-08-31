@@ -149,6 +149,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1436': 'Show a barbell high-bar squat. Rest the bar high on the upper trapezius, keep the torso upright and feet shoulder-width, descend with knees tracking over toes until the thighs approach parallel, then stand by driving through the whole foot. Keep the spine neutral.',
   '1438': 'Show a seated two-arm kettlebell military press. Sit upright with back supported and one kettlebell at each shoulder, press both kettlebells vertically overhead without leaning or using the legs, then lower them under control to shoulder height. Keep wrists neutral and elbows under the bells.',
   '1439': 'Show a gripless shrug on a leverage machine. Stand upright with the shoulder pads resting on the upper shoulders and arms relaxed, elevate both shoulders straight toward the ears without bending the elbows, pause briefly, then lower under control. Do not roll the shoulders or bend the knees.',
+  '1441': 'Show a one-arm reverse wrist curl over a bench. Support the pronated forearm on the bench with the wrist just beyond the edge, keep the forearm still, extend the wrist to raise the back of the hand, then lower the dumbbell under control.',
+  '1451': 'Show a seated dip on a leverage machine. Keep the back against the pad and hands on the parallel handles, press the handles down by extending the elbows while keeping the shoulders depressed, then return slowly without leaning or swinging.',
+  '1452': 'Show a seated crunch on a leverage machine. Keep the hips secured and hands on the upper handles, curl the ribcage toward the pelvis by flexing the trunk, then return slowly to upright without pulling with the arms.',
+  '1456': 'Show a standing close-grip barbell military press. Use hands clearly inside shoulder width, start with the bar at the upper chest, press it vertically overhead without leg drive, then lower under control while keeping the core braced.',
+  '1457': 'Show a standing wide-grip barbell military press. Use hands clearly wider than shoulder width, start with the bar at the upper chest, press it vertically overhead without leg drive, then lower under control while keeping the core braced.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -250,6 +255,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1436': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves', 'Core'] },
   '1438': { primary: ['Shoulders'], secondary: ['Triceps', 'Upper back'] },
   '1439': { primary: ['Traps'], secondary: ['Shoulders', 'Forearms'] },
+  '1441': { primary: ['Forearms'], secondary: ['Biceps'] },
+  '1451': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '1452': { primary: ['Abs'], secondary: ['Obliques'] },
+  '1456': { primary: ['Shoulders'], secondary: ['Triceps', 'Upper back'] },
+  '1457': { primary: ['Shoulders'], secondary: ['Triceps', 'Upper back'] },
 })
 
 function exerciseFor(id) {
