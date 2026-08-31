@@ -109,6 +109,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0111': 'Show a standing barbell rocking leg calf raise. Rest the barbell across the upper back, keep both feet shoulder-width and toes forward, gently rock through the forefoot as both heels rise and lower under control. Keep the torso stable and the knees softly unlocked; no jumping or rolling the ankles.',
   '0257': 'Show a standing circles-knee calf stretch. Stand with feet shoulder-width and hands on the hips, bend both knees slightly, lift both heels onto the balls of the feet, then make slow controlled circles with the knees clockwise and counterclockwise. Keep the torso upright and avoid twisting or bouncing.',
   '0284': 'Show a bodyweight donkey calf raise. Place the balls of both feet on the edge of a raised step with heels hanging off, hinge slightly forward, and hold a wall or rail for support. Raise both heels high, pause, then lower below the step slowly without deep knee bending or bouncing.',
+  '0400': 'Show a seated single-leg dumbbell calf raise. Sit upright on a bench, place the dumbbell securely on the right thigh, extend the left leg clear, and place the ball of the right foot on a raised step with the heel hanging off. Raise and lower the right heel slowly, then switch legs; keep the back still and do not bounce.',
+  '0727': 'Show a standing single-leg calf raise while holding one dumbbell in one hand. Lift the non-working foot completely off the floor, balance on the other foot, raise the working heel high, pause, and lower slowly. Keep the pelvis level and switch legs between sets without hopping or twisting.',
+  '0738': 'Show a 45-degree sled calf press. Sit on a sled machine set at 45 degrees with both toes on the platform, toes forward, heels free, and push the platform away using only ankle extension. Pause at the top and return slowly; keep knees stable and do not lock or bounce.',
+  '0742': 'Show a forward-angled sled calf raise. Use a sled machine with the balls of both feet on the platform and heels hanging off, hold the handles or sides for support, raise both heels high against the sled resistance, pause, and lower slowly. Keep the torso and knees steady.',
+  '0763': 'Show a Smith-machine reverse calf raise. Set the bar just below shoulder height, face the bar, place the balls of both feet on the edge of a step with heels hanging off, and hold the bar with a straight back. Raise both heels high, pause, then lower below the step without bouncing.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -170,6 +175,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0111': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
   '0257': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
   '0284': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '0400': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '0727': { primary: ['Calves'], secondary: ['Ankles', 'Feet'] },
+  '0738': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '0742': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '0763': { primary: ['Calves'], secondary: ['Hamstrings'] },
 })
 
 function exerciseFor(id) {

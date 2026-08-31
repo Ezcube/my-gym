@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 130)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 135)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -570,6 +570,34 @@ test('barbell and bodyweight calf prompts match the catalogue hierarchy', () => 
     '0111': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings, Quads/i],
     '0257': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings, Quads/i],
     '0284': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings, Glutes/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('dumbbell, sled, and Smith calf prompts preserve equipment and support details', () => {
+  const expected = {
+    '0400': [/seated single-leg dumbbell calf raise/i, /dumbbell securely on the right thigh/i, /left leg clear/i, /switch legs/i],
+    '0727': [/standing single-leg calf raise/i, /one dumbbell in one hand/i, /non-working foot/i, /switch legs/i],
+    '0738': [/45-degree sled calf press/i, /sled machine set at 45 degrees/i, /toes on the platform/i, /ankle extension/i],
+    '0742': [/forward-angled sled calf raise/i, /heels hanging off/i, /hold the handles/i, /sled resistance/i],
+    '0763': [/Smith-machine reverse calf raise/i, /bar just below shoulder height/i, /step with heels hanging off/i, /straight back/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('dumbbell, sled, and Smith calf prompts match the catalogue hierarchy', () => {
+  const expected = {
+    '0400': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings, Glutes/i],
+    '0727': [/Primary muscles: Calves/i, /Secondary muscles: Ankles, Feet/i],
+    '0738': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings/i],
+    '0742': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings, Glutes/i],
+    '0763': [/Primary muscles: Calves/i, /Secondary muscles: Hamstrings/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')
