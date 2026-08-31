@@ -74,6 +74,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0238': 'Show a standing straight-arm high-cable pulldown with a straight bar and a pronated shoulder-width grip. Keep soft elbows at a constant angle with a slight bend, the spine neutral, and only a small hip hinge. Move the bar in an arc from upper-chest or head height down to the thighs using shoulder extension. This is not a triceps pushdown: do not flex the elbows, squat, round the back, or move the bar behind the body.',
   '0213': 'Use a seated high cable row with the pulley clearly above chest or face level. Hold a close V-bar with a neutral grip, palms facing each other at the attachment fixed narrow width. Keep a neutral spine and pull diagonally toward the lower sternum or upper abdomen while the elbows travel back and slightly down. This is not a low-pulley horizontal row, vertical lat pulldown, overhand grip, or behind-the-neck movement.',
   '0245': 'Use a seated lat pulldown with the thighs secured under the pad. Hold the bar with a supinated grip, palms facing the athlete and hands slightly wider than shoulder-width apart. Keep the chest lifted, wrists neutral, and torso only slightly reclined while the elbows stay close and drive downward; finish with the bar at the upper chest. This is not a behind-the-neck pull; do not use a pronated grip, stand, overextend the wrists, or swing the torso.',
+  '0274': 'Show a controlled floor crunch with the knees bent and both feet flat. Rest only the fingertips lightly behind the head with the elbows open; do not pull on the neck. Brace the abs and lift only the shoulder blades while the lower back stays on the floor, then lower slowly. This is not a full sit-up.',
+  '0872': 'Show a reverse crunch with the knees bent in a supine tabletop position and the hips near 90 degrees. Brace the abs and curl the pelvis toward the ribcage so the hips lift only slightly, then lower with control. This is not a straight-leg raise: use no leg swing, momentum, or roll onto the neck.',
+  '0620': 'Use a flat horizontal bench that fully supports the head, back, and pelvis. Place both hands under the glutes and keep the legs straight and together. Raise the legs toward vertical, then lower only while the lower back stays pressed into the bench; stop before the feet pass below bench height. This is not a reverse crunch or hanging leg raise, and do not bend the knees.',
+  '0705': 'Show a forearm side plank with the supporting elbow directly below the shoulder, the legs straight and stacked, and the body forming a straight line from head to heels. Keep the shoulders and hips vertically stacked during a static hold, then lower under control. Do not use a straight-arm support, lift the top leg, rotate the torso, bend the knees, or let the hips sag.',
+  '0507': 'Show a controlled jackknife sit-up beginning fully supine with the arms extended on the floor overhead and both legs straight and together. Lift the upper body and both legs simultaneously into a balanced V position while reaching toward the toes, then lower together without momentum. This is not a tucked crunch, alternating leg raise, or seated starting pose.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -100,6 +105,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0238': { primary: ['Lats'], secondary: ['Shoulders', 'Biceps'] },
   '0213': { primary: ['Lats'], secondary: ['Biceps', 'Rhomboids', 'Rear deltoids'] },
   '0245': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
+  '0274': { primary: ['Abs'], secondary: ['Hip flexors'] },
+  '0872': { primary: ['Abs'], secondary: ['Hip flexors'] },
+  '0620': { primary: ['Abs', 'Hip flexors'], secondary: [] },
+  '0705': { primary: ['Obliques', 'Abs'], secondary: ['Glutes'] },
+  '0507': { primary: ['Abs', 'Hip flexors'], secondary: [] },
 })
 
 function exerciseFor(id) {

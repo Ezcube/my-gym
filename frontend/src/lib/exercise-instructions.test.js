@@ -62,6 +62,45 @@ describe('exercise instruction corrections', () => {
     expect(correctExerciseInstructions(id, [source])).toEqual([expected])
   })
 
+  it.each([
+    ['0274', 'Place your hands behind your head with your elbows pointing outwards.', 'Place your fingertips lightly behind your head with your elbows open; do not pull on your head or neck.'],
+    ['0274', 'Engage your abs and lift your shoulders off the ground, curling forward towards your knees.', 'Brace your abs and curl your ribcage toward your pelvis, lifting only your shoulder blades while keeping your lower back on the floor.'],
+    ['0274', 'Coloca las manos detrás de la cabeza con los codos apuntando hacia afuera.', 'Coloca suavemente las yemas de los dedos detrás de la cabeza, con los codos abiertos; no tires de la cabeza ni del cuello.'],
+    ['0274', 'Activa el abdomen y levanta los hombros del suelo, flexionándote hacia adelante en dirección a las rodillas.', 'Activa el abdomen y acerca la caja torácica a la pelvis, levantando solo los omóplatos mientras mantienes la zona lumbar apoyada en el suelo.'],
+    ['0274', "Place tes mains derrière ta tête avec tes coudes pointés vers l'extérieur.", "Place délicatement le bout de tes doigts derrière ta tête, les coudes écartés ; ne tire ni sur ta tête ni sur ton cou."],
+    ['0274', "Gaine tes abdominaux et décolle tes épaules du sol, en t'enroulant vers l'avant en direction de tes genoux.", "Gaine tes abdominaux et enroule la cage thoracique vers le bassin, en soulevant uniquement les omoplates tout en gardant le bas du dos au sol."],
+    ['0274', 'अपने हाथों को अपने सिर के पीछे रखें और अपनी कोहनियों को बाहर की ओर रखें।', 'अपनी उँगलियों के सिरों को सिर के पीछे हल्के से रखें और कोहनियों को खुला रखें; हाथों से सिर या गर्दन को न खींचें।'],
+    ['0274', 'अपने पेट को संलग्न करें और अपने कंधों को जमीन से ऊपर उठाएं, अपने घुटनों की ओर आगे की ओर झुकें।', 'पेट को कसें और पसलियों के पिंजरे को श्रोणि की ओर मोड़ते हुए केवल कंधे की हड्डियों को फर्श से उठाएँ; पीठ का निचला हिस्सा फर्श पर टिका रहे।'],
+    ['0274', "Metti le mani dietro la testa con i gomiti rivolti verso l'esterno.", 'Appoggia leggermente i polpastrelli dietro la testa, mantenendo i gomiti aperti; non tirare la testa o il collo con le mani.'],
+    ['0274', 'Attiva gli addominali e solleva le spalle da terra, piegandosi in avanti verso le ginocchia.', 'Contrai gli addominali e avvicina la gabbia toracica al bacino, sollevando solo le scapole e mantenendo la zona lombare a contatto con il pavimento.'],
+    ['0274', '손을 머리 뒤에 올려놓고 팔꿈치를 바깥쪽으로 향하게 합니다.', '손가락 끝을 머리 뒤에 가볍게 대고 팔꿈치를 벌린 상태로 유지합니다. 손으로 머리나 목을 당기지 않습니다.'],
+    ['0274', '복부에 힘을 주어 어깨를 들어올리며 무릎 방향으로 몸을 굽힙니다.', '복부에 힘을 주고 흉곽을 골반 쪽으로 말아 올리면서 견갑골만 바닥에서 들어 올리고, 허리는 바닥에 붙인 상태를 유지합니다.'],
+    ['0274', 'Umieść dłonie za głową, łokcie skierowane na zewnątrz.', 'Lekko oprzyj opuszki palców za głową, trzymając łokcie rozchylone; nie ciągnij za głowę ani za szyję.'],
+    ['0274', 'Napnij mięśnie brzucha i unieś barki znad podłogi, zwijając tułów w kierunku kolan.', 'Napnij mięśnie brzucha i zwiń tułów, zbliżając klatkę piersiową do miednicy; unieś tylko łopatki, a dolną część pleców pozostaw na podłodze.'],
+    ['0274', 'Положите руки за голову локтями наружу.', 'Слегка коснитесь затылка кончиками пальцев и разведите локти в стороны; не тяните руками голову или шею.'],
+    ['0274', 'Напрягите пресс и поднимите плечи от земли, наклонившись вперед к коленям.', 'Напрягите пресс и скрутите корпус, направляя грудную клетку к тазу; отрывайте от пола только лопатки и сохраняйте поясницу прижатой к полу.'],
+    ['0274', 'Ellerinizi başınızın arkasına, dirsekleriniz dışarı bakacak şekilde yerleştirin.', 'Parmak uçlarınızı başınızın arkasına hafifçe yerleştirin ve dirseklerinizi açık tutun; ellerinizle başınızı veya boynunuzu çekmeyin.'],
+    ['0274', 'Karın kaslarınızı devreye sokun ve omuzlarınızı yerden kaldırın, dizlerinize doğru öne doğru kıvrılın.', 'Karın kaslarınızı sıkın ve göğüs kafesinizi pelvisinize doğru kıvırın; yalnızca kürek kemiklerinizi yerden kaldırın ve belinizi yerde tutun.'],
+    ['0274', '将双手放在脑后，肘部朝外。', '将指尖轻放在脑后，保持肘部向外打开；不要用手拉扯头部或颈部。'],
+    ['0274', '收紧腹肌，将肩膀抬离地面，向前向膝盖弯曲。', '收紧腹肌，将胸廓向骨盆方向卷曲，只抬起肩胛骨，同时保持下背部贴在地面上。'],
+    ['0620', 'Pause for a moment at the top, then slowly lower your legs back down to the starting position.', 'Pause briefly at the top. Keeping your abs braced and your lower back gently pressed into the bench, slowly lower your joined legs only as far as you can without your lower back lifting or arching.'],
+    ['0620', 'Haz una pausa por un momento en la parte superior, luego baja lentamente las piernas de vuelta a la posición inicial.', 'Haz una breve pausa en la parte superior. Mantén el abdomen activado y la zona lumbar suavemente apoyada contra el banco; baja lentamente las piernas juntas solo hasta donde puedas sin que la zona lumbar se despegue ni se arquee.'],
+    ['0620', 'Marque une pause en haut, puis abaisse lentement tes jambes pour revenir à la position de départ.', "Marque une courte pause en haut. Garde les abdominaux gainés et le bas du dos légèrement plaqué contre le banc, puis abaisse lentement les jambes jointes uniquement jusqu'au point où le bas du dos ne se décolle ni ne se cambre."],
+    ['0620', 'शीर्ष पर एक पल के लिए रुकें, फिर धीरे-धीरे अपने पैरों को वापस प्रारंभिक स्थिति में ले आएं।', 'ऊपर थोड़ी देर रुकें। पेट को कसकर रखें और पीठ के निचले हिस्से को बेंच पर हल्के से टिकाए रखें; दोनों पैरों को साथ रखते हुए धीरे-धीरे केवल उतना ही नीचे लाएँ, जितना पीठ के निचले हिस्से को बेंच से उठने या कमर में मेहराब बनने दिए बिना संभव हो।'],
+    ['0620', 'Fai una pausa per un momento in alto, quindi abbassa lentamente le gambe fino alla posizione di partenza.', 'Fai una breve pausa in alto. Mantieni gli addominali contratti e la zona lombare leggermente premuta contro la panca; abbassa lentamente le gambe unite solo fin dove riesci senza che la zona lombare si sollevi o si inarchi.'],
+    ['0620', '맨 위에서 잠깐 멈춘 후 천천히 다리를 처음 위치로 내립니다.', '최고 지점에서 잠시 멈춥니다. 복부에 힘을 주고 허리 아래쪽을 벤치에 가볍게 밀착한 상태를 유지하면서, 허리 아래쪽이 들리거나 휘지 않는 범위까지만 두 다리를 붙인 채 천천히 내립니다.'],
+    ['0620', 'Zatrzymaj się na chwilę w górnej pozycji, a następnie powoli opuść nogi do pozycji wyjściowej.', 'Zatrzymaj się krótko w górnej pozycji. Utrzymując napięte mięśnie brzucha i lekko dociskając dolną część pleców do ławki, powoli opuszczaj złączone nogi tylko tak nisko, aby dolna część pleców nie odrywała się od ławki ani nie wyginała się.'],
+    ['0620', 'Задержитесь на мгновение в верхней точке, затем медленно опустите ноги обратно в исходное положение.', 'Коротко задержитесь в верхней точке. Удерживая пресс напряжённым, а поясницу слегка прижатой к скамье, медленно опустите соединённые ноги только настолько, насколько можете сделать это без отрыва или прогиба поясницы.'],
+    ['0620', 'Tepe noktasında bir an duraklayın, ardından bacaklarınızı yavaşça başlangıç\u200b\u200bpozisyonuna indirin.', 'Tepe noktasında kısa süre duraklayın. Karın kaslarınızı sıkı ve belinizi sehpaya hafifçe bastırılmış halde tutarak, bacaklarınızı bitişik tutup beliniz sehpadan kalkmadan veya çukurlaşmadan yalnızca kontrol edebildiğiniz kadar yavaşça indirin.'],
+    ['0620', '在顶部暂停片刻，然后慢慢将双腿放回起始位置。', '在顶部短暂停顿。保持腹肌收紧、下背部轻贴长凳，然后缓慢下放并拢的双腿，只降到下背部不会离开长凳或拱起的高度。'],
+    ['0872', 'Напрягите пресс и оторвите бедра от пола, подтягивая колени к груди.', 'Напрягите пресс, подкрутите таз и слегка оторвите его от пола, направляя колени к груди.'],
+    ['0872', 'Задержитесь на мгновение в верхней точке, затем медленно опустите бедра обратно в исходное положение.', 'Задержитесь на мгновение в верхней точке, затем медленно опустите таз обратно в исходное положение.'],
+    ['0705', 'Напрягите корпус и поднимите бедра от земли, создавая прямую линию от головы до ступней.', 'Напрягите корпус и поднимите таз над полом, выстраивая прямую линию от головы до стоп.'],
+    ['0705', 'Опустите бедра обратно в исходное положение.', 'Опустите таз обратно в исходное положение.'],
+  ])('corrects bodyweight core guidance for %s', (id, source, expected) => {
+    expect(correctExerciseInstructions(id, [source])).toEqual([expected])
+  })
+
   it('leaves unrelated and custom instructions unchanged', () => {
     const steps = ['Keep this instruction verbatim.']
     expect(correctExerciseInstructions('custom-1', steps)).toEqual(steps)

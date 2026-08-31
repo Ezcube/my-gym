@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 95)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 100)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -374,6 +374,34 @@ test('cable back batch muscle prompts match the approved target hierarchy', () =
     '0238': [/Primary muscles: Lats/i, /Secondary muscles: Shoulders, Biceps/i],
     '0213': [/Primary muscles: Lats/i, /Secondary muscles: Biceps, Rhomboids, Rear deltoids/i],
     '0245': [/Primary muscles: Lats/i, /Secondary muscles: Biceps, Forearms/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'muscles')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('bodyweight core batch prompts keep the five movement patterns distinct', () => {
+  const expected = {
+    '0274': [/floor crunch/i, /knees bent.*feet flat/i, /lift only the shoulder blades/i, /not a full sit-up/i, /do not pull on the neck/i],
+    '0872': [/reverse crunch/i, /knees bent.*tabletop/i, /curl the pelvis/i, /not a straight-leg raise/i, /no leg swing/i],
+    '0620': [/flat horizontal bench/i, /legs straight and together/i, /lower back stays pressed/i, /stop before.*below bench height/i, /not a reverse crunch/i],
+    '0705': [/forearm side plank/i, /elbow directly below the shoulder/i, /legs straight and stacked/i, /straight line from head to heels/i, /static hold/i],
+    '0507': [/jackknife sit-up/i, /arms extended.*overhead.*legs straight/i, /lift.*upper body and both legs simultaneously/i, /reach(?:ing)? toward the toes/i, /not a tucked crunch/i],
+  }
+  for (const [id, patterns] of Object.entries(expected)) {
+    const prompt = promptFor(id, 'technique')
+    for (const pattern of patterns) assert.match(prompt, pattern)
+  }
+})
+
+test('bodyweight core batch muscle prompts match the approved target hierarchy', () => {
+  const expected = {
+    '0274': [/Primary muscles: Abs/i, /Secondary muscles: Hip flexors/i],
+    '0872': [/Primary muscles: Abs/i, /Secondary muscles: Hip flexors/i],
+    '0620': [/Primary muscles: Abs, Hip flexors/i, /Secondary muscles: none/i],
+    '0705': [/Primary muscles: Obliques, Abs/i, /Secondary muscles: Glutes/i],
+    '0507': [/Primary muscles: Abs, Hip flexors/i, /Secondary muscles: none/i],
   }
   for (const [id, patterns] of Object.entries(expected)) {
     const prompt = promptFor(id, 'muscles')
