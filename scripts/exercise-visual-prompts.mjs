@@ -231,6 +231,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1160': 'Perform a strict burpee: squat and place the hands down, jump the feet back to a straight push-up plank, complete the push-up, jump the feet forward, then jump tall with the arms overhead and land softly.',
   '1167': 'Perform a dynamic chest stretch standing tall with arms extended out to the sides. Sweep both arms forward until they cross in front of the body, feel the chest stretch, then open the arms back out under control.',
   '1201': 'Perform a dumbbell burpee with one dumbbell in each hand. Place the dumbbells down for the squat and push-up, jump the feet forward, stand explosively while bringing the dumbbells to the shoulders, press them overhead, and lower safely.',
+  '1255': 'Lie on a decline bench with the head lower than the hips and feet secured. Hold a barbell with a pronated grip above the chest, keep a soft elbow bend, lower it in an arc behind the head for a chest and shoulder stretch, then reverse the arc.',
+  '1256': 'Use a decline bench with the feet secured and head lower than the hips. Take a reverse grip slightly wider than shoulder width, lower the barbell to the chest with tucked elbows, pause, then press it back up.',
+  '1257': 'Set an incline bench to 45 degrees. Take a reverse grip slightly wider than shoulder width, lower the barbell to the chest with tucked elbows, pause on contact, then press to full elbow extension.',
+  '1258': 'Lie on a flat bench and take a wide reverse grip on the barbell. Start above the chest, lower toward the chest with straight wrists and tucked elbows, pause, then press back to the start.',
+  '1259': 'Stand tall and interlace the fingers behind the head with elbows pointing out. Squeeze the shoulder blades together and gently push the chest forward, hold the stretch, then release without arching the lower back.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -414,6 +419,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1160': { primary: ['Quads', 'Chest', 'Shoulders'], secondary: ['Hamstrings', 'Calves'] },
   '1167': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1201': { primary: ['Quads', 'Chest', 'Shoulders'], secondary: ['Hamstrings', 'Calves', 'Abs'] },
+  '1255': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1256': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1257': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1258': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1259': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
 })
 
 function exerciseFor(id) {

@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 252)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 257)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1041,6 +1041,16 @@ test('rear-delt row, stiff deadlift, burpee, chest stretch, and dumbbell burpee 
   assert.match(promptFor('1160', 'muscles'), /Primary muscles: Quads/i)
   assert.match(promptFor('1167', 'muscles'), /Primary muscles: Chest/i)
   assert.match(promptFor('1201', 'muscles'), /Primary muscles: Quads/i)
+})
+
+test('decline pullover, reverse-grip bench, incline press, wide bench, and chest stretch prompts stay distinct', () => {
+  assert.match(promptFor('1255', 'technique'), /decline bench/i)
+  assert.match(promptFor('1255', 'technique'), /arc behind the head/i)
+  assert.match(promptFor('1256', 'technique'), /reverse grip.*decline bench/i)
+  assert.match(promptFor('1257', 'technique'), /45-degree angle|incline bench to 45 degrees/i)
+  assert.match(promptFor('1258', 'technique'), /wide reverse grip/i)
+  assert.match(promptFor('1259', 'technique'), /fingers behind the head/i)
+  for (const id of ['1255', '1256', '1257', '1258', '1259']) assert.match(promptFor(id, 'muscles'), /Primary muscles: Chest/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
