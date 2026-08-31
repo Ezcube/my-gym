@@ -94,6 +94,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1374': 'Show a low-box jump followed by single-leg stabilization. Start facing a low plyometric box, jump up, land softly with one foot on the box while the other foot stays clear of the edge, hold the landing steady for a moment, then step down under control and switch legs. Keep the knee aligned over the foot; no uncontrolled drop or twist.',
   '1375': 'Show a standing cable calf raise at a cable machine. Stand on a small stable platform with the balls of both feet supported and the heels free, hold the machine for balance while the cable provides resistance, raise both heels together, pause, and lower below the platform slowly. Keep the knees straight but not locked and avoid bouncing.',
   '1376': 'Show a single-leg cable calf raise facing a cable machine. Hold the machine for support, attach a low cable ankle cuff to the working leg, lift the other foot clear of the floor, then raise and lower the working heel slowly through a full range. Switch legs after the set; keep the pelvis level and do not hop or twist.',
+  '1378': 'Show a standing calf stretch with a rope. Face a wall for balance, loop the middle of the rope around the ball of one foot, step the other leg back with the rear heel grounded and knee straight, then gently pull the rope while leaning forward with a straight back. Hold, release, and switch sides; do not bounce or lift the rear heel.',
+  '1383': 'Show a hack-machine calf raise on a sled machine. Place the balls of both feet on the platform with the heels hanging off, keep the body supported under the shoulder pads and hold the handles, raise both heels together, pause, then lower slowly below the platform. Keep the knees steady and avoid bouncing.',
+  '1384': 'Show a single-leg hack-machine calf raise on a sled machine. Stand on the platform with one foot and the other foot completely off the machine, keep the torso supported under the shoulder pads and hold the handles, raise and lower the working heel slowly, then switch legs. Keep the knee aligned and do not hop or twist.',
+  '1385': 'Show a seated calf raise on a leg press machine. Sit with the back against the backrest, place only the balls of both feet on the lower edge of the footplate with heels hanging off, release the safety handles, and move the footplate only through ankle motion after the knees are extended. Raise, pause, and lower the heels slowly without knee bending or bouncing.',
+  '1386': 'Show a single-leg donkey calf raise using a wall or bar for support. Lean slightly forward with one foot planted and the other leg lifted, keep the working knee softly bent, raise the working heel high onto the ball of the foot, pause, and lower slowly. Switch legs after the set; keep the pelvis level and do not hop or bounce.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -140,6 +145,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1374': { primary: ['Calves'], secondary: ['Quads', 'Hamstrings', 'Glutes'] },
   '1375': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
   '1376': { primary: ['Calves'], secondary: [] },
+  '1378': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '1383': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1384': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1385': { primary: ['Calves'], secondary: ['Quads', 'Hamstrings', 'Glutes'] },
+  '1386': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
 })
 
 function exerciseFor(id) {
