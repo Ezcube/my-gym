@@ -119,6 +119,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0999': 'Show a single-leg calf raise with a resistance band looped around the ball of the working foot. Hold a stable support, keep the non-working foot clear, raise and lower the working heel through a full range, then switch legs. Keep the pelvis level and avoid hopping or twisting.',
   '1389': 'Show a seated posterior tibialis stretch with a rope. Sit on the floor with both legs extended, loop the rope around the ball of one foot, gently pull the foot toward you to flex the ankle and stretch the calf, hold, release, and switch legs. Keep the knee straight and do not bounce.',
   '1390': 'Show a seated calf stretch. Sit on the edge of a chair or bench with one leg extended and its heel grounded, lean forward slightly until the calf stretches, hold, then switch legs. Keep the spine long and do not bounce or lift the heel.',
+  '1391': 'Show a seated calf press on a sled leg-press machine. Keep the knees slightly bent, place both toes and balls of the feet on the sled with heels hanging off, release the safety handles, and press the sled away by extending the ankles. Pause, then flex the ankles to lower the heels under control; do not bounce or lock the knees.',
+  '1392': 'Show a single-leg calf press on a sled leg-press machine. Sit with the back supported, place only the toes and ball of one foot on the sled with the heel off, keep the knee softly bent, press forward through ankle extension, pause, and lower slowly. Keep the other leg clear and switch sides after the set.',
+  '1393': 'Show a Smith-machine one-leg floor calf raise. Face away from the machine with the bar resting across the lower leg just above the ankle, place the ball of the working foot on a raised block, hold the bar for stability, raise the heel through ankle extension, pause, and lower slowly. Keep the other foot clear and switch legs.',
+  '1395': 'Show a seated single-leg calf raise in a Smith machine. Sit with the back against the pad, place one ball of the foot on the footrest and keep the other leg off, raise the working heel high, pause, and lower slowly. Keep the torso still and switch legs between sets.',
+  '2289': 'Show a seated lever calf press. Align the shoulders under the lever pad, place both toes and balls of the feet on the pad with heels hanging off, hold the side supports, press the pad down by extending the ankles, pause, then let the heels rise back under control. Keep knees steady and do not bounce.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -190,6 +195,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0999': { primary: ['Calves'], secondary: ['Ankles', 'Feet'] },
   '1389': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
   '1390': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '1391': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
+  '1392': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1393': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1395': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '2289': { primary: ['Calves'], secondary: ['Hamstrings'] },
 })
 
 function exerciseFor(id) {
