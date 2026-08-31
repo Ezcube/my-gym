@@ -86,6 +86,6 @@ owned by **Gym visual**. Those media files are not covered by the dataset's MIT 
 openGym's AGPL, and the permission granted to the upstream dataset is not transferable.
 
 This fork does not contain, download, serve, or display those files. One hundred fifty common exercises
-include original generated human technique and target-muscle visuals. Every other exercise uses
+include original generated human technique and target-muscle visuals for 155 exercises. Every other exercise uses
 the built-in MuscleMap-derived body diagram described above. The legacy `img` and `gif` filename
 fields remain only for source-data compatibility and are not read by the runtime.

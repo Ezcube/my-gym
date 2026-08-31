@@ -129,6 +129,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1708': 'Show an assisted lying calf stretch. Lie on your back with both legs extended, bend one knee with that foot flat, use your hands or a towel to gently pull the toes of the straight leg toward the body, hold, release, and switch legs. Keep the knee relaxed and do not yank or bounce.',
   '2315': 'Show a seated rotary lever calf raise. Adjust the leverage machine so the knees are slightly bent, place both toes on the footplate with heels hanging off, hold the handles, raise both heels high through the balls of the feet, pause, and lower slowly. Keep knees and torso stable.',
   '2334': 'Show a seated sled-machine calf press. Sit with the back against the pad, place the toes and balls of both feet on the platform edge with heels hanging off, keep knees slightly bent, press the platform away by extending the ankles, pause, and lower under control.',
+  '1394': 'Show a Smith-machine reverse calf raise. Set the bar just below shoulder height, face the bar, place the balls of both feet on a stable step with the heels hanging off, hold the bar for support, raise both heels high, pause, and lower below the step under control. Keep the toes forward and the knees steady.',
+  '1396': 'Show a Smith-machine toe raise on a raised platform. Position the shoulders under the bar with feet shoulder-width apart, place the balls of both feet on a platform with the heels hanging off, grip the bar overhand, brace the core and keep the back straight, then raise and lower the heels slowly without bouncing.',
+  '2335': 'Show a seated lever calf press. Adjust the seat so the shoulders align under the lever pad, place the toes on the lower platform with the knees under the pad, hold the side handles, press the lever down by extending the ankles and lifting the heels, pause, then lower slowly. Keep the knees and torso stable.',
+  '3240': 'Show a wall-supported exercise-ball calf raise with a tennis ball between the knees. Place the ball between the lower back and wall, stand with feet slightly forward, hold one dumbbell at each side, gently squeeze a tennis ball between the knees, raise both heels together, pause, and lower under control without letting the knees collapse inward.',
+  '3241': 'Show a wall-supported exercise-ball calf raise with a tennis ball between the ankles. Face a wall with the exercise ball behind the lower back, stand shoulder-width, hold one dumbbell at each side, keep a tennis ball lightly between the ankles, raise both heels together, pause, and lower slowly while keeping the ankles aligned.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -210,6 +215,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1708': { primary: ['Calves'], secondary: ['Hamstrings'] },
   '2315': { primary: ['Calves'], secondary: ['Soleus', 'Ankle stabilizers'] },
   '2334': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1394': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '1396': { primary: ['Calves'], secondary: ['Ankles', 'Shins'] },
+  '2335': { primary: ['Calves'], secondary: ['Soleus', 'Hamstrings'] },
+  '3240': { primary: ['Calves'], secondary: ['Quadriceps', 'Hamstrings'] },
+  '3241': { primary: ['Calves'], secondary: ['Hamstrings', 'Quadriceps'] },
 })
 
 function exerciseFor(id) {
