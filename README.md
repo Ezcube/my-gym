@@ -124,7 +124,7 @@ docker compose up -d
 
 Open **http://localhost:8080**, tap **Create profile**, and you're in.
 
-One hundred sixty common exercises include original generated human technique and target-muscle visuals.
+One hundred sixty-five common exercises include original generated human technique and target-muscle visuals.
 Every other exercise uses the built-in MuscleMap-derived body diagram. This fork does not
 download or display the separate upstream Gym image/GIF library.
 
@@ -223,7 +223,7 @@ Rough, community-driven — ideas and PRs welcome:
 
 React 19 + Vite (React Router, Zustand) · Node (no framework) · nginx · Docker Compose ·
 WebAuthn · exercise data from [hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-dataset)
-(MIT metadata and instructions; original guidance for 160 exercises plus a built-in muscle-map fallback).
+(MIT metadata and instructions; original guidance for 165 exercises plus a built-in muscle-map fallback).
 No database server, no cloud dependencies — the frontend builds inside Docker, so self-hosting
 stays a one-command `docker compose up`.
 

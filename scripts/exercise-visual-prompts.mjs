@@ -139,6 +139,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1599': 'Show a standing hamstring and calf stretch with a strap. Stand upright, loop the strap around the ball of one foot, hold both ends, keep the leg straight, hinge forward from the hips with a straight back, hold, release, and switch legs without bouncing.',
   '1548': 'Show a seated chair leg-extended stretch. Sit on the edge of a chair with a straight back and both feet grounded, extend one leg forward with the heel on the floor, lean forward slightly to stretch the front thigh, hold, then switch legs.',
   '3212': 'Show a basic standing toe touch. Stand shoulder-width with arms at the sides, hinge forward with a straight back and slightly bent knees, reach toward the toes while keeping the legs long, pause, then return slowly without bouncing or rounding aggressively.',
+  '1410': 'Show a barbell lateral lunge. Hold the bar across the upper back, step wide to one side while the opposite foot stays planted, bend the stepping knee and keep the other leg straight, push back to center, then switch sides. Keep the chest lifted and do not let the knee collapse inward.',
+  '1417': 'Show a one-legged diagonal kick hamstring curl on a stability ball. Lie on your back with both heels on the ball, lift the hips into a bridge, bring one knee toward the chest, kick that leg diagonally across the body while the other heel stays on the ball, return with control, and alternate sides.',
+  '1420': 'Show a kneeling barbell jump squat. Begin kneeling with the bar across the upper back, brace the core and glutes, explosively rise into a jump by extending hips, knees, and ankles, land softly with bent knees, and repeat. Keep the bar stable and the landing controlled.',
+  '1425': 'Show a 45-degree sled one-leg press. Sit with the back supported, place one foot on the sled footplate, press the sled away by extending that leg, lower by bending the knee under control, then switch legs. Keep the pelvis and back against the pad and do not lock the knee.',
+  '1433': 'Show a Smith-machine front squat with a clean grip. Set the bar at shoulder height, face it, use a slightly wider overhand grip, position the bar across the front shoulders and collarbone, keep the chest up and core braced, squat to at least parallel, then drive through the heels to stand.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -230,6 +235,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1599': { primary: ['Hamstrings'], secondary: ['Calves'] },
   '1548': { primary: ['Quadriceps'], secondary: ['Hamstrings', 'Calves'] },
   '3212': { primary: ['Glutes'], secondary: ['Hamstrings', 'Calves'] },
+  '1410': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves'] },
+  '1417': { primary: ['Glutes'], secondary: ['Hamstrings', 'Calves'] },
+  '1420': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves'] },
+  '1425': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves'] },
+  '1433': { primary: ['Glutes'], secondary: ['Quadriceps', 'Hamstrings', 'Calves', 'Core'] },
 })
 
 function exerciseFor(id) {
