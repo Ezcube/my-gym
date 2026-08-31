@@ -194,6 +194,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0968': 'Use one resistance band under both feet for alternating biceps curls. Keep palms up and elbows fixed beside the torso; curl one forearm while the other arm stays extended, lower, then alternate. This is not a simultaneous curl or a cable exercise.',
   '0969': 'Show a band alternating V-up on a mat. Hold the band overhead, lift the straight legs and torso together toward a V position, then lower under control while crossing the legs and alternate the crossing side. Keep the band visible and avoid a simple crunch.',
   '0970': 'Use a thick resistance band looped over a pull-up bar and under one foot for an assisted pull-up. Take a slightly wider overhand grip, hang with straight arms, pull until the chin clears the bar, then lower slowly without kipping.',
+  '0971': 'Show a kneeling band-assisted wheel rollout on a mat. Grip the wheel handles shoulder-width, keep the knees down and core braced, roll forward only as far as control allows, pause, then roll back toward the knees. Keep the resistance band visibly assisting the wheel path.',
+  '1254': 'Show a band bench press on a flat bench. Anchor the resistance band under the bench, hold the handles with an overhand grip slightly wider than the shoulders, lower toward the chest with elbows near 90 degrees, then press to straight arms while the back and feet stay supported.',
+  '0980': 'Show alternating band bent-over hip extensions. Anchor the band at ankle height behind the athlete, keep a neutral-spine hip hinge and soft knees, extend one leg straight back by squeezing the glute, return, then switch legs. Do not turn it into a squat or back swing.',
+  '0972': 'Show a band bicycle crunch on a mat. Keep hands lightly behind the head, bring one knee toward the chest while the opposite elbow rotates toward it and the other leg extends, then alternate sides smoothly. Keep the band around the feet and do not pull the neck.',
+  '0974': 'Show a standing band close-grip pulldown. Anchor the band high, face the anchor, use a shoulder-width underhand grip, pull toward the upper chest with elbows close and a neutral spine, pause, then release slowly overhead. This is not a wide-grip pulldown.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -340,6 +345,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0968': { primary: ['Biceps'], secondary: ['Forearms'] },
   '0969': { primary: ['Abs'], secondary: ['Hip flexors'] },
   '0970': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '0971': { primary: ['Abs'], secondary: ['Lower back'] },
+  '1254': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '0980': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
+  '0972': { primary: ['Abs'], secondary: ['Hip flexors', 'Obliques'] },
+  '0974': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
 })
 
 function exerciseFor(id) {
