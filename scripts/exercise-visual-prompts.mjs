@@ -134,6 +134,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '2335': 'Show a seated lever calf press. Adjust the seat so the shoulders align under the lever pad, place the toes on the lower platform with the knees under the pad, hold the side handles, press the lever down by extending the ankles and lifting the heels, pause, then lower slowly. Keep the knees and torso stable.',
   '3240': 'Show a wall-supported exercise-ball calf raise with a tennis ball between the knees. Place the ball between the lower back and wall, stand with feet slightly forward, hold one dumbbell at each side, gently squeeze a tennis ball between the knees, raise both heels together, pause, and lower under control without letting the knees collapse inward.',
   '3241': 'Show a wall-supported exercise-ball calf raise with a tennis ball between the ankles. Face a wall with the exercise ball behind the lower back, stand shoulder-width, hold one dumbbell at each side, keep a tennis ball lightly between the ankles, raise both heels together, pause, and lower slowly while keeping the ankles aligned.',
+  '1582': 'Show a reclining big-toe pose with a rope. Lie on your back with both legs extended, loop the rope around the ball of one foot, keep that knee straight and foot flexed, raise the leg toward the chest, hold the hamstring and calf stretch, lower slowly, then switch legs.',
+  '1585': 'Show a runner stretch. Stand hip-width, step one foot forward, bend the front knee while keeping the rear leg straight, place both hands on the front thigh for support, hold the rear calf and hamstring stretch, then switch sides. Keep the back heel grounded and do not bounce.',
+  '1599': 'Show a standing hamstring and calf stretch with a strap. Stand upright, loop the strap around the ball of one foot, hold both ends, keep the leg straight, hinge forward from the hips with a straight back, hold, release, and switch legs without bouncing.',
+  '1548': 'Show a seated chair leg-extended stretch. Sit on the edge of a chair with a straight back and both feet grounded, extend one leg forward with the heel on the floor, lean forward slightly to stretch the front thigh, hold, then switch legs.',
+  '3212': 'Show a basic standing toe touch. Stand shoulder-width with arms at the sides, hinge forward with a straight back and slightly bent knees, reach toward the toes while keeping the legs long, pause, then return slowly without bouncing or rounding aggressively.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -220,6 +225,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '2335': { primary: ['Calves'], secondary: ['Soleus', 'Hamstrings'] },
   '3240': { primary: ['Calves'], secondary: ['Quadriceps', 'Hamstrings'] },
   '3241': { primary: ['Calves'], secondary: ['Hamstrings', 'Quadriceps'] },
+  '1582': { primary: ['Hamstrings'], secondary: ['Calves', 'Glutes'] },
+  '1585': { primary: ['Hamstrings'], secondary: ['Calves', 'Quadriceps'] },
+  '1599': { primary: ['Hamstrings'], secondary: ['Calves'] },
+  '1548': { primary: ['Quadriceps'], secondary: ['Hamstrings', 'Calves'] },
+  '3212': { primary: ['Glutes'], secondary: ['Hamstrings', 'Calves'] },
 })
 
 function exerciseFor(id) {
