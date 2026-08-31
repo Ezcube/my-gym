@@ -114,6 +114,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0738': 'Show a 45-degree sled calf press. Sit on a sled machine set at 45 degrees with both toes on the platform, toes forward, heels free, and push the platform away using only ankle extension. Pause at the top and return slowly; keep knees stable and do not lock or bounce.',
   '0742': 'Show a forward-angled sled calf raise. Use a sled machine with the balls of both feet on the platform and heels hanging off, hold the handles or sides for support, raise both heels high against the sled resistance, pause, and lower slowly. Keep the torso and knees steady.',
   '0763': 'Show a Smith-machine reverse calf raise. Set the bar just below shoulder height, face the bar, place the balls of both feet on the edge of a step with heels hanging off, and hold the bar with a straight back. Raise both heels high, pause, then lower below the step without bouncing.',
+  '0773': 'Show a standing calf raise inside a Smith machine. Set the bar across the upper back, keep both feet flat and shoulder-width with toes forward, and hold the bar for stability. Raise both heels together onto the balls of the feet, pause, then lower slowly without bouncing or bending the knees.',
+  '0833': 'Show a weighted donkey calf raise. Place the balls of both feet on a raised platform with the heels hanging off, hinge the torso slightly forward, and hold a stable support while the weight rests securely on the upper back. Raise both heels high, pause, and lower below the platform under control.',
+  '0999': 'Show a single-leg calf raise with a resistance band looped around the ball of the working foot. Hold a stable support, keep the non-working foot clear, raise and lower the working heel through a full range, then switch legs. Keep the pelvis level and avoid hopping or twisting.',
+  '1389': 'Show a seated posterior tibialis stretch with a rope. Sit on the floor with both legs extended, loop the rope around the ball of one foot, gently pull the foot toward you to flex the ankle and stretch the calf, hold, release, and switch legs. Keep the knee straight and do not bounce.',
+  '1390': 'Show a seated calf stretch. Sit on the edge of a chair or bench with one leg extended and its heel grounded, lean forward slightly until the calf stretches, hold, then switch legs. Keep the spine long and do not bounce or lift the heel.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -180,6 +185,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0738': { primary: ['Calves'], secondary: ['Hamstrings'] },
   '0742': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
   '0763': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '0773': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '0833': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '0999': { primary: ['Calves'], secondary: ['Ankles', 'Feet'] },
+  '1389': { primary: ['Calves'], secondary: ['Hamstrings', 'Quads'] },
+  '1390': { primary: ['Calves'], secondary: ['Hamstrings'] },
 })
 
 function exerciseFor(id) {

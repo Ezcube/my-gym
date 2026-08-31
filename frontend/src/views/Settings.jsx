@@ -199,7 +199,7 @@ export default function Settings() {
     <div className="dim small" style={{ textAlign: 'center', marginTop: 4, lineHeight: 1.6 }}>
       Мой зал · {t('free & open source (AGPL v3)')}<br />
       <a href="https://github.com/arvids-unavailable/my-gym" target="_blank" rel="noopener">source code</a> · exercise data: hasaneyldrm/exercises-dataset (MIT)<br />
-      exercise visuals: original generated guidance for 135 exercises + built-in MuscleMap fallback (MIT-derived)
+      exercise visuals: original generated guidance for 140 exercises + built-in MuscleMap fallback (MIT-derived)
     </div>
   </div>
 }
