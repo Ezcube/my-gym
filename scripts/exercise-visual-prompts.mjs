@@ -84,6 +84,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1490': 'Show a bilateral calf raise on a stable low step: the balls of both feet stay on the step while both heels hang just below the edge. Keep one hand on a railing or wall for balance, rise onto the toes, pause, then lower the heels below the step under control. Do not jump, drop, or use a deep knee bend.',
   '1397': 'Show a standing bodyweight calf raise on a flat floor with both feet shoulder-width apart and toes forward. Raise both heels together as high as controlled, pause, and lower slowly while the knees remain straight but not locked. Keep the torso still and avoid bouncing or rolling the ankles.',
   '1377': 'Show a standing calf stretch facing a wall. Place both hands on the wall, step one leg back with the rear heel staying grounded and the rear knee straight but not locked, bend the front knee, and lean forward until the rear calf stretches. Hold, switch sides, and do not bounce or lift the rear heel.',
+  '1000': 'Show a single-leg calf raise with a resistance band around the ball of the working foot. Hold a stable support for balance, keep the non-working leg off the floor, raise and lower the working heel slowly, and switch legs only after completing the set. Keep the knee straight but not locked and avoid bouncing or twisting.',
+  '1253': 'Show a donkey calf raise using a leverage machine. Place the forefeet on the platform with the heels hanging off, keep the torso and hips stable, hold the machine supports, raise the heels together, pause, and lower under control without knee bending or bouncing.',
+  '1368': 'Show seated ankle circles on the floor with both legs extended. Lift one foot clear of the floor and make slow full circles from the ankle in one direction, reverse direction, then switch legs. Keep the knee still and do not move the hip or whole leg.',
+  '1369': 'Show a bilateral standing calf raise with one resistance band running under both feet. Hold both band ends for light stability, keep the feet shoulder-width and the knees straight but not locked, raise both heels together, pause, and lower slowly without band slipping or bouncing.',
+  '1370': 'Show a barbell floor calf raise. Place the balls of both feet on the edge of a barbell lying securely on the floor with the heels hanging off, use a stable support if needed, raise both heels together, pause, and lower below the bar under control without rolling the ankles.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -120,6 +125,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1490': { primary: ['Calves'], secondary: [] },
   '1397': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
   '1377': { primary: ['Calves'], secondary: ['Hamstrings'] },
+  '1000': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1253': { primary: ['Calves'], secondary: ['Hamstrings', 'Glutes'] },
+  '1368': { primary: ['Calves'], secondary: [] },
+  '1369': { primary: ['Calves'], secondary: [] },
+  '1370': { primary: ['Calves'], secondary: ['Hamstrings'] },
 })
 
 function exerciseFor(id) {
