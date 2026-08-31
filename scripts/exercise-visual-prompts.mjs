@@ -154,6 +154,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1452': 'Show a seated crunch on a leverage machine. Keep the hips secured and hands on the upper handles, curl the ribcage toward the pelvis by flexing the trunk, then return slowly to upright without pulling with the arms.',
   '1456': 'Show a standing close-grip barbell military press. Use hands clearly inside shoulder width, start with the bar at the upper chest, press it vertically overhead without leg drive, then lower under control while keeping the core braced.',
   '1457': 'Show a standing wide-grip barbell military press. Use hands clearly wider than shoulder width, start with the bar at the upper chest, press it vertically overhead without leg drive, then lower under control while keeping the core braced.',
+  '0001': 'Show a 3/4 sit-up on a mat. Keep the knees bent and feet flat, hands behind the head, curl the torso to roughly 45 degrees without pulling the neck, then lower with control.',
+  '0002': 'Show a standing 45-degree side bend. Keep the feet planted and spine long, bend the torso laterally toward one side without rotating, then return upright and alternate sides.',
+  '1512': 'Show an all-fours quad stretch. Start on hands and knees, extend one leg back, bend that knee and reach the heel toward the glutes while keeping the hips controlled, then switch sides.',
+  '0006': 'Show alternating heel touchers. Lie supine with knees bent and shoulders slightly lifted; reach one hand toward the same-side heel, return to center, then reach to the opposite heel without pulling the neck.',
+  '0007': 'Show an alternate lateral pulldown on a cable machine. Sit upright and pull one single handle toward the same-side upper chest while the other arm stays extended, then switch sides without torso swing.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -260,6 +265,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1452': { primary: ['Abs'], secondary: ['Obliques'] },
   '1456': { primary: ['Shoulders'], secondary: ['Triceps', 'Upper back'] },
   '1457': { primary: ['Shoulders'], secondary: ['Triceps', 'Upper back'] },
+  '0001': { primary: ['Abs'], secondary: ['Obliques', 'Hip flexors'] },
+  '0002': { primary: ['Obliques'], secondary: [] },
+  '1512': { primary: ['Hamstrings'], secondary: ['Glutes', 'Calves'] },
+  '0006': { primary: ['Obliques'], secondary: [] },
+  '0007': { primary: ['Lats'], secondary: ['Biceps'] },
 })
 
 function exerciseFor(id) {
