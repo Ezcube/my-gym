@@ -277,6 +277,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1298': 'Lie flat on the floor with knees bent and feet planted. Hold one kettlebell overhead in one hand; lower the elbow close to the torso until the upper arm gently contacts the floor, then press back up and switch arms.',
   '1299': 'Sit against the backrest of an incline leverage chest-press machine with feet planted. Grip the handles slightly wider than shoulder width, press them forward, then return them under control toward the chest.',
   '1300': 'Sit against the backrest of a decline leverage chest-press machine with feet planted. Grip the handles slightly wider than shoulder width, press them forward, then return them under control toward the chest.',
+  '1301': 'Sit against the pad of an inner-chest press machine with feet planted and elbows bent about 90 degrees. Grip the converging handles, press them forward until the arms extend, then return under control.',
+  '1302': 'Stand with feet shoulder-width apart and hold a medicine ball at chest level. Drive it forward explosively with both hands, transfer weight from the back foot to the front foot, then receive it and reset.',
+  '1303': 'Start in a three-point stance with one hand on a medicine ball and the other hand on the floor, body straight. Lower the chest, then push the medicine ball away with the working arm and return under control.',
+  '1304': 'Stand with feet shoulder-width apart holding a medicine ball at the chest. Extend both arms to push the ball forward, pause briefly, then bring it back to the chest and repeat smoothly.',
+  '1305': 'Stand with feet shoulder-width apart holding a medicine ball at the chest. Perform one decisive straight-arm push forward, pause at full reach, then hold the completed position.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -506,6 +511,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1298': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
   '1299': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1300': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1301': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1302': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1303': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1304': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1305': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
 })
 
 function exerciseFor(id) {

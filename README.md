@@ -223,7 +223,7 @@ Rough, community-driven — ideas and PRs welcome:
 
 React 19 + Vite (React Router, Zustand) · Node (no framework) · nginx · Docker Compose ·
 WebAuthn · exercise data from [hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-dataset)
-(MIT metadata and instructions; original guidance for 297 exercises plus a built-in muscle-map fallback).
+(MIT metadata and instructions; original guidance for 302 exercises plus a built-in muscle-map fallback).
 No database server, no cloud dependencies — the frontend builds inside Docker, so self-hosting
 stays a one-command `docker compose up`.
 
