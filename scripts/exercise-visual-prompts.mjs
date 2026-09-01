@@ -306,6 +306,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0987': 'Loop the band around the ankles. Place one foot forward and the top of the other foot on a bench behind you, using a support for balance. Lower the standing knee in line with the toes, drive through the heel to rise, then switch sides.',
   '0988': 'Anchor the band at waist height. Face the anchor, hold one handle with the palm inward, step back for tension, hinge slightly at the hips with a straight back, row the handle toward the waist, then extend slowly and switch arms.',
   '0989': 'Anchor the band at chest height and stand side-on. Hold one handle across the body, step away for tension, keep feet planted with soft knees, press the hand forward toward the opposite side with a slight torso rotation, return under control, then switch sides.',
+  '0990': 'Sit on the floor with legs extended and the band anchored in front at low height. Hold one handle with the arm extended and torso tall, row toward the waist while rotating slightly toward the working side, then extend slowly and switch arms.',
+  '0991': 'Stand facing away from a low anchor with the band passing between the legs and both hands holding the handle. Hinge at the hips, drive the hips forward to stand tall and squeeze the glutes, then return to the hinge under control.',
+  '0992': 'Lie on your back with knees bent and the band anchored behind the head. Hold the handles near the shoulders, sit the torso up while pressing the handles forward to straight arms, then lower the spine slowly and bend the elbows.',
+  '0993': 'Stand on the band with feet shoulder-width apart and hinge forward with a flat back. Hold the handles below the chest with soft elbows, raise both arms out to shoulder height squeezing the upper back, then lower under control.',
+  '0994': 'Stand on one end of the band and support the forearm on the thigh with an overhand grip. Keep the forearm still, extend the wrist upward against the band, then lower the hand slowly to neutral.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -564,6 +569,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0987': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings'] },
   '0988': { primary: ['Upper back'], secondary: ['Biceps', 'Shoulders'] },
   '0989': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '0990': { primary: ['Upper back'], secondary: ['Biceps', 'Shoulders'] },
+  '0991': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
+  '0992': { primary: ['Abs'], secondary: ['Shoulders', 'Chest'] },
+  '0993': { primary: ['Delts'], secondary: ['Upper back', 'Trapezius'] },
+  '0994': { primary: ['Forearms'], secondary: [] },
 })
 
 function exerciseFor(id) {
