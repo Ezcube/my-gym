@@ -301,6 +301,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1325': 'Use a wide overhand grip on the seated lat-pulldown bar. Keep the chest up and back neutral, pull the bar down in front of the body to the upper chest (not behind the neck), pause, then return slowly.',
   '1326': 'Hang from the bar with a shoulder-width supinated grip (palms toward you). Keep the body controlled, pull the chest up until the chin clears the bar, pause, then lower to a full hang.',
   '1327': 'Hang from the bar with a close-grip supinated grip and elbows near the torso. Pull smoothly until the chin clears the bar, pause at the top, then lower under control to full arm extension.',
+  '1408': 'Place the band just above the knees and lie on your back with knees bent and feet planted. Brace the core, press through the heels to lift the hips, squeeze the glutes at the top, then lower slowly without letting the knees cave inward.',
+  '0986': 'Stand on one end of the band and hold the other end overhead with the palm facing forward. Keep the upper arm vertical and elbow fixed while curling the forearm toward the shoulder, then lower under control and switch arms.',
+  '0987': 'Loop the band around the ankles. Place one foot forward and the top of the other foot on a bench behind you, using a support for balance. Lower the standing knee in line with the toes, drive through the heel to rise, then switch sides.',
+  '0988': 'Anchor the band at waist height. Face the anchor, hold one handle with the palm inward, step back for tension, hinge slightly at the hips with a straight back, row the handle toward the waist, then extend slowly and switch arms.',
+  '0989': 'Anchor the band at chest height and stand side-on. Hold one handle across the body, step away for tension, keep feet planted with soft knees, press the hand forward toward the opposite side with a slight torso rotation, return under control, then switch sides.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -554,6 +559,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1325': { primary: ['Lats'], secondary: ['Biceps', 'Rhomboids', 'Rear deltoids'] },
   '1326': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
   '1327': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
+  '1408': { primary: ['Glutes'], secondary: ['Hamstrings', 'Quads'] },
+  '0986': { primary: ['Biceps'], secondary: ['Forearms', 'Shoulders'] },
+  '0987': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings'] },
+  '0988': { primary: ['Upper back'], secondary: ['Biceps', 'Shoulders'] },
+  '0989': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
 })
 
 function exerciseFor(id) {
