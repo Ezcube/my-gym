@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 356)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 361)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1281,6 +1281,19 @@ test('barbell squat and hinge batch preserves viewpoint, setup, and target muscl
   assert.match(promptFor('1545', 'muscles'), /Primary muscles: Glutes/i)
   assert.match(promptFor('3562', 'muscles'), /Primary muscles: Glutes/i)
   assert.match(promptFor('0044', 'muscles'), /Primary muscles: Hamstrings/i)
+})
+
+test('incline and chest-supported barbell batch preserves setup and target muscles', () => {
+  assert.match(promptFor('0045', 'technique'), /overhand grip.*slightly wider than shoulder width.*toward the neck/i)
+  assert.match(promptFor('0046', 'technique'), /toes slightly turned out.*barbell behind the legs.*squat/i)
+  assert.match(promptFor('1719', 'technique'), /incline bench to 45 degrees.*close grip.*elbows close to the body/i)
+  assert.match(promptFor('0048', 'technique'), /incline bench to 45 degrees.*reverse underhand grip.*upper chest/i)
+  assert.match(promptFor('0049', 'technique'), /chest supported.*overhand grip.*squeezing the shoulder blades/i)
+  assert.match(promptFor('0045', 'muscles'), /Primary muscles: Chest/i)
+  assert.match(promptFor('0046', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('1719', 'muscles'), /Primary muscles: Triceps/i)
+  assert.match(promptFor('0048', 'muscles'), /Primary muscles: Triceps/i)
+  assert.match(promptFor('0049', 'muscles'), /Primary muscles: Upper back/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

@@ -336,6 +336,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1545': 'Stand with feet shoulder-width and toes slightly turned out. Hold the barbell securely in the crooks of the elbows with the hands gripping it for stability. Keep the chest lifted and core braced, squat hips back and down until the thighs are parallel or as low as comfortable, then drive through the heels and squeeze the glutes to stand.',
   '3562': 'Sit on the edge of a bench with the upper back supported and both feet flat on the floor, hip-width apart. Place a padded barbell across the hips and stabilize it with both hands. Press through the heels to lift the hips until the knees and shoulders form a straight line, squeeze the glutes, then lower slowly.',
   '0044': 'Stand with feet shoulder-width and the barbell resting across the upper back. Brace the core and keep a neutral spine, hinge forward at the hips with only a slight knee bend while pushing the hips back until the torso approaches parallel and the hamstrings stretch, then squeeze the glutes to return upright.',
+  '0045': 'Lie flat on a bench with feet flat and back pressed into the pad. Use an overhand grip slightly wider than shoulder width, lower the bar slowly toward the neck with elbows pointing outward, pause just above the neck without contact, then press back to full extension.',
+  '0046': 'Stand with feet shoulder-width and toes slightly turned out. Hold the barbell behind the legs against the upper thighs with straight arms. Keep the back straight and chest up as you bend the knees and hips to squat to parallel or comfortable depth, pause, then push through the heels to stand.',
+  '1719': 'Set an incline bench to 45 degrees. Lie back with feet flat and use a close grip slightly narrower than shoulder width. Unrack the bar, lower it toward the chest with elbows close to the body, pause when it touches the chest, then press to full extension.',
+  '0048': 'Set an incline bench to 45 degrees. Lie back and use a reverse underhand grip slightly wider than shoulder width. Unrack the bar, lower it toward the upper chest with elbows tucked, pause, then press back to full extension.',
+  '0049': 'Set an incline bench to 45 degrees and lie face down with the chest supported and feet on the floor. Use an overhand grip slightly wider than shoulder width with arms hanging. Keep the back straight and core engaged, pull the bar toward the chest while squeezing the shoulder blades, pause, then lower slowly.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -624,6 +629,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1545': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves', 'Core'] },
   '3562': { primary: ['Glutes'], secondary: ['Hamstrings', 'Core'] },
   '0044': { primary: ['Hamstrings'], secondary: ['Lower back'] },
+  '0045': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '0046': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
+  '1719': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0048': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0049': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
 })
 
 function exerciseFor(id) {
