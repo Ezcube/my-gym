@@ -262,6 +262,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1283': 'Use an incline posture with the upper back supported on a large stability ball and feet planted wide. Hold one dumbbell in each hand at the upper chest; press both dumbbells upward together, then lower them under control without locking the elbows.',
   '1284': 'Lie lengthwise with the upper back supported on a large stability ball, feet planted wide, and hold one dumbbell with both hands above the chest. Lower it in a controlled arc behind the head while keeping the hips steady, then return above the chest.',
   '1285': 'Lie on a flat bench with feet planted. Hold one dumbbell above the chest in one hand while the other hand rests on the torso; lower the working arm out in a wide arc with a soft elbow, then return above the chest and switch arms.',
+  '1286': 'Lie with the upper back supported on a large stability ball, feet planted wide. Hold one dumbbell above the chest in one hand while the other hand rests on the torso; lower the working arm out in a wide arc with a soft elbow, then return above the chest and switch arms.',
+  '1287': 'Lie on a decline bench with feet planted. Hold one dumbbell at the chest in one hand while the other arm rests safely; press the working dumbbell vertically upward, then lower it under control and switch arms.',
+  '1288': 'Lie with the upper back supported on a large stability ball, feet planted wide. Hold one dumbbell above the chest in one hand while the other hand rests on the torso; lower the working arm out in a wide arc with a soft elbow, then return above the chest and switch arms.',
+  '1289': 'Sit back on an incline bench set to 45 degrees with feet planted. Hold one dumbbell at shoulder height in one hand while the other hand rests on the torso; press the working dumbbell upward, then lower it under control and switch arms.',
+  '1290': 'Sit upright on a large stability ball with feet planted wide. Hold one dumbbell at shoulder height in one hand while the other hand rests on the thigh; press the working dumbbell overhead while keeping the core engaged, then lower it under control and switch arms.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -476,6 +481,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1283': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1284': { primary: ['Chest'], secondary: ['Triceps'] },
   '1285': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1286': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1287': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1288': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1289': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1290': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps', 'Core'] },
 })
 
 function exerciseFor(id) {
