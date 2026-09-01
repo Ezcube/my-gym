@@ -241,6 +241,12 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1262': 'Attach a single D-handle to a low pulley and use a decline bench. Lie with the head toward the machine, start with the arm above the chest and a soft elbow, lower it out to shoulder level, then bring it back and switch arms.',
   '1263': 'Sit upright on an exercise ball with feet flat and hold one cable handle out to the side with a soft elbow. Sweep the arm across the body to contract the chest, then return slowly and switch sides.',
   '1264': 'Sit on an exercise ball with the back supported by an incline bench. Hold one cable handle with the palm inward, lower the nearly straight arm out to shoulder level, then squeeze the chest to return and switch arms.',
+  '1265': 'Use a low cable pulley and sit on an incline bench facing away from the machine. Hold one handle at shoulder height, press it forward and upward to full extension, then lower slowly and switch arms.',
+  '1266': 'Sit on an exercise ball with the back supported by an incline bench. Hold one cable handle with the elbow bent at 90 degrees, press forward and upward to full extension, then lower slowly and switch arms.',
+  '1267': 'Sit upright on an exercise ball with feet flat and the back straight. Hold one handle at chest height while the other hand rests on the hip; press forward to full extension, return slowly, and switch arms.',
+  '1268': 'Sit on an exercise ball with knees at 90 degrees and hold both cable handles at chest height with palms down. Brace the core, press both handles forward to full extension, pause, then return slowly.',
+  '1269': 'Stand upright in the middle of a cable machine with arms extended out to the sides and palms down. Bring both handles together in front of the body, crossing the hands, then open under control.',
+  '1270': 'Stand in the middle of a cable machine with a staggered stance and one handle in each hand. Start with the arms open high, pull both handles downward and inward in a smooth arc until the hands meet in front of the upper chest, then return slowly.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -434,6 +440,12 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1262': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1263': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1264': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1265': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1266': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1267': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1268': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1269': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1270': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
 })
 
 function exerciseFor(id) {

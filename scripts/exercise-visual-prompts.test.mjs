@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 262)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 267)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1062,6 +1062,17 @@ test('cable decline press, fly, and exercise-ball fly prompts stay distinct', ()
   assert.match(promptFor('1264', 'technique'), /exercise ball/i)
   assert.match(promptFor('1264', 'technique'), /incline bench/i)
   for (const id of ['1260', '1261', '1262', '1263', '1264']) assert.match(promptFor(id, 'muscles'), /Primary muscles: Chest/i)
+})
+
+test('cable incline presses, exercise-ball press, and standing crossover prompts stay distinct', () => {
+  assert.match(promptFor('1265', 'technique'), /low cable pulley/i)
+  assert.match(promptFor('1265', 'technique'), /incline bench/i)
+  assert.match(promptFor('1266', 'technique'), /exercise ball.*incline bench/i)
+  assert.match(promptFor('1267', 'technique'), /other hand on (your|the) hip/i)
+  assert.match(promptFor('1268', 'technique'), /both cable handles/i)
+  assert.match(promptFor('1269', 'technique'), /standing up straight crossovers/i)
+  assert.match(promptFor('1270', 'technique'), /upper chest crossover/i)
+  for (const id of ['1265', '1266', '1267', '1268', '1269', '1270']) assert.match(promptFor(id, 'muscles'), /Primary muscles: Chest/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
