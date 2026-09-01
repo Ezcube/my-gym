@@ -272,6 +272,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1293': 'Support the lower back on a large stability ball with feet planted wide and knees near 90 degrees. Hold one dumbbell in each hand at shoulder level; press both dumbbells overhead together, then lower them under control.',
   '1294': 'Support the head, neck, and upper back on a large stability ball with feet planted wide. Hold one dumbbell with both hands above the chest; lower it behind the head, return above the chest, then lift the hips into a controlled bridge before lowering them.',
   '1295': 'Support the upper back on a large stability ball with feet planted wide. Hold one dumbbell with both hands above the chest and lower it behind the head with straight arms, then return it above the chest under control.',
+  '1296': 'Start in a high plank with hands on the floor and shins on a large stability ball. Lift the hips into an inverted-V pike, then bend the elbows to lower the head and shoulders and press back to the pike.',
+  '1297': 'Stand with feet shoulder-width apart and arms straight in front at chest height. Press the palms together firmly for an isometric chest squeeze, hold briefly, then release while keeping the arms level.',
+  '1298': 'Lie flat on the floor with knees bent and feet planted. Hold one kettlebell overhead in one hand; lower the elbow close to the torso until the upper arm gently contacts the floor, then press back up and switch arms.',
+  '1299': 'Sit against the backrest of an incline leverage chest-press machine with feet planted. Grip the handles slightly wider than shoulder width, press them forward, then return them under control toward the chest.',
+  '1300': 'Sit against the backrest of a decline leverage chest-press machine with feet planted. Grip the handles slightly wider than shoulder width, press them forward, then return them under control toward the chest.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -496,6 +501,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1293': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1294': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders', 'Core', 'Glutes'] },
   '1295': { primary: ['Chest'], secondary: ['Triceps', 'Back'] },
+  '1296': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps', 'Core'] },
+  '1297': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1298': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1299': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1300': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
 })
 
 function exerciseFor(id) {
