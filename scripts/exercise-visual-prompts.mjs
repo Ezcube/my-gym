@@ -247,6 +247,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1268': 'Sit on an exercise ball with knees at 90 degrees and hold both cable handles at chest height with palms down. Brace the core, press both handles forward to full extension, pause, then return slowly.',
   '1269': 'Stand upright in the middle of a cable machine with arms extended out to the sides and palms down. Bring both handles together in front of the body, crossing the hands, then open under control.',
   '1270': 'Stand in the middle of a cable machine with a staggered stance and one handle in each hand. Start with the arms open high, pull both handles downward and inward in a smooth arc until the hands meet in front of the upper chest, then return slowly.',
+  '1271': 'Stand tall with feet shoulder-width apart. Extend the arms forward, cross them with the right arm on top, interlace the fingers, and press the joined palms forward while gently squeezing the shoulder blades. Hold the chest and front-shoulder stretch without bouncing.',
+  '1272': 'Sit upright on a stability ball with feet flat and back straight. Hold a second exercise ball with both hands and arms extended forward, draw it slowly toward the chest for a gentle stretch, hold briefly, then return.',
+  '1273': 'Start in a high plank with a straight body. Lower the chest with elbows controlled, push explosively so both hands leave the floor, clap once beneath the chest, and land softly back in the plank.',
+  '1274': 'Start in a high plank with hands slightly wider than shoulder width. Lower the chest very close to the floor with elbows tracking safely, then press through the palms to full arm extension and return.',
+  '1275': 'Start in a high plank and lower the chest with elbows close. When the chest is just above the floor, drop both knees to the ground, then push back up to the high plank with arms extended.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -446,6 +451,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1268': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1269': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1270': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1271': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1272': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1273': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1274': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1275': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
 })
 
 function exerciseFor(id) {
