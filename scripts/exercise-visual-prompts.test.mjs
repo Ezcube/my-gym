@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 336)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 341)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1229,6 +1229,19 @@ test('third mixed batch preserves setup, movement, and target muscles', () => {
   assert.match(promptFor('0998', 'muscles'), /Primary muscles: Triceps/i)
   assert.match(promptFor('0023', 'muscles'), /Primary muscles: Biceps/i)
   assert.match(promptFor('0024', 'muscles'), /Primary muscles: Quads/i)
+})
+
+test('barbell batch preserves rack, grip, transition, and target muscles', () => {
+  assert.match(promptFor('0026', 'technique'), /squat rack at chest height.*face away from the rack/i)
+  assert.match(promptFor('2407', 'technique'), /arm blaster.*upper arms/i)
+  assert.match(promptFor('0028', 'technique'), /barbell on the floor.*catch the bar at shoulder height.*press overhead/i)
+  assert.match(promptFor('0029', 'technique'), /barbell resting on the upper chest.*elbows forward/i)
+  assert.match(promptFor('0030', 'technique'), /slightly narrower than shoulder width.*elbows close/i)
+  assert.match(promptFor('0026', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('2407', 'muscles'), /Primary muscles: Biceps/i)
+  assert.match(promptFor('0028', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('0029', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0030', 'muscles'), /Primary muscles: Triceps/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
