@@ -361,6 +361,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0069': 'Stand with feet shoulder-width and toes slightly out. Hold a barbell overhead with a wide grip and arms fully extended. Brace the core and squat with chest up and knees tracking toes while keeping the bar vertically overhead, then drive through the heels to stand.',
   '1411': 'Sit with feet flat and forearms resting on the thighs, palms facing down, holding a barbell with an overhand grip. Keep the forearms stationary, lower the bar by flexing the wrists, pause, then extend the wrists to raise it back up.',
   '1412': 'Sit with feet flat and forearms resting on a bench, palms facing up with an underhand barbell grip and wrists over the edge. Keep the forearms stationary, curl the wrists upward, pause, then slowly lower the barbell to return.',
+  '0070': 'Sit on a preacher bench with the upper arms resting on the pad and chest against the support. Hold a barbell with an underhand grip slightly wider than shoulder width. Keep the upper arms stationary, curl the bar toward the shoulders, squeeze the biceps, then lower slowly to the start.',
+  '0071': 'Lie flat on a mat with knees bent and feet flat. Hold a barbell with an overhand grip resting on the chest. Brace the abs and curl the upper body up to about a 45-degree angle, pause, then lower slowly back to the mat.',
+  '0072': 'Set an incline bench to 45 degrees and lie face down with the chest and stomach supported. Hold a barbell with an underhand shoulder-width grip and arms hanging straight. Keep the upper arms stationary, curl toward shoulder level, squeeze the biceps, then lower under control.',
+  '0073': 'Lie flat on a bench with head near one end and feet on the floor. Hold a barbell with a shoulder-width grip and arms straight above the chest. Keeping the arms straight, lower the bar in an arc behind the head to stretch the lats, pause, then raise it back above the chest.',
+  '0022': 'Lie flat on a bench with feet on the ground. Hold a barbell with a pronated overhand grip and arms straight above the chest. Lower it in an arc behind the head to stretch the lats, reverse the arc, then press the bar back to the starting position above the chest.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -674,6 +679,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0069': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves', 'Core'] },
   '1411': { primary: ['Forearms'], secondary: ['Biceps', 'Brachialis'] },
   '1412': { primary: ['Forearms'], secondary: ['Biceps', 'Shoulders'] },
+  '0070': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0071': { primary: ['Abs'], secondary: ['Shoulders', 'Chest'] },
+  '0072': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0073': { primary: ['Lats'], secondary: ['Chest', 'Triceps'] },
+  '0022': { primary: ['Lats'], secondary: ['Triceps', 'Chest', 'Shoulders'] },
 })
 
 function exerciseFor(id) {
