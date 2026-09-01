@@ -296,6 +296,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1319': 'Stand facing a waist-height cable with one handle and palms initially down. Step back for tension, row the handle while rotating the palm upward, squeeze the shoulder blade, then release slowly.',
   '1320': 'Sit at the row station with feet on the footrests and hold the two rope ends with a crossover grip. Lean back slightly, pull the ropes to the chest while squeezing the shoulder blades, then return with control.',
   '1321': 'Sit on the elevated seat facing the cable machine with the rope handles extended. Keep the back straight and knees softly bent, pull the rope toward the torso, pause at contraction, then extend slowly.',
+  '1322': 'Set the bench to a 45-degree incline facing the low pulley. Sit chest-supported, hold the rope with an overhand grip, extend the arms, row the rope toward the upper chest with elbows close, squeeze the shoulder blades, then return slowly.',
+  '1324': 'Attach a straight bar at chest height and stand facing the cable. Use an overhand grip slightly wider than the shoulders, keep the back straight, pull the bar to the upper chest while squeezing the shoulder blades, pause, then release under control.',
+  '1325': 'Use a wide overhand grip on the seated lat-pulldown bar. Keep the chest up and back neutral, pull the bar down in front of the body to the upper chest (not behind the neck), pause, then return slowly.',
+  '1326': 'Hang from the bar with a shoulder-width supinated grip (palms toward you). Keep the body controlled, pull the chest up until the chin clears the bar, pause, then lower to a full hang.',
+  '1327': 'Hang from the bar with a close-grip supinated grip and elbows near the torso. Pull smoothly until the chin clears the bar, pause at the top, then lower under control to full arm extension.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -544,6 +549,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1319': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
   '1320': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
   '1321': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '1322': { primary: ['Upper back'], secondary: ['Biceps', 'Shoulders'] },
+  '1324': { primary: ['Upper back'], secondary: ['Biceps', 'Shoulders'] },
+  '1325': { primary: ['Lats'], secondary: ['Biceps', 'Rhomboids', 'Rear deltoids'] },
+  '1326': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
+  '1327': { primary: ['Lats'], secondary: ['Biceps', 'Forearms'] },
 })
 
 function exerciseFor(id) {

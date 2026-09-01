@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 316)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 321)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1179,6 +1179,17 @@ test('row prompt batch preserves the grip, cable, rope, and elevated-seat detail
     assert.match(promptFor(id, 'muscles'), /Primary muscles: Upper back/i)
     assert.match(promptFor(id, 'muscles'), /Secondary muscles:.*Biceps/i)
   }
+})
+
+test('cable and chin-up batch preserves setup, grip, and target muscles', () => {
+  assert.match(promptFor('1322', 'technique'), /incline bench/i)
+  assert.match(promptFor('1324', 'technique'), /straight bar/i)
+  assert.match(promptFor('1325', 'technique'), /front pulldown|not behind the neck/i)
+  assert.match(promptFor('1326', 'technique'), /supinated|chin clears the bar/i)
+  assert.match(promptFor('1327', 'technique'), /close-grip|hands close/i)
+  assert.match(promptFor('1322', 'muscles'), /Primary muscles: Upper back/i)
+  assert.match(promptFor('1325', 'muscles'), /Primary muscles: Lats/i)
+  assert.match(promptFor('1326', 'muscles'), /Primary muscles: Lats/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
