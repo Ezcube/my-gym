@@ -326,6 +326,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0035': 'Lie on a decline bench with head lower than feet and hold one barbell with a close grip. Keep upper arms stationary as you lower the bar toward the forehead, pause, then extend the elbows to press it up.',
   '0036': 'Lie on a decline bench with feet secured and head lower than hips. Grip the barbell wider than shoulder width, lower it to the chest with elbows out, pause, then press to full extension.',
   '0037': 'Lie on a decline bench with feet secured and head lower than hips. Hold one barbell with a wide grip and straight arms above the chest, lower it behind the head without bending the elbows, then raise it back.',
+  '0038': 'Stand with feet shoulder-width and hold a barbell with an underhand grip hanging at the thighs. Drag the bar upward close along the torso with elbows traveling back, curl toward the chest, pause, then lower slowly.',
+  '0039': 'Stand with feet shoulder-width and toes slightly turned out. Hold the barbell in front of the chest with elbows pointing forward, brace the core and keep the chest up, squat to comfortable depth, pause, then drive through the heels to stand.',
+  '0041': 'Stand with feet shoulder-width and hold the barbell in front of the thighs with an overhand grip. Keep the arms straight, raise the bar forward to shoulder level, pause, then lower slowly.',
+  '0040': 'Stand with feet shoulder-width and hold the barbell with an overhand grip. Raise straight arms forward to shoulder height, pause and lower, then lower the same straight-arm barbell behind the head and raise it back under control.',
+  '0042': 'Stand with feet shoulder-width and toes slightly turned out. Rest the barbell on the collarbone and shoulders in a front-rack position, brace the core and keep the chest up, squat to parallel or comfortable depth, pause, then drive through the heels to stand.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -604,6 +609,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0035': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
   '0036': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
   '0037': { primary: ['Lats'], secondary: ['Triceps', 'Chest'] },
+  '0038': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0039': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves', 'Core'] },
+  '0041': { primary: ['Delts'], secondary: ['Biceps', 'Triceps'] },
+  '0040': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '0042': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves', 'Core'] },
 })
 
 function exerciseFor(id) {
