@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 376)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 381)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1333,6 +1333,19 @@ test('triceps, squat, row, floor-press, and side-deadlift batch preserves detail
   assert.match(promptFor('0063', 'muscles'), /Primary muscles: Glutes/i)
   assert.match(promptFor('0064', 'muscles'), /Primary muscles: Upper back/i)
   assert.match(promptFor('0066', 'muscles'), /Primary muscles: Glutes/i)
+})
+
+test('snatch, one-leg, overhead squat, and wrist-curl batch preserves details', () => {
+  assert.match(promptFor('0067', 'technique'), /barbell.*one hand.*rotate the elbow under.*overhead/i)
+  assert.match(promptFor('0068', 'technique'), /one foot forward.*single-leg squat/i)
+  assert.match(promptFor('0069', 'technique'), /barbell overhead.*knees tracking toes/i)
+  assert.match(promptFor('1411', 'technique'), /palms facing down.*forearms stationary/i)
+  assert.match(promptFor('1412', 'technique'), /palms facing up.*wrists over the edge/i)
+  assert.match(promptFor('0067', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0068', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('0069', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('1411', 'muscles'), /Primary muscles: Forearms/i)
+  assert.match(promptFor('1412', 'muscles'), /Primary muscles: Forearms/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
