@@ -1,6 +1,6 @@
 # Exercise visuals
 
-This fork ships original generated technique and target-muscle images for the 341 exercise IDs listed in `frontend/src/lib/exercise-visuals.js`. The remaining catalogue uses the built-in MuscleMap-derived body diagram.
+This fork ships original generated technique and target-muscle images for the 346 exercise IDs listed in `frontend/src/lib/exercise-visuals.js`. The remaining catalogue uses the built-in MuscleMap-derived body diagram.
 
 The generated files are not copied from the upstream Gym visual filenames, a stock library, or a remote exercise API. Runtime code never requests those legacy files.
 
@@ -16,7 +16,7 @@ The importer refuses to overwrite an accepted asset. Replace an asset only throu
 
 ## Runtime policy
 
-- exactly 341 manifest IDs and 682 WebP files;
+- exactly 346 manifest IDs and 692 WebP files;
 - technique images: 1200×800;
 - muscle images: 1200×675;
 - maximum 300 KiB per file;

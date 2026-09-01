@@ -321,6 +321,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0028': 'Start with the barbell on the floor and feet shoulder-width. Hinge with an overhand grip, pull close to the body, explosively extend hips and knees, catch the bar at shoulder height with elbows forward, then press overhead and lower under control.',
   '0029': 'Stand with feet shoulder-width and the barbell resting on the upper chest in a clean grip with elbows forward. Keep chest up and back straight as you squat to comfortable depth, pause, then drive through the heels to stand.',
   '0030': 'Lie flat on a bench with feet planted. Grip the barbell slightly narrower than shoulder width, lower it slowly toward the chest with elbows close to the body, pause, then press to full arm extension.',
+  '0033': 'Lie on a decline bench with feet secured and head lower than hips. Use a shoulder-width overhand grip, lower the barbell to the lower chest with control, pause, then press to full extension.',
+  '0034': 'Lie on a decline bench with feet secured. Hold one barbell above the chest with elbows bent, lower it in an arc behind the head while keeping elbows fixed, then pull it back over the chest.',
+  '0035': 'Lie on a decline bench with head lower than feet and hold one barbell with a close grip. Keep upper arms stationary as you lower the bar toward the forehead, pause, then extend the elbows to press it up.',
+  '0036': 'Lie on a decline bench with feet secured and head lower than hips. Grip the barbell wider than shoulder width, lower it to the chest with elbows out, pause, then press to full extension.',
+  '0037': 'Lie on a decline bench with feet secured and head lower than hips. Hold one barbell with a wide grip and straight arms above the chest, lower it behind the head without bending the elbows, then raise it back.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -594,6 +599,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0028': { primary: ['Quads'], secondary: ['Hamstrings', 'Glutes', 'Shoulders', 'Triceps'] },
   '0029': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves', 'Core'] },
   '0030': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0033': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '0034': { primary: ['Lats'], secondary: ['Triceps', 'Chest'] },
+  '0035': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0036': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '0037': { primary: ['Lats'], secondary: ['Triceps', 'Chest'] },
 })
 
 function exerciseFor(id) {

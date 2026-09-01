@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 341)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 346)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1242,6 +1242,19 @@ test('barbell batch preserves rack, grip, transition, and target muscles', () =>
   assert.match(promptFor('0028', 'muscles'), /Primary muscles: Quads/i)
   assert.match(promptFor('0029', 'muscles'), /Primary muscles: Glutes/i)
   assert.match(promptFor('0030', 'muscles'), /Primary muscles: Triceps/i)
+})
+
+test('decline barbell batch preserves bench angle, grip, and target muscles', () => {
+  assert.match(promptFor('0033', 'technique'), /decline bench.*lower than hips.*lower the barbell to the lower chest/i)
+  assert.match(promptFor('0034', 'technique'), /decline bench.*elbows bent.*behind the head/i)
+  assert.match(promptFor('0035', 'technique'), /head lower than feet.*close grip.*forehead/i)
+  assert.match(promptFor('0036', 'technique'), /decline bench.*wider than shoulder width.*elbows out/i)
+  assert.match(promptFor('0037', 'technique'), /decline bench.*wide grip.*without bending the elbows/i)
+  assert.match(promptFor('0033', 'muscles'), /Primary muscles: Chest/i)
+  assert.match(promptFor('0034', 'muscles'), /Primary muscles: Lats/i)
+  assert.match(promptFor('0035', 'muscles'), /Primary muscles: Triceps/i)
+  assert.match(promptFor('0036', 'muscles'), /Primary muscles: Chest/i)
+  assert.match(promptFor('0037', 'muscles'), /Primary muscles: Lats/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
