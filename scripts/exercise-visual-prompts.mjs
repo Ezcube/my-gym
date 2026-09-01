@@ -341,6 +341,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1719': 'Set an incline bench to 45 degrees. Lie back with feet flat and use a close grip slightly narrower than shoulder width. Unrack the bar, lower it toward the chest with elbows close to the body, pause when it touches the chest, then press to full extension.',
   '0048': 'Set an incline bench to 45 degrees. Lie back and use a reverse underhand grip slightly wider than shoulder width. Unrack the bar, lower it toward the upper chest with elbows tucked, pause, then press back to full extension.',
   '0049': 'Set an incline bench to 45 degrees and lie face down with the chest supported and feet on the floor. Use an overhand grip slightly wider than shoulder width with arms hanging. Keep the back straight and core engaged, pull the bar toward the chest while squeezing the shoulder blades, pause, then lower slowly.',
+  '0050': 'Set an incline bench to 45 degrees. Sit with your back supported and feet flat, hold the barbell with an overhand grip slightly wider than shoulder width at shoulder height, raise it overhead with soft elbows, pause, then lower to shoulder height.',
+  '0051': 'Stand with feet shoulder-width and toes slightly turned out. Hold the barbell in front just below the waist with an overhand grip, step one foot forward and the other back while keeping feet shoulder-width, squat with a straight back and chest up, then drive through the heels and alternate the staggered stance.',
+  '0052': 'Lie flat on a bench with feet flat and back pressed to the pad. Use an overhand grip slightly wider than shoulder width, lower the bar toward the chest with elbows tucked close, pause, then press to full extension.',
+  '0053': 'Stand with feet shoulder-width and a barbell across the upper back. Squat with hips back and knees tracking the toes, then drive through the feet to jump, land softly back into a squat, and repeat with a neutral spine.',
+  '1720': 'Lie flat on a bench with feet flat and head near the end. Hold a barbell with an overhand shoulder-width grip above the chest. Keep upper arms stationary, bend the elbows to lower the bar behind the head, pause, then extend the elbows to return.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -634,6 +639,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1719': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
   '0048': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
   '0049': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '0050': { primary: ['Serratus anterior'], secondary: ['Delts', 'Traps'] },
+  '0051': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
+  '0052': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0053': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
+  '1720': { primary: ['Triceps'], secondary: ['Shoulders'] },
 })
 
 function exerciseFor(id) {

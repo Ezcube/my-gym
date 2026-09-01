@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 361)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 366)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1294,6 +1294,22 @@ test('incline and chest-supported barbell batch preserves setup and target muscl
   assert.match(promptFor('1719', 'muscles'), /Primary muscles: Triceps/i)
   assert.match(promptFor('0048', 'muscles'), /Primary muscles: Triceps/i)
   assert.match(promptFor('0049', 'muscles'), /Primary muscles: Upper back/i)
+})
+
+test('shoulder, Jefferson, JM, jump-squat, and tricep barbell batch preserves details', () => {
+  assert.match(promptFor('0050', 'technique'), /incline bench to 45 degrees.*overhand grip.*raise it overhead/i)
+  assert.match(promptFor('0051', 'technique'), /barbell in front.*alternate the staggered stance/i)
+  assert.match(promptFor('0052', 'technique'), /barbell JM bench press/i)
+  assert.match(promptFor('0052', 'technique'), /elbows tucked/i)
+    assert.match(promptFor('0053', 'technique'), /barbell jump squat/i)
+    assert.match(promptFor('0053', 'technique'), /barbell across the upper back.*land softly/i)
+    assert.match(promptFor('1720', 'technique'), /barbell lying back of the head tricep extension/i)
+    assert.match(promptFor('1720', 'technique'), /behind the head/i)
+  assert.match(promptFor('0050', 'muscles'), /Primary muscles: Serratus anterior/i)
+  assert.match(promptFor('0051', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0052', 'muscles'), /Primary muscles: Triceps/i)
+  assert.match(promptFor('0053', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('1720', 'muscles'), /Primary muscles: Triceps/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
