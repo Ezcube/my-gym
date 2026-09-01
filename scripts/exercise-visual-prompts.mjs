@@ -311,6 +311,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0992': 'Lie on your back with knees bent and the band anchored behind the head. Hold the handles near the shoulders, sit the torso up while pressing the handles forward to straight arms, then lower the spine slowly and bend the elbows.',
   '0993': 'Stand on the band with feet shoulder-width apart and hinge forward with a flat back. Hold the handles below the chest with soft elbows, raise both arms out to shoulder height squeezing the upper back, then lower under control.',
   '0994': 'Stand on one end of the band and support the forearm on the thigh with an overhand grip. Keep the forearm still, extend the wrist upward against the band, then lower the hand slowly to neutral.',
+  '0996': 'Sit upright on a bench with feet flat, knees at 90 degrees, and the band just above the knees; press both knees outward against the band, pause, then return slowly.',
+  '0997': 'Stand on the band with feet shoulder-width apart, palms forward and handles at shoulder height; press overhead to full arm extension, pause, then lower to the shoulders.',
+  '0998': 'Hold the band with both hands palms down and arms extended straight out to the sides; keep upper arms still, bend the elbows to bring hands toward the shoulders, pause, then extend back out.',
+  '0023': 'Stand upright holding a short barbell in each hand with palms forward; keep upper arms still, curl one barbell to shoulder level while the other stays down, lower under control, and alternate arms.',
+  '0024': 'Rest the barbell across the upper chest below the collarbone with an overhand grip and high elbows; squat with chest up and back straight, pause at the bottom, then drive through the heels to stand.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -574,6 +579,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0992': { primary: ['Abs'], secondary: ['Shoulders', 'Chest'] },
   '0993': { primary: ['Delts'], secondary: ['Upper back', 'Trapezius'] },
   '0994': { primary: ['Forearms'], secondary: [] },
+  '0996': { primary: ['Glutes'], secondary: ['Hamstrings', 'Quads'] },
+  '0997': { primary: ['Delts'], secondary: ['Triceps', 'Upper back'] },
+  '0998': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0023': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0024': { primary: ['Quads'], secondary: ['Hamstrings', 'Glutes', 'Calves'] },
 })
 
 function exerciseFor(id) {

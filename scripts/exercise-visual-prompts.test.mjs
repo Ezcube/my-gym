@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 331)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 336)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1216,6 +1216,19 @@ test('second resistance-band batch preserves setup, movement, and target muscles
   assert.match(promptFor('0992', 'muscles'), /Primary muscles: Abs/i)
   assert.match(promptFor('0993', 'muscles'), /Primary muscles: Delts/i)
   assert.match(promptFor('0994', 'muscles'), /Primary muscles: Forearms/i)
+})
+
+test('third mixed batch preserves setup, movement, and target muscles', () => {
+  assert.match(promptFor('0996', 'technique'), /band just above the knees.*press both knees outward/i)
+  assert.match(promptFor('0997', 'technique'), /stand on the band.*press overhead/i)
+  assert.match(promptFor('0998', 'technique'), /arms extended straight out to the sides.*bend the elbows/i)
+  assert.match(promptFor('0023', 'technique'), /short barbell in each hand.*alternate arms/i)
+  assert.match(promptFor('0024', 'technique'), /barbell across the upper chest.*high elbows/i)
+  assert.match(promptFor('0996', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0997', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0998', 'muscles'), /Primary muscles: Triceps/i)
+  assert.match(promptFor('0023', 'muscles'), /Primary muscles: Biceps/i)
+  assert.match(promptFor('0024', 'muscles'), /Primary muscles: Quads/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
