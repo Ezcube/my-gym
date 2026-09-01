@@ -252,6 +252,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1273': 'Start in a high plank with a straight body. Lower the chest with elbows controlled, push explosively so both hands leave the floor, clap once beneath the chest, and land softly back in the plank.',
   '1274': 'Start in a high plank with hands slightly wider than shoulder width. Lower the chest very close to the floor with elbows tracking safely, then press through the palms to full arm extension and return.',
   '1275': 'Start in a high plank and lower the chest with elbows close. When the chest is just above the floor, drop both knees to the ground, then push back up to the high plank with arms extended.',
+  '1276': 'Lie on a decline bench with the head lower than the hips. Hold one dumbbell above the chest with a soft elbow while the other hand rests on the torso; lower the working arm out in a wide arc, then return it above the chest and switch arms.',
+  '1277': 'Lie with the upper back supported on a large stability ball, feet planted wide, and hold one dumbbell in each hand above the chest. Open both arms in a controlled arc with soft elbows, then bring the dumbbells back together above the chest.',
+  '1278': 'Use a slightly inclined posture with the upper back supported on a large stability ball, feet planted wide, and one dumbbell in each hand above the upper chest. Open both arms in a controlled downward arc, then return the dumbbells together above the upper chest.',
+  '1279': 'Sit back on an incline bench set to 30–45 degrees with feet planted. Hold one dumbbell above the upper chest while the other hand rests on the torso; lower the working arm out and down in a wide arc, then return and switch arms.',
+  '1280': 'Use an incline posture with the upper back supported on a large stability ball and feet planted wide. Hold one dumbbell above the upper chest while the other hand rests on the torso; lower the working arm out and down in a wide arc, then return and switch arms.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -456,6 +461,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1273': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1274': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1275': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1276': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1277': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1278': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1279': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1280': { primary: ['Chest'], secondary: ['Shoulders'] },
 })
 
 function exerciseFor(id) {
