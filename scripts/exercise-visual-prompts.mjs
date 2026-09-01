@@ -267,6 +267,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1288': 'Lie with the upper back supported on a large stability ball, feet planted wide. Hold one dumbbell above the chest in one hand while the other hand rests on the torso; lower the working arm out in a wide arc with a soft elbow, then return above the chest and switch arms.',
   '1289': 'Sit back on an incline bench set to 45 degrees with feet planted. Hold one dumbbell at shoulder height in one hand while the other hand rests on the torso; press the working dumbbell upward, then lower it under control and switch arms.',
   '1290': 'Sit upright on a large stability ball with feet planted wide. Hold one dumbbell at shoulder height in one hand while the other hand rests on the thigh; press the working dumbbell overhead while keeping the core engaged, then lower it under control and switch arms.',
+  '1291': 'Support the upper back on a large stability ball with feet planted wide. Hold one dumbbell straight above the chest in one hand while the other hand rests on the torso; lower the working dumbbell behind the head with a straight arm, then return and switch arms.',
+  '1292': 'Balance on a large stability ball with one foot planted and the other leg extended forward. Hold one dumbbell in each hand; open both arms out to the sides with softly bent elbows, then squeeze the chest to return and switch legs.',
+  '1293': 'Support the lower back on a large stability ball with feet planted wide and knees near 90 degrees. Hold one dumbbell in each hand at shoulder level; press both dumbbells overhead together, then lower them under control.',
+  '1294': 'Support the head, neck, and upper back on a large stability ball with feet planted wide. Hold one dumbbell with both hands above the chest; lower it behind the head, return above the chest, then lift the hips into a controlled bridge before lowering them.',
+  '1295': 'Support the upper back on a large stability ball with feet planted wide. Hold one dumbbell with both hands above the chest and lower it behind the head with straight arms, then return it above the chest under control.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -486,6 +491,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1288': { primary: ['Chest'], secondary: ['Shoulders'] },
   '1289': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1290': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps', 'Core'] },
+  '1291': { primary: ['Chest'], secondary: ['Triceps', 'Back'] },
+  '1292': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps', 'Core'] },
+  '1293': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1294': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders', 'Core', 'Glutes'] },
+  '1295': { primary: ['Chest'], secondary: ['Triceps', 'Back'] },
 })
 
 function exerciseFor(id) {
