@@ -282,6 +282,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1303': 'Start in a three-point stance with one hand on a medicine ball and the other hand on the floor, body straight. Lower the chest, then push the medicine ball away with the working arm and return under control.',
   '1304': 'Stand with feet shoulder-width apart holding a medicine ball at the chest. Extend both arms to push the ball forward, pause briefly, then bring it back to the chest and repeat smoothly.',
   '1305': 'Stand with feet shoulder-width apart holding a medicine ball at the chest. Perform one decisive straight-arm push forward, pause at full reach, then hold the completed position.',
+  '1306': 'Start in a high plank with hands slightly wider than shoulder width. Lower the chest with the body straight, then push explosively so both hands leave the floor and land softly back in the starting position.',
+  '1307': 'Place a BOSU ball flat side up and set both hands on its outer edges in a high plank. Lower the chest toward the dome, then press back up while keeping the core and legs straight.',
+  '1308': 'Set a flat bench in a Smith machine and lie with feet planted. Use a wide grip slightly beyond shoulder width; lower the guided bar to the chest, pause, then press it back to full arm extension.',
+  '1309': 'Secure the feet on a decline bench in a Smith machine and use a wide grip. Lower the guided bar toward the chest, pause on contact, then press it back to full arm extension.',
+  '1310': 'Start in a high plank wearing a weighted vest with hands close together. Lower the chest, explosively lift the hands and move them outward, catch in a wider position, then alternate back to narrow.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -516,6 +521,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1303': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '1304': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
   '1305': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1306': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders', 'Core'] },
+  '1307': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders', 'Core'] },
+  '1308': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1309': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '1310': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders', 'Core'] },
 })
 
 function exerciseFor(id) {
