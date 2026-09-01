@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 371)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 376)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1321,6 +1321,18 @@ test('close-grip, extension, hip-lift, and preacher-curl barbell batch preserves
   assert.match(promptFor('0055', 'muscles'), /Primary muscles: Triceps/i)
   assert.match(promptFor('0058', 'muscles'), /Primary muscles: Glutes/i)
   assert.match(promptFor('0059', 'muscles'), /Primary muscles: Biceps/i)
+})
+
+test('triceps, squat, row, floor-press, and side-deadlift batch preserves details', () => {
+  assert.match(promptFor('0061', 'technique'), /overhand shoulder-width grip.*forehead/i)
+  assert.match(promptFor('0063', 'technique'), /barbell across the upper back.*thighs are parallel/i)
+  assert.match(promptFor('0064', 'technique'), /one side of a barbell.*squeeze the shoulder blade/i)
+  assert.match(promptFor('0065', 'technique'), /one side of a barbell.*upper arm gently touches the floor/i)
+  assert.match(promptFor('0066', 'technique'), /one end of a barbell.*outside of the leg.*switch sides/i)
+  assert.match(promptFor('0061', 'muscles'), /Primary muscles: Triceps/i)
+  assert.match(promptFor('0063', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0064', 'muscles'), /Primary muscles: Upper back/i)
+  assert.match(promptFor('0066', 'muscles'), /Primary muscles: Glutes/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

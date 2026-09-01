@@ -351,6 +351,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0057': 'Lie flat on a bench with feet flat and head near the end. Hold a barbell with an overhand shoulder-width grip above the chest. Keep upper arms stationary, bend the elbows to lower the bar toward the forehead, pause, then extend the elbows to return.',
   '0058': 'Lie with the upper back supported on a bench, knees bent and feet flat. Place a padded barbell across the hips and stabilize it with both hands. Drive through the feet to lift the hips until the torso and thighs form a straight line, squeeze the glutes, then lower slowly.',
   '0059': 'Sit at a preacher bench with the chest against the pad and upper arms supported over the edge. Hold a straight barbell with an underhand grip, curl it toward shoulder level while keeping the upper arms planted, pause at contraction, then lower slowly.',
+  '0061': 'Lie flat on a bench with feet flat and head near the end. Hold a barbell with an overhand shoulder-width grip above the chest. Keep upper arms stationary, bend the elbows to lower the bar toward the forehead, pause, then extend the elbows to return.',
+  '0063': 'Stand with feet shoulder-width and toes slightly outward. Hold the barbell across the upper back on the traps or rear delts, brace the core and keep the chest up, squat with hips back until the thighs are parallel or slightly below, then drive through the heels to stand.',
+  '0064': 'Stand with feet shoulder-width and knees slightly bent. Hold one side of a barbell with an overhand grip, hinge forward with a straight neutral back and brace the free hand on the thigh, pull the bar toward the chest with the elbow close, squeeze the shoulder blade, then lower and switch sides.',
+  '0065': 'Lie on the floor with knees bent and feet flat. Hold one side of a barbell with one hand above the chest, lower it with the elbow close until the upper arm gently touches the floor, pause, then press back to full extension and switch arms.',
+  '0066': 'Stand with feet shoulder-width holding one end of a barbell in one hand beside the leg. Keep the back straight and core braced, hinge at the hips to lower the bar toward the outside of the leg with the arm straight, then squeeze the glutes to return and switch sides.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -654,6 +659,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0057': { primary: ['Triceps'], secondary: ['Shoulders'] },
   '0058': { primary: ['Glutes'], secondary: ['Hamstrings', 'Quads'] },
   '0059': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0061': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0063': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
+  '0064': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '0065': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0066': { primary: ['Glutes'], secondary: ['Hamstrings', 'Quads', 'Lower back'] },
 })
 
 function exerciseFor(id) {
