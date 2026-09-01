@@ -15,7 +15,7 @@
     "test:health": "node --disable-warning=ExperimentalWarning --test test/database.test.js test/health-repository.test.js test/health-router.test.js test/server-nutrition-integration.test.js"
   },
   "dependencies": {
-    "@simplewebauthn/server": "^13.1.1",
+    "@simplewebauthn/server": "^13.3.3",
     "web-push": "^3.6.7"
   }
 }
