@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 277)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 282)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1094,6 +1094,17 @@ test('dumbbell fly variants preserve bench, ball, and unilateral movement cues',
   assert.match(promptFor('1279', 'technique'), /other hand rests on the torso/i)
   assert.match(promptFor('1280', 'technique'), /stability ball/i)
   for (const id of ['1276', '1277', '1278', '1279', '1280']) assert.match(promptFor(id, 'muscles'), /Primary muscles: Chest/i)
+})
+
+test('dumbbell press and pullover variants preserve equipment and movement cues', () => {
+  assert.match(promptFor('1281', 'technique'), /incline bench/i)
+  assert.match(promptFor('1281', 'technique'), /press the working dumbbell/i)
+  assert.match(promptFor('1282', 'technique'), /stability ball/i)
+  assert.match(promptFor('1283', 'technique'), /both dumbbells/i)
+  assert.match(promptFor('1284', 'technique'), /arc behind the head/i)
+  assert.match(promptFor('1284', 'technique'), /both hands/i)
+  assert.match(promptFor('1285', 'technique'), /flat bench/i)
+  for (const id of ['1281', '1282', '1283', '1284', '1285']) assert.match(promptFor(id, 'muscles'), /Primary muscles: Chest/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

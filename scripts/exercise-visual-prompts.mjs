@@ -257,6 +257,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1278': 'Use a slightly inclined posture with the upper back supported on a large stability ball, feet planted wide, and one dumbbell in each hand above the upper chest. Open both arms in a controlled downward arc, then return the dumbbells together above the upper chest.',
   '1279': 'Sit back on an incline bench set to 30–45 degrees with feet planted. Hold one dumbbell above the upper chest while the other hand rests on the torso; lower the working arm out and down in a wide arc, then return and switch arms.',
   '1280': 'Use an incline posture with the upper back supported on a large stability ball and feet planted wide. Hold one dumbbell above the upper chest while the other hand rests on the torso; lower the working arm out and down in a wide arc, then return and switch arms.',
+  '1281': 'Sit back on an incline bench set to 30–45 degrees with feet planted. Hold one dumbbell at the upper chest in one hand while the other hand rests on the torso; press the working dumbbell vertically upward, then lower it under control and switch arms.',
+  '1282': 'Use an incline posture with the upper back supported on a large stability ball and feet planted wide. Hold one dumbbell at the upper chest in one hand while the other hand rests on the torso; press the working dumbbell upward, then lower it under control and switch arms.',
+  '1283': 'Use an incline posture with the upper back supported on a large stability ball and feet planted wide. Hold one dumbbell in each hand at the upper chest; press both dumbbells upward together, then lower them under control without locking the elbows.',
+  '1284': 'Lie lengthwise with the upper back supported on a large stability ball, feet planted wide, and hold one dumbbell with both hands above the chest. Lower it in a controlled arc behind the head while keeping the hips steady, then return above the chest.',
+  '1285': 'Lie on a flat bench with feet planted. Hold one dumbbell above the chest in one hand while the other hand rests on the torso; lower the working arm out in a wide arc with a soft elbow, then return above the chest and switch arms.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -466,6 +471,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1278': { primary: ['Chest'], secondary: ['Shoulders'] },
   '1279': { primary: ['Chest'], secondary: ['Shoulders'] },
   '1280': { primary: ['Chest'], secondary: ['Shoulders'] },
+  '1281': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1282': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1283': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '1284': { primary: ['Chest'], secondary: ['Triceps'] },
+  '1285': { primary: ['Chest'], secondary: ['Shoulders'] },
 })
 
 function exerciseFor(id) {
