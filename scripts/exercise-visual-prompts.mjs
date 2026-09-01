@@ -366,6 +366,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0072': 'Set an incline bench to 45 degrees and lie face down with the chest and stomach supported. Hold a barbell with an underhand shoulder-width grip and arms hanging straight. Keep the upper arms stationary, curl toward shoulder level, squeeze the biceps, then lower under control.',
   '0073': 'Lie flat on a bench with head near one end and feet on the floor. Hold a barbell with a shoulder-width grip and arms straight above the chest. Keeping the arms straight, lower the bar in an arc behind the head to stretch the lats, pause, then raise it back above the chest.',
   '0022': 'Lie flat on a bench with feet on the ground. Hold a barbell with a pronated overhand grip and arms straight above the chest. Lower it in an arc behind the head to stretch the lats, reverse the arc, then press the bar back to the starting position above the chest.',
+  '0074': 'Set a barbell on a rack at knee height. Stand with feet shoulder-width and toes slightly out, grip the bar overhand at shoulder width, then extend the hips and knees to stand tall with shoulders back and glutes squeezed before lowering under control.',
+  '0075': 'Stand with feet shoulder-width and hold a barbell with an overhand palms-down grip. Bend the knees slightly and hinge forward with a straight back, raise the bar out to the sides with straight arms until they are parallel to the floor, pause, then lower slowly.',
+  '0076': 'Stand with feet shoulder-width and knees slightly bent. Hold a barbell with an overhand grip slightly wider than the shoulders, hinge forward with a straight back and chest up, pull the bar toward the chest while squeezing the shoulder blades, pause, then lower under control.',
+  '0077': 'Stand with feet shoulder-width and a barbell across the upper back. Step the right foot backward onto the ball of the foot, bend both knees until the left thigh is parallel to the floor, then push through the left heel to return to standing and repeat on the other side.',
+  '0078': 'Stand with feet shoulder-width and a barbell resting on the upper back. Step the right foot backward onto the ball of the foot, lower by bending both knees until the left thigh is parallel to the floor, then drive through the left heel to return and alternate legs.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -684,6 +689,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0072': { primary: ['Biceps'], secondary: ['Forearms'] },
   '0073': { primary: ['Lats'], secondary: ['Chest', 'Triceps'] },
   '0022': { primary: ['Lats'], secondary: ['Triceps', 'Chest', 'Shoulders'] },
+  '0074': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
+  '0075': { primary: ['Delts'], secondary: ['Traps', 'Rhomboids'] },
+  '0076': { primary: ['Delts'], secondary: ['Trapezius', 'Rhomboids', 'Biceps'] },
+  '0077': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
+  '0078': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
 })
 
 function exerciseFor(id) {

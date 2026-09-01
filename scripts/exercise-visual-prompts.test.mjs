@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 386)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 391)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1359,6 +1359,19 @@ test('preacher curl, press sit-up, incline curl, and pullover batch preserves de
   assert.match(promptFor('0072', 'muscles'), /Primary muscles: Biceps/i)
   assert.match(promptFor('0073', 'muscles'), /Primary muscles: Lats/i)
   assert.match(promptFor('0022', 'muscles'), /Primary muscles: Lats/i)
+})
+
+test('rack-pull, rear-delt, and reverse-lunge barbell batch preserves details', () => {
+  assert.match(promptFor('0074', 'technique'), /rack.*knee height.*extend the hips and knees/i)
+  assert.match(promptFor('0075', 'technique'), /palms-down grip.*raise the bar out to the sides.*parallel to the floor/i)
+  assert.match(promptFor('0076', 'technique'), /grip slightly wider.*pull the bar toward the chest.*shoulder blades/i)
+  assert.match(promptFor('0077', 'technique'), /step.*backward.*ball of the foot.*left thigh is parallel/i)
+  assert.match(promptFor('0078', 'technique'), /barbell resting on the upper back.*alternate legs/i)
+  assert.match(promptFor('0074', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0075', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0076', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0077', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0078', 'muscles'), /Primary muscles: Glutes/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
