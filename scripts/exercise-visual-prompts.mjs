@@ -291,6 +291,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '1312': 'Hold a medicine ball at chest height in a staggered stance. Step forward and push-release the ball straight ahead, immediately run after it, catch it before it stops, and reset for the next repetition.',
   '1313': 'Sit upright at a leverage row machine and work one handle at a time. Start with the working arm extended, pull the elbow back while retracting the shoulder blade, pause, then return under control without twisting the torso.',
   '1316': 'Lie on a flat bench holding a barbell with a narrow grip and elbows slightly bent. Lower the bar in an arc behind the head, pause at a comfortable stretch, then pull it back over the chest without changing the elbow angle.',
+  '1317': 'Lie chest-down on a 45-degree incline bench and grip the barbell with palms facing down as specified by the catalogue. Pull the bar toward the upper abdomen with elbows back, pause, then lower under control.',
+  '1318': 'Set a 45-degree incline bench facing a low cable pulley. Sit or lie chest-supported with the handle extended, pull it toward the chest by retracting the shoulder blade, then extend the arm slowly.',
+  '1319': 'Stand facing a waist-height cable with one handle and palms initially down. Step back for tension, row the handle while rotating the palm upward, squeeze the shoulder blade, then release slowly.',
+  '1320': 'Sit at the row station with feet on the footrests and hold the two rope ends with a crossover grip. Lean back slightly, pull the ropes to the chest while squeezing the shoulder blades, then return with control.',
+  '1321': 'Sit on the elevated seat facing the cable machine with the rope handles extended. Keep the back straight and knees softly bent, pull the rope toward the torso, pause at contraction, then extend slowly.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -534,6 +539,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '1312': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders', 'Core'] },
   '1313': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
   '1316': { primary: ['Lats'], secondary: ['Triceps', 'Chest'] },
+  '1317': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '1318': { primary: ['Upper back'], secondary: ['Biceps', 'Rear deltoids'] },
+  '1319': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '1320': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '1321': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
 })
 
 function exerciseFor(id) {

@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 311)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 316)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1167,6 +1167,18 @@ test('wide push-up, medicine-ball run, unilateral row, ball extension, and pullo
   assert.match(promptFor('1313', 'muscles'), /Primary muscles: Upper back/i)
   assert.match(promptFor('1314', 'muscles'), /Primary muscles: Glutes/i)
   assert.match(promptFor('1316', 'muscles'), /Primary muscles: Lats/i)
+})
+
+test('row prompt batch preserves the grip, cable, rope, and elevated-seat details', () => {
+  assert.match(promptFor('1317', 'technique'), /reverse grip/i)
+  assert.match(promptFor('1318', 'technique'), /incline bench/i)
+  assert.match(promptFor('1319', 'technique'), /rotating the palm upward/i)
+  assert.match(promptFor('1320', 'technique'), /crossover grip/i)
+  assert.match(promptFor('1321', 'technique'), /elevated seat/i)
+  for (const id of ['1317', '1318', '1319', '1320', '1321']) {
+    assert.match(promptFor(id, 'muscles'), /Primary muscles: Upper back/i)
+    assert.match(promptFor(id, 'muscles'), /Secondary muscles:.*Biceps/i)
+  }
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
