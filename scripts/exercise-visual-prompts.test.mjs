@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 351)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 356)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1268,6 +1268,19 @@ test('front-rack and front-raise barbell batch preserves setup, movement, and ta
   assert.match(promptFor('0041', 'muscles'), /Primary muscles: Delts/i)
   assert.match(promptFor('0040', 'muscles'), /Primary muscles: Chest/i)
   assert.match(promptFor('0042', 'muscles'), /Primary muscles: Glutes/i)
+})
+
+test('barbell squat and hinge batch preserves viewpoint, setup, and target muscles', () => {
+  assert.match(promptFor('1461', 'technique'), /upper back.*rear delts.*rear viewpoint/i)
+  assert.match(promptFor('1462', 'technique'), /neutral side profile.*side viewpoint/i)
+  assert.match(promptFor('1545', 'technique'), /crooks of the elbows.*squeeze the glutes/i)
+  assert.match(promptFor('3562', 'technique'), /upper back supported.*both feet flat on the floor.*barbell across the hips/i)
+  assert.match(promptFor('0044', 'technique'), /hinge forward at the hips.*slight knee bend.*hamstrings stretch/i)
+  assert.match(promptFor('1461', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('1462', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('1545', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('3562', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0044', 'muscles'), /Primary muscles: Hamstrings/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

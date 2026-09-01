@@ -331,6 +331,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0041': 'Stand with feet shoulder-width and hold the barbell in front of the thighs with an overhand grip. Keep the arms straight, raise the bar forward to shoulder level, pause, then lower slowly.',
   '0040': 'Stand with feet shoulder-width and hold the barbell with an overhand grip. Raise straight arms forward to shoulder height, pause and lower, then lower the same straight-arm barbell behind the head and raise it back under control.',
   '0042': 'Stand with feet shoulder-width and toes slightly turned out. Rest the barbell on the collarbone and shoulders in a front-rack position, brace the core and keep the chest up, squat to parallel or comfortable depth, pause, then drive through the heels to stand.',
+  '1461': 'Stand with feet shoulder-width and toes slightly turned out. Hold the barbell across the upper back on the traps or rear delts. Brace the core and keep the chest up, squat with hips back and down until the thighs are parallel or slightly below while knees track the toes, then drive through the heels to stand. Keep the rear viewpoint clear.',
+  '1462': 'Stand with feet shoulder-width and toes slightly turned out. Hold the barbell across the upper back on the traps or rear delts. Brace the core and keep a neutral side profile, hinge the hips back and bend the knees to squat until the thighs are parallel or slightly below, then drive through the heels to stand. Keep the side viewpoint clear.',
+  '1545': 'Stand with feet shoulder-width and toes slightly turned out. Hold the barbell securely in the crooks of the elbows with the hands gripping it for stability. Keep the chest lifted and core braced, squat hips back and down until the thighs are parallel or as low as comfortable, then drive through the heels and squeeze the glutes to stand.',
+  '3562': 'Sit on the edge of a bench with the upper back supported and both feet flat on the floor, hip-width apart. Place a padded barbell across the hips and stabilize it with both hands. Press through the heels to lift the hips until the knees and shoulders form a straight line, squeeze the glutes, then lower slowly.',
+  '0044': 'Stand with feet shoulder-width and the barbell resting across the upper back. Brace the core and keep a neutral spine, hinge forward at the hips with only a slight knee bend while pushing the hips back until the torso approaches parallel and the hamstrings stretch, then squeeze the glutes to return upright.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -614,6 +619,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0041': { primary: ['Delts'], secondary: ['Biceps', 'Triceps'] },
   '0040': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '0042': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves', 'Core'] },
+  '1461': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves', 'Core'] },
+  '1462': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves', 'Core'] },
+  '1545': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves', 'Core'] },
+  '3562': { primary: ['Glutes'], secondary: ['Hamstrings', 'Core'] },
+  '0044': { primary: ['Hamstrings'], secondary: ['Lower back'] },
 })
 
 function exerciseFor(id) {
