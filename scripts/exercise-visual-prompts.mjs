@@ -346,6 +346,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0052': 'Lie flat on a bench with feet flat and back pressed to the pad. Use an overhand grip slightly wider than shoulder width, lower the bar toward the chest with elbows tucked close, pause, then press to full extension.',
   '0053': 'Stand with feet shoulder-width and a barbell across the upper back. Squat with hips back and knees tracking the toes, then drive through the feet to jump, land softly back into a squat, and repeat with a neutral spine.',
   '1720': 'Lie flat on a bench with feet flat and head near the end. Hold a barbell with an overhand shoulder-width grip above the chest. Keep upper arms stationary, bend the elbows to lower the bar behind the head, pause, then extend the elbows to return.',
+  '0055': 'Lie flat on a bench with feet flat and back pressed to the pad. Use a close barbell grip about shoulder width with palms facing the feet. Lower the bar toward the chest with elbows close to the body, pause at the chest, then press to full extension.',
+  '0056': 'Lie flat on a bench with feet flat and head near the end. Use a close underhand barbell grip about shoulder width and hold it above the chest. Keep upper arms stationary, bend the elbows to lower the bar toward the forehead, pause, then extend the elbows to return.',
+  '0057': 'Lie flat on a bench with feet flat and head near the end. Hold a barbell with an overhand shoulder-width grip above the chest. Keep upper arms stationary, bend the elbows to lower the bar toward the forehead, pause, then extend the elbows to return.',
+  '0058': 'Lie with the upper back supported on a bench, knees bent and feet flat. Place a padded barbell across the hips and stabilize it with both hands. Drive through the feet to lift the hips until the torso and thighs form a straight line, squeeze the glutes, then lower slowly.',
+  '0059': 'Sit at a preacher bench with the chest against the pad and upper arms supported over the edge. Hold a straight barbell with an underhand grip, curl it toward shoulder level while keeping the upper arms planted, pause at contraction, then lower slowly.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -644,6 +649,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0052': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
   '0053': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
   '1720': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0055': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0056': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0057': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0058': { primary: ['Glutes'], secondary: ['Hamstrings', 'Quads'] },
+  '0059': { primary: ['Biceps'], secondary: ['Forearms'] },
 })
 
 function exerciseFor(id) {
