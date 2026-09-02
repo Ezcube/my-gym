@@ -16,7 +16,7 @@ The importer refuses to overwrite an accepted asset. Replace an asset only throu
 
 ## Runtime policy
 
-- exactly 521 manifest IDs and 1042 WebP files;
+- exactly 526 manifest IDs and 1052 WebP files;
 - technique images: 1200×800;
 - muscle images: 1200×675;
 - maximum 300 KiB per file;

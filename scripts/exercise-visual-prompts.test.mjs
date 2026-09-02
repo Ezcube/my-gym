@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 521)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 526)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1810,6 +1810,11 @@ test('single-arm cable curl, raises, preacher curl, and pulldown preserve detail
     '0192': /cable machine.*one handle.*palm down.*arm straight.*side.*shoulder height/i,
     '1633': /preacher curl pad.*chest height.*upper arm.*low cable handle.*underhand.*switch arms/i,
     '3563': /one handle.*high pulley.*overhand.*arm extended.*elbow close.*down toward the side/i,
+    '1635': /lowest position.*preacher pad.*chest height.*upper arm.*underhand.*forearm.*switch arms/i,
+    '0193': /handle.*waist height.*kneel facing.*one hand.*straight arm.*chest.*shoulder blade/i,
+    '1723': /straight[- ]bar.*chest height.*face the machine.*step back.*upper arm stationary.*push the bar down.*elbow/i,
+    '1636': /straight bar.*high pulley.*facing the machine.*underhand.*shoulder-width.*elbows.*forehead/i,
+    '1637': /exercise ball.*underhand.*overhead.*elbows close to the ears.*upper arms still.*forehead/i,
   }
   for (const [id, pattern] of Object.entries(technique)) assert.match(promptFor(id, 'technique'), pattern)
   const muscles = {
@@ -1818,6 +1823,11 @@ test('single-arm cable curl, raises, preacher curl, and pulldown preserve detail
     '0192': /Primary muscles: Delts\.[\s\S]*Secondary muscles: Traps, Triceps/i,
     '1633': /Primary muscles: Biceps\.[\s\S]*Secondary muscles: Forearms/i,
     '3563': /Primary muscles: Lats\.[\s\S]*Secondary muscles: Biceps, Forearms/i,
+    '1635': /Primary muscles: Biceps\.[\s\S]*Secondary muscles: Forearms/i,
+    '0193': /Primary muscles: Upper back\.[\s\S]*Secondary muscles: Biceps, Shoulders/i,
+    '1723': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Forearms/i,
+    '1636': /Primary muscles: Biceps\.[\s\S]*Secondary muscles: Forearms/i,
+    '1637': /Primary muscles: Biceps\.[\s\S]*Secondary muscles: Forearms/i,
   }
   for (const [id, pattern] of Object.entries(muscles)) assert.match(promptFor(id, 'muscles'), pattern)
 })
