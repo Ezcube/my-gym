@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 436)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 441)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1489,6 +1489,19 @@ test('wrist, Zercher, battling-rope, and bench-dip batch preserves details', () 
   assert.match(promptFor('0127', 'muscles'), /Primary muscles: Quads/i)
   assert.match(promptFor('0128', 'muscles'), /Primary muscles: Delts/i)
   assert.match(promptFor('0129', 'muscles'), /Primary muscles: Triceps/i)
+})
+
+test('hip-extension, body-up, reverse-crunch, and pull-up batch preserves details', () => {
+  assert.match(promptFor('0130', 'technique'), /upper back supported.*bench.*squeeze the glutes.*shoulders-to-knees/i)
+  assert.match(promptFor('0137', 'technique'), /raised bench edge.*legs straight.*elbows close to the sides/i)
+  assert.match(promptFor('0138', 'technique'), /legs extended.*knees toward the chest.*lift the hips/i)
+  assert.match(promptFor('0139', 'technique'), /palms facing the athlete.*hands shoulder-width.*driving the elbows down/i)
+  assert.match(promptFor('0140', 'technique'), /palms facing away.*shoulder-width grip.*chest toward the bar/i)
+  assert.match(promptFor('0130', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0137', 'muscles'), /Primary muscles: Triceps/i)
+  assert.match(promptFor('0138', 'muscles'), /Primary muscles: Abs/i)
+  assert.match(promptFor('0139', 'muscles'), /Primary muscles: Biceps/i)
+  assert.match(promptFor('0140', 'muscles'), /Primary muscles: Biceps/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

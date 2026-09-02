@@ -416,6 +416,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0127': 'Stand with feet shoulder-width and cradle a barbell horizontally in the crooks of both elbows, forearms parallel and hands lightly clasped. Squat with the chest upright and knees tracking the toes, then drive through the heels to stand.',
   '0128': 'Stand in an athletic stance with knees softly bent and grip two thick ropes anchored low in front. Alternate the arms rapidly to create traveling waves in both ropes while the torso stays braced and feet stable.',
   '0129': 'Sit at the edge of a stable bench with hands beside the hips, knees bent, and feet planted. Lower the hips straight down by bending the elbows, then press through the palms to return without lifting the feet.',
+  '0130': 'Sit with the upper back supported on the edge of a flat bench, knees bent and feet planted. Drive through the feet and squeeze the glutes to lift the hips until the shoulders-to-knees form a straight line, then lower slowly.',
+  '0137': 'Place the hands on a raised bench edge with palms down and fingers forward. Keep the legs straight with heels on the floor, lower the body by bending elbows close to the sides, then press through the palms to straighten the arms.',
+  '0138': 'Lie flat on the back with legs extended and arms by the sides. Bend the knees toward the chest, curl the pelvis to lift the hips gently off the floor, then lower the hips and legs slowly without swinging.',
+  '0139': 'Hang from a pull-up bar with palms facing the athlete and hands shoulder-width or slightly narrow. Pull the chest toward the bar by driving the elbows down, pause, then lower under control to a full hang without kipping.',
+  '0140': 'Hang from a pull-up bar with palms facing away and a shoulder-width grip. Pull the chest toward the bar by bending the elbows and driving them down, then lower slowly to the full hang with the legs still.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -784,6 +789,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0127': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
   '0128': { primary: ['Delts'], secondary: ['Traps', 'Forearms'] },
   '0129': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0130': { primary: ['Glutes'], secondary: ['Hamstrings'] },
+  '0137': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '0138': { primary: ['Abs'], secondary: ['Obliques', 'Hip flexors'] },
+  '0139': { primary: ['Biceps'], secondary: ['Forearms', 'Shoulders'] },
+  '0140': { primary: ['Biceps'], secondary: ['Forearms', 'Shoulders'] },
 })
 
 function exerciseFor(id) {
