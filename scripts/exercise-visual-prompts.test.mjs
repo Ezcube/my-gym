@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 421)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 426)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1450,6 +1450,19 @@ test('standing front-raise, extension, curl, twist, and wide-grip batch preserve
   assert.match(promptFor('0110', 'muscles'), /Primary muscles: Biceps/i)
   assert.match(promptFor('0112', 'muscles'), /Primary muscles: Abs/i)
   assert.match(promptFor('0113', 'muscles'), /Primary muscles: Biceps/i)
+})
+
+test('step-up, good-morning, straight-leg, sumo, and upright-row barbell batch preserves details', () => {
+  assert.match(promptFor('0114', 'technique'), /knee-height platform.*barbell across the upper back.*drive through that foot/i)
+  assert.match(promptFor('0115', 'technique'), /barbell across the upper back.*hinge forward from the hips.*hips moving backward/i)
+  assert.match(promptFor('0116', 'technique'), /barbell at the thighs.*knees nearly straight.*bar travels close along the legs/i)
+  assert.match(promptFor('0117', 'technique'), /very wide sumo stance.*toes turned outward.*hands inside the knees/i)
+  assert.match(promptFor('0119', 'technique'), /barbell hanging at the thighs.*lead with the elbows.*upper-chest height/i)
+  assert.match(promptFor('0114', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('0115', 'muscles'), /Primary muscles: Hamstrings/i)
+  assert.match(promptFor('0116', 'muscles'), /Primary muscles: Hamstrings/i)
+  assert.match(promptFor('0117', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0119', 'muscles'), /Primary muscles: Delts/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
