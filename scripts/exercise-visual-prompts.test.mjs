@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 491)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 496)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1704,6 +1704,25 @@ test('decline fly/row, drag curl, floor row, and forward raise batch preserves c
     '1632': /Primary muscles: Biceps\.[\s\S]*Secondary muscles: Forearms/i,
     '0160': /Primary muscles: Upper back\.[\s\S]*Secondary muscles: Biceps, Forearms/i,
     '0161': /Primary muscles: Delts\.[\s\S]*Secondary muscles: Triceps, Forearms/i,
+  }
+  for (const [id, pattern] of Object.entries(muscles)) assert.match(promptFor(id, 'muscles'), pattern)
+})
+
+test('front raise, rope curl, overhead extension, and kneeling row batch preserves cable details', () => {
+  const technique = {
+    '0162': /cable handle.*overhand.*arms.*parallel to the floor/i,
+    '0164': /cable handle.*overhand.*arms.*parallel to the floor/i,
+    '0165': /rope.*neutral grip.*palms facing each other.*upper arms still.*shoulder level/i,
+    '1722': /facing away.*high pulley.*rope.*overhead.*elbows close.*behind the head/i,
+    '0167': /straight bar.*chest height.*kneel.*overhand.*sit back on the heels.*upper abdomen/i,
+  }
+  for (const [id, pattern] of Object.entries(technique)) assert.match(promptFor(id, 'technique'), pattern)
+  const muscles = {
+    '0162': /Primary muscles: Delts\.[\s\S]*Secondary muscles: Triceps, Forearms/i,
+    '0164': /Primary muscles: Delts\.[\s\S]*Secondary muscles: Trapezius, Biceps/i,
+    '0165': /Primary muscles: Biceps\.[\s\S]*Secondary muscles: Forearms/i,
+    '1722': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Shoulders/i,
+    '0167': /Primary muscles: Upper back\.[\s\S]*Secondary muscles: Biceps, Shoulders/i,
   }
   for (const [id, pattern] of Object.entries(muscles)) assert.match(promptFor(id, 'muscles'), pattern)
 })
