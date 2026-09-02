@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 466)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 471)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1611,6 +1611,25 @@ test('bench press prompts contain catalogue movement and muscle facts', () => {
   assert.match(muscles, /Primary muscles: Chest/i)
   assert.match(muscles, /Secondary muscles:.*Shoulders/i)
   assert.match(muscles, /Secondary muscles:.*Triceps/i)
+})
+
+test('kneeling extension, side curl, squatting rows, and one-arm row batch preserves details', () => {
+  const technique = {
+    '1771': /kneel.*hands shoulder-width.*legs back on (?:the )?toes.*elbows close/i,
+    '1769': /one side.*head supported.*upper arm against the side.*curl the forearm/i,
+    '3168': /suspension trainer.*squat.*knees behind the toes.*squeezing the shoulder blades/i,
+    '3167': /towel.*palms down.*squat.*pulling the towel toward the chest/i,
+    '3156': /flat back.*one dumbbell.*neutral grip.*elbow close.*switch sides/i,
+  }
+  for (const [id, pattern] of Object.entries(technique)) assert.match(promptFor(id, 'technique'), pattern)
+  const muscles = {
+    '1771': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Shoulders/i,
+    '1769': /Primary muscles: Biceps\.[\s\S]*Secondary muscles: Forearms/i,
+    '3168': /Primary muscles: Upper back\.[\s\S]*Secondary muscles: Biceps/i,
+    '3167': /Primary muscles: Upper back\.[\s\S]*Secondary muscles: Biceps/i,
+    '3156': /Primary muscles: Upper back\.[\s\S]*Secondary muscles: Biceps/i,
+  }
+  for (const [id, pattern] of Object.entries(muscles)) assert.match(promptFor(id, 'muscles'), pattern)
 })
 
 test('muscle prompts keep the athlete fully clothed for reliable generation', () => {
