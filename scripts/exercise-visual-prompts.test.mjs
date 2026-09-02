@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 446)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 451)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -791,6 +791,26 @@ test('cable press, pulldown, and extension batch preserves catalogue details', (
     '0150': /Primary muscles: Lats\.[\s\S]*Secondary muscles: Biceps, Rhomboids, Rear deltoids/i,
     '0151': /Primary muscles: Chest\.[\s\S]*Secondary muscles: Triceps, Shoulders/i,
     '0152': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Forearms/i,
+  }
+  for (const [id, pattern] of Object.entries(muscles)) assert.match(promptFor(id, 'muscles'), pattern)
+})
+
+test('Pendlay, pin, reverse-grip, and seated triceps batch preserves details', () => {
+  const technique = {
+    '3017': /flat back.*chest up.*upper abdomen.*floor each rep/i,
+    '1751': /power rack.*pins at chest height.*from the pins.*elbows tucked/i,
+    '2187': /flat bench.*reverse underhand grip.*elbows close/i,
+    '1721': /reverse underhand grip.*upper arms fixed.*forehead/i,
+    '1718': /close overhand grip behind the neck.*elbows close.*behind the head/i,
+  }
+  for (const [id, pattern] of Object.entries(technique)) assert.match(promptFor(id, 'technique'), pattern)
+
+  const muscles = {
+    '3017': /Primary muscles: Upper back\.[\s\S]*Secondary muscles: Biceps, Forearms/i,
+    '1751': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Shoulders/i,
+    '2187': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Chest, Shoulders/i,
+    '1721': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Forearms/i,
+    '1718': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Shoulders/i,
   }
   for (const [id, pattern] of Object.entries(muscles)) assert.match(promptFor(id, 'muscles'), pattern)
 })

@@ -426,6 +426,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0150': 'Sit facing a high cable pulley with a straight bar and an overhand grip wider than the shoulders. Keep the chest up and pull the bar to the upper chest by driving the elbows down, squeeze the shoulder blades, then return under control.',
   '0151': 'Stand facing away from a chest-height cable machine with both handles at shoulder level and elbows bent 90 degrees. Brace the feet and press both handles straight forward to full arm extension, then return slowly without leaning.',
   '0152': 'Sit on a bench with the working elbow braced against the inside of the same knee while holding a low cable handle. Keep the upper arm fixed and extend only the forearm to straight, then lower under control and switch sides.',
+  '3017': 'Stand with feet shoulder-width and knees slightly bent. Hinge forward with a flat back and chest up, grasp the barbell on the floor with an overhand grip, then pull it to the upper abdomen and lower it fully back to the floor each rep.',
+  '1751': 'Use a power rack with the barbell resting on pins at chest height. Grip slightly wider than the shoulders, press the bar from the pins to straight arms above the chest, pause, and lower it under control back to the pins with elbows tucked.',
+  '2187': 'Lie on a flat bench with feet planted and hold the barbell with a shoulder-width reverse underhand grip. Lower toward the chest with elbows close to the body, pause just above the chest, then press to straight arms.',
+  '1721': 'Lie flat on a bench and hold the barbell with a reverse underhand grip above the chest. Keep the upper arms fixed and lower the bar toward the forehead by bending the elbows, then extend the arms back to straight.',
+  '1718': 'Sit upright on a bench and hold a barbell with a close overhand grip behind the neck. Keep the elbows close to the head, lower the bar behind the head, then extend the elbows to raise it overhead under control.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -804,6 +809,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0150': { primary: ['Lats'], secondary: ['Biceps', 'Rhomboids', 'Rear deltoids'] },
   '0151': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
   '0152': { primary: ['Triceps'], secondary: ['Forearms'] },
+  '3017': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '1751': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '2187': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
+  '1721': { primary: ['Triceps'], secondary: ['Forearms'] },
+  '1718': { primary: ['Triceps'], secondary: ['Shoulders'] },
 })
 
 function exerciseFor(id) {
