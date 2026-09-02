@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 406)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 411)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1411,6 +1411,19 @@ test('seated good morning, press, twist, shrug, and side-bend batch preserves de
   assert.match(promptFor('0094', 'muscles'), /Primary muscles: Abs/i)
   assert.match(promptFor('0095', 'muscles'), /Primary muscles: Traps/i)
   assert.match(promptFor('0096', 'muscles'), /Primary muscles: Abs/i)
+})
+
+test('barbell lateral squat, split squat, skier, and speed squat batch preserves details', () => {
+  assert.match(promptFor('0097', 'technique'), /deep lateral squat.*opposite leg stays straight.*alternate sides/i)
+  assert.match(promptFor('0098', 'technique'), /feet wide.*controlled wide-stance squat.*without shifting into a lunge/i)
+  assert.match(promptFor('0099', 'technique'), /split stance.*rear heel stays raised.*front heel.*switch legs/i)
+  assert.match(promptFor('0100', 'technique'), /small jump.*pulling the bar toward the shoulders.*land softly/i)
+  assert.match(promptFor('0101', 'technique'), /descend quickly.*drive explosively.*speed without losing depth/i)
+  assert.match(promptFor('0097', 'muscles'), /Primary muscles: Quads, Glutes/i)
+  assert.match(promptFor('0098', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('0099', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('0100', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0101', 'muscles'), /Primary muscles: Glutes/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

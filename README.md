@@ -124,7 +124,7 @@ docker compose up -d
 
 Open **http://localhost:8080**, tap **Create profile**, and you're in.
 
-Four hundred six common exercises include original generated human technique and target-muscle visuals.
+Four hundred eleven common exercises include original generated human technique and target-muscle visuals.
 Every other exercise uses the built-in MuscleMap-derived body diagram. This fork does not
 download or display the separate upstream Gym image/GIF library.
 

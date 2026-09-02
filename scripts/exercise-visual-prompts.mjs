@@ -386,6 +386,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0094': 'Sit on a flat bench with feet flat and knees bent, holding a barbell in front of the chest with both hands and elbows slightly bent. Brace the core and rotate the torso to one side while keeping the back straight and hips grounded, return through center, then alternate sides.',
   '0095': 'Stand with feet shoulder-width and hold a barbell in front of the thighs with an overhand grip. Keep the arms straight and back neutral, elevate both shoulders toward the ears, squeeze the upper trapezius, pause, then lower without rolling the shoulders.',
   '0096': 'Stand with feet shoulder-width and hold a barbell across the upper back with both hands, palms facing down. Brace the core and bend the torso to the right side toward the right knee without twisting, return upright, then alternate to the left.',
+  '0097': 'Stand wide with a barbell across the upper back. Shift into a deep lateral squat toward the right while the opposite leg stays straight, keep the chest up and knee tracking the toes, then push through the bent-leg heel to return and alternate sides.',
+  '0098': 'Stand with feet wide and a barbell across the upper back. Lower into a controlled wide-stance squat with knees tracking the toes and weight on the heels, then drive up to standing without shifting into a lunge.',
+  '0099': 'Stand in a split stance with a barbell across the upper back. Lower straight down by bending the front knee and hip while the rear heel stays raised, keep the torso upright, then drive through the front heel and switch legs.',
+  '0100': 'Start hinged with a barbell in front of the thighs. Explosively extend the hips and make a small jump while pulling the bar toward the shoulders like a skier, then land softly, lower the bar, and repeat with a neutral spine.',
+  '0101': 'Stand with a barbell across the upper back and feet shoulder-width. Descend quickly but under control into a squat with knees tracking the toes, then drive explosively through the heels to stand tall; use speed without losing depth or spinal position.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -724,6 +729,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0094': { primary: ['Abs'], secondary: ['Obliques', 'Lower back'] },
   '0095': { primary: ['Traps'], secondary: ['Shoulders'] },
   '0096': { primary: ['Abs'], secondary: ['Obliques', 'Lower back'] },
+  '0097': { primary: ['Quads', 'Glutes'], secondary: ['Hamstrings', 'Calves'] },
+  '0098': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '0099': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '0100': { primary: ['Delts'], secondary: ['Triceps', 'Abs'] },
+  '0101': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
 })
 
 function exerciseFor(id) {
