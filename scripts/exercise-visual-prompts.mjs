@@ -396,6 +396,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0104': 'Stand tall holding a barbell behind the hips with palms facing down. Keep elbows and upper arms fixed while extending only the wrists upward, pause at the top, then lower the bar slowly; do not curl the elbows.',
   '0105': 'Stand with a barbell at the front shoulders. Press it overhead, guide it behind the head, then press it back to the front in a smooth Bradford arc while keeping the torso braced and elbows under the bar.',
   '0106': 'Stand upright with a narrow underhand barbell grip. Keep elbows close to the torso and upper arms still as you curl the bar to shoulder height, squeeze the biceps, then lower slowly without swinging.',
+  '0107': 'Stand tall holding a barbell at the thighs with an overhand grip. Raise both straight arms forward through shoulder height to overhead, keep the core braced and back neutral, then lower under control without swinging.',
+  '0109': 'Stand tall with a barbell overhead and elbows pointing forward. Keep the upper arms close to the head, bend only the elbows to lower the bar behind the head, then extend the elbows to return overhead.',
+  '0110': 'Stand upright with a barbell in an overhand reverse-grip at the thighs. Keep the elbows beside the torso and upper arms still as you curl to shoulder level, squeeze the biceps and forearms, then lower slowly.',
+  '0112': 'Stand with feet shoulder-width and hold a barbell horizontally at the chest. Brace the core and rotate the torso to one side while the hips and feet stay stable, return through center, then alternate sides without leaning.',
+  '0113': 'Stand upright with a barbell hanging in front using a wide overhand grip. Keep the upper arms stationary as you curl toward shoulder level, pause at the top, then lower slowly without swinging.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -744,6 +749,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0104': { primary: ['Forearms'], secondary: ['Biceps', 'Shoulders'] },
   '0105': { primary: ['Delts'], secondary: ['Triceps', 'Upper back'] },
   '0106': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0107': { primary: ['Delts'], secondary: ['Triceps', 'Upper back'] },
+  '0109': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0110': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0112': { primary: ['Abs'], secondary: ['Obliques', 'Lower back'] },
+  '0113': { primary: ['Biceps'], secondary: ['Forearms', 'Shoulders'] },
 })
 
 function exerciseFor(id) {

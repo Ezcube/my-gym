@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 416)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 421)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1437,6 +1437,19 @@ test('kneeling squat, rollout, wrist, Bradford, and close-grip curl batch preser
   assert.match(promptFor('0104', 'muscles'), /Primary muscles: Forearms/i)
   assert.match(promptFor('0105', 'muscles'), /Primary muscles: Delts/i)
   assert.match(promptFor('0106', 'muscles'), /Primary muscles: Biceps/i)
+})
+
+test('standing front-raise, extension, curl, twist, and wide-grip batch preserves details', () => {
+  assert.match(promptFor('0107', 'technique'), /barbell at the thighs.*overhand.*straight arms forward.*overhead/i)
+  assert.match(promptFor('0109', 'technique'), /barbell overhead.*elbows.*close to the head.*behind the head/i)
+  assert.match(promptFor('0110', 'technique'), /overhand reverse-grip.*elbows beside.*shoulder level/i)
+  assert.match(promptFor('0112', 'technique'), /barbell.*at the chest.*rotate the torso.*hips and feet stay stable/i)
+  assert.match(promptFor('0113', 'technique'), /wide overhand grip.*upper arms stationary.*shoulder level/i)
+  assert.match(promptFor('0107', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0109', 'muscles'), /Primary muscles: Triceps/i)
+  assert.match(promptFor('0110', 'muscles'), /Primary muscles: Biceps/i)
+  assert.match(promptFor('0112', 'muscles'), /Primary muscles: Abs/i)
+  assert.match(promptFor('0113', 'muscles'), /Primary muscles: Biceps/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
