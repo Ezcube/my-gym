@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 426)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 431)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1463,6 +1463,19 @@ test('step-up, good-morning, straight-leg, sumo, and upright-row barbell batch p
   assert.match(promptFor('0116', 'muscles'), /Primary muscles: Hamstrings/i)
   assert.match(promptFor('0117', 'muscles'), /Primary muscles: Glutes/i)
   assert.match(promptFor('0119', 'muscles'), /Primary muscles: Delts/i)
+})
+
+test('upright-row, wide-press, and wide-squat barbell batch preserves details', () => {
+  assert.match(promptFor('0120', 'technique'), /medium overhand grip.*lead with the elbows.*upper-chest height/i)
+  assert.match(promptFor('0121', 'technique'), /wide overhand grip.*elbows outward and upward.*stop below the shoulders/i)
+  assert.match(promptFor('0122', 'technique'), /flat bench.*noticeably wider-than-shoulder.*mid-chest.*without bouncing/i)
+  assert.match(promptFor('0123', 'technique'), /very wide overhand grip.*elbows outward and upward.*upper chest/i)
+  assert.match(promptFor('0124', 'technique'), /feet much wider than shoulder-width.*deep wide squat.*heels planted/i)
+  assert.match(promptFor('0120', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0121', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0122', 'muscles'), /Primary muscles: Chest/i)
+  assert.match(promptFor('0123', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0124', 'muscles'), /Primary muscles: Quads/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

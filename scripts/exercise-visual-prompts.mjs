@@ -406,6 +406,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0116': 'Hold a barbell at the thighs with an overhand grip, feet hip-width and knees nearly straight but softly unlocked. Hinge from the hips while the bar travels close along the legs toward the shins, keep the back flat, then drive the hips forward to stand.',
   '0117': 'Use a very wide sumo stance with toes turned outward and hold a barbell from the floor with the hands inside the knees. Keep the chest lifted and spine neutral as you drive through the floor to extend the knees and hips, then lower the bar close to the body.',
   '0119': 'Stand tall with a barbell hanging at the thighs using a shoulder-width overhand grip. Lead with the elbows and pull the bar vertically close to the body to upper-chest height, then lower smoothly without swinging or leaning.',
+  '0120': 'Stand tall with a barbell hanging at the thighs using a medium overhand grip. Lead with the elbows and pull the bar vertically close to the body to upper-chest height, then lower smoothly without swinging.',
+  '0121': 'Stand tall with a barbell hanging at the thighs using a wide overhand grip. Drive the elbows outward and upward to pull the bar close to the torso toward the upper chest, stop below the shoulders, then lower under control.',
+  '0122': 'Lie on a flat bench with feet planted and hold the barbell with a noticeably wider-than-shoulder overhand grip. Lower the bar toward the mid-chest with retracted shoulder blades, then press to straight arms without bouncing.',
+  '0123': 'Stand tall with a barbell at the thighs and a very wide overhand grip. Pull the bar close to the torso by driving the elbows outward and upward, stop around the upper chest, then lower without leaning or swinging.',
+  '0124': 'Stand with a barbell across the upper back and feet much wider than shoulder-width, toes slightly out. Descend into a deep wide squat with knees tracking the toes and heels planted, then drive through the heels to stand.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -764,6 +769,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0116': { primary: ['Hamstrings'], secondary: ['Glutes', 'Lower back'] },
   '0117': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Lower back'] },
   '0119': { primary: ['Delts'], secondary: ['Traps', 'Upper back'] },
+  '0120': { primary: ['Delts'], secondary: ['Traps', 'Upper back'] },
+  '0121': { primary: ['Delts'], secondary: ['Traps', 'Upper back'] },
+  '0122': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
+  '0123': { primary: ['Delts'], secondary: ['Traps', 'Upper back'] },
+  '0124': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
 })
 
 function exerciseFor(id) {
