@@ -376,6 +376,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0118': 'Stand with feet shoulder-width and knees slightly bent. Hold a barbell with an overhand, palms-down grip slightly wider than shoulder width, hinge forward until the torso is nearly parallel with a straight back and chest up, pull the bar toward the lower chest while squeezing the shoulder blades, pause, then lower slowly.',
   '0081': 'Sit at a preacher bench with the chest against the pad and upper arms supported, arms hanging straight down. Hold a barbell with an overhand, palms-down grip, keep the upper arms stationary, curl toward shoulder level, pause, then lower slowly.',
   '0082': 'Sit on a bench with feet flat and forearms resting on the thighs, wrists hanging off the edge. Hold a barbell with an overhand, palms-down grip. Keep the forearms stationary, curl the wrists upward, pause, then lower the barbell slowly.',
+  '0083': 'Kneel on the floor behind a flat bench with a barbell resting on the bench in front. Grip it overhand slightly wider than shoulder width, roll it forward off the bench while keeping the core engaged and back straight until the arms are overhead, pause, then roll it back toward the body under control.',
+  '0084': 'Kneel on the floor with knees supported, hands shoulder-width on a barbell. Keep the core engaged and back straight as you roll the barbell forward until the body is fully extended and arms are overhead, pause, then roll it back toward the knees under control.',
+  '0086': 'Sit upright on a bench with feet flat and hold a barbell with an overhand grip slightly wider than shoulder width. Bring it to shoulder level behind the head, press it straight overhead to full extension, then lower it under control behind the head.',
+  '0087': 'Sit upright on a bench with feet flat and hold a barbell at shoulder height in front of the upper chest with an overhand grip slightly wider than the shoulders. Press it overhead to full arm extension, then lower it back to shoulder height with a braced torso.',
+  '0089': 'Sit with feet flat and rest the upper arms against the inner thighs just above the knees. Hold a barbell with an underhand shoulder-width grip hanging in front, keep the upper arms stationary, curl toward the shoulders, pause, then lower slowly.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -704,6 +709,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0118': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
   '0081': { primary: ['Biceps'], secondary: ['Forearms'] },
   '0082': { primary: ['Forearms'], secondary: ['Biceps', 'Brachialis'] },
+  '0083': { primary: ['Abs'], secondary: ['Shoulders', 'Triceps'] },
+  '0084': { primary: ['Abs'], secondary: ['Lower back'] },
+  '0086': { primary: ['Delts'], secondary: ['Triceps', 'Upper back'] },
+  '0087': { primary: ['Delts'], secondary: ['Triceps', 'Upper back'] },
+  '0089': { primary: ['Biceps'], secondary: ['Forearms'] },
 })
 
 function exerciseFor(id) {
