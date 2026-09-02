@@ -124,7 +124,7 @@ docker compose up -d
 
 Open **http://localhost:8080**, tap **Create profile**, and you're in.
 
-Five hundred eighty one common exercises include original generated human technique and target-muscle visuals.
+Five hundred eighty six common exercises include original generated human technique and target-muscle visuals.
 Every other exercise uses the built-in MuscleMap-derived body diagram. This fork does not
 download or display the separate upstream Gym image/GIF library.
 
@@ -284,7 +284,7 @@ product.
 **Third-party content is not, and openGym cannot sublicense it.** The exercise metadata and
 instruction text come from
 [hasaneyldrm/exercises-dataset](https://github.com/hasaneyldrm/exercises-dataset) under the
-**MIT** license. Five hundred eighty one common exercises include original generated human technique and
+**MIT** license. Five hundred eighty six common exercises include original generated human technique and
 target-muscle visuals. Every other exercise uses the built-in MuscleMap-derived body diagram.
 This fork does not download, redistribute, or display the separate Gym visual image/GIF files
 referenced by the upstream dataset. See [NOTICE.md](NOTICE.md) and
