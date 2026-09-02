@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 441)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 446)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -773,6 +773,26 @@ test('wrist, dip, crunch, and military-press prompts match the catalogue hierarc
     const prompt = promptFor(id, 'muscles')
     for (const pattern of patterns) assert.match(prompt, pattern)
   }
+})
+
+test('cable press, pulldown, and extension batch preserves catalogue details', () => {
+  const technique = {
+    '0148': /one cable handle in each hand.*shoulder height.*alternate arms/i,
+    '0149': /upper arm parallel.*elbow bent 90 degrees.*alternate arms/i,
+    '0150': /high cable pulley.*straight bar.*upper chest.*shoulder blades/i,
+    '0151': /facing away.*handles at shoulder level.*press both handles straight forward/i,
+    '0152': /elbow braced against the inside.*low cable handle.*switch sides/i,
+  }
+  for (const [id, pattern] of Object.entries(technique)) assert.match(promptFor(id, 'technique'), pattern)
+
+  const muscles = {
+    '0148': /Primary muscles: Delts\.[\s\S]*Secondary muscles: Triceps, Upper back/i,
+    '0149': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Shoulders/i,
+    '0150': /Primary muscles: Lats\.[\s\S]*Secondary muscles: Biceps, Rhomboids, Rear deltoids/i,
+    '0151': /Primary muscles: Chest\.[\s\S]*Secondary muscles: Triceps, Shoulders/i,
+    '0152': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Forearms/i,
+  }
+  for (const [id, pattern] of Object.entries(muscles)) assert.match(promptFor(id, 'muscles'), pattern)
 })
 
 test('core and cable batch prompts lock the movement details', () => {

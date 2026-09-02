@@ -421,6 +421,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0138': 'Lie flat on the back with legs extended and arms by the sides. Bend the knees toward the chest, curl the pelvis to lift the hips gently off the floor, then lower the hips and legs slowly without swinging.',
   '0139': 'Hang from a pull-up bar with palms facing the athlete and hands shoulder-width or slightly narrow. Pull the chest toward the bar by driving the elbows down, pause, then lower under control to a full hang without kipping.',
   '0140': 'Hang from a pull-up bar with palms facing away and a shoulder-width grip. Pull the chest toward the bar by bending the elbows and driving them down, then lower slowly to the full hang with the legs still.',
+  '0148': 'Stand with feet shoulder-width and one cable handle in each hand at shoulder height, palms forward. Press one handle up and forward to a straight arm while the other stays at shoulder level, then lower and alternate arms without leaning.',
+  '0149': 'Face the cable machine and hold one handle with the upper arm parallel to the floor and elbow bent 90 degrees. Keep the upper arm fixed and extend the forearm backward to straight, then return and alternate arms.',
+  '0150': 'Sit facing a high cable pulley with a straight bar and an overhand grip wider than the shoulders. Keep the chest up and pull the bar to the upper chest by driving the elbows down, squeeze the shoulder blades, then return under control.',
+  '0151': 'Stand facing away from a chest-height cable machine with both handles at shoulder level and elbows bent 90 degrees. Brace the feet and press both handles straight forward to full arm extension, then return slowly without leaning.',
+  '0152': 'Sit on a bench with the working elbow braced against the inside of the same knee while holding a low cable handle. Keep the upper arm fixed and extend only the forearm to straight, then lower under control and switch sides.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -794,6 +799,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0138': { primary: ['Abs'], secondary: ['Obliques', 'Hip flexors'] },
   '0139': { primary: ['Biceps'], secondary: ['Forearms', 'Shoulders'] },
   '0140': { primary: ['Biceps'], secondary: ['Forearms', 'Shoulders'] },
+  '0148': { primary: ['Delts'], secondary: ['Triceps', 'Upper back'] },
+  '0149': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0150': { primary: ['Lats'], secondary: ['Biceps', 'Rhomboids', 'Rear deltoids'] },
+  '0151': { primary: ['Chest'], secondary: ['Triceps', 'Shoulders'] },
+  '0152': { primary: ['Triceps'], secondary: ['Forearms'] },
 })
 
 function exerciseFor(id) {
