@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 431)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 436)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1476,6 +1476,19 @@ test('upright-row, wide-press, and wide-squat barbell batch preserves details', 
   assert.match(promptFor('0122', 'muscles'), /Primary muscles: Chest/i)
   assert.match(promptFor('0123', 'muscles'), /Primary muscles: Delts/i)
   assert.match(promptFor('0124', 'muscles'), /Primary muscles: Quads/i)
+})
+
+test('wrist, Zercher, battling-rope, and bench-dip batch preserves details', () => {
+  assert.match(promptFor('0125', 'technique'), /forearms resting on the thighs.*barbell overhand.*only the wrists upward/i)
+  assert.match(promptFor('0126', 'technique'), /forearms resting on the thighs.*barbell palms down.*extending only the wrists/i)
+  assert.match(promptFor('0127', 'technique'), /cradle a barbell.*crooks of both elbows.*squat with the chest upright/i)
+  assert.match(promptFor('0128', 'technique'), /two thick ropes anchored low.*alternate the arms.*traveling waves/i)
+  assert.match(promptFor('0129', 'technique'), /edge of a stable bench.*knees bent.*lower the hips straight down/i)
+  assert.match(promptFor('0125', 'muscles'), /Primary muscles: Forearms/i)
+  assert.match(promptFor('0126', 'muscles'), /Primary muscles: Forearms/i)
+  assert.match(promptFor('0127', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('0128', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0129', 'muscles'), /Primary muscles: Triceps/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {

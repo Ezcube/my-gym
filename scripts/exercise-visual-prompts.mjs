@@ -411,6 +411,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0122': 'Lie on a flat bench with feet planted and hold the barbell with a noticeably wider-than-shoulder overhand grip. Lower the bar toward the mid-chest with retracted shoulder blades, then press to straight arms without bouncing.',
   '0123': 'Stand tall with a barbell at the thighs and a very wide overhand grip. Pull the bar close to the torso by driving the elbows outward and upward, stop around the upper chest, then lower without leaning or swinging.',
   '0124': 'Stand with a barbell across the upper back and feet much wider than shoulder-width, toes slightly out. Descend into a deep wide squat with knees tracking the toes and heels planted, then drive through the heels to stand.',
+  '0125': 'Sit on a bench with forearms resting on the thighs and hold a barbell overhand with the wrists relaxed over the knees. Extend only the wrists upward while the elbows and forearms stay fixed, then lower slowly.',
+  '0126': 'Sit on a bench with forearms resting on the thighs and hold a barbell palms down over the knees. Raise the backs of the hands by extending only the wrists, keep the forearms fixed, then lower under control.',
+  '0127': 'Stand with feet shoulder-width and cradle a barbell horizontally in the crooks of both elbows, forearms parallel and hands lightly clasped. Squat with the chest upright and knees tracking the toes, then drive through the heels to stand.',
+  '0128': 'Stand in an athletic stance with knees softly bent and grip two thick ropes anchored low in front. Alternate the arms rapidly to create traveling waves in both ropes while the torso stays braced and feet stable.',
+  '0129': 'Sit at the edge of a stable bench with hands beside the hips, knees bent, and feet planted. Lower the hips straight down by bending the elbows, then press through the palms to return without lifting the feet.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -774,6 +779,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0122': { primary: ['Chest'], secondary: ['Shoulders', 'Triceps'] },
   '0123': { primary: ['Delts'], secondary: ['Traps', 'Upper back'] },
   '0124': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '0125': { primary: ['Forearms'], secondary: ['Biceps', 'Shoulders'] },
+  '0126': { primary: ['Forearms'], secondary: ['Biceps', 'Shoulders'] },
+  '0127': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '0128': { primary: ['Delts'], secondary: ['Traps', 'Forearms'] },
+  '0129': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
 })
 
 function exerciseFor(id) {
