@@ -371,6 +371,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0076': 'Stand with feet shoulder-width and knees slightly bent. Hold a barbell with an overhand grip slightly wider than the shoulders, hinge forward with a straight back and chest up, pull the bar toward the chest while squeezing the shoulder blades, pause, then lower under control.',
   '0077': 'Stand with feet shoulder-width and a barbell across the upper back. Step the right foot backward onto the ball of the foot, bend both knees until the left thigh is parallel to the floor, then push through the left heel to return to standing and repeat on the other side.',
   '0078': 'Stand with feet shoulder-width and a barbell resting on the upper back. Step the right foot backward onto the ball of the foot, lower by bending both knees until the left thigh is parallel to the floor, then drive through the left heel to return and alternate legs.',
+  '0079': 'Sit on a bench with feet flat and forearms resting on the thighs, wrists hanging off the edge. Hold a barbell with an overhand, palms-down grip. Keep the forearms stationary, curl the wrists upward as far as possible, pause, then lower slowly.',
+  '0080': 'Stand upright with feet shoulder-width and hold a barbell with an overhand, palms-down grip. Keep the upper arms stationary, curl the barbell toward shoulder level, pause while squeezing the biceps, then lower slowly.',
+  '0118': 'Stand with feet shoulder-width and knees slightly bent. Hold a barbell with an overhand, palms-down grip slightly wider than shoulder width, hinge forward until the torso is nearly parallel with a straight back and chest up, pull the bar toward the lower chest while squeezing the shoulder blades, pause, then lower slowly.',
+  '0081': 'Sit at a preacher bench with the chest against the pad and upper arms supported, arms hanging straight down. Hold a barbell with an overhand, palms-down grip, keep the upper arms stationary, curl toward shoulder level, pause, then lower slowly.',
+  '0082': 'Sit on a bench with feet flat and forearms resting on the thighs, wrists hanging off the edge. Hold a barbell with an overhand, palms-down grip. Keep the forearms stationary, curl the wrists upward, pause, then lower the barbell slowly.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -694,6 +699,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0076': { primary: ['Delts'], secondary: ['Trapezius', 'Rhomboids', 'Biceps'] },
   '0077': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
   '0078': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
+  '0079': { primary: ['Forearms'], secondary: ['Biceps', 'Brachialis'] },
+  '0080': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0118': { primary: ['Upper back'], secondary: ['Biceps', 'Forearms'] },
+  '0081': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0082': { primary: ['Forearms'], secondary: ['Biceps', 'Brachialis'] },
 })
 
 function exerciseFor(id) {
