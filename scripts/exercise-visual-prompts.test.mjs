@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 451)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 456)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -811,6 +811,26 @@ test('Pendlay, pin, reverse-grip, and seated triceps batch preserves details', (
     '2187': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Chest, Shoulders/i,
     '1721': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Forearms/i,
     '1718': /Primary muscles: Triceps\.[\s\S]*Secondary muscles: Shoulders/i,
+  }
+  for (const [id, pattern] of Object.entries(muscles)) assert.match(promptFor(id, 'muscles'), pattern)
+})
+
+test('single-leg, seated leg raise, split-squat, and jump-lunge batch preserves details', () => {
+  const technique = {
+    '1756': /one foot.*free leg extended behind.*bar stays close.*switch sides/i,
+    '2799': /barbell across the thighs.*both legs straight.*alternate legs/i,
+    '2800': /hands supporting the bench.*parallel to the floor.*alternate legs/i,
+    '2810': /barbell across the upper back.*front thigh is parallel.*switch legs/i,
+    '2798': /descend into a squat.*jump explosively.*reverse lunge.*alternate/i,
+  }
+  for (const [id, pattern] of Object.entries(technique)) assert.match(promptFor(id, 'technique'), pattern)
+
+  const muscles = {
+    '1756': /Primary muscles: Glutes\.[\s\S]*Secondary muscles: Hamstrings, Lower back/i,
+    '2799': /Primary muscles: Abs\.[\s\S]*Secondary muscles: Hip flexors/i,
+    '2800': /Primary muscles: Abs\.[\s\S]*Secondary muscles: Hip flexors, Quads/i,
+    '2810': /Primary muscles: Quads\.[\s\S]*Secondary muscles: Glutes, Hamstrings, Calves/i,
+    '2798': /Primary muscles: Quads\.[\s\S]*Secondary muscles: Glutes, Hamstrings, Calves/i,
   }
   for (const [id, pattern] of Object.entries(muscles)) assert.match(promptFor(id, 'muscles'), pattern)
 })
