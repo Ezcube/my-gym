@@ -391,6 +391,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0099': 'Stand in a split stance with a barbell across the upper back. Lower straight down by bending the front knee and hip while the rear heel stays raised, keep the torso upright, then drive through the front heel and switch legs.',
   '0100': 'Start hinged with a barbell in front of the thighs. Explosively extend the hips and make a small jump while pulling the bar toward the shoulders like a skier, then land softly, lower the bar, and repeat with a neutral spine.',
   '0101': 'Stand with a barbell across the upper back and feet shoulder-width. Descend quickly but under control into a squat with knees tracking the toes, then drive explosively through the heels to stand tall; use speed without losing depth or spinal position.',
+  '0102': 'Begin kneeling with knees hip-width and a barbell across the shoulders. Keep the torso tall and core braced as you sit the hips back toward the heels, then drive through the hips to return upright on the knees without leaning or twisting.',
+  '0103': 'Stand tall holding a barbell at the thighs. Brace the core and roll the barbell forward along the floor while extending the body into a straight line with arms overhead, then roll it back under control without arching the lower back.',
+  '0104': 'Stand tall holding a barbell behind the hips with palms facing down. Keep elbows and upper arms fixed while extending only the wrists upward, pause at the top, then lower the bar slowly; do not curl the elbows.',
+  '0105': 'Stand with a barbell at the front shoulders. Press it overhead, guide it behind the head, then press it back to the front in a smooth Bradford arc while keeping the torso braced and elbows under the bar.',
+  '0106': 'Stand upright with a narrow underhand barbell grip. Keep elbows close to the torso and upper arms still as you curl the bar to shoulder height, squeeze the biceps, then lower slowly without swinging.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -734,6 +739,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0099': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
   '0100': { primary: ['Delts'], secondary: ['Triceps', 'Abs'] },
   '0101': { primary: ['Glutes'], secondary: ['Quads', 'Hamstrings', 'Calves'] },
+  '0102': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '0103': { primary: ['Abs'], secondary: ['Shoulders', 'Lower back'] },
+  '0104': { primary: ['Forearms'], secondary: ['Biceps', 'Shoulders'] },
+  '0105': { primary: ['Delts'], secondary: ['Triceps', 'Upper back'] },
+  '0106': { primary: ['Biceps'], secondary: ['Forearms'] },
 })
 
 function exerciseFor(id) {

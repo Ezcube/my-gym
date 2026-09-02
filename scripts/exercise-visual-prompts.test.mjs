@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 411)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 416)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1424,6 +1424,19 @@ test('barbell lateral squat, split squat, skier, and speed squat batch preserves
   assert.match(promptFor('0099', 'muscles'), /Primary muscles: Quads/i)
   assert.match(promptFor('0100', 'muscles'), /Primary muscles: Delts/i)
   assert.match(promptFor('0101', 'muscles'), /Primary muscles: Glutes/i)
+})
+
+test('kneeling squat, rollout, wrist, Bradford, and close-grip curl batch preserves details', () => {
+  assert.match(promptFor('0102', 'technique'), /kneeling.*barbell across the shoulders.*hips back.*return upright/i)
+  assert.match(promptFor('0103', 'technique'), /stand tall.*roll the barbell forward.*straight line.*lower back/i)
+  assert.match(promptFor('0104', 'technique'), /behind the hips.*palms facing down.*only the wrists.*do not curl the elbows/i)
+  assert.match(promptFor('0105', 'technique'), /front shoulders.*overhead.*behind the head.*Bradford arc/i)
+  assert.match(promptFor('0106', 'technique'), /narrow underhand.*elbows close.*shoulder height.*without swinging/i)
+  assert.match(promptFor('0102', 'muscles'), /Primary muscles: Quads/i)
+  assert.match(promptFor('0103', 'muscles'), /Primary muscles: Abs/i)
+  assert.match(promptFor('0104', 'muscles'), /Primary muscles: Forearms/i)
+  assert.match(promptFor('0105', 'muscles'), /Primary muscles: Delts/i)
+  assert.match(promptFor('0106', 'muscles'), /Primary muscles: Biceps/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
