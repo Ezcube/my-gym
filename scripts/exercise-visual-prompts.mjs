@@ -381,6 +381,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '0086': 'Sit upright on a bench with feet flat and hold a barbell with an overhand grip slightly wider than shoulder width. Bring it to shoulder level behind the head, press it straight overhead to full extension, then lower it under control behind the head.',
   '0087': 'Sit upright on a bench with feet flat and hold a barbell at shoulder height in front of the upper chest with an overhand grip slightly wider than the shoulders. Press it overhead to full arm extension, then lower it back to shoulder height with a braced torso.',
   '0089': 'Sit with feet flat and rest the upper arms against the inner thighs just above the knees. Hold a barbell with an underhand shoulder-width grip hanging in front, keep the upper arms stationary, curl toward the shoulders, pause, then lower slowly.',
+  '0090': 'Sit on a bench with feet flat and a barbell resting across the upper back. Keep the chest up and spine straight, hinge forward at the hips toward the thighs, pause at a controlled stretch, then drive through the feet to return upright.',
+  '0092': 'Sit upright with feet flat and hold a barbell overhead using an overhand shoulder-width grip. Keep the upper arms close to the head, bend only the elbows to lower the bar behind the head, pause, then extend the elbows to raise it overhead.',
+  '0094': 'Sit on a flat bench with feet flat and knees bent, holding a barbell in front of the chest with both hands and elbows slightly bent. Brace the core and rotate the torso to one side while keeping the back straight and hips grounded, return through center, then alternate sides.',
+  '0095': 'Stand with feet shoulder-width and hold a barbell in front of the thighs with an overhand grip. Keep the arms straight and back neutral, elevate both shoulders toward the ears, squeeze the upper trapezius, pause, then lower without rolling the shoulders.',
+  '0096': 'Stand with feet shoulder-width and hold a barbell across the upper back with both hands, palms facing down. Brace the core and bend the torso to the right side toward the right knee without twisting, return upright, then alternate to the left.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -714,6 +719,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '0086': { primary: ['Delts'], secondary: ['Triceps', 'Upper back'] },
   '0087': { primary: ['Delts'], secondary: ['Triceps', 'Upper back'] },
   '0089': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '0090': { primary: ['Glutes'], secondary: ['Hamstrings', 'Lower back'] },
+  '0092': { primary: ['Triceps'], secondary: ['Shoulders'] },
+  '0094': { primary: ['Abs'], secondary: ['Obliques', 'Lower back'] },
+  '0095': { primary: ['Traps'], secondary: ['Shoulders'] },
+  '0096': { primary: ['Abs'], secondary: ['Obliques', 'Lower back'] },
 })
 
 function exerciseFor(id) {

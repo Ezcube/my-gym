@@ -4,7 +4,7 @@ import { EXERCISE_VISUAL_IDS } from '../frontend/src/lib/exercise-visuals.js'
 import { promptFor } from './exercise-visual-prompts.mjs'
 
 test('every approved id produces both complete prompts', () => {
-  assert.equal(EXERCISE_VISUAL_IDS.length, 401)
+  assert.equal(EXERCISE_VISUAL_IDS.length, 406)
   for (const id of EXERCISE_VISUAL_IDS) {
     const technique = promptFor(id, 'technique')
     const muscles = promptFor(id, 'muscles')
@@ -1398,6 +1398,19 @@ test('barbell rollout and seated press/curl batch preserves details', () => {
   assert.match(promptFor('0086', 'muscles'), /Primary muscles: Delts/i)
   assert.match(promptFor('0087', 'muscles'), /Primary muscles: Delts/i)
   assert.match(promptFor('0089', 'muscles'), /Primary muscles: Biceps/i)
+})
+
+test('seated good morning, press, twist, shrug, and side-bend batch preserves details', () => {
+  assert.match(promptFor('0090', 'technique'), /sit on a bench.*barbell.*upper back.*hinge forward.*hips/i)
+  assert.match(promptFor('0092', 'technique'), /barbell overhead.*upper arms close.*behind the head.*extend the elbows/i)
+  assert.match(promptFor('0094', 'technique'), /flat bench.*barbell.*front of the chest.*rotate the torso/i)
+  assert.match(promptFor('0095', 'technique'), /barbell in front.*arms straight.*elevate both shoulders/i)
+  assert.match(promptFor('0096', 'technique'), /barbell across the upper back.*bend the torso.*right side.*without twisting/i)
+  assert.match(promptFor('0090', 'muscles'), /Primary muscles: Glutes/i)
+  assert.match(promptFor('0092', 'muscles'), /Primary muscles: Triceps/i)
+  assert.match(promptFor('0094', 'muscles'), /Primary muscles: Abs/i)
+  assert.match(promptFor('0095', 'muscles'), /Primary muscles: Traps/i)
+  assert.match(promptFor('0096', 'muscles'), /Primary muscles: Abs/i)
 })
 
 test('bench press prompts contain catalogue movement and muscle facts', () => {
