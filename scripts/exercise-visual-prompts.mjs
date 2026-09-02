@@ -436,6 +436,11 @@ const TECHNIQUE_ACCURACY = Object.freeze({
   '2800': 'Sit upright on a bench with a barbell across the thighs and hands supporting the bench. Keep the legs straight, lift one leg until parallel to the floor, lower it, and alternate legs without leaning.',
   '2810': 'Stand with a barbell across the upper back, step one foot far forward, lower until the front thigh is parallel with an upright torso, then drive through the front heel to stand and switch legs.',
   '2798': 'With a barbell across the upper back, descend into a squat, jump explosively, land softly, immediately step one leg back into a reverse lunge, rise, and alternate the lunge leg while keeping the torso controlled.',
+  '2414': 'Stand with feet shoulder-width and hold one end of a barbell in one hand, palm up, while the other hand supports on the thigh. Keep the upper arm fixed, curl the working end toward the shoulder, lower slowly, and switch arms.',
+  '1629': 'Stand upright with a barbell held underhand using a grip wider than shoulder width. Keep the back straight and elbows close, curl to the shoulders with the upper arms stationary, then lower to straight arms.',
+  '3305': 'Hold a barbell at shoulder height with an overhand grip. Descend into a squat, then drive through the heels while pressing the barbell overhead in one fluid motion, and return it to the shoulders as you squat again.',
+  '3360': 'Start on all fours with hands under shoulders and knees under hips. Lift the knees slightly while keeping a flat back and braced core, then crawl by moving the right hand with the left foot and alternate sides steadily.',
+  '1399': 'Sit at the edge of a stable bench with hands beside the hips, slide the hips off, lower by bending the elbows until the upper arms are parallel to the floor, then press back up with feet grounded.',
 })
 
 const MUSCLE_GROUP_OVERRIDES = Object.freeze({
@@ -824,6 +829,11 @@ const MUSCLE_GROUP_OVERRIDES = Object.freeze({
   '2800': { primary: ['Abs'], secondary: ['Hip flexors', 'Quads'] },
   '2810': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
   '2798': { primary: ['Quads'], secondary: ['Glutes', 'Hamstrings', 'Calves'] },
+  '2414': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '1629': { primary: ['Biceps'], secondary: ['Forearms'] },
+  '3305': { primary: ['Delts'], secondary: ['Quads', 'Glutes', 'Hamstrings', 'Core'] },
+  '3360': { primary: ['Cardiovascular system'], secondary: ['Core', 'Shoulders', 'Triceps'] },
+  '1399': { primary: ['Triceps'], secondary: ['Chest', 'Shoulders'] },
 })
 
 function exerciseFor(id) {
