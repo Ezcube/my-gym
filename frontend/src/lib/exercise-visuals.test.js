@@ -139,12 +139,13 @@ const APPROVED_IDS = [
   '0327', '0328', '0329', '0330', '0331',
   '0332', '0335', '0337', '0338', '0339',
   '0340', '0341', '0342', '0343', '0344',
+  '0345', '0346', '0347', '0349', '0350',
 ]
 
 describe('generated exercise visual manifest', () => {
   it('contains exactly the approved unique catalogue ids', () => {
     expect(EXERCISE_VISUAL_IDS).toEqual(APPROVED_IDS)
-    expect(new Set(EXERCISE_VISUAL_IDS).size).toBe(691)
+    expect(new Set(EXERCISE_VISUAL_IDS).size).toBe(696)
     expect(Object.keys(EXERCISE_VISUALS).sort()).toEqual([...APPROVED_IDS].sort())
   })
 
